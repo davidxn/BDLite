@@ -1,0 +1,188 @@
+ACTOR FlakCannon : BdLiteWeapon 
+{
+	Game Doom
+    Radius 20
+    Weapon.Kickback 50
+	Weapon.SelectionOrder 400
+	Weapon.AmmoGive 5
+	Weapon.AmmoType "FlakAmmo"
+	Weapon.AmmoUse 1
+	Weapon.KickBack 5
+	Weapon.SlotNumber 7
+	Inventory.PickupMessage "You found a flak cannon!"
+	Obituary "%k caught %o in a flak attack"
+    Inventory.PickupSound "CLIPINSS"
+	DamageType Flak
+	States
+	{
+	Spawn:
+		FKGN Z -1
+		Stop
+	Ready:
+		FKGN LMN 2
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+        FKGN AA 1
+		FKGN AA 1
+		TNT1 A 0 A_PlaySound("CLIPINSS")
+        FKGN AA 1
+		FKGN AA 1
+	ReadyLoop:
+		FKGN A 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Goto ReadyLoop
+		
+	Deselect:
+		FKGN NML 1
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Fire:
+		TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+
+		TNT1 A 0 A_Recoil(5)
+        FKGN B 1 BRIGHT A_playsound("SSHFIRE", 5)
+		TNT1 AAAAAAAAAAAAAAA 0 A_FireCustomMissile("FlakShard", random(-12,12), 0, -1, -1, FPF_NOAUTOAIM, random(-5,5))
+
+		TNT1 AA 0 A_FireCustomMissile("YellowFlareSpawn",15,0,0,0)
+		TNT1 AA 0 A_FireCustomMissile("YellowFlareSpawn",-15,0,0,0)
+		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
+		FKGN B 1 BRIGHT
+		TNT1 A 0 A_FireBullets (24, 6, 6, 7, "FlakPuff")
+		TNT1 A 0 A_SetPitch(-16.0 + pitch)
+        TNT1 A 0 A_FireCustomMissile("PlayerQuakeLarge", 0, 0, 0, 0)
+        FKGN B 1 BRIGHT A_SetPitch(+2.0 + pitch)
+        FKGN C 1
+	    TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        FKGN C 1
+	    TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        FKGN C 1
+	    TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        FKGN C 2
+		TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        FKGN C 2
+		TNT1 A 0 A_SetPitch(+2.0 + pitch)
+        FKGN C 3 A_SetPitch(+2.0 + pitch)
+		TNT1 A 0 A_SetPitch(+2.0 + pitch)
+
+		FKGN C 4
+		TNT1 A 0 A_JumpIfInventory("FlakAmmo", 1, 1)
+		Goto ReadyLoop
+
+		FKGN DEFFFFF 2 
+		FKGN G 2 A_PlaySound("FlakCannon/Snap")
+		FKGN HHOOII 2        
+		FKGN I 4
+		FKGN JK 2
+        TNT1 A 0 A_playsound("FKRELOAD")
+		FKGN L 6
+		FKGN MNAA 2
+		TNT1 A 0 A_ReFire
+		FKGN A 2
+        Goto ReadyLoop
+	NoAmmo:
+		FKGN A 4 A_PlaySound("weapons/empty", 2)
+		Goto ReadyLoop
+	}
+}
+
+ACTOR FlakShard
+  {
+  Projectile
+  +RANDOMIZE
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS
+  +BLOODSPLATTER
+  BounceType Grenade
+  bouncefactor 1
+  BounceSound "ricochet/hit"
+  wallbouncefactor 1
+  damage (10+5*random(0, 2))
+  radius 2
+  height 2
+  speed 45
+  alpha 0.9
+  scale 0.4
+  Decal "BulletChip"
+  DamageType Flak
+  states
+	{
+	Spawn:
+		FKSD ABCDABCD 1 BRIGHT Light("FLAKHI")
+		FKSD EFGHEFGHEFGH 1 BRIGHT Light("FLAKLO")
+		TNT1 A 1 A_CustomMissile("FlakResidue",-5,0,0,CMF_AIMDIRECTION)
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+ACTOR FlakResidue {
+  +FORCEXYBILLBOARD
+  +BOUNCEONFLOORS
+  +BOUNCEONCEILINGS
+  +THRUACTORS
+  BounceType Grenade
+  bouncefactor 0.5
+  wallbouncefactor 0.5
+  BounceSound "weapons/shell"
+  radius 2
+  height 2
+  speed 45
+  alpha 0.9
+  scale 0.4
+  states
+	{
+	Spawn:
+		TNT1 AAAA 0 A_Jump(256, "Type1", "Type2", "Type3", "Type4")
+	Type1:
+		FKSD I 60
+		Stop
+	Type2:
+		FKSD J 62
+		Stop
+	Type3:
+		FKSD K 55
+		Stop
+	Type4:
+		FKSD L 57
+		Stop
+	Death:
+		Stop
+	XDeath:
+	TNT1 A 0
+	Stop
+	}
+}
+
+ACTOR FlakAmmo : Ammo
+{
+	Game Doom
+    Radius 20
+	Inventory.PickupMessage "Picked up some flak cartridges."
+   Inventory.Amount 2
+   Inventory.MaxAmount 20
+   Ammo.BackpackAmount 0
+   Ammo.BackpackMaxAmount 40
+   Inventory.Icon "FKBXA0"
+    States
+	{
+	Spawn:
+		FKBX A -1
+		Stop
+	}
+}
+
+ACTOR FlakBox : FlakAmmo
+{
+	Inventory.PickupMessage "Picked up a box of flak cartridges."
+	Inventory.Amount 6
+	States
+	{
+	Spawn:
+		FKBX B -1
+		Stop
+	}
+}

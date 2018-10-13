@@ -1,0 +1,84 @@
+#include "zcommon.acs"
+#library "ssplash"
+
+script "CheckActorOverTerrain" (void) //Water Small Splash
+{
+  if (CheckActorFloorTexture(0, "GRASS1")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+  if (CheckActorFloorTexture(0, "GRASS2")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+
+  if (CheckActorFloorTexture(0, "RROCK19")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+  if (CheckActorFloorTexture(0, "RROCK20")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+   if (CheckActorFloorTexture(0, "FLAT10")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "FLAT5")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "FLOOR7_1")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "MFLR8_2")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "MFLR8_4")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "RROCK03")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "RROCK16")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "RROCK17")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "RROCK18")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "DESERT01")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "DESERT02")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+	
+	if (CheckActorFloorTexture(0, "DESERT03")) {
+    GiveInventory("IsOverGrass", 1);
+	terminate;
+}
+}

@@ -1,0 +1,119 @@
+ACTOR BdPainElemental : BdLiteMonster Replaces PainElemental
+{
+	Health 300
+	Radius 31
+	Height 64
+	Mass 400
+    Scale 1.2
+	Speed 9
+	PainChance 128
+	+FLOAT
+	+BLOODSPLATTER
+	+NOGRAVITY
+	-FLOORCLIP
+	SeeSound "pain/sight"
+	PainSound "pain/pain"
+	DeathSound "pain/death"
+	ActiveSound "pain/active"
+    BloodType "BdBleed"
+	PainChance "Kick", 255
+    damagetype Flames
+	States
+	{
+	Spawn:
+		PAIN A 10 A_Look
+		Loop
+		
+	See:
+		PAIN AABBCC 3 A_Chase
+		TNT1 A 0 A_JumpIfCloser(200, "Retreat")
+		Loop
+	
+	Retreat:
+		TNT1 A 0 A_FaceTarget
+		PAIN AABBCC 3 {
+			A_Recoil(5);
+			A_SetAngle(angle + random(-10, 10));
+		}
+		Goto See
+
+	Missile:
+		TNT1 A 0 A_JumpIfCloser(200, "Retreat")
+		PAIN D 7 A_FaceTarget
+		PAIN E 7 A_FaceTarget
+		PAIN F 5 BRIGHT A_FaceTarget
+		PAIN F 2 BRIGHT A_PainAttack
+		PAIN ED 7
+		Goto See
+		
+	Pain:
+		PAIN G 6
+		PAIN G 6 A_Pain
+		Goto See
+	Pain.Kick:
+	Pain.SuperKick:
+		TNT1 A 0 A_FaceTarget
+		TNT1 A 0 A_Recoil (5)
+		PAIN G 12
+		PAIN G 12 A_Pain
+
+		Death:
+		PAIN H 8 BRIGHT
+		PAIN I 8 BRIGHT A_Scream
+		TNT1 A 0 A_Explode (220,220)
+		TNT1 AA 0 bright A_CustomMissile ("BdBloodSpawnerLarge", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLump", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FireBallExplosion", 6, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 BRIGHT A_PainDie
+		
+		//For god's sake
+		TNT1 AAAAAA 0 A_CustomMissile ("BdGibPainPiece1", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAA 0 A_CustomMissile ("BdGibPainPiece2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 6 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 6 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 6 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 6 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
+		TNT1 AAA 6 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
+		Stop	
+	}
+}

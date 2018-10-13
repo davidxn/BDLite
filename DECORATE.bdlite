@@ -1,0 +1,65 @@
+// IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS - Sgt Mark
+
+//Weapons
+#include decorate/weapons/BDLITEWEAPON.txt
+#include decorate/weapons/Grenades.txt
+#include decorate/weapons/MELEE.txt
+#include decorate/weapons/SAW.txt
+#include decorate/weapons/RIFLE.txt
+#include decorate/weapons/SHOTGUN.txt
+#include decorate/weapons/SSG.txt
+#include decorate/weapons/MINIGUN.txt
+#include decorate/weapons/ROCKETLAUNCHER.txt
+#include decorate/weapons/PLASMA.txt
+#include decorate/weapons/BFG.txt
+#include decorate/weapons/FlakCannon.txt
+#include decorate/weapons/PlasmaPistol.txt
+
+//Enemies
+#include decorate/monsters/BdLiteMonster.txt
+#include decorate/monsters/ZOMBIEMEN.txt
+#include decorate/monsters/SERGEANTS.txt
+#include decorate/monsters/COMMANDO.txt
+#include decorate/monsters/IMPS.txt
+#include decorate/monsters/DEMONS.txt
+#include decorate/monsters/SPECTRE.txt
+#include decorate/monsters/KNIGHT.txt
+#include decorate/monsters/BARON.txt
+#include decorate/monsters/LOSTSOUL.txt
+#include decorate/monsters/SPIDERS.txt
+#include decorate/monsters/REVENANT.txt
+#include decorate/monsters/MANCUBUS.txt
+#include decorate/monsters/CACODEMON.txt
+#include decorate/monsters/PAIN.txt
+#include decorate/monsters/ARCHVILE.txt
+#include decorate/monsters/CYBERDEMON.txt
+#include decorate/monsters/MASTERMIND.txt
+
+//Blood and effects
+#include decorate/effects/BDBLOOD.txt
+#include decorate/effects/BDGIBS.txt
+#include decorate/effects/BDFX.txt
+#include decorate/effects/PARTICLES.txt
+#include decorate/effects/SMOKE.txt
+#include decorate/effects/CASING.txt
+#include decorate/effects/FIRE.txt
+#include decorate/effects/SPARKS.txt
+#include decorate/effects/FLARES.txt
+#include decorate/effects/PUFF.txt
+#include decorate/effects/TRACERS.txt
+
+//DECORATIONS
+#include decorate/things/FURNITURE.txt
+#include decorate/things/LAMPS.txt
+#include decorate/things/NATURAL.txt
+#include decorate/things/FIREWORKS.txt
+#include decorate/things/TORCHES.txt
+#include decorate/things/DEAD.txt
+
+//Pickups
+#include decorate/items/ARTIFACT.txt
+#include decorate/items/HEALTH.txt
+#include decorate/items/KEYS.txt
+
+//Player Classes
+#include decorate/player/PLAYER.txt

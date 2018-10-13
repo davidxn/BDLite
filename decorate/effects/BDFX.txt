@@ -1,0 +1,144 @@
+//Special effects
+
+/*
+
+BdFx - Base class
+	BdAshes
+		BdAshesHeavy
+	BdExplosionSmoke
+		BdPlasmaSmoke
+	BdPlasmaEvaporate
+
+*/
+
+actor BdFx
+{
+	game Doom
+	Mass 1
+	+NOBLOCKMAP
+	+NOTELEPORT
+    +DONTSPLASH
+	+MISSILE
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+	-BLOODSPLATTER
+	-RANDOMIZE
+	+THRUACTORS
+}
+
+ACTOR BdAshes: BdFx
+{
+    Speed 5
+	Gravity 0.009
+    DeathSound "none"
+	SeeSound "none"
+	BounceFactor 0.01
+	Decal none
+    Scale 1.0
+    States
+    {
+    Spawn:
+		TNT1 A 0 A_Jump(128, "AltSpawn")
+	    ASHZ ABCB 3
+        Loop
+	AltSpawn:
+		ASHY ABCB 2
+		Loop
+    Death:
+		TNT1 A 0 A_Jump(128, "AltDeath")
+        ASHZ B random(350, 700)
+		Stop
+	AltDeath:
+		ASHY B random(350, 700)
+		Stop
+	}
+}
+
+ACTOR BdFlyingAsh : BdFlyingBlood
+{
+	Alpha 1
+	Scale 1
+	Speed 3
+    States
+    {
+    Spawn:
+		ATRL AAAAAAABBBBBBCCCCCCDDDDDD random(1, 2)
+    Death:
+		TNT1 A 1
+		Stop
+    }
+}
+
+
+ACTOR BdAshesHeavy: BdAshes
+{
+	Gravity 0.5
+}
+
+ACTOR BdExplosionSmoke: BdFx
+{
+    +NOINTERACTION
+	+BLOODSPLATTER
+	+DOOMBOUNCE
+	Health 99999
+	BounceFactor 0.5
+	Radius 0
+	Height 0
+	Alpha 0.1
+	RenderStyle Translucent
+	Scale 1.1
+	Speed 1
+    States
+    {
+    Spawn:
+	SMK3 BBB 2 A_FadeIn(0.1)
+	SMK3 B 20
+	SMK3 CDEFGHIJKLM 3
+	Goto Death
+	Death:
+	    TNT1 A 0
+		Stop
+	Stap:		
+		TNT1 A 0
+		Stop
+    }
+}
+
+Actor BdPlasmaSmoke : BdExplosionSmoke
+{
+	Speed 1
+	Scale 0.5
+	Alpha 0.1
+	States
+	{
+	Spawn:
+		SMK3 BB 2 A_FadeIn(0.05)
+		SMK3 B 20
+		SMK3 CDEFGHIJKLM 3
+		Goto Death
+	}
+}
+
+Actor BdPlasmaEvaporate : BdFx
+{
+  Height 0
+  Radius 0
+  Mass 0
+  BounceFactor 0.2
+  Gravity 0.8
+  RenderStyle Add
+  Scale 0.065
+  Speed 0
+  Alpha 0.9
+  +BLOODSPLATTER
+  States
+  {
+  Spawn:
+  Death:
+    FIR5 ABCDEFGHIJKLMNOP 2 Bright {
+		A_FadeOut(0.04);
+		ThrustThingZ (0,1,0,0);
+	}
+    Stop
+  }
+}

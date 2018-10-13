@@ -1,0 +1,633 @@
+/*
+
+Much better blood library by DavidN
+
+Class hierarchy:
+
+BdBleed - Blood effect when an enemy is hit. Spawns multiple other items
+	BdBleedBlue - As above but blue
+BdBloodHitEffect
+	BdBloodHitEffectBlue
+BdBloodSpot - Pools of blood that use models to get a flat sprite on the ground
+	BdBloodSpotBlue
+	BdBloodPool
+		BdBloodPoolBlue
+BdBlood - Base for most blood things, makes these items non-randomized missiles that go through actors, etc
+	BdBloodSpawnerTiny
+	BdBloodSpawnerSmall - Play xdeath4, spawn some blood effects
+	BdBloodSpawnerMed - As above, just more effects
+	BdBloodSpawnerLarge - As above, even more
+	BdBloodSpawnerBlue
+	BdBloodSpawnerMelting - Lots of blood nearby, not so much flying, as if melting (used for plasma)
+	BdPlasmaGibSpawner - Spawns burned gibs for plasmafication
+	BdLostSoulFragmentSpawner
+	BdFlyingBlood - Blood splatter to travel through the air, leaving a BdFlyingBloodTrail behind
+		BdFlyingBloodSmall - As above but scaled smaller
+		BdFlyingBloodSlow - Slower variant, so that it will splash nearer the origin
+		BdFlyingAsh - Blackened
+	BdFlyingBloodTrail - Trail for BdFlyingBlood, can also be spawned on its own for a small blood spurt
+		BdFlyingBloodTrailStrong - Trail that hangs around longer and is a bit bigger, used for trailing larger gibs
+		BdFlyingBloodTrailWeak - Trail that's more transparent
+		BdFlyingAshTrailStrong - Blackened
+	BdBloodLump - Small unidentified lump of gib :/ Splats heavily to ground
+		BdBloodLumpBig - The same but more so
+		BdBloodLumpBone
+	BdBloodDrop - Small oozing blood drop
+	BdBloodDropTrail - Blobby blood trail behind BdBloodDrop
+	BdBloodBlue - Adds a translation to turn anything underneath blue
+		BdFlyingBloodTrailBlue
+		BdBloodLumpBlue
+		BdFlyingBloodBlue
+	BdGib and subclasses - See BDGIBS.TXT
+*/
+
+// Base properties for blood, most blood actors should inherit from here
+actor BdBlood
+{
+	game Doom
+	Mass 1
+	+NOBLOCKMAP
+	+NOTELEPORT
+	+FORCEXYBILLBOARD
+	+CLIENTSIDEONLY
+	+MISSILE
+	-BLOODSPLATTER
+	-RANDOMIZE
+	+THRUACTORS
+}
+
+//For bleeding actors
+actor BdBleed Replaces Blood
+{
+ Decal BrutalBloodSplat
+ game Doom
+ +FORCEXYBILLBOARD
+ +BLOODSPLATTER
+ +THRUACTORS
+ +CLIENTSIDEONLY
+ Speed 0
+ states
+ {
+  Spawn:
+        TNT1 A 0 A_CustomMissile ("BdFlyingBlood", 7, 0, random (0, 360), 2, random (10, 40))
+		TNT1 AAAA 0 A_CustomMissile ("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 A 0 A_CustomMissile ("BdBloodHitEffect", 0, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_Stop
+		TNT1 A 1
+		Stop
+ }
+}
+
+ACTOR BdBloodHitEffect
+{
+ game Doom
+ scale 0.8
+ speed 1
+ health 1
+ radius 8
+ height 1
+ Gravity 0.3
+ damage 0
+ Renderstyle Translucent
+ Alpha 0.95
+	DamageType Blood
+	Decal BrutalBloodSplat
+   +MISSILE
+   +CLIENTSIDEONLY
+   +NOTELEPORT
+   +NOBLOCKMAP
+    +BLOODLESSIMPACT 
+   +FORCEXYBILLBOARD
+   +NODAMAGETHRUST
+   +MOVEWITHSECTOR
+   +CORPSE
+   -DONTSPLASH
+   +THRUACTORS
+   Mass 1
+   States
+	{
+	Spawn:
+		BLOD ABCDJ 2
+		Stop
+		}
+}
+
+ACTOR BdBloodHitEffectBlue : BdBloodHitEffect
+{
+	translation "168:191=192:207","16:47=240:247"
+}
+
+
+actor BdBleedBlue : BdBleed
+{
+	translation "168:191=192:207","16:47=240:247"
+	Decal BlueBloodSplat
+	states
+	{
+    Spawn:
+        TNT1 AAAA 0 A_CustomMissile ("BdBloodHitEffectBlue", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAAA 0 A_CustomMissile ("BdFlyingBloodTrailBlue", 0, 0, random (0, 180), 2, random (0, 180))
+  	    TNT1 A 0 A_CustomMissile ("BdFlyingBloodBlue", 7, 0, random (0, 360), 2, random (30, 150))
+		stop
+	}
+}
+
+ACTOR BdBloodSpot
+{
+ game Doom
+ radius 1
+ height 1
+ mass 1
+ Health 300
++NOTELEPORT
++CLIENTSIDEONLY
++FORCEXYBILLBOARD
++MOVEWITHSECTOR
++FLOORCLIP
++NOTARGET
+-SHOOTABLE
++NOBLOOD
++DONTTHRUST
+-DONTSPLASH
+-SOLID
++THRUACTORS
++FLOORHUGGER
+Alpha 0.9
+Scale 0.5
+Decal BrutalBloodSplat
+DamageFactor "TeleportRemover", 100.0
+ states
+ {
+	Spawn:
+		TNT1 A 0 A_Jump(256, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
+	SpawnBFrameOnly:
+		BPDL B -1
+	SpawnCFrameOnly:
+		BPDL C -1
+	SpawnDFrameOnly:
+		BPDL D -1  
+	Death:
+		TNT1 A 0 A_NoBlocking
+		Stop
+ }
+}
+
+actor BdBloodSpotBlue : BdBloodSpot
+{
+translation "168:191=192:207","16:47=240:247"
+Decal BlueBloodSplat
+}
+
+actor BdBloodPool: BdBloodSpot
+{
+ Health 600
+ +MISSILE
+ Scale 1.0
+ states
+ {
+ Spawn:
+  BPDL A 30
+  BPDL ABCDEFGHIJKLMNOPQRSTUVWXYZ 3
+ Live:
+  BPDL Z -1
+ }
+}
+
+actor BdBloodPoolBlue: BdBloodPool
+{
+translation "168:191=192:207","16:47=240:247"
+}
+
+
+actor BdBloodSpawnerTiny : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAA 0 A_CustomMissile("BdFlyingBloodTrailWeak", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAA 0 A_CustomMissile("BdFlyingBloodTrail", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 360))
+  	    TNT1 AA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+actor BdBloodSpawnerSmall : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAA 0 A_CustomMissile("BdFlyingBloodTrailWeak", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrail", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 360))
+  	    TNT1 AA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+actor BdBloodSpawnerMed : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrailWeak", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrail", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 360))
+  	    TNT1 AAAAA 0 A_CustomMissile ("BdFlyingBlood", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+actor BdBloodSpawnerBlue : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrailBlue", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+  	    TNT1 AAAAA 0 A_CustomMissile ("BdFlyingBloodBlue", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+  	    TNT1 AAA 0 A_CustomMissile ("BdBloodLumpBlue", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+actor BdBloodSpawnerLarge : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrailStrong", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrail", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 360))
+  	    TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("BdFlyingBlood", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAA 0 A_CustomMissile ("BdFlyingBloodSlow", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+actor BdBloodSpawnerMelting : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrailStrong", 15, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAAAAAAAAA 0 A_CustomMissile("BdFlyingBloodTrail", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 360))
+  	    TNT1 AAAAAAAA 0 A_CustomMissile ("BdFlyingBlood", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+		TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BdFlyingBloodSlow", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        stop
+	}
+}
+
+ACTOR BdPlasmaGibSpawner : BdBlood
+{
+	+BLOODSPLATTER
+	states
+	{
+	Spawn:
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+        TNT1 AAA 0 A_SpawnProjectile("BdGibBurnedGut", 10, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 10))
+        TNT1 A 0 A_SpawnProjectile("BdGibBurnedRibcage", 30, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 10))
+        TNT1 A 0 A_SpawnProjectile("BdGibBurnedArm", 20, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 10))
+        TNT1 AA 0 A_SpawnProjectile("BdGibBurnedLeg", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 10))
+		TNT1 AA 0 A_SpawnProjectile("BdGibBurnedGib", 20, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 10))
+        stop
+	}
+}
+
+ACTOR BdLostSoulFragmentSpawner : BdBlood
+{
+	+BLOODSPLATTER
+	States
+	{
+	Spawn:
+		TNT1 AAAAAA 0 A_SpawnProjectile("BdGibLostSoulFragment", 10, 0, random (0, 360), CMF_AIMDIRECTION | CMF_ABSOLUTEANGLE, 0 - random (0, 180))
+		Stop
+	}
+}
+
+
+ACTOR BdBloodLump : BdBlood
+{
+    Radius 8
+    Height 8
+    Speed 11
+    Scale 1.2
+    +MOVEWITHSECTOR
+    +RIPPER
+    +BLOODLESSIMPACT 
+	-DONTSPLASH
+	+THRUGHOST
+	+FLOORCLIP
+	damagetype Blood
+    SeeSound "misc/xdeath4"
+    DeathSound "misc/xdeath1"
+	Decal BrutalBloodSuper
+	Mass 1
+    States
+    {
+    Spawn:
+        BLOD A 4 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        XDT1 EFGHIJKL 5
+        Stop
+    }
+}
+
+ACTOR BdBloodLumpBone : BdBloodLump
+{
+    Speed 10
+	Gravity 0.4
+	Scale 0.8
+	States
+	{
+    Spawn:
+		TNT1 A 0 A_Jump(128, "AltSpawn")
+        XME1 ABCD 4 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+		TNT1 A 0 A_Jump(128, "AltDeath")
+        XME1 E -1
+    AltSpawn:
+        XME3 ABCDEFGH 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    AltDeath:
+        XME3 I -1
+    }
+}
+
+ACTOR BdBloodLumpBig : BdBloodLump
+{
+    Radius 1
+    Height 1
+	Scale 1
+    States
+    {
+    Spawn:
+        BLUD B 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+		TNT1 A 0 A_Jump(255, "Death1", "Death2", "Death3")
+	Death1:
+		GIBD A -1
+	Death2:
+		GIBD B -1
+	Death3:
+		GIBD C -1
+	}
+}
+
+ACTOR BdFlyingBlood : BdBlood
+{
+	scale 1.2
+	speed 7
+	health 1
+	radius 8
+	height 1
+	Gravity 0.9
+	damage 0
+	Renderstyle Translucent
+	Alpha 0.95
+	DamageType Blood
+	Decal BrutalBloodSplat
+	+BLOODLESSIMPACT 
+	+NODAMAGETHRUST
+	+MOVEWITHSECTOR
+	-RANDOMIZE
+	Mass 1
+    States
+    {
+    Spawn:
+		BLOD BC 2
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+	Spawn1:
+		BLOD E 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrailWeak", 0, 0, 0, 2, 0)
+		loop
+	Spawn2:
+		BLOD J 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrailWeak", 0, 0, 0, 2, 0)
+        loop
+    Death:
+		TNT1 A 0 A_PlaySound("blooddrop2")
+		TNT1 A 0 A_SpawnItem("BdBloodSpot")
+		TNT1 A 1
+		Stop
+    }
+}
+
+ACTOR BdFlyingBloodSlow : BdFlyingBlood
+{
+	speed 3
+	States
+	{
+	Spawn1:
+		BLOD E 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, 0, 2, 0)
+		loop
+	Spawn2:
+		BLOD J 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, 0, 2, 0)
+        loop
+	}
+}
+
+ACTOR BdFlyingBloodSmall : BdFlyingBlood
+{
+	scale 0.8
+}
+
+actor BdFlyingBloodTrail : BdBlood
+{
+
+	scale 0.70
+	renderstyle Translucent
+	alpha 0.8
+	Decal BrutalBloodSplat
+	gravity 0.001
+
+	Speed 0
+	states
+	{
+	Spawn:
+		BTRL ABCD random(3, 6)
+		stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+actor BdFlyingBloodTrailWeak : BdFlyingBloodTrail
+{
+	alpha 0.6
+}
+
+actor BdFlyingBloodTrailStrong : BdFlyingBloodTrail
+{
+	scale 0.9
+	States
+	{
+	Spawn:
+		BTRL AAAAAAABBBBBBCCCCCCDDDDDD random(1, 2)
+		stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+actor BdFlyingAshTrailStrong : BdFlyingBloodTrail
+{
+	scale 0.9
+	alpha 0.9
+	States
+	{
+	Spawn:
+		ATRL AAAAAAABBBBBBCCCCCCDDDDDD random(1, 2)
+		stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+ACTOR BdBloodDrop : BdBlood
+{
+ speed 3
+ scale 0.2
+ gravity 0.6
+
+    States
+    {
+     Spawn:
+     BLOD A 1 A_SpawnItem("BdBloodDropTrail")
+     Loop
+	 Death:
+  	   TNT1 A 0 A_PlaySound("blooddrop")
+	   TNT1 A 0 A_SpawnItem("BdBloodSpot")
+	   XDT1 FGHIJKL 2
+	   TNT1 A 0
+       Stop
+    }
+}
+
+ACTOR BdBloodDropTrail: BdBlood
+{
+ scale 0.4
+ gravity 0.1
+    States
+    {
+     Spawn:
+	 TNT1 A 0
+     BL8D ABCDEEEEE 2
+	 Stop
+	 Death:
+	   TNT1 A 0
+       Stop
+    }
+}
+
+actor BdBloodBlue : BdBlood
+{
+	translation "168:191=192:207","16:47=240:247"
+}
+
+
+actor BdFlyingBloodTrailBlue : BdBloodBlue
+{
+
+	scale 0.7
+	renderstyle Translucent
+	alpha 0.8
+	Decal BlueBloodSplat
+	gravity 0.001
+
+	Speed 0
+	states
+	{
+	Spawn:
+		BTRL ABCD random(3, 6)
+		stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+ACTOR BdBloodLumpBlue : BdBloodBlue
+{
+    Radius 8
+    Height 8
+    Speed 11
+    Scale 1.2
+    +MOVEWITHSECTOR
+    +RIPPER
+    +BLOODLESSIMPACT 
+	-DONTSPLASH
+	+THRUGHOST
+	+FLOORCLIP
+	damagetype Blood
+    SeeSound "misc/xdeath4"
+    DeathSound "misc/xdeath1"
+	Decal BrutalBloodSuper
+	Mass 1
+    States
+    {
+    Spawn:
+        BLOD A 4 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        Loop
+    Death:
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        XDT1 EFGHIJKL 5
+        Stop
+    }
+}
+
+ACTOR BdFlyingBloodBlue : BdBloodBlue
+{
+	scale 1.2
+	speed 7
+	health 1
+	radius 8
+	height 1
+	Gravity 0.9
+	damage 0
+	Renderstyle Translucent
+	Alpha 0.95
+	DamageType Blood
+	Decal BlueBloodSplat
+	+BLOODLESSIMPACT 
+	+NODAMAGETHRUST
+	+MOVEWITHSECTOR
+	-RANDOMIZE
+	Mass 1
+    States
+    {
+    Spawn:
+		BLOD BC 2
+		TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2")
+	Spawn1:
+		BLOD E 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, 0, 2, 0)
+		loop
+	Spawn2:
+		BLOD J 1
+		TNT1 A 0 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, 0, 2, 0)
+        loop
+    Death:
+		TNT1 A 0 A_PlaySound("blooddrop2")
+		TNT1 A 0 A_SpawnItem("BdBloodSpotBlue")
+		TNT1 A 1
+		Stop
+    }
+}

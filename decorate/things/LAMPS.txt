@@ -1,0 +1,110 @@
+Actor TechLamp1 : TechLamp replaces TechLamp
+{
+    damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+    damagefactor "Avoid", 0.0
+    damagefactor "Kick", 0.0
+	damagefactor "Melee", 0.0
+    damagefactor "Shrapnel", 0.0
+	damagefactor "KillMe", 0.0
++LOOKALLAROUND
++DONTTHRUST
++SHOOTABLE
++NOBLOOD
++GHOST
++SOLID
+health 15
+deathheight 80
++FORCEYBILLBOARD
+Mass 900000
+//Activation THINGSPEC_Switch
++USESPECIAL
+states
+	{
+	InActive:
+	Spawn:
+		TLMP ABCD 3 bright A_SpawnItemEx("LensFlareAltLong", 0, 0, 71)
+		Loop
+	Death:
+		TLMP E 1
+		TNT1 A 0 A_SpawnItem("Spark_UpOnce",0,81)
+		TNT1 A 0 A_PlaySound ("DSBOTTLE")
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",75,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",75,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 75)
+		TLMP E -1
+		stop
+	}
+}
+
+Actor TechLamp21 : TechLamp2 replaces TechLamp2
+{
+    damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+    damagefactor "Avoid", 0.0
+    damagefactor "Kick", 0.0
+	damagefactor "Melee", 0.0
+    damagefactor "Shrapnel", 0.0
+	damagefactor "KillMe", 0.0
++LOOKALLAROUND
++SHOOTABLE
++NOBLOOD
++GHOST
+health 15
+deathheight 60
++FORCEYBILLBOARD
+Mass 900000
+states
+	{
+	Spawn:
+		TLP2 ABCD 3 bright A_SpawnItem("lensflarealtlong",0,50)
+		Loop
+	Death:
+		TLP2 E 1
+				TNT1 A 0 A_SpawnItem("Spark_UpOnce",0,61)
+		TNT1 A 0 A_PlaySound ("DSBOTTLE")
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",51,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",51,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 51)
+		TLP2 E -1
+		stop
+	}
+}
+
+
+Actor Column1 : Column replaces Column 2028
+{
+    damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+    damagefactor "Avoid", 0.0
+    damagefactor "Kick", 0.0
+	damagefactor "Melee", 0.0
+    damagefactor "Shrapnel", 0.0
+	damagefactor "KillMe", 0.0
++LOOKALLAROUND
++SHOOTABLE
++DONTTHRUST
++NOBLOOD
++GHOST
+health 15
+deathheight 48
+Radius 8
++FORCEYBILLBOARD
+Mass 900000
+states
+	{
+	Spawn:
+		COLU A 4 bright A_SpawnItem("yellowlensflarealtlong",0,44)
+		Loop
+	Death:
+		COLU B 1
+		TNT1 A 0 A_SpawnItem("Spark_UpOnce",0,48)
+		TNT1 A 0 A_PlaySound ("DSBOTTLE")
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
+		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",48,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",48,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 48)
+		COLU B -1
+		stop
+	}
+}
+

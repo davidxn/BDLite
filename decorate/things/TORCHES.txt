@@ -1,0 +1,292 @@
+Actor TallTorch_Red : RedTorch replaces RedTorch
+{
+height 85
+radius 10
++LOOKALLAROUND
+-SHOOTABLE
++INVULNERABLE
++NOBLOOD
++GHOST
+Mass 900000
+scale .5
+states
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight("Spawn2")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmall", 58, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady3", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 2 A_SpawnItem("RedFlare22",0,59)
+		Loop
+
+   Spawn2:
+		TTRB A 1
+		Goto Spawn
+
+	}
+}
+
+Actor TallTorch_Blue : TallTorch_Red replaces BlueTorch
+{
+states
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight("Spawn2")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsBlue", 58, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyBlue", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 2 A_SpawnItem("BlueFlare22",0,59)
+		Loop
+
+   Spawn2:
+		TTRB A 1
+		Goto Spawn
+
+	}
+}
+
+Actor TallTorch_Green : TallTorch_Red replaces GreenTorch
+{
+states
+	{
+	Spawn:
+        TNT1 A 0 A_CheckSight("Spawn2")
+		
+        //TNT1 A 0 A_Playsound("props/redfire")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsGreen", 58, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 59, 0, random (0, 140), 2, random (0, 160))
+		TTRB AA 2 A_SpawnItem("GreenFlare22",0,59)
+		Loop
+
+   Spawn2:
+        //TNT1 A 0 A_Playsound("props/redfire")
+		TTRB A 1
+		Goto Spawn
+
+	}
+}
+
+Actor ShortTorch_Blue : ShortBlueTorch replaces ShortBlueTorch
+{
++LOOKALLAROUND
+-SHOOTABLE
++INVULNERABLE
++NOBLOOD
++GHOST
+Mass 900000
+height 80
+radius 8
+scale .4
+states
+	{
+	Spawn:
+	
+	    TNT1 A 0 A_CheckSight("Spawn2")
+        //TNT1 A 0 A_Playsound("props/redfire")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsBlue", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyBlue", 30, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 2 A_SpawnItem("BlueFlare22",0,30)
+		Loop
+
+	Spawn2:
+        //TNT1 A 0 A_Playsound("props/redfire")
+		STRB A 1
+		Goto Spawn
+	}
+}
+
+Actor ShortTorch_Red : ShortTorch_Blue replaces ShortRedTorch
+{
+states
+	{
+	Spawn:
+	
+	    TNT1 A 0 A_CheckSight("Spawn2")
+		//TNT1 A 0 A_Playsound("props/redfire")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady3", 30, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 2 A_SpawnItem("RedFlare22",0,30)
+		
+		Loop
+
+	Spawn2:
+        //TNT1 A 0 A_Playsound("props/redfire")
+		STRB A 1
+		Goto Spawn
+	}
+}
+
+Actor ShortTorch_Green : ShortTorch_Blue replaces ShortGreenTorch
+{
+states
+	{
+	Spawn:
+	    TNT1 A 0 A_CheckSight("Spawn2")
+        //TNT1 A 0 A_Playsound("props/redfire")
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsGreen", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 30, 0, random (0, 140), 2, random (0, 160))
+		STRB AA 2 A_SpawnItem("GreenFlare22",0,30)
+		Loop
+
+	Spawn2:
+        //TNT1 A 0 A_Playsound("props/redfire")
+		STRB A 1
+		Goto Spawn
+	}
+}
+
+
+Actor Candelabra1 : Candelabra replaces Candelabra
+{
++LOOKALLAROUND
++INVULNERABLE
++NOBLOOD
++FORCEYBILLBOARD
++GHOST
+Mass 900000
+scale 0.7
+states
+	{
+	Spawn:
+	    //TNT1 A 0 A_CheckSight("Spawn2")
+		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
+		CBRA AA 1 bright
+		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
+		CBRA BA 1 bright
+		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
+		CBRA BA 1 bright
+		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
+		CBRA BB 1 bright
+		Loop
+	Spawn2:
+	    CBRA A 1 bright
+		Goto Spawn
+	}
+}
+
+Actor Candlestick1 : Candlestick replaces Candlestick
+{
++LOOKALLAROUND
+scale .3
+states
+	{
+	Spawn:
+	    //TNT1 A 0 A_CheckSight("Spawn2")
+		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,8)
+		CAND AABA 1 bright
+		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,8)
+		CAND BABB 1 bright
+		Loop
+	Spawn2:
+	    CAND A 1
+		Goto Spawn
+	}
+}
+
+Actor BurningBarrel1 : BurningBarrel replaces BurningBarrel
+{
++LOOKALLAROUND
++SHOOTABLE
++NOBLOOD
++GHOST
++NOTARGET
++FRIENDLY
+height 25
+Health 30
+DamageFactor "kick", 5.0
+DamageFactor "SuperPunches", 5.0
+Damagefactor "SuperKick", 5.0
+states
+	{
+	Spawn:
+		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		BURB AAA 1 bright A_SpawnItem("RedFlare3",0,42)
+
+		
+		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		BURB AA 2 bright A_SpawnItem("RedFlare3",0,46)
+		
+		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		BURB AA 2 bright A_SpawnItem("RedFlare3",0,38)
+		
+		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		BURB AA 2 bright A_SpawnItem("RedFlare3",0,44)
+        TNT1 A 0 A_Playsound("props/redfire")
+		BURB A 0 A_SpawnItem("BurningBarrelDamage",0,42)
+		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 30, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		BURB AA 2 bright A_SpawnItem("RedFlare3",0,42)
+		Loop
+
+	Spawn2:
+        //TNT1 A 0 A_Playsound("props/redfire")
+		BURB A 1
+		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		Goto Spawn
+		
+	Death.Kick:
+	Death.SuperKick:
+	Death.SuperPunches:
+	    TNT1 A 0 A_Pain
+		TNT1 A 1 A_FaceTarget
+		TNT1 A 0 A_NoBlocking
+        BARK DE 3
+		BARK F -1
+		Stop
+		
+	Death.Explosive:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15)
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,30,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 AAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
+		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel1", 25, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel3", 5, 0, random (0, 360), 2, random (30, 160))
+		TNT1 AAA 0 A_CustomMissile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, random (30, 160))
+		Stop
+	   
+	
+	}
+}
+
+
+actor BurningBarrelDamage
+{
+	+NOTARGET
+Radius 0
+Height 0
+DamageType Fire
++BLOODSPLATTER
++NOTELEPORT
++NODAMAGETHRUST
++THRUGHOST
++NORADIUSDMG
++NOEXTREMEDEATH
++FORCERADIUSDMG
+-BLOODSPLATTER
++BLOODLESSIMPACT 
+PROJECTILE
+	+DEHEXPLOSION
+	+ACTIVATEMCROSS
+	+NOTARGET
+States
+{
+Spawn:
+TNT1 A 0
+        TNT1 AA 5 A_Explode(5,25)
+Stop
+ }
+}

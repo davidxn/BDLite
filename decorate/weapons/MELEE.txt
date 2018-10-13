@@ -1,0 +1,226 @@
+Actor Punching : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor KickHasHit : Inventory
+{
+inventory.maxamount 1
+}
+
+Actor PSeq1 : Inventory
+{
+inventory.maxamount 2
+}
+
+Actor PSeq2 : Inventory
+{
+inventory.maxamount 1
+}
+
+// --------------------------------------------------------------------------
+//
+// Melee Weapons
+//
+// --------------------------------------------------------------------------
+
+
+ACTOR Melee_Attacks : BdLiteWeapon Replaces Fist
+{
+	Game Doom
+	Weapon.SelectionOrder 3700
+	Weapon.Kickback 100
+	Obituary "%o was Ripped and Teared by %k"
+	Weapon.SlotNumber 1
+	Weapon.SlotPriority 0
+	+WEAPON.WIMPY_WEAPON
+	+WEAPON.MELEEWEAPON
+    +WEAPON.NOALERT
+    +WEAPON.NOAUTOAIM
+	+WEAPON.NOAUTOFIRE
+	+WEAPON.CHEATNOTWEAPON
+	States
+	{
+	Ready:
+	    PUNS BCD 1 
+		PUNS E 2 A_PlaySound("Knuckled")
+		PUNS FGFE 2
+		PUNS DCB 1
+	ReadyLoop:
+        PUNG A 1 A_WeaponReady(WRF_ALLOWZOOM)
+		Goto ReadyLoop
+    Deselect:
+		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
+		TNT1 A 1
+		Wait
+	Fire:
+		TNT1 A 0 A_JumpIfInventory("PowerStrength",1,"BerserkFire")
+		TNT1 A 0 A_JumpIfInventory("PSeq2",1,"FireThree")
+		TNT1 A 0 A_JumpIfInventory("PSeq1",1,"FireTwo")
+		PUNG BC 2
+        TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUNG A 0 A_FireCustomMissile("MeleeStrike1", 0, 0, 0, -3)
+		TNT1 A 0 A_GiveInventory("PSeq1", 1)
+		PUNG E 1
+		PUNG FGHI 2 A_WeaponReady(1)
+		PUNG A 4 A_WeaponReady(1)
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+        PUNG A 1 A_WeaponReady(1)
+		Goto ReadyLoop
+		
+	 FireTwo:
+	    PUP2 B 1
+		PUP2 C 1
+		TNT1 A 0 A_Recoil(-3)
+		PUN2 AC 1
+        TNT1 A 0 A_PlaySound("skeleton/swing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUNG A 0 A_FireCustomMissile("MeleeStrike2", 0, 0, 0, -3)
+		PUN2 D 4
+		PUN2 EF 2
+		TNT1 A 0 A_GiveInventory("PSeq2", 1)
+		PUN2 GH 2 A_WeaponReady(1)
+		PUNG A 4 A_WeaponReady(1)
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		TNT1 A 0 A_TakeInventory("PSeq2", 1)
+        PUNG A 2 A_WeaponReady(1)
+		PUNG A 6 A_WeaponReady(1)
+		TNT1 A 0 A_WeaponReady(1)
+		Goto ReadyLoop
+	
+	FireThree:
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		TNT1 A 0 A_TakeInventory("PSeq2", 1)
+		TNT1 A 0 A_Recoil(-6)
+		PUN3 ABCDE 1
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUN3 F 1
+		TNT1 AA 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 5)
+		TNT1 A 0 A_FireCustomMissile("KickAttack", 0, 0, 25, 5)
+		TNT1 A 0 A_FireCustomMissile("KickAttack", 0, 0, -25, 5)
+		PUN3 GHI 1
+		Goto ReadyLoop
+
+	BerserkFire:
+		TNT1 A 0 A_JumpIfInventory("PSeq1",1,"BerserkFire2")
+		PUNF ABCD 1
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUNF A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, -3)
+		TNT1 A 0 A_GiveInventory("PSeq1", 1)
+		PUNG FGHI 1 A_WeaponReady(1)
+		PUNG A 2 A_WeaponReady(1)
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+        PUNG A 2 A_WeaponReady(1)
+		Goto ReadyLoop
+		
+	BerserkFire2:
+		TNT1 A 0 A_JumpIfInventory("PSeq2",1,"BerserkHook")
+		PUNF EFG 1
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUNF A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, -3)
+		TNT1 A 0 A_GiveInventory("PSeq2", 1)
+		PUNF HI 1
+		PUN2 EFGH 1 A_WeaponReady(1)
+		PUNG A 2 A_WeaponReady(1)
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		TNT1 A 0 A_TakeInventory("PSeq2", 1)
+        PUNG A 2 A_WeaponReady(1)
+		Goto ReadyLoop
+
+	BerserkHook:
+		TNT1 A 0 A_TakeInventory("PSeq1", 2)
+		TNT1 A 0 A_TakeInventory("PSeq2", 1)
+		TNT1 A 0 A_Recoil(-6)
+		PUN3 ABCDE 1
+        TNT1 A 0 A_PlaySound("weapons/gswing")
+		TNT1 A 0 A_Giveinventory("Punching",1)
+		PUN3 F 1
+		PUNG A 0 A_FireCustomMissile("MeleeStrikeSuperHook", 0, 0, 0, 0)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, 5)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 25, 5)
+		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, -25, 5)
+		PUN3 GHI 1
+		Goto ReadyLoop
+	}
+}
+
+ACTOR KickAttack: FastProjectile
+{
+	Radius 20
+	Height 6
+	DamageType Kick
+	Projectile 
+	+FORCEXYBILLBOARD
+	+NOEXTREMEDEATH
+	RenderStyle Add
+	Alpha 0.6
+    Damage (random(38,42))
+    Speed 30
+	//HitObituary "$OB_IMPHIT"
+	SeeSound "none"
+	DeathSound "none"
+	Decal "none"
+	States
+	{
+	Spawn:
+		TNT1 A 1 BRIGHT
+        TNT1 A 1
+		Stop
+	Death:
+		    PUFF A 0 A_PlaySound("player/cyborg/fist", 3)
+			EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+			TNT1 A 0 A_GiveToTarget("KickHasHit", 1)
+			TNT1 A 0 Radius_Quake (2, 6, 0, 5, 0)//(intensity, duration, damrad, tremrad, tid)
+			TNT1 A 10
+		Stop
+	}
+}
+
+ACTOR SuperKickAttack: KickAttack
+{
+    Damage (random(64,70))
+	-NOEXTREMEDEATH
+	DamageType SuperKick
+}
+
+ACTOR MeleeStrike1: KickAttack
+{
+DamageType Kick
+Damage (random(10,15))
+Speed 30
+States
+{
+	Spawn:
+		TNT1 A 1 BRIGHT
+		Stop
+	Death:
+	    TNT1 A 0
+		PUFF A 0 A_PlaySound("player/cyborg/fist")
+		EXPL AAAAAA 0 A_CustomMissile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 10
+		Stop
+}
+}
+
+
+ACTOR MeleeStrike2: MeleeStrike1
+{
+Damage (random(24,32))
+Speed 40
+}
+
+ACTOR MeleeStrike1Smash: MeleeStrike1
+{
+Damage (random(24,32))
+DamageType SuperKick
+}
+
+ACTOR MeleeStrikeSuperHook: MeleeStrike1
+{
+Damage (random(72,80))
+DamageType SuperKick
+}

@@ -1,0 +1,77 @@
+ACTOR SmoothRedCard : redcard replaces redcard
+{
+  Species RedCard
+  States
+  {
+  Spawn:
+	RKEY abc 3 bright
+	RKEY def 3
+	RKEY ghi 3 bright
+	RKEY jkl 3
+	loop
+  }
+}
+
+ACTOR SmoothBlueCard : bluecard replaces bluecard
+{
+  Species BlueCard
+  States
+  {
+  Spawn:
+	bKEY abc 3 bright
+	bKEY def 3
+	bKEY ghi 3 bright
+	bKEY jkl 3
+	loop
+  }
+}
+
+ACTOR SmoothYellowCard : yellowcard replaces yellowcard
+{
+  Species YellowCard
+  States
+  {
+  Spawn:
+	yKEY abc 3 bright
+	yKEY def 3
+	yKEY ghi 3 bright
+	yKEY jkl 3
+	loop
+  }
+}
+
+ACTOR SmoothSkullRed : redskull replaces redskull
+{
+  Species RedSkull
+  States
+  {
+  Spawn:
+	RSKU abcd 3 bright
+	RSKU efgh 3
+	loop
+  }
+}
+
+ACTOR SmoothSkullBlu : blueskull replaces blueskull
+{
+  Species BlueSkull
+  States
+  {
+  Spawn:
+	BSKU abcd 3 bright
+	BSKU efgh 3
+	loop
+  }
+}
+
+ACTOR SmoothSkullYel : yellowskull replaces yellowskull
+{
+  Species YellowSkull
+  States
+  {
+  Spawn:
+	YSKU abcd 3 bright
+	YSKU efgh 3
+	loop
+  }
+}
