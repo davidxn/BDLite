@@ -902,7 +902,7 @@ object CellPack
 }
 
 
-object GenericBurningGuy
+object PlayerBurning
 {
  frame BUR2 { light BIGREDTORCH }
  frame BURNF0 { light BIGREDTORCH }
