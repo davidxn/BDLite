@@ -46,7 +46,7 @@ Actor MonsterTracer: Tracer
 speed 60
 damage (random(3,4))
 Decal "BulletDecalNew1"
-DamageType MonsterBullet
+DamageType Bullet
 States
 {
 	Spawn:

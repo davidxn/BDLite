@@ -32,12 +32,19 @@ SetHudSize(320,200,1);
 script "ScreenPainDead" (void)
 {
 
-SetHudSize(320,200,1);
+SetHudSize(160,100,1);
 
 	delay(1);
-	setfont("SOBROKEN");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 8.0, 8.0);
-	delay(50);
+	PlaySound(0, "GLASDETH");
+	setfont("SOBROKE3");
+	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 80.0, 50.0, 5619); //5619 is a 3-tic duration
+	delay(3);
+	setfont("SOBROKE2");
+	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 80.0, 50.0, 5619);
+	delay(3);
+	setfont("SOBROKE1");
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 80.0, 50.0, 8.0, 8.0);
+	delay(3);
 }
 
 

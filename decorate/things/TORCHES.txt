@@ -13,8 +13,8 @@ states
 	{
 	Spawn:
         TNT1 A 0 A_CheckSight("Spawn2")
-		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmall", 58, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady3", 59, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 bright A_CustomMissile ("TorchFlameTrails", 58, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("FlameBallRed", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB AA 2 A_SpawnItem("RedFlare22",0,59)
 		Loop
 
@@ -32,7 +32,7 @@ states
 	Spawn:
         TNT1 A 0 A_CheckSight("Spawn2")
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsBlue", 58, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyBlue", 59, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBlue", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB AA 2 A_SpawnItem("BlueFlare22",0,59)
 		Loop
 
@@ -48,16 +48,13 @@ Actor TallTorch_Green : TallTorch_Red replaces GreenTorch
 states
 	{
 	Spawn:
-        TNT1 A 0 A_CheckSight("Spawn2")
-		
-        //TNT1 A 0 A_Playsound("props/redfire")
-		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsGreen", 58, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 59, 0, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CheckSight("Spawn2")		
+		TNT1 A 0 bright A_CustomMissile ("TorchFlameTrailsGreen", 58, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 59, 0, random (0, 140), 2, random (0, 160))
 		TTRB AA 2 A_SpawnItem("GreenFlare22",0,59)
 		Loop
 
    Spawn2:
-        //TNT1 A 0 A_Playsound("props/redfire")
 		TTRB A 1
 		Goto Spawn
 
@@ -78,16 +75,13 @@ scale .4
 states
 	{
 	Spawn:
-	
 	    TNT1 A 0 A_CheckSight("Spawn2")
-        //TNT1 A 0 A_Playsound("props/redfire")
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsBlue", 30, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyBlue", 30, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBlue", 30, 0, random (0, 140), 2, random (0, 160))
 		STRB AA 2 A_SpawnItem("BlueFlare22",0,30)
 		Loop
 
 	Spawn2:
-        //TNT1 A 0 A_Playsound("props/redfire")
 		STRB A 1
 		Goto Spawn
 	}
@@ -100,15 +94,13 @@ states
 	Spawn:
 	
 	    TNT1 A 0 A_CheckSight("Spawn2")
-		//TNT1 A 0 A_Playsound("props/redfire")
-		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmall", 30, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady3", 30, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 bright A_CustomMissile ("TorchFlameTrails", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("FlameBallRed", 30, 0, random (0, 140), 2, random (0, 160))
 		STRB AA 2 A_SpawnItem("RedFlare22",0,30)
 		
 		Loop
 
 	Spawn2:
-        //TNT1 A 0 A_Playsound("props/redfire")
 		STRB A 1
 		Goto Spawn
 	}
@@ -120,14 +112,12 @@ states
 	{
 	Spawn:
 	    TNT1 A 0 A_CheckSight("Spawn2")
-        //TNT1 A 0 A_Playsound("props/redfire")
-		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsGreen", 30, 0, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("BallGettingReadyGreen", 30, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 bright A_CustomMissile ("TorchFlameTrailsGreen", 30, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 30, 0, random (0, 140), 2, random (0, 160))
 		STRB AA 2 A_SpawnItem("GreenFlare22",0,30)
 		Loop
 
 	Spawn2:
-        //TNT1 A 0 A_Playsound("props/redfire")
 		STRB A 1
 		Goto Spawn
 	}
@@ -146,7 +136,6 @@ scale 0.7
 states
 	{
 	Spawn:
-	    //TNT1 A 0 A_CheckSight("Spawn2")
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
 		CBRA AA 1 bright
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
@@ -156,9 +145,6 @@ states
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61)
 		CBRA BB 1 bright
 		Loop
-	Spawn2:
-	    CBRA A 1 bright
-		Goto Spawn
 	}
 }
 
@@ -199,36 +185,35 @@ states
 	Spawn:
 		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AAA 1 bright A_SpawnItem("RedFlare3",0,42)
 
 		
 		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,46)
 		
 		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,38)
 		
 		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,44)
         TNT1 A 0 A_Playsound("props/redfire")
 		BURB A 0 A_SpawnItem("BurningBarrelDamage",0,42)
 		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 30, 0, random (0, 360), 2, random (50, 130))
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,42)
 		Loop
 
 	Spawn2:
-        //TNT1 A 0 A_Playsound("props/redfire")
 		BURB A 1
-		TNT1 A 0 A_CustomMissile ("ImBallGettingReady2", 35, 0, random (0, 140), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		Goto Spawn
 		
 	Death.Kick:

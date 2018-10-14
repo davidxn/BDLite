@@ -77,22 +77,22 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
         TNT1 A 0 A_JumpIfCloser(170, "Melee")
 		TNT1 A 0 A_Playsound ("IMPCHARG")
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))
 		TROO E 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))
 		TROO E 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))
 		TROO E 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))
 		TROO E 2 A_FaceTarget
         TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))
 		TROO E 2 A_FaceTarget
 		TNT1 A 0 A_CustomMissile ("SmallFlameTrails", 35, 30, random (0, 40), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160))		
+        TNT1 A 0 A_CustomMissile ("FlameBall", 35, 30, random (0, 140), 2, random (0, 160))		
 		TROO F 2 A_FaceTarget
 		TROO G 6 A_CustomMissile("FireBall_", 34, 0, 0, 0) 
 		TROO F 4

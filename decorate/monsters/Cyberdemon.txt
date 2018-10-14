@@ -55,7 +55,6 @@ ACTOR BdCyberdemon: BdLiteMonster Replaces Cyberdemon
 	Death:
 	XDeath:
 	DieNormal:
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItemEx ("BdExplosionBig",0,0,96,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerLarge", 96, 0, random (0, 360), 2, random (0, 160))
 		CYBR G 20 A_Pain
@@ -88,7 +87,7 @@ ACTOR BdCyberdemon: BdLiteMonster Replaces Cyberdemon
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdBloodLumpBone", 60, 0, random (0, 360), 2, random (10, 160))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
-		CYBR P -1
+		CYBR P -1 A_BossDeath
 		Stop
 
 	Missile:
@@ -111,7 +110,7 @@ ACTOR BdCyberdemon: BdLiteMonster Replaces Cyberdemon
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         CRS3 A 5
-        CRS3 A -1
+        CRS3 A -1 A_BossDeath
         Stop
 
 	SpecialAttack:

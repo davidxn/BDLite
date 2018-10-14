@@ -91,20 +91,8 @@ ACTOR BdSpiderMastermind : BdLiteMonster Replaces SpiderMastermind
         Goto See
 
 	Death:
-		SPID J 20 A_Scream
-		tnt1 a 0 A_FaceTarget
-		EXPL A 0 Radius_Quake (8, 100, 0, 22, 0)
-		SPID K 10 A_NoBlocking
-		SPID L 5
-		TNT1 AAA 0 A_CustomMissile ("BdGibMastermindLeg", 30, 0, random (0, 360), 2, random (40, 90))
-		TNT1 A 0 A_CustomMissile ("BdGibMastermindLeg", 30, 0, 0, 2, 65)
-        TNT1 A 1
-		Stop
-
-	Death:
 	XDeath:
 	DieNormal:
-		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_SpawnItemEx ("BdExplosionBig",0,0,72,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerLarge", 96, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("BdGibMastermindJunk1", 96, 0, random (0, 360), 2, random (0, 160))
@@ -136,6 +124,7 @@ ACTOR BdSpiderMastermind : BdLiteMonster Replaces SpiderMastermind
 		TNT1 AAAAAAA 0 A_CustomMissile ("BdGibMastermindJunk2", 96, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("BdGibMastermindJunk1", 96, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Scream
+		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_NoBlocking
 		Stop
 	}

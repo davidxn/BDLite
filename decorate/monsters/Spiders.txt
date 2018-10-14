@@ -57,6 +57,7 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(256, "DieNormal")
 	Death.SuperKick:
 	Death.Shotgun:
@@ -64,17 +65,20 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(256, "DieNormal", "DieLegsOff")
 	Death.Explosive:
 	Death.Flak:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(256, "XDeath", "DieLegsOff")
 	Death.Plasma:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_BossDeath
 		TNT1 A 0 A_Jump(256, "DiePlasma")
 		
 	DieNormal:
@@ -119,7 +123,7 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 	}
 }
 
-Actor SpiderPlasmaBall Replaces PlasmaBall2
+Actor SpiderPlasmaBall : Plasma_Ball Replaces PlasmaBall2
 {
 	Damage (random(10,15))
 	DamageType Plasma

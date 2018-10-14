@@ -285,18 +285,6 @@ object Plasma_Ball
     frame PBAL { light PLASMABALLSMALL }
 }
 
-object PlasmaPistolBall
-{
-    frame TNT1 { light PLASMABALL }
-    frame PBAL { light PLASMABALLMED }
-}
-
-object PlasmaPistolBallMonster
-{
-    frame TNT1 { light PLASMABALL }
-    frame PBAL { light PLASMABALLMED }
-}
-
 object SpiderPlasmaBall
 {
     frame TNT1 { light PLASMABALL }
@@ -319,7 +307,7 @@ object ShortTorch_Red
 }
 
 
-object SmallFireFocus24
+object SmallFire
 {
     frame FLME { light SMALLREDTORCH }
 	frame F1RE { light SMALLREDTORCH }

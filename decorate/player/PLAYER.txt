@@ -220,9 +220,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         TNT1 A 0 ACS_NamedExecute("ScreenPainBreak", 0, 0, 0, 0)
 		Goto Pain
 	Pain.Bullet:
-	Pain.MonsterBullet:
-	Pain.MonsterMinigunBullet:
-	Pain.MonsterShotgunBullet:
 	Pain.Flak:
 	Pain.RapidFire:
 		TNT1 A 0 A_Jump(255,"PBUL1","PBUL2","PBUL3","PBUL4","PBUL5","PBUL6")
@@ -267,7 +264,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Death.Saw:
 		TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
         TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerSmall", 50, 0, random (0, 360), 2, random (0, 160))
-        XPL2 A 10 A_XScream
+        XPL2 A 10 A_PlayerScream
         TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 50, 0, random (0, 360), 2, random (0, 160))
         XPL2 B 20 A_NoBlocking
         TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 50, 0, random (0, 360), 2, random (0, 160))
@@ -279,7 +276,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         Stop
     Death.Slime:
 		TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
-        TNT1 A 0 A_PlaySound("BIGSCREA")
+        TNT1 A 0 A_PlayerScream
         PMET AABBCCDDEEFFGGHHIIIII 10 A_CustomMissile ("BdPlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 A_CustomMissile ("BdPlasmaSmoke", 25, 0, random (0, 180), 2, random (0, 180))
         TNT1 A 0 A_NoBlocking
@@ -333,6 +330,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         Goto Death.Arm
         TNT1 AAA 0
 		TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
+		TNT1 A 0 A_PlayerScream
 		TNT1 AAAAAAAAAAAAAA 0 A_CustomMissile ("BdBloodSpawnerSmall", 50, 0, random (0, 360), 2, random (0, 160))
         XPL4 A 20 A_XScream
         TNT1 AAAA 0 A_CustomMissile ("BdBloodSpawnerSmall", 50, 0, random (0, 360), 2, random (0, 160))
@@ -352,7 +350,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
 	Death.Arm:
         TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
 		TNT1 AAA 0 A_CustomMissile ("BdBloodSpawnerSmall", 50, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_Scream
+		TNT1 A 0 A_PlayerScream
         XPL5 A 10
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_PlaySound("DSFDTHE")
@@ -362,6 +360,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         XPL5 E -1
         Stop
 	Death.SuperKick:
+		TNT1 A 0 A_PlayerScream
         TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
         TNT1 AAAAAAAAAAA 0 A_CustomMissile ("BdBloodLump", 50, 0, random (0, 360), 2, random (0, 160))
@@ -383,9 +382,9 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         TNT1 A -1
         Stop	
 	Death.Plasma:
-		TNT1 A 0
+		TNT1 A 0 A_PlayerScream
 		TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
-		PBR1 A 6 A_Scream
+		PBR1 A 6 A_PlayerScream
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180))
 		PBR1 B 6 A_NoBlocking
@@ -408,7 +407,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
     Death.flames:
         TNT1 A 0
         TNT1 A 0 ACS_NamedExecute("ScreenPainDead", 0, 0, 0, 0)
-        TNT1 A 0 A_Scream
+        TNT1 A 0 A_PlayerScream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnItem("PlayerBurning")
         TNT1 A 1

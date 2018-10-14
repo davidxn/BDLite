@@ -1,5 +1,3 @@
-redburn	redburn
-
 world/watersplash		splash1
 
 
@@ -16,7 +14,6 @@ weapons/sg			sgfire
 weapons/sgpump STGNPUMP
 weapons/empty DRYFIRE
 DRYFIRE DRYFIRE
-BIGSCREA BIGSCREA
 CLIPIN CLIPIN
 CLIPINSS CLIPINSS
 MP40 MP40
@@ -254,10 +251,7 @@ $random blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP
 
 //Torches
 props/redfire					dsrdtrch
-
-$random props/torchfire {props/redfire}
 $rolloff props/redfire 32 800
-
 $limit props/redfire 1
 $volume props/redfire 0.6
 
@@ -343,6 +337,7 @@ FLAMER FLAMER
 FLAMSTOP FLAMSTOP
 BREATHOF BREATHOF
 CLAP CLAP
+GLASDETH GLASDETH
 
 KNUCKLED KNUCKLED
 
@@ -399,12 +394,6 @@ marine/superfist2 plspnch2
 marine/superfist3 plspnch3
 marine/superfist4 plspnch4
 marine/superfist5 plspnch5
-
-
-$random BURNZOM {BURNZOM1 BURNZOM2 BURNZOM3}
-BURNZOM1 BURNZOM1
-BURNZOM2 BURNZOM2
-BURNZOM3 BURNZOM3
 
 IMPCHARG IMPCHARG
 DSRFIRE DSRFIRE

@@ -12,8 +12,10 @@
 #include decorate/weapons/ROCKETLAUNCHER.txt
 #include decorate/weapons/PLASMA.txt
 #include decorate/weapons/BFG.txt
-#include decorate/weapons/FlakCannon.txt
-#include decorate/weapons/PlasmaPistol.txt
+
+//A couple of example new weapons!
+//#include decorate/weapons/FlakCannon.txt
+//#include decorate/weapons/PlasmaPistol.txt
 
 //Enemies
 #include decorate/monsters/BdLiteMonster.txt
