@@ -76,10 +76,9 @@ Actor SmokeTrail: ExplosionSmoke
     {
     Spawn:  
 	    TNT1 A 2
-        SMK3 BCDEFGHIJKKLLMMN 2
+        SMK3 BCDEFGHIJKKLLMM 2
 		Stop
 	Death:                                                          
-        PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
 		Stop
 	}
 }

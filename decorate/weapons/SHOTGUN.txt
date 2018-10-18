@@ -4,14 +4,14 @@ Actor ShotgunWasEmpty : Inventory
 inventory.maxamount 1
 }
 
-ACTOR Shot_Gun : BDLiteWeapon Replaces Shotgun
+ACTOR BdShotgun : BDLiteWeapon Replaces Shotgun
 {
 	Game Doom
 	SpawnID 27
 	Weapon.SelectionOrder 1300
-	Weapon.AmmoGive1 4
-	Weapon.AmmoType1 "Shell"
-	Weapon.AmmoType2 "ShotgunAmmoLoaded"
+	Weapon.AmmoGive2 4
+	Weapon.AmmoType1 "ShotgunAmmoLoaded"
+	Weapon.AmmoType2 "Shell"
 	Weapon.SlotNumber 3
 	Inventory.PickupMessage "$GOTSHOTGUN"
     Inventory.PickupSound "weapons/sgpump"

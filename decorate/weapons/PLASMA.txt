@@ -1,10 +1,10 @@
-ACTOR Plasma_Gun : BdLiteWeapon Replaces PlasmaRifle
+ACTOR BdPlasmaGun : BdLiteWeapon Replaces PlasmaRifle
 {
 	Weapon.SelectionOrder 100
-	Weapon.AmmoGive1 50
+	Weapon.AmmoGive2 50
 	Weapon.SlotNumber 6
-	Weapon.AmmoType1 "Cell"
-	Weapon.AmmoType2 "PlasmaAmmoLoaded"
+	Weapon.AmmoType1 "PlasmaAmmoLoaded"
+	Weapon.AmmoType2 "PlasmaAmmo"
     Inventory.PickupSound "PLSDRAW"
 	Inventory.PickupMessage "$GOTPLASMA"
 	States
@@ -51,7 +51,7 @@ ACTOR Plasma_Gun : BdLiteWeapon Replaces PlasmaRifle
     Reload:
 		TNT1 A 0 A_ClearReFire
 		TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded", ACS_NamedExecuteWithResult("checkCapacity", 4), "ReadyLoop")
-		TNT1 A 0 A_JumpIfInventory("Cell", 1, "ReloadAnimate")
+		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 1, "ReloadAnimate")
 		//No more ammo to reload
 		TNT1 A 0 A_PlaySound("BEP")
 		PLSR A 4 A_WeaponReady(WRF_NOFIRE)
@@ -67,10 +67,10 @@ ACTOR Plasma_Gun : BdLiteWeapon Replaces PlasmaRifle
         PLSR GHHIIIJJJJJJJJIKLBAAAAA 1
 	ReloadAmmo:
 		TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 4), "NoNeedToReload")
-		TNT1 A 0 A_JumpIfInventory("Cell",1,1)
+		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
 		Goto ReadyLoop
 		TNT1 A 0 A_Giveinventory("PlasmaAmmoLoaded",1)
-		TNT1 A 0 A_Takeinventory("Cell",1)
+		TNT1 A 0 A_Takeinventory("PlasmaAmmo",1)
 		Goto ReloadAmmo
 
 	NoNeedToReload:
@@ -122,7 +122,7 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
 		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 B 1 A_Explode(6,50,0)
 		TNT1 B 4
-		TNT2 AAA 9 A_CustomMissile ("BdPlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 9 A_CustomMissile ("BdPlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
 
 	Death:
@@ -132,12 +132,12 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
 		TNT1 A 0 A_CustomMissile ("BluePlasmaFire", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 B 4	
-		TNT2 AAAAAAAAA 9 A_CustomMissile ("BdPlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAA 9 A_CustomMissile ("BdPlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
 	}
 }
 
-Actor VCell : Cell replaces Cell 
+Actor PlasmaAmmo : Cell replaces Cell 
 {
 	Inventory.PickupMessage "$GOTCELL"
 	Inventory.Amount 20
@@ -153,9 +153,7 @@ Actor VCell : Cell replaces Cell
 	}
 }
 
-// Cell pack ---------------------------------------------------------------
-
-Actor VCellPack : VCell replaces CellPack
+Actor PlasmaAmmoPack : PlasmaAmmo replaces CellPack
 {
 	Inventory.PickupMessage "$GOTCELLBOX"
 	Inventory.Amount 100
@@ -167,7 +165,7 @@ Actor VCellPack : VCell replaces CellPack
 	}
 }
 
-Actor CellSingle : VCell
+Actor PlasmaAmmoSingle : PlasmaAmmo
 {
 	Inventory.PickupMessage "Picked up a single cell"
 	Inventory.Amount 1
@@ -186,9 +184,4 @@ ACTOR PlasmaAmmoLoaded : Ammo
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 50
    Inventory.Icon "PLASA0"
-}
-
-Actor HasPlasmaWeapon: Inventory
-{
-	inventory.maxamount 1
 }

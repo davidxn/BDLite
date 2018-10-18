@@ -12,7 +12,6 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 	DeathSound "baby/death"
 	ActiveSound "baby/active"
 	Obituary "$OB_BABY"
-    BloodType "BdBleed"
 	MaxStepHeight 24
 	MaxDropOffHeight 24
 	PainChance 128
@@ -27,9 +26,9 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 		BSPI A 10 A_Look
 		Loop
 	See:
-		BSPI A 0 A_BabyMetal
+		TNT1 A 0 A_BabyMetal
 		BSPI AAAABBBBCCCC 1 A_Chase
-		BSPI D 0 A_BabyMetal
+		TNT1 D 0 A_BabyMetal
 		BSPI DDDDEEEEFFFF 1 A_Chase
 		Goto See
 	Missile:
@@ -120,6 +119,9 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 		TNT1 A 0 A_CustomMissile ("BdGibSpiderHead", 35, 0, random (0, 360), 2, random(45, 80))
 		TNT1 A 1
 		Stop
+	Raise:
+		BSPI PONMLKJ 6
+		Goto See
 	}
 }
 

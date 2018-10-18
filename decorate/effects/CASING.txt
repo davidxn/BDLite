@@ -28,8 +28,8 @@ ACTOR BulletCasing
       STOP
 
    Death:
-       CAS3 I 0
-       LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
+       TNT1 A 0
+       TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
     Rest1:
       CAS3 I 600
 	  Stop
@@ -73,7 +73,7 @@ ACTOR ShotgunCasing : BulletCasing
       Stop
    Death:
 	  TNT1 A 0
-      LCPJ A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
+      TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
       Goto Rest1
     Rest1:
       CAS2 I 600

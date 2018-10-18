@@ -36,5 +36,6 @@ ACTOR BdLiteMonster {
 	damagefactor "Avoid", 0.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	damagefactor "Flak", 2.5
+	BloodType "BdBleed", "BdBleed", "BdBleedSaw"
 	PainChance "Kick", 255
 }

@@ -6,7 +6,7 @@ Weapons for BdLite should provide the following labels:
 
 Spawn: Sprite sitting in the game world
 Ready: Perform any animation/setup for unholstering the weapon, then fall through to ReadyLoop.
-ReadyLoop: Continuously check for inventory caused by inputs (kick, grenade, reload) and display weapon sprite with A_ReadyWeapon. Loops back on to itself
+ReadyLoop: Display weapon sprite with A_ReadyWeapon. Loops back on to itself
 Deselect: Perform animation for lowering the weapon, ending in Wait
 Fire:
 	Check that the weapon has at least one shot in it. If not, go to Reload (or just NoAmmo if reload is unnecessary for this weapon)
@@ -53,14 +53,14 @@ ACTOR BdLiteWeapon : DoomWeapon
 		TNT1 A 0 SetPlayerProperty(0, 1, PROP_FROZEN)
         TNT1 A 0 A_jumpifinventory("PowerStrength",1,"BerserkerKick")
 		STMP ABCDEF 1
-		RIFF A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
+		TNT1 A 0 A_FireCustomMissile("KickAttack", 0, 0, 0, -7)
         STMP G 4
 		STMP HIJK 2
 		TNT1 A 0 A_Jump(256, "FinishKick")
 
     BerserkerKick:
 		KICK ABCDEFG 1
-        RIFF A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -7)
+        TNT1 A 0 A_FireCustomMissile("SuperKickAttack", 0, 0, 0, -7)
         KICK H 3
 		KICK IGFEDCBA 1
 
@@ -78,7 +78,7 @@ ACTOR BdLiteWeapon : DoomWeapon
 		TNT1 A 0 A_PLaySound("GRNTOSS")
 		GRTH HI 1
 		TNT1 A 0 A_TakeInventory("GrenadeAmmo", 1)
-		TNT1 A 0 A_FireCustomMissile("HandGrenade", random(-2,2), 0, 0, 0, 0, 0)
+		TNT1 A 0 A_FireCustomMissile("BdGrenade", random(-2,2), 0, 0, 0, 0, 0)
 		GRTH JKLM 1
 		TNT1 A 1 
 		TNT1 A 0 A_Jump(256, "Ready")

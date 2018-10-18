@@ -116,7 +116,7 @@ Actor ExplosionParticleSpawner
   }
 }
 
-Actor BluePlasmaParticleSpawner
+Actor PlasmaParticleSpawner
 {
   RenderStyle Add
   Alpha 0.95
@@ -126,20 +126,6 @@ Actor BluePlasmaParticleSpawner
   +BLOODSPLATTER
   +Missile
   +FORCEXYBILLBOARD
-  States
-  {
-  Spawn:
-	TNT1 AA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (50, 130))
-	//TNT1 AAA 0 A_CustomMissile ("BluePlasmaParticle", 0, 0, random (0, 360), 2, random (0, 360))
-    TNT1 AA 0 A_CustomMissile ("PlasmaSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-    PBEX A 4 BRIGHT //A_SpawnItem("BlueFlare" ,0)
-    TNT1 A 1
-    Stop
-  }
-}
-
-Actor PlasmaParticleSpawner: BluePlasmaParticleSpawner
-{
   States
   {
   Spawn:
@@ -204,40 +190,6 @@ Actor BluePlasmaFireMove2: BluePlasmaFire
 {
   Speed 2
   Scale 0.6
-}
-
-Actor PlasmaParticleX
-{
-  Height 0
-  Radius 0
-  Mass 0
-  +Missile
-  +NoBlockMap
-  -BLOODSPLATTER
-  +DontSplash
-  +DoomBounce
-  +FORCEXYBILLBOARD
-  BounceFactor 0.1
-  Gravity 0.4
-  RenderStyle Add
-  Scale 1.0
-  //Speed 2
-  Speed 2
-  States
-  {
-  Spawn:
-  SPKB A 1 Bright
-  TNT1 A 0 A_ChangeFlag(DOOMBOUNCE, 0)
-  Goto Stand
-  Stand:
-    SPKB B 2 Bright A_FadeOut(0.06)
-    Loop
- Death:
- TNT1 A 1
- TNT1 A 0
- Stop
-	
-  }
 }
 
 Actor PlasmaParticle: BluePlasmaParticle
@@ -390,11 +342,6 @@ ACTOR SparkX: ExplosionParticleHeavy
 	 TNT1 A 0
        Stop
     }
-}
-
-ACTOR SparkXNoModel: SparkX
-{
- Gravity 0.7
 }
 
 ACTOR MudDust

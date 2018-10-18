@@ -91,6 +91,13 @@ ACTOR BdGib : BdBlood
 		TNT1 A 0 A_SetUserVar("user_rotationspeed", random(30, 50))
 		TNT1 A 0 A_SetUserVar("user_rotationspeed", user_rotationspeed * ((random(0,1)*2)-1)) //Randomly -1 or 1!
 		TNT1 A 0 A_Jump(256, "Fly")
+	Lying:
+		"----" A 1 A_JumpIf(GetCVar("bd_janitor") == 1, "Expiring") //If the janitor cvar is on, skip the infinite frame and go away after a random time instead
+		"----" A -1
+	Expiring:
+		"----" A random(60, 600)
+		TNT1 A 0 A_SpawnItemEx("CoolAndNewFlameTrailsLong", 0, 0, 0, 0, 0, 0)
+		Stop		
 	}
 }
 
@@ -106,7 +113,8 @@ ACTOR BdGibZombieArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		POSX O -1
+		POSX O 1
+		Goto Lying
     }
 }
 
@@ -122,7 +130,8 @@ ACTOR BdGibShotgunGuyArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		SPSX O -1
+		SPSX O 1
+		Goto Lying
     }
 }
 
@@ -138,7 +147,8 @@ ACTOR BdGibCommandoArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		HND3 E -1
+		HND3 E 1
+		Goto Lying
     }
 }
 
@@ -154,7 +164,8 @@ ACTOR BdGibImpArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		HND4 A -1
+		HND4 A 1
+		Goto Lying
     }
 }
 
@@ -170,7 +181,8 @@ ACTOR BdGibDemonArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		HND8 I -1
+		HND8 I 1
+		Goto Lying
     }
 }
 
@@ -186,7 +198,8 @@ ACTOR BdGibZombieTopHalf : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		PP2X G -1
+		PP2X G 1
+		Goto Lying
     }
 }
 
@@ -202,7 +215,8 @@ ACTOR BdGibShotgunGuyTopHalf : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		SP2X G -1
+		SP2X G 1
+		Goto Lying
     }
 }
 
@@ -218,7 +232,8 @@ ACTOR BdGibDemonTopHalf : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		SARC F -1
+		SARC F 1
+		Goto Lying
     }
 }
 
@@ -235,7 +250,8 @@ ACTOR BdGibImpSide : BdGib
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		HND4 Q -1
+		HND4 Q 1
+		Goto Lying
     }
 }
 
@@ -262,9 +278,11 @@ ACTOR BdGibGut : BdGib
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 0 A_Jump(128, "AltDeath")
-		GUTS E -1
+		GUTS E 1
+		Goto Lying
 	AltDeath:
-		GUTS F -1
+		GUTS F 1
+		Goto Lying
     }
 }
 
@@ -280,7 +298,8 @@ ACTOR BdGibZombieHead : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		HED1 G -1
+		HED1 G 1
+		Goto Lying
     }
 }
 
@@ -296,7 +315,8 @@ ACTOR BdGibImpHead : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		XHE4 F -1
+		XHE4 F 1
+		Goto Lying
     }
 }
 
@@ -312,7 +332,8 @@ ACTOR BdGibCommandoHead : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		CHHE A -1
+		CHHE A 1
+		Goto Lying
     }
 }
 
@@ -328,7 +349,8 @@ ACTOR BdGibDemonHead1 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
-		D2MH I -1
+		D2MH I 1
+		Goto Lying
     }
 }
 
@@ -345,9 +367,11 @@ ACTOR BdGibDemonHead2 : BdGib
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 0 A_Jump(128, "AltDeath")
-		DEMH J -1
+		DEMH J 1
+		Goto Lying
 	AltDeath:
-		DEMH I -1
+		DEMH I 1
+		Goto Lying
     }
 }
 
@@ -363,7 +387,8 @@ ACTOR BdGibZombieLeg : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		LEG1 E -1
+		LEG1 E 1
+		Goto Lying
     }
 }
 
@@ -379,7 +404,8 @@ ACTOR BdGibShotgunGuyLeg : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		LEG2 E -1
+		LEG2 E 1
+		Goto Lying
     }
 }
 
@@ -395,7 +421,8 @@ ACTOR BdGibCommandoLeg : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		LEG3 I -1
+		LEG3 I 1
+		Goto Lying
     }
 }
 
@@ -411,7 +438,8 @@ ACTOR BdGibImpLeg : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		LEG4 I -1
+		LEG4 I 1
+		Goto Lying
     }
 }
 
@@ -428,9 +456,11 @@ ACTOR BdGibDemonLeg : BdGib
         TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 0 A_Jump(128, "DeathAlt")
-		LEG8 I -1
+		LEG8 I 1
+		Goto Lying
 	DeathAlt:
-		LEG8 J -1
+		LEG8 J 1
+		Goto Lying
     }
 }
 
@@ -445,7 +475,8 @@ ACTOR BdGibRevenantElbow : BdGib
     Death:
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
-		BNP3 A -1
+		BNP3 A 1
+		Goto Lying
 	}
 }
 
@@ -460,7 +491,8 @@ ACTOR BdGibRevenantArm : BdGib
     Death:
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
-		BNP2 E -1
+		BNP2 E 1
+		Goto Lying
 	}
 }
 
@@ -475,7 +507,8 @@ ACTOR BdGibRevenantBone : BdGib
     Death:
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
-		BNP1 E -1
+		BNP1 E 1
+		Goto Lying
 	}
 }
 
@@ -492,7 +525,8 @@ ACTOR BdGibZombieRibcage : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 A 0 A_SetRoll(0)
-		XME5 E -1
+		XME5 E 1
+		Goto Lying
     }
 }
 
@@ -508,7 +542,8 @@ ACTOR BdGibPainPiece1 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		CAGI Q -1
+		CAGI Q 1
+		Goto Lying
 	}
 }
 
@@ -524,7 +559,8 @@ ACTOR BdGibPainPiece2 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		CAGI R -1
+		CAGI R 1
+		Goto Lying
 	}
 }
 
@@ -541,7 +577,8 @@ ACTOR BdGibKnightTopHalf : BdGib
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		BTO1 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
-		BTO1 D -1
+		BTO1 D 1
+		Goto Lying
 	}
 }
 
@@ -558,7 +595,8 @@ ACTOR BdGibBaronTopHalf : BdGib
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		BTO2 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
-		BTO2 D -1
+		BTO2 D 1
+		Goto Lying
 	}
 }
 
@@ -574,7 +612,8 @@ ACTOR BdGibBaronLimb : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		GORD E -1
+		GORD E 1
+		Goto Lying
 	}
 }
 
@@ -591,7 +630,8 @@ ACTOR BdGibRevenantTopHalf : BdGib
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		SKEX FFF 1 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
-		SKEX F -1
+		SKEX F 1
+		Goto Lying
 	}
 }
 
@@ -607,7 +647,8 @@ ACTOR BdGibKnightLeg : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		GORA A -1
+		GORA A 1
+		Goto Lying
 	}
 }
 
@@ -623,7 +664,8 @@ ACTOR BdGibKnightArm : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		GORB E -1
+		GORB E 1
+		Goto Lying
 	}
 }
 
@@ -639,7 +681,8 @@ ACTOR BdGibKnightHead : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		HKHE A -1
+		HKHE A 1
+		Goto Lying
 	}
 }
 
@@ -655,7 +698,8 @@ ACTOR BdGibVileTopHalf : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		VILP B -1
+		VILP B 1
+		Goto Lying
 	}
 }
 
@@ -671,7 +715,8 @@ ACTOR BdGibVilePiece : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-		VILP C -1
+		VILP C 1
+		Goto Lying
 	}
 }
 
@@ -690,9 +735,11 @@ ACTOR BdGibSpiderLeg : BdGib
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 AAA 0 A_CustomMissile("BdFlyingAsh", 12, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Jump(128, "AltDeath")
-		XDSL I -1
+		XDSL I 1
+		Goto Lying
 	AltDeath:
-		XDSL J -1
+		XDSL J 1
+		Goto Lying
 	}
 }
 
@@ -709,7 +756,8 @@ ACTOR BdGibSpiderHead : BdGib
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
 		TNT1 AAA 0 A_CustomMissile("BdFlyingBlood", 12, 0, random (0, 360), 2, random (0, 160))
-		NAHC H -1
+		NAHC H 1
+		Goto Lying
 	}
 }
 
@@ -767,7 +815,8 @@ ACTOR BdGibMastermindJunk2 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
 		TNT1 A 1
-		TRP5 A -1
+		TRP5 A 1
+		Goto Lying
 	}
 }
 
@@ -800,7 +849,8 @@ ACTOR BdGibBurnedRibcage : BdGibPlasmaBurned
 		CARB A random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB A random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB A random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		CARB A -1
+		CARB A 1
+		Goto Lying
     }
 }
 
@@ -819,7 +869,8 @@ ACTOR BdGibBurnedGib : BdGibPlasmaBurned
 		CARB C random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB C random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB C random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		CARB C -1
+		CARB C 1
+		Goto Lying
     }
 }
 
@@ -838,7 +889,8 @@ ACTOR BdGibBurnedArm : BdGibPlasmaBurned
 		CARB D random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB D random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB D random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		CARB D -1
+		CARB D 1
+		Goto Lying
     }
 }
 
@@ -857,7 +909,8 @@ ACTOR BdGibBurnedLeg : BdGibPlasmaBurned
 		CARB E random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB E random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB E random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		CARB E -1
+		CARB E 1
+		Goto Lying
     }
 }
 
@@ -874,7 +927,8 @@ ACTOR BdGibBurnedGut : BdGibPlasmaBurned
 		GUTS G random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		GUTS G random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		GUTS G random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		GUTS G -1
+		GUTS G 1
+		Goto Lying
     }
 }
 
@@ -893,7 +947,8 @@ ACTOR BdGibBurnedImpArm : BdGibPlasmaBurned
 		CARB G random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB G random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
 		CARB G random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-		CARB G -1
+		CARB G 1
+		Goto Lying
     }
 }
 
@@ -912,7 +967,8 @@ ACTOR BdGibBurnedCacoTop : BdGibPlasmaBurned
 		CACX J random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
 		CACX J random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
 		CACX J random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
-		CACX J -1
+		CACX J 1
+		Goto Lying
     }
 }
 
@@ -1023,7 +1079,8 @@ ACTOR BdGibCacoHorn : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCP2 B -1
+		CCP2 B 1
+		Goto Lying
 	}
 }
 
@@ -1039,9 +1096,12 @@ ACTOR BdGibCacoPiece1 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		TNT1 A 0 A_Jump(128, 1)
-		CCP1 B -1
-		CCP1 C -1
+		TNT1 A 0 A_Jump(128, "AltDeath")
+		CCP1 B 1
+		Goto Lying
+	AltDeath:
+		CCP1 C 1
+		Goto Lying
 	}
 }
 
@@ -1057,7 +1117,8 @@ ACTOR BdGibCacoPiece2 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCP4 H -1
+		CCP4 H 1
+		Goto Lying
 	}
 }
 
@@ -1073,7 +1134,8 @@ ACTOR BdGibCacoTop : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CACX I -1
+		CACX I 1
+		Goto Lying
 	}
 }
 
@@ -1089,7 +1151,8 @@ ACTOR BdGibCacoTooth : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCP3 B -1
+		CCP3 B 1
+		Goto Lying
 	}
 }
 
@@ -1105,7 +1168,8 @@ ACTOR BdGibCacoMiniBottom : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB M -1
+		CCOB M 1
+		Goto Lying
 	}
 }
 
@@ -1121,7 +1185,8 @@ ACTOR BdGibCacoMiniTop : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB N -1
+		CCOB N 1
+		Goto Lying
 	}
 }
 
@@ -1137,7 +1202,8 @@ ACTOR BdGibBurnedCacoMiniBottom : BdGibPlasmaBurned
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB O -1
+		CCOB O 1
+		Goto Lying
 	}
 }
 
@@ -1153,7 +1219,8 @@ ACTOR BdGibBurnedCacoMiniTop : BdGibPlasmaBurned
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB P -1
+		CCOB P 1
+		Goto Lying
 	}
 }
 
@@ -1169,7 +1236,8 @@ ACTOR BdGibCacoMiniQuarter1 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB Q -1
+		CCOB Q 1
+		Goto Lying
 	}
 }
 
@@ -1185,7 +1253,8 @@ ACTOR BdGibCacoMiniQuarter2 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB R -1
+		CCOB R 1
+		Goto Lying
 	}
 }
 
@@ -1201,7 +1270,8 @@ ACTOR BdGibCacoMiniQuarter3 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB S -1
+		CCOB S 1
+		Goto Lying
 	}
 }
 
@@ -1217,6 +1287,7 @@ ACTOR BdGibCacoMiniQuarter4 : BdGib
         TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
 		TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
-		CCOB T -1
+		CCOB T 1
+		Goto Lying
 	}
 }

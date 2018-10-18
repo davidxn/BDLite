@@ -19,7 +19,6 @@ ACTOR BdMancubus : BdLiteMonster Replaces Fatso
 	PainSound "fatso/pain"
 	DeathSound "fatso/death"
 	ActiveSound "fatso/active"
-    BloodType "BdBleed"
 	Obituary "%o was incinerated by a Mancubus."
     +DONTHURTSPECIES
 	+THRUGHOST
@@ -176,6 +175,9 @@ ACTOR BdMancubus : BdLiteMonster Replaces Fatso
 		TNT1 AAAAAAAA 0 A_CustomMissile ("BdGibGut", 35, 0, random (0, 360), 2, random(45, 80))
 		XFBT ABCDEF 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
 		XFBT F -1
+	Raise:
+		FATT TSRQPONMLK 6
+		Goto See
 	}
 } 
 
@@ -227,8 +229,8 @@ ACTOR BigFireBall Replaces Fatshot
 	
 	ExplosionEffect:
 		TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		EXPL A 0 A_SpawnItem("ExplosionParticleSpawner")
-		EXPL AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
+		TNT1 A 0 A_SpawnItem("ExplosionParticleSpawner")
+		TNT1 AAA 0 A_CustomMissile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (0, 90))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))

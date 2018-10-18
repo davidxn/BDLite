@@ -23,7 +23,6 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 	PainSound "demon/pain"
 	DeathSound "demon/death"
 	ActiveSound "demon/active"
-    BloodType "BdBleed"
 	DamageType Eat
 	MaxStepHeight 32
 	MaxDropOffHeight 32
@@ -44,13 +43,13 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 		TNT1 A 0 A_SetAngle(angle + 40)
 		SARG YZ 10 A_Look
 	Wander:
-		SARG AA 0 A_Wander
+		TNT1 AA 0 A_Wander
 		SARG A 2 A_Look
-		SARG AA 0 A_Wander
+		TNT1 AA 0 A_Wander
 		SARG A 2 A_Look
-		SARG BB 0 A_Wander
+		TNT1 AA 0 A_Wander
 		SARG B 2 A_Look
-		SARG BB 0 A_Wander
+		TNT1 AA 0 A_Wander
 		SARG B 2 A_Look
 		SARG CC 0 A_Wander
 		SARG C 2 A_Look
@@ -255,6 +254,9 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 		TNT1 A 0 A_SpawnItemEx ("ArmlessDemon",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 1
 		Stop
+	Raise:
+		SARG NMLKJI 6
+		Goto See
 	}
 }
 
@@ -270,7 +272,7 @@ ACTOR ArmlessDemon: BdDemon
 States
 	{
 	Spawn:
-		SAAR BU 15 A_CustomMissile ("BdFlyingBlood", 42, 0, random (0, 360), 2, random (0, 45))
+		SAAR B 15 A_CustomMissile ("BdFlyingBlood", 42, 0, random (0, 360), 2, random (0, 45))
 		SpawnLoop:
 		SG1A A 2 A_Look
 		TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1)

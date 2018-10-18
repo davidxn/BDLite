@@ -1,4 +1,4 @@
-ACTOR Mini_Gun : BDLiteWeapon Replaces Chaingun 2002
+ACTOR BdMinigun : BDLiteWeapon Replaces Chaingun
 {
 Game Doom
 SpawnID 28
@@ -49,16 +49,16 @@ States
 		TNT1 A 0 A_FireCustomMissile("PlayerQuakeSmall", 0, 0, 0, 0)
         CHAF A 1 BRIGHT A_FireBullets(6, 4, 1, 9, "MachineGunBulletPuff", 1)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
-        CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3))
+        TNT1 A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3))
         TNT1 A 0 A_SpawnItemEx("BulletCasing", 17, 3, 35, 0, random(3,6), random(3,7))
         CHAF B 1
 		TNT1 A 0 A_PlaySound("CHGNSHOT", 1)
         CHAF J 1 BRIGHT A_FireBullets(6, 4, 1, 9, "MachineGunBulletPuff", 1)
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle2",30,5,27)
-        CHAF A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3))
+        TNT1 A 0 BRIGHT A_FireCustomMissile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3))
         TNT1 A 0 A_SpawnItemEx("BulletCasing", 17, 3, 35, 0, random(3,6), random(3,7))
 	    CHAF H 1 A_SetAngle(random(1, -1) + angle)
-        MNGG B 0 A_ReFire
+        TNT1 A 0 A_ReFire
 		
 		//Cooldown
 		CHAG A 1 A_WeaponReady(WRF_ALLOWZOOM)

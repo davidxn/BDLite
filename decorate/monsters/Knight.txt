@@ -254,6 +254,9 @@ ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
 		TNT1 AAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
 		TNT1 A 1
 		Stop
+	Raise:
+		KAD1 FEDCBA 6
+		Goto See
 	}
 }  
 
@@ -297,7 +300,7 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 		TNT1 AAAAA 19 A_CustomMissile ("BdPlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160))
 		Stop
 	XDeath:
-    TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
 		FRPG ABCDEFGH 2  A_SpawnItem("GreenFlare",0,0)
 		Stop
 	}

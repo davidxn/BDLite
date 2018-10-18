@@ -147,7 +147,7 @@ pointlight PLASMABALLMED
 
 // Barrel
 
-object ExplosiveBarrel1
+object BdExplosiveBarrel
 {
     frame BAR1  { light GREENGOOZ    }
     frame BARB  { light GREENGOOZ    }
@@ -857,7 +857,7 @@ object GrenadeAmmo
 	frame PGRN { light GREENITEM }
 }
 
-object Cell
+object PlasmaAmmo
 {
 	frame CELL { light CELLGLOW }
 }
@@ -884,7 +884,7 @@ object Big_Tree4
 	frame TRE2N { light FIREBARREL }
 }
 
-object CellPack
+object PlasmaAmmoPack
 {
 	frame CELP { light CELLGLOW }
 }
@@ -938,17 +938,17 @@ object RevenantBalls
     frame FATB { light ROCKETLIGHT }
 }
 
-object CellSingle
+object PlasmaAmmoSingle
 {
 	frame CEL1 { light CELLGLOW }
 }
 
-object VCell
+object PlasmaAmmo
 {
 	frame CELL { light CELLGLOW }
 }
 
-object VCellPack
+object PlasmaAmmoPack
 {
 	frame CELP { light CELLGLOW }
 }
@@ -1069,6 +1069,15 @@ object BurnParticles
 frame TNT1 { light BIGREDTORCH }
 }
 
+object PentagramParticleSpawner
+{
+frame TNT1 { light BIGREDTORCH }
+}
+
+object PentagramParticleSpawnerGreen
+{
+frame TNT1 { light BIGGREENTORCH }
+}
 
 pointlight Flashlight1
 {

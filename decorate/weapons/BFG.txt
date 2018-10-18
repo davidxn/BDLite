@@ -77,9 +77,9 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
 	TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0)
     TNT1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
     TNT1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
-	EXPL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360))
+	TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
 	BFGB AABBCCDDEE 1 Bright A_SpawnItem("GreenFlare",0,0)
 	TNT1 A 0 A_Explode(80,300,0)
     BFE1 F 1 Bright A_BFGSpray
@@ -148,7 +148,7 @@ Actor SuperBFGExtra : BFGExtra Replaces BFGExtra
   States
   {
   Spawn:
-    BFE2 A 0
+    TNT1 A 0
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
@@ -164,7 +164,7 @@ Actor SuperBFGExtraGiant : SuperBFGExtra
   States
   {
   Spawn:
-    BFE2 A 0
+    TNT1 A 0
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
     TNT1 AAAAA 0 A_SpawnItemEx("BFGExtraParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)

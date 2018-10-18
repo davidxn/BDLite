@@ -9,7 +9,6 @@ ACTOR BdZombieMan : BdLiteMonster Replaces ZombieMan
 	Mass 100
 	PainChance 200
 	PainChance "Kick", 255
-	BloodType "BdBleed"
 	SeeSound "grunt/sight"
 	AttackSound "weapons/rifle"
 	PainSound "grunt/pain"
@@ -253,5 +252,8 @@ ACTOR BdZombieMan : BdLiteMonster Replaces ZombieMan
 		TNT1 AA 0 A_CustomMissile ("BdGibZombieLeg", 42, 0, random (0, 360), 2, random (10, 160))
 		TNT1 A 0 A_SpawnItem ("BdBloodSpot")
 		Stop
+	Raise:
+		POSS LKJIH 6
+		Goto See
 	}
 }

@@ -7,7 +7,6 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
     Speed 6
     FastSpeed 12
     PainChance 200
-    BloodType "BdBleed"
     DropItem "Shotgun"
     SeeSound "grunt/sight"
     PainSound "grunt/pain"
@@ -23,7 +22,7 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
           SPOS B 1
           Goto Stand
     Stand:
-        SPOS A 0 A_CheckSight("Stand2")
+        TNT1 A 0 A_CheckSight("Stand2")
         SHID A 10 A_Look
         SHID A 10 A_Look
         SHID B 10 A_Look
@@ -244,5 +243,8 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 A 0 A_SpawnItem ("BdBloodSpot")
         TNT1 A 1 //1-tic delay required after XDeath
         Stop
+	Raise:
+		SPOS LKJIH 6
+		Goto See
     }
 }

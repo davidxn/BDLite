@@ -1,6 +1,6 @@
-ACTOR BdCacodemon : Cacodemon
+ACTOR BdCacodemon : Cacodemon replaces Cacodemon
 {
-    bloodtype "Blue_Blood", "BlueSawBlood"
+    bloodtype "BdBleedBlue", "BdBleedBlue", "BdBleedSawBlue"
     +NOBLOODDECALS
 	+NOGRAVITY
 	+FLOAT
@@ -173,6 +173,9 @@ ACTOR BdCacodemon : Cacodemon
 			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16);
 		}
 		CACB B -1
+	Raise:
+		HEAD KJIHG 6
+		Goto See
 	}
 }
 

@@ -149,8 +149,8 @@ ACTOR MastermindStep
 	States
 	{
 	Spawn:
-		EXPL AAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
-		EXPL A 0 A_Explode(300, 50, 0)
+		TNT1 AAA 0 A_CustomMissile ("ExplosionSMoke", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Explode(300, 50, 0)
 		TNT1 A 1
 		Stop
 	}

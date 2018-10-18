@@ -1,0 +1,4 @@
+AddOptionMenu "VideoOptions"
+{
+  Option "Gibs Fade", "bd_janitor", "YesNo"
+}
