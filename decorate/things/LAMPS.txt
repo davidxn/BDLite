@@ -30,7 +30,7 @@ states
 		TNT1 A 0 A_PlaySound ("DSBOTTLE")
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",75,random(-3,3),random(0,360),2,random(0,70))
-		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",75,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("MiniSmoke",75,random(-3,3),random(0,360),2,random(0,70))
 		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 75)
 		TLMP E -1
 		stop
@@ -64,7 +64,7 @@ states
 		TNT1 A 0 A_PlaySound ("DSBOTTLE")
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",51,random(-3,3),random(0,360),2,random(0,70))
-		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",51,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("MiniSmoke",51,random(-3,3),random(0,360),2,random(0,70))
 		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 51)
 		TLP2 E -1
 		stop
@@ -101,7 +101,7 @@ states
 		TNT1 A 0 A_PlaySound ("DSBOTTLE")
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("GlassPart",16,random(-3,3),random(0,360),2,random(40,70))
 		TNT1 AAAAAAAAAA 0 A_CustomMissile("ExplosionParticleHeavy",48,random(-3,3),random(0,360),2,random(0,70))
-		TNT1 AAAA 0 A_CustomMissile("PlasmaSmoke",48,random(-3,3),random(0,360),2,random(0,70))
+		TNT1 AAAA 0 A_CustomMissile("MiniSmoke",48,random(-3,3),random(0,360),2,random(0,70))
 		TNT1 A 0 A_SpawnItem("FloatingSmokeColumn", 0, 48)
 		COLU B -1
 		stop

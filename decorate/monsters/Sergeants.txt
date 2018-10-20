@@ -210,14 +210,13 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         PBR1 CDEFGH 6 A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_SpawnItem ("BdBloodPool")
         PBR1 HHHHHHHHHHHHHHHHHHHHHH 8 {
-            A_CustomMissile ("BdPlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160));
+            A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
             A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
         }
         PBR1 H -1
         Stop    
     DieJustLegs:
         TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLumpBig", 35, 0, random (0, 360), 2, random(45, 80))
         TNT1 AAAAAAA 0 A_CustomMissile ("BdGibGut", 35, 0, random (0, 360), 2, random(25, 45))
         SZD1 CCCCDEFGH 6 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
         SZD1 H -1
@@ -225,7 +224,6 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 A 0 A_CustomMissile ("BdGibShotgunGuyArm", 48, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("BdGibShotgunGuyLeg", 48, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLumpBig", 35, 0, random (0, 360), 2, random(25, 80))
         TNT1 AAAAAAA 0 A_CustomMissile ("BdGibGut", 35, 0, random (0, 360), 2, random(25, 45))
         POSS STUVW 6
         POSS X -1

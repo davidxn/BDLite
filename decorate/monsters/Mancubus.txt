@@ -163,7 +163,7 @@ ACTOR BdMancubus : BdLiteMonster Replaces Fatso
 		}
 		TNT1 A 0 A_SpawnItem ("BdBloodPool")
 		CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 4 {
-			A_CustomMissile ("BdPlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160));
+			A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
 			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 32);
 		}
 		CARB L -1

@@ -1,4 +1,4 @@
-ACTOR RifleAmmo : Clip Replaces Clip
+ACTOR RifleAmmo : Ammo Replaces Clip
 {
 	Game Doom
 	SpawnID 11

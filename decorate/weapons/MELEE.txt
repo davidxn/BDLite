@@ -63,7 +63,8 @@ ACTOR BdMeleeAttacks : BdLiteWeapon Replaces Fist
 		TNT1 A 0 A_FireCustomMissile("MeleeStrike1", 0, 0, 0, -3)
 		TNT1 A 0 A_GiveInventory("PSeq1", 1)
 		PUNG E 1
-		PUNG FGHI 2 A_WeaponReady(1)
+		PUNG FGH 2 A_WeaponReady(1)
+		TNT1 A 2 A_WeaponReady(1)
 		PUNG A 4 A_WeaponReady(1)
 		TNT1 A 0 A_TakeInventory("PSeq1", 2)
         PUNG A 1 A_WeaponReady(1)
@@ -110,7 +111,7 @@ ACTOR BdMeleeAttacks : BdLiteWeapon Replaces Fist
 		TNT1 A 0 A_Giveinventory("Punching",1)
 		TNT1 A 0 A_FireCustomMissile("MeleeStrike1Smash", 0, 0, 0, -3)
 		TNT1 A 0 A_GiveInventory("PSeq1", 1)
-		PUNG FGHI 1 A_WeaponReady(1)
+		PUNG FGH 1 A_WeaponReady(1)
 		PUNG A 2 A_WeaponReady(1)
 		TNT1 A 0 A_TakeInventory("PSeq1", 2)
         PUNG A 2 A_WeaponReady(1)

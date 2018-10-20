@@ -106,7 +106,7 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnItem ("BdBloodPool")
 		CARB KKKKKKKKKKKKKKKKKKKKKKK 8 {
-			A_CustomMissile ("BdPlasmaSmoke", 10, 0, random (0, 360), 2, random (0, 160));
+			A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
 			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
 		}
 		CARB K -1

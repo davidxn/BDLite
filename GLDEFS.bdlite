@@ -13,11 +13,11 @@ object SuperBFGBall
     frame BFS1A { light BFGBALL }
     frame BFS1B { light BFGBALL }
 
-    frame BFE1A { light BFGEXPLO }
-    frame BFE1B { light BFGEXPLO }
-	frame BFE1C { light BFGEXPLO }
-	frame BFE1D { light BFGEXPLO }
-	frame BFE1E { light BFGEXPLO }
+    frame BFGBA { light BFGEXPLO }
+    frame BFGBB { light BFGEXPLO }
+	frame BFGBC { light BFGEXPLO }
+	frame BFGBD { light BFGEXPLO }
+	frame BFGBE { light BFGEXPLO }
 }
 
 flickerlight BFGEXPLO

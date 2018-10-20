@@ -18,8 +18,8 @@ states
 	Deselect:
 		TNT1 A 0 A_StopsoundEx("Weapon")
 		TNT1 A 0 A_Lower
-		SAWN A 1 A_Lower
-		goto deselect+1
+		SAWS A 1 A_Lower
+		wait
 	Ready:
 		SAWY ABCDE 1
 	    SAWS A 6

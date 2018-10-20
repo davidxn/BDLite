@@ -5,8 +5,6 @@
 BdFx - Base class
 	BdAshes
 		BdAshesHeavy
-	BdExplosionSmoke
-		BdPlasmaSmoke
 	BdPlasmaEvaporate
 
 */
@@ -54,69 +52,9 @@ ACTOR BdAshes: BdFx
 	}
 }
 
-ACTOR BdFlyingAsh : BdFlyingBlood
-{
-	Alpha 1
-	Scale 1
-	Speed 3
-    States
-    {
-    Spawn:
-		ATRL AAAAAAABBBBBBCCCCCCDDDDDD random(1, 2)
-    Death:
-		TNT1 A 1
-		Stop
-    }
-}
-
-
 ACTOR BdAshesHeavy: BdAshes
 {
 	Gravity 0.5
-}
-
-ACTOR BdExplosionSmoke: BdFx
-{
-    +NOINTERACTION
-	+BLOODSPLATTER
-	+DOOMBOUNCE
-	Health 99999
-	BounceFactor 0.5
-	Radius 0
-	Height 0
-	Alpha 0.1
-	RenderStyle Translucent
-	Scale 1.1
-	Speed 1
-    States
-    {
-    Spawn:
-	SMK3 BBB 2 A_FadeIn(0.1)
-	SMK3 B 20
-	SMK3 CDEFGHIJKLM 3
-	Goto Death
-	Death:
-	    TNT1 A 0
-		Stop
-	Stap:		
-		TNT1 A 0
-		Stop
-    }
-}
-
-Actor BdPlasmaSmoke : BdExplosionSmoke
-{
-	Speed 1
-	Scale 0.5
-	Alpha 0.1
-	States
-	{
-	Spawn:
-		SMK3 BB 2 A_FadeIn(0.05)
-		SMK3 B 20
-		SMK3 CDEFGHIJKLM 3
-		Goto Death
-	}
 }
 
 Actor BdPlasmaEvaporate : BdFx
