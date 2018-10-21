@@ -1064,11 +1064,6 @@ object FlamethrowerMissile
 	frame EXPL { light BIGREDTORCH }
 }
 
-object BurnParticles
-{
-frame TNT1 { light BIGREDTORCH }
-}
-
 object PentagramParticleSpawner
 {
 frame TNT1 { light BIGREDTORCH }

@@ -414,15 +414,15 @@ States    {
        TNT1 A 0 BRIGHT
        TNT1 A 0 A_PlaySound("DSFDTHE")
        BUR2 A 1 BRIGHT
-       BUR2 AABBCCDDEE 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
-       BURN FFGGHH 3 BRIGHT A_CustomMissile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
-       BURN IIJJKKLL 3 BRIGHT A_CustomMissile ("BurnParticles", 28, 0, random (0, 180), 2, random (0, 180))
-       BURN MMN 3 BRIGHT A_CustomMissile ("BurnParticles", 32, 0, random (0, 180), 2, random (0, 180))
-       BURN NOOPP 3 BRIGHT A_CustomMissile ("BurnParticles", 22, 0, random (0, 180), 2, random (0, 180))
-       BURN QQ 3 BRIGHT A_CustomMissile ("BurnParticles", 18, 0, random (0, 180), 2, random (0, 180))
+       BUR2 AABBCCDDEE 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN FFGGHH 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN IIJJKKLL 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 28, 0, random (0, 180), 2, random (0, 180))
+       BURN MMN 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 32, 0, random (0, 180), 2, random (0, 180))
+       BURN NOOPP 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 22, 0, random (0, 180), 2, random (0, 180))
+       BURN QQ 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 18, 0, random (0, 180), 2, random (0, 180))
        TNT1 A 0 A_PlaySound("DSFDTHE")
-       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
-       BURN UU 3 BRIGHT A_CustomMissile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN UU 3 BRIGHT A_CustomMissile ("CoolAndNewFlameTrailsLong", 12, 0, random (0, 180), 2, random (0, 180))
        BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 A_CustomMissile ("MiniSmoke", 8, 0, random (0, 360), 2, random (90, 110))
        BURN V -1
 	}
