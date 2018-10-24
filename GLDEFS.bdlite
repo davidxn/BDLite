@@ -399,7 +399,7 @@ pointlight HUEHUEHUEHUE
 
 
 
-object RicoChet
+object Ricochet
 {
     frame IPF2 { light HUEHUE }
 }

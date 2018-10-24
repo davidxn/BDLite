@@ -183,29 +183,29 @@ Damagefactor "SuperKick", 5.0
 states
 	{
 	Spawn:
-		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("BlackSmoke", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AAA 1 bright A_SpawnItem("RedFlare3",0,42)
 
 		
-		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("BlackSmoke", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,46)
 		
-		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("BlackSmoke", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,38)
 		
-		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("BlackSmoke", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,44)
         TNT1 A 0 A_Playsound("props/redfire")
 		TNT1 A 0 A_SpawnItem("BurningBarrelDamage",0,42)
-		TNT1 A 0 bright A_CustomMissile ("BlackSmokePillarParticle", 38, 0, random (40, 180), 2, random (60, 120))
+		TNT1 A 0 bright A_CustomMissile ("BlackSmoke", 38, 0, random (40, 180), 2, random (60, 120))
 		TNT1 A 0 bright A_CustomMissile ("RealFlameTrailsSmallLong", 30, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_CustomMissile ("FlameBallBarrel", 35, 0, random (0, 140), 2, random (0, 160))
 		BURB AA 2 bright A_SpawnItem("RedFlare3",0,42)
@@ -228,11 +228,11 @@ states
 		
 	Death.Explosive:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15)
+		TNT1 A 0 A_SpawnItem ("BigRicochet", 0, -15)
 		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("BarrelExplosion",0,0,30,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 A 0 A_SpawnItemEx ("BarrelExplosionDamage",0,0,30,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 		TNT1 AAAAAAA 0 A_CustomMissile ("ExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))

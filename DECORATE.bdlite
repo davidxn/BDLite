@@ -49,6 +49,7 @@
 #include decorate/effects/FLARES.txt
 #include decorate/effects/PUFF.txt
 #include decorate/effects/TRACERS.txt
+#include decorate/effects/WATER.txt
 
 //DECORATIONS
 #include decorate/things/FURNITURE.txt

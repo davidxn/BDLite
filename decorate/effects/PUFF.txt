@@ -18,7 +18,7 @@ ACTOR HitPuff Replaces BulletPuff
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 0 A_SpawnItemEx ("RicoChet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
+		TNT1 A 0 A_SpawnItemEx ("Ricochet",0,0,-5,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	Melee:
 		TNT1 A 1
 		Stop
@@ -74,7 +74,6 @@ ACTOR Ricochet
     TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0)
 	TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360))
 	TNT1 A 0 bright A_PlaySound("ricochet/hit")
     TNT1 AAA 0 A_CustomMissile ("SmokeTrail", 2, 0, random (0, 360), 2, random (0, 360))
@@ -102,7 +101,6 @@ ACTOR Ricochet
 	TNT1 A 2
 	TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,5,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,-5,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 bright A_PlaySound("ricochet/hit")
 	IPF2 GGHH 1 bright A_SpawnItem ("YellowFlareSmall", 0)
@@ -111,8 +109,6 @@ ACTOR Ricochet
 	
 	SpawnWater:
 	TNT1 A 0
-	TNT1 AAAAA 0 A_CustomMissile ("WaterParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160))
-	TNT1 AAAAA 0 A_CustomMissile ("WaterParticleXSuperFast", 24, 0, random (0, 360), 2, random (30, 160))
 	TNT1 A 0 A_SpawnItem("WaterRicochet")
 	Stop
 	
@@ -126,7 +122,7 @@ ACTOR Ricochet
   }
 }
 
-ACTOR BigRicoChet
+ACTOR BigRicochet
 {
   renderstyle Add
   alpha 1.0
@@ -174,7 +170,7 @@ ACTOR BigRicoChet
   }
 }
 
-ACTOR WaterRicochet: RicoChet
+ACTOR WaterRicochet: Ricochet
 {
   renderstyle Translucent
   alpha 0.8
@@ -187,7 +183,7 @@ ACTOR WaterRicochet: RicoChet
   }
 }
 
-ACTOR GiantWaterRicochet: RicoChet
+ACTOR GiantWaterRicochet: Ricochet
 {
   renderstyle Translucent
   alpha 0.9
@@ -201,7 +197,7 @@ ACTOR GiantWaterRicochet: RicoChet
   }
 }
 
-ACTOR SlimeRicochet: RicoChet
+ACTOR SlimeRicochet: Ricochet
 {
   renderstyle Translucent
   alpha 0.8

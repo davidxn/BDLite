@@ -191,15 +191,24 @@ Decal BrutalBloodSplat
 	Spawn:
 		TNT1 A 0 A_Jump(256, "SpawnBFrameOnly", "SpawnCFrameOnly", "SpawnDFrameOnly")
 	SpawnBFrameOnly:
-		BPDL B -1
+		BPDL B 1
+		Goto Lying
 	SpawnCFrameOnly:
-		BPDL C -1
+		BPDL C 1
+		Goto Lying
 	SpawnDFrameOnly:
-		BPDL D -1  
+		BPDL D 1
+		Goto Lying
 	Death:
 		TNT1 A 0 A_NoBlocking
 		Stop
- }
+	Lying:
+		"----" A 1 A_JumpIf(GetCVar("bd_janitor") == 1, "Expiring") //If the janitor cvar is on, skip the infinite frame and go away after a random time instead
+		"----" A -1
+	Expiring:
+		"----" A random(60, 600)
+		Stop		
+	}
 }
 
 actor BdBloodSpotBlue : BdBloodSpot
@@ -218,8 +227,9 @@ actor BdBloodPool: BdBloodSpot
  Spawn:
   BPDL A 30
   BPDL ABCDEFGHIJKLMNOPQRSTUVWXYZ 3
- Live:
-  BPDL Z -1
+  Live:
+  BPDL Z 1
+  Goto Lying
  }
 }
 

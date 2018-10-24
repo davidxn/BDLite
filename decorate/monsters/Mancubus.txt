@@ -234,7 +234,7 @@ ACTOR BigFireBall Replaces Fatshot
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35))
 		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35))
-		TNT1 AAAAAA 20 A_CustomMissile ("BigBlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
+		TNT1 AAAAAA 20 A_CustomMissile ("BlackSmoke", 0, 0, random (0, 360), 2, random (40, 160))
 		Stop
 	}
 }

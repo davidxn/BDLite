@@ -137,7 +137,7 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
 	}
 }
 
-Actor PlasmaAmmo : Cell replaces Cell 
+Actor PlasmaAmmo : Ammo replaces Cell 
 {
 	Inventory.PickupMessage "$GOTCELL"
 	Inventory.Amount 20

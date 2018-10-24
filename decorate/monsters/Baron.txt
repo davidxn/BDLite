@@ -226,7 +226,6 @@ ACTOR BaronAttack: BaronBall
 {
 	Radius 24
 	Height 16
-	DamageType BHFT
 	Projectile 
 	+RANDOMIZE
 	+FORCEXYBILLBOARD
