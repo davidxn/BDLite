@@ -68,6 +68,7 @@ Actor BdPlasmaEvaporate : BdFx
   Scale 0.065
   Speed 0
   Alpha 0.9
+  +NOGRAVITY
   +BLOODSPLATTER
   States
   {

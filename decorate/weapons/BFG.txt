@@ -6,14 +6,14 @@ ACTOR BdBFG : BdLiteWeapon Replaces BFG9000
 	Weapon.AmmoUse 40
 	Weapon.AmmoGive 40
 	Weapon.AmmoType "PlasmaAmmo"
-    Inventory.PickupSound "BFGREADY"
+    Inventory.PickupSound "weapons/bfg/draw"
     Inventory.PickupMessage "$GOTBFG9000"
 	States
 	{	
 	Spawn:
 		BFUG A -1
 	Ready:
-        TNT1 A 0 A_PlaySound("BFGREADY")
+        TNT1 A 0 A_PlaySound("weapons/bfg/draw")
 	ReadyLoop:
 		BFGG A 4 A_WeaponReady(WRF_ALLOWZOOM)
 		Goto ReadyLoop
@@ -26,13 +26,13 @@ ACTOR BdBFG : BdLiteWeapon Replaces BFG9000
 		wait
 	Fire:
 		TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 40, "FireOK")
-		BFGG A 8 A_PlaySound("BEPBEP")
+		BFGG A 8 A_PlaySound("weapons/plasma/beepbeep")
 		Goto ReadyLoop
 	FireOK:
-        TNT1 A 0 A_PlaySound("BFGCHARGE")
+        TNT1 A 0 A_PlaySound("weapons/bfg/charge")
 		BFGC ABABABABABABABAB 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         BFGF A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
-        TNT1 A 0 A_PlaySound("BFGFIRE")
+        TNT1 A 0 A_PlaySound("weapons/bfg/fire")
 		TNT1 AAA 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_Recoil(8)
 		TNT1 A 0 A_FireCustomMissile("SuperBFGBall", 0, 0)
@@ -52,7 +52,7 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
     +EXTREMEDEATH
 	Damage 100
   Decal BFGLightning
-	DeathSound "BFGEXPLO"
+	DeathSound "weapons/bfg/explode"
 	Scale 0.7
 	Species "Marines"
 	+THRUSPECIES

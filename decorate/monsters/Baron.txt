@@ -9,9 +9,13 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 	PainChance 25
 	+QUICKTORETALIATE
 	PainChance "Explosive", 255
-	PainSound "PSXDPN"
+	PainSound "monsters/noble/pain"
     Health 1000
 	Obituary "%o was brutalized by a Baron of Hell."
+	SeeSound "baron/sight"
+	PainSound "baron/pain"
+	DeathSound "baron/death"
+	ActiveSound "baron/active"
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	+DONTHURTSPECIES
@@ -28,7 +32,7 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 		TNT1 A 0 A_FaceTarget
 		BOSS E 1
         BOSS E 6
-        TNT1 A 0 A_PlaySound("weapons/gswing")
+        TNT1 A 0 A_PlaySound("weapons/melee/swing")
 		BOSS F 6 A_FaceTarget
 		BOSS G 6 A_CustomMissile("BaronAttack",10,0,0,0)
 		Goto see		
@@ -79,7 +83,7 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 		BOSS H 3 A_Pain
 		Goto see
 	Pain.Explosive:
-		TNT1 A 0 ThrustThingZ(0,20,0,1)
+		TNT1 A 0 ThrustThingZ(0,10,0,1)
 		Goto Pain
 	Pain.Kick:
 		TNT1 A 0 A_FaceTarget
@@ -144,12 +148,14 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 
 	DieNormal:
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 70, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
 		KSA8 ABCDEF 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
 		KSA8 G -1
 	DieBlownBack:
 		TNT1 A 0 A_CustomMissile ("BdGibBaronLimb", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 70, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
 		TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(13)
@@ -161,8 +167,10 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 		BOH3 EFGH 5 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
 		BOH3 H -1
 	DieHoles:
-		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 70, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+		TNT1 AA 0 A_CustomMissile ("BdBloodLump", 70, 0, random (0, 360), 2, random(45, 80))
 		TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
 		TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
 		BADD ABCDEF 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
@@ -170,6 +178,7 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 	DieHeadOff:
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 16, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 48, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 70, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
 		TNT1 AAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
 		TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
@@ -178,6 +187,7 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 	DieJustLegs:
 		TNT1 A 0 A_CustomMissile ("BdGibBaronTopHalf", 48, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 48, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 64, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
@@ -208,9 +218,10 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 		BOSB D -1
 	XDeath:
 		TNT1 AA 0 A_CustomMissile ("BdGibBaronLimb", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMelting", 48, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMelting", 16, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMelting", 48, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerLarge", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerLarge", 74, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMelting", 16, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
 		TNT1 AAAAAAAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
@@ -242,7 +253,7 @@ ACTOR BaronAttack: BaronBall
 	{
 	Spawn:
 		TNT1 A 2 BRIGHT
-        TNT1 A 2 //A_PlaySound("weapons/gswing")
+        TNT1 A 2
 		Goto Death
 	Death:
 		TNT1 A 0 BRIGHT

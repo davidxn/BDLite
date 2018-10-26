@@ -143,8 +143,8 @@ ACTOR CyberBalls
 	+EXTREMEDEATH
 	+THRUGHOST
 	Scale 1.7
-    SeeSound "DSCANFIR"
-	DeathSound "Explosion"
+    SeeSound "monsters/cyberdemon/fire"
+	DeathSound "explosions/explode"
 	Obituary "$OB_MPROCKET"
 	States
 	{
@@ -164,7 +164,7 @@ ACTOR CyberBalls
 		TNT1 AAAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 AAAAA 0 A_CustomMissile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 A 1
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
+		TNT1 A 0 A_PlaySound("explosions/far", 3)
 		TNT1 A 15
 		Stop	
 	}

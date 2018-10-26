@@ -540,7 +540,7 @@ ACTOR PentagramParticleSpawnerGreen : PentagramParticleSpawner replaces Teleport
 	{
 	Spawn:
 		TNT1 A 0
-		TNT1 A 1 A_PlaySound("DSTELEPT")
+		TNT1 A 1 A_PlaySound("world/teleport")
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 {
 			A_SpawnItemEx("PentagramParticleGreen", random(0 - radius, radius), random(0 - radius, radius), 0, 0, 0, 1);
 			A_SpawnItemEx("PentagramParticleGreen", random(0 - radius, radius), random(0 - radius, radius), 0, 0, 0, 1);

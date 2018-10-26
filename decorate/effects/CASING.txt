@@ -65,7 +65,7 @@ ACTOR ShotgunCasing : BulletCasing
    Scale 0.15
    Mass 1
    BounceFactor 0.3
-   SeeSound "weapons/shell"
+   SeeSound "weapons/shelldrop"
    States
    {
     Spawn:
@@ -120,7 +120,7 @@ ACTOR EmptyClip : BulletCasing
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 7
       ECLI ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:
@@ -136,11 +136,11 @@ ACTOR EmptyRocketChamber : BulletCasing
    Speed 4
    Scale 1.3
    Mass 1
-   SeeSound "weapons/barrelpain"
+   SeeSound "weapons/hugemagdrop"
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 7
       RCSE ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:
@@ -160,7 +160,7 @@ ACTOR EmptyCell : BulletCasing
    States
    {
    Spawn:
-      TNT1 A 7 A_PlaySound("NULL")
+      TNT1 A 7
       ECEL ABCDEFGHABCDEFGHABCDEFGHABCDEFGHABCDEFGH 4
       Stop
    Death:

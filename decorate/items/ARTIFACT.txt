@@ -86,7 +86,6 @@ ACTOR NightVision : CustomInventory Replaces InfraRed
 		Loop
 	Pickup:
 		TNT1 A 1
-		TNT1 A 0 A_GiveInventory("HasInfrared", 1)
 		TNT1 A 0 A_GiveInventory("NightVisionGiver", 1)
 		Stop
 		
@@ -120,14 +119,7 @@ ACTOR NightVisionGiver : PowerupGiver
 	}
 }
 
-Actor HasInfrared : Inventory
-{
-inventory.maxamount 1
-}
-
 // Berserk ------------------------------------------------------------------
-
-
 
 ACTOR BdBerserk : CustomInventory Replaces Berserk
 {
@@ -138,7 +130,7 @@ ACTOR BdBerserk : CustomInventory Replaces Berserk
 	+INVENTORY.ALWAYSPICKUP
 	Inventory.PickupMessage "$GOTBERSERK"
 	Inventory.PickupSound "misc/p_pkup"
-    Inventory.PickupSound "BERSPKUP"
+    Inventory.PickupSound "pickups/berserk"
 	States
 	{
 	Spawn:

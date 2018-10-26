@@ -4,6 +4,7 @@ Actor Flare_General
 +NOINTERACTION
 +BLOODSPLATTER
 +CLIENTSIDEONLY
++NOTELEPORT
 renderstyle Add
 radius 1
 height 1

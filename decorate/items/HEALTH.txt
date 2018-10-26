@@ -85,7 +85,7 @@ Actor LightArmor : BasicArmorPickup Replaces GreenArmor 2018
 	Inventory.Icon "ARM1A0"
 	Armor.SavePercent 40
 	Armor.SaveAmount 100
-    Inventory.PickupSound "ARMOR"
+    Inventory.PickupSound "pickups/armor"
 	States
 	{
 	Spawn:
@@ -108,7 +108,7 @@ Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor 2019
 	Inventory.Icon "ARM2A0"
 	Armor.Savepercent 70
 	Armor.Saveamount 200
-    Inventory.PickupSound "ARMOR"
+    Inventory.PickupSound "pickups/armor"
 	States
 	{
 	Spawn:

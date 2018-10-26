@@ -28,12 +28,8 @@ ACTOR BdSpectre : BdDemon Replaces Spectre
 		SARG A 10
 		Goto Spawned
 	See:
-		TNT1 A 0 A_JumpIfInTargetInventory("HasInfrared", 1, "SeeVisible")
 		SPEC AAABBBAAABBB 1 BRIGHT A_Chase
 		Loop
-	SeeVisible:
-		SARG AAABBBCCCDDD 1 A_Chase
-		Goto See
 	Melee:
 	    TNT1 A 0
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 100)

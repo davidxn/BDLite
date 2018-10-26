@@ -166,6 +166,7 @@ Actor BluePlasmaFire: BluePlasmaParticle
 
   +BLOODSPLATTER
   -DOOMBOUNCE
+  +NOGRAVITY
   RenderStyle Add
   Scale 0.7
   Alpha 0.9

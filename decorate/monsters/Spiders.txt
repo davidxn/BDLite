@@ -131,6 +131,6 @@ Actor SpiderPlasmaBall : Plasma_Ball Replaces PlasmaBall2
 	DamageType Plasma
 	Speed 26
 	+DONTHURTSPECIES
-	SeeSound "PLSM9"
+	SeeSound "weapons/plasma/fire"
 	Species "Spider"
 }

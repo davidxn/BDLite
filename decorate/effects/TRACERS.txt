@@ -31,7 +31,6 @@ Stop
 Actor MinigunTracer: Tracer
 {
 -DONTSPLASH
-seesound "weapons/minigunfire"
 damagetype RapidFire
 }
 
@@ -78,7 +77,7 @@ Actor MonsterMinigunTracer: MonsterTracer
 -DONTSPLASH
 speed 60
 damage (random(2,2))
-seesound "CHGNSHOT"
+seesound "weapons/chaingun/fire"
 damagetype RapidFire
 Decal "BulletDecalNew1"
 States
@@ -100,7 +99,7 @@ damage (random(5,7))
 scale .2
 RenderStyle Add
 Alpha 0.9
-seesound "SSHFIRE"
+seesound "weapons/ssg/fire"
 damagetype ExplosiveImpact
 Decal "Scorch"
 Obituary "$OB_SPIDER"
@@ -141,7 +140,7 @@ States
 		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
 		
-		        TNT1 A 0 A_PlaySound("FAREXPL")
+		        TNT1 A 0 A_PlaySound("explosions/far")
 				TNT1 AAAAAAAA 4 A_CustomMissile ("MiniSmoke", 2, 0, random (0, 360), 2, random (0, 360))
     Stop
 }

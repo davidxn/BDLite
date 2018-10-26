@@ -31,7 +31,7 @@ ACTOR BdLostSoul: BdLiteMonster Replaces LostSoul
 	+USEBOUNCESTATE
 	AttackSound "skull/melee"
 	PainSound "skull/pain"
-	DeathSound "LSOD"
+	DeathSound "monsters/lostsoul/death"
 	ActiveSound "skull/active"
 	Obituary "$OB_SKULL"
 	BloodType "LostSoulBlood"

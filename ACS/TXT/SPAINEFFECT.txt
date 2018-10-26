@@ -35,7 +35,7 @@ script "ScreenPainDead" (void)
 SetHudSize(160,100,1);
 
 	delay(1);
-	PlaySound(0, "GLASDETH");
+	PlaySound(0, "player/glassbreak");
 	setfont("SOBROKE3");
 	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 80.0, 50.0, 5619); //5619 is a 3-tic duration
 	delay(3);

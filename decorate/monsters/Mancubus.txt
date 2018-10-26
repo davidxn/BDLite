@@ -200,7 +200,7 @@ ACTOR BigFireBall Replaces Fatshot
 	ExplosionDamage 8
 	Alpha 1
 	Decal "Scorch"
-	SeeSound "BREATHOF"
+	SeeSound "monsters/mancubus/fire"
 	DeathSound "fatso/shotx"
 	States
 	{
@@ -249,17 +249,17 @@ ACTOR BdMancubusFlamethrower : BdMancubus
 	Missile:
 		FATT G 10 A_FatRaise
 		FATT G 10 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BREATHOF")
+		TNT1 A 0 A_PlaySound("monsters/mancubus/fire")
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,-25,15,0)
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,25,-15,0)
 		FATT H 10 BRIGHT
 		FATT IG 5 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BREATHOF")
+		TNT1 A 0 A_PlaySound("monsters/mancubus/fire")
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,-25,15,0)
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,25,-15,0)
 		FATT H 10 BRIGHT
 		FATT IG 5 A_FaceTarget
-		TNT1 A 0 A_PlaySound("BREATHOF")
+		TNT1 A 0 A_PlaySound("monsters/mancubus/fire")
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,-25,15,0)
 		TNT1 A 0 A_CustomMissile("FlamethrowerMissile",30,25,-15,0)
 		FATT H 10 BRIGHT

@@ -4,7 +4,7 @@ ACTOR PlasmaPistol : BdLiteWeapon
 	Weapon.AmmoType1 "PlasmaAmmo"
 	Weapon.AmmoGive1 10
 	Weapon.SlotNumber 2
-    Inventory.PickupSound "PLSDRAW"
+    Inventory.PickupSound "weapons/plasma/draw"
 	Inventory.PickupMessage "Plasma pistol!"
 	States
 	{
@@ -12,7 +12,7 @@ ACTOR PlasmaPistol : BdLiteWeapon
 		PLSP Z -1 Bright
 		Stop
 	Ready:
-        TNT1 A 0 A_PlaySound("PLSDRAW")
+        TNT1 A 0 A_PlaySound("weapons/plasma/draw")
 		PLSP EDC 1
 	ReadyLoop:
 		PLSP A 1 A_WeaponReady(WRF_ALLOWZOOM)
@@ -40,7 +40,7 @@ ACTOR PlasmaPistol : BdLiteWeapon
 		TNT1 A 0 A_ReFire
 		Goto ReadyLoop
 	NoAmmo:
-		TNT1 A 0 A_PlaySound("BEP")
+		TNT1 A 0 A_PlaySound("weapons/plasma/beep")
 		Goto ReadyLoop
 	}
 }

@@ -40,7 +40,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 	Weapon.AmmoType2 "RifleAmmo"
 	Obituary "%o was shot down by %k's assault rifle."
     AttackSound "None"
-    Inventory.PickupSound "CLIPIN"
+    Inventory.PickupSound "weapons/rifle/clip"
 	Inventory.Pickupmessage "You got the Assault Rifle!"
 	States
 	{
@@ -50,7 +50,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 	PickUp:
 		Stop
 	Ready:
-        TNT1 A 0 A_PlaySound("CLIPIN")
+        TNT1 A 0 A_PlaySound("weapons/rifle/clip")
         RIFS ABC 1
 	ReadyLoop:
 		RIFG A 1 A_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWZOOM)
@@ -63,7 +63,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
     Fire:
 		TNT1 A 0 A_JumpIfInventory("RifleAmmoLoaded", 1, 1)
         Goto Reload
-        TNT1 A 0 A_PlaySound("weapons/pistol")
+        TNT1 A 0 A_PlaySound("weapons/rifle/fire")
 		RIFF A 1 BRIGHT A_AlertMonsters
 		TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
 		RIFF B 1 BRIGHT A_FireBullets (0, 0, 1, 9, "HitPuff")
@@ -82,7 +82,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 		Goto ReadyLoop
 
 	ReloadAnimate:
-        TNT1 A 0 A_PlaySound("Reload")
+        TNT1 A 0 A_PlaySound("weapons/rifle/reload")
         RIFR ABCDE 1 A_WeaponReady(WRF_ALLOWZOOM | WRF_NOFIRE)
         RIFR F 1 A_SpawnItemEx("EmptyClip", 17, 2, 35, 0, random(3,6), 4)
         RIFR G 8

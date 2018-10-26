@@ -10,7 +10,6 @@ ACTOR ExplosionSmoke
 	+BLOODSPLATTER
 	+DOOMBOUNCE
 	+THRUACTORS
-	Health 99999
 	BounceFactor 0.5
 	Radius 0
 	Height 0
