@@ -14,7 +14,7 @@ monsters/imp/charge 			"sounds/monsters/imp-charge.ogg"
 monsters/imp/melee1				"sounds/monsters/imp-claw-1"
 monsters/imp/melee2				"sounds/monsters/imp-claw-2"
 monsters/imp/melee3				"sounds/monsters/imp-claw-3"
-$random monsters/imp/melee { imp/melee1 imp/melee2 imp/melee3 }
+$random monsters/imp/melee { monsters/imp/melee1 monsters/imp/melee2 monsters/imp/melee3 }
 
 monsters/lostsoul/death1 		"sounds/monsters/lostsoul-death-1"
 monsters/lostsoul/death2 		"sounds/monsters/lostsoul-death-2"
@@ -158,9 +158,9 @@ misc/LQDRIP12			"sounds/xdeath/LQDRIP12"
 misc/LQDRIP13			"sounds/xdeath/LQDRIP13"
 misc/LQDRIP14			"sounds/xdeath/LQDRIP14"
 
-$random misc/blooddrop  { LQDRIP1 LQDRIP2 LQDRIP3 } 
-$random misc/blooddrop2  { LQDRIP4 LQDRIP5 LQDRIP6 LQDRIP7 }
-$random misc/blooddrop3  { LQDRIP8 LQDRIP9 LQDRIP10 LQDRIP11 LQDRIP12 LQDRIP13 LQDRIP14 LQDRIP14 } 
+$random misc/blooddrop  { misc/LQDRIP1 misc/LQDRIP2 misc/LQDRIP3 } 
+$random misc/blooddrop2  { misc/LQDRIP4 misc/LQDRIP5 misc/LQDRIP6 misc/LQDRIP7 }
+$random misc/blooddrop3  { misc/LQDRIP8 misc/LQDRIP9 misc/LQDRIP10 misc/LQDRIP11 misc/LQDRIP12 misc/LQDRIP13 misc/LQDRIP14 misc/LQDRIP14 } 
 $limit blooddrop 3
 
 ////////////////

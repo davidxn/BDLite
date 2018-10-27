@@ -1,34 +1,18 @@
 BDLite chopped up and reassembled by DavidN from Sgt Mark IV's Brutal Doom v20
+See https://trello.com/b/fmJhYIlv/bdlite for a list of additions
+ZDoom topic: https://forum.zdoom.org/viewtopic.php?f=43&t=62203
 
-Extra rotations for PLAY  A - G
+Credits for other work still present in the PK3 are preserved below.
+
+-------
+SPRITES
+-------
+
+Extra rotations for PLAY A-G
 John Romero
 
 MARN * and MARJ *
 Sergeant_Mark_IV
-
-WOUN *
-Sergeant_Mark_IV
-
-CAPT *
-Sergeant_Mark_IV
-
-PBAR*
-Base by Captain Toenail, edited by Sergeant_Mark_IV
-
-MAIS *, MAZS *, and MASS*
-Sergeant_Mark_IV
-
-Cheering Marine MWAV A to F
-Unknown
-
-Cheering Marine MWAV I to N
-Das_M, edited by Sergeant_Mark_IV
-
-MR7S * and MR8S *
-Sergeant_Mark_IV
-
-FMW2*, FMW1*, FML1 *, 
-Sergent_Mark_IV
 
 Player deaths (XPL1*, XPL2*, XPL3*, XPL4*, XPL5*, XPL6*, XPL8*, PLAY I - N, MHEA*, HPLA*, PBUR*, PMET*, PLDHA0)
 Sergeant_Mark_IV
@@ -39,20 +23,15 @@ Rogue Entertainment
 Marine - No Weapons (PLA1*)
 Captain Toenail
 
-Marine - aiming down the sights (MAR2*)
-Sergeant_Mark_IV
-
 Marine - kicking animations
 Base by Captain Toenail, edited by Sergeant_Mark_IV
-
-Marine - Combat Roll Animation
-Sergeant_Mark_IV
 
 Muzzle effects (PLMZ*)
 Sergeant_Mark_IV
 
-Pistol (PISR*, PISG*, PISF*)
-Base by FreeDoom team, edited by Sergeant_Mark_IV
+-------
+WEAPONS
+-------
 
 Chainsaw
 Base by Mike12, edited by Sergeant_Mark_IV
@@ -62,9 +41,6 @@ Extra animations for barrels by Perkristian and Minigunner, Ammo Belt by Mike12,
 
 Assault Rifle (RIFF*, RIFFR*)
 Mike12, animations and muzzle by Sergeant_Mark_IV
-
-Assault Rifle Iron Sights (RI2G*)
-Crucux Duo, edited by Sergeant_Mark_IV
 
 Shotgun Pumping (SHTG*)
 DoomNukem
@@ -81,23 +57,8 @@ Base by Sergeant_Mark_IV, polished by Minigunner. Ammo barrels from Necrodome.
 Rocket MISL*
 FreeDoom team
 
-MP40
-Apogee Entertainment
-
 BFG9000
 Sergeant_mark_IV
-
-Taunt sprites FUCK*
-Sergeant_Mark_IV
-
-Mancubus Flame Cannon
-Mike12
-
-Salute (SALU*)
-Base from Duke Nukem 3D, edited by Mike12
-
-Revenant Missile Launcher (RVCG)
-Base from Hacx, edited by Mike12
 
 Plasma Gun
 Base by Eriance, edited by Sergeant_Mark_IV
