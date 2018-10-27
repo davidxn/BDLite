@@ -224,7 +224,7 @@ world/teleport 				"sounds/HD/dstelept"
 
 explosions/explode 			"sounds/explosions/explosion.ogg"
 explosions/far 				"sounds/explosions/explosion-far.ogg"
-$rolloff  explosions/explode 900 1100
+$rolloff  explosions/explode 900 1500
 $rolloff explosions/far 3200 7400
 $limit explosions/far 4
 
