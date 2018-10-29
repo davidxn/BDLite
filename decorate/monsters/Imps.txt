@@ -20,6 +20,8 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 	+MISSILEMORE
 	+DONTHURTSPECIES
 	+SLIDESONWALLS
+	HitObituary "%o was turned inside-out by an Imp."
+	Obituary "%o was incinerated by an Imp."
     Speed 8
 	States
 	{
