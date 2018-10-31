@@ -124,16 +124,16 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Jump(256, "DieRollBack")
 	Death.SuperKick:
-		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBack")
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBack")
 		TNT1 A 0 A_Jump(256, "DieJustLegs", "XDeath", "DieArmOff", "DieRollBack")
 	Death.Shotgun:
-		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBackHigh")
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBackHigh")
 		TNT1 A 0 A_Jump(256, "DieRollBack", "DieArmOff")
 	Death.RapidFire:
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
@@ -155,10 +155,10 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 		TNT1 A 0 A_Jump(256, "DiePlasma")
 		
 	Death.Flak:
-		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBackHigh")
 		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "DieRollBackHigh")
 		TNT1 A 0 A_Jump(256, "DieJustLegs", "DieArmOff", "XDeath", "DieTornUp")
 
 	DieNormal:
@@ -186,7 +186,7 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
         TNT1 A 0 A_FaceTarget
 		TNT1 A 0 A_Recoil(20)
-		TNT1 A 0 ThrustThingZ(0,30,0,0) //Set
+		TNT1 A 0 ThrustThingZ(0,30,0,0) //Set, don't add
 		TNT1 A 0 A_Jump(128, "DieRollback2")
         TR06 ABCDE 4 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
 		TR06 FGHIJK 4

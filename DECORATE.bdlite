@@ -43,7 +43,7 @@
 #include decorate/effects/BDFX.txt
 #include decorate/effects/PARTICLES.txt
 #include decorate/effects/BDSMOKE.txt
-#include decorate/effects/CASING.txt
+#include decorate/effects/BDCASING.txt
 #include decorate/effects/FIRE.txt
 #include decorate/effects/SPARKS.txt
 #include decorate/effects/FLARES.txt

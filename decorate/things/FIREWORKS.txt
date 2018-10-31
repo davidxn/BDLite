@@ -2,6 +2,7 @@ ACTOR BdExplosiveBarrel : ExplosiveBarrel Replaces ExplosiveBarrel
 {
 	-OLDRADIUSDMG
 	+PUSHABLE
+	+NOTARGET
 	PushFactor 0.2
 	States
 	{

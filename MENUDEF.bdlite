@@ -1,4 +1,5 @@
 AddOptionMenu "VideoOptions"
 {
   Option "Gibs Fade", "bd_janitor", "YesNo"
+  Option "Spent Ammo Fades", "bd_janitor_ammo", "YesNo"
 }

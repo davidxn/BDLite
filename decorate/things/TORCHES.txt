@@ -174,7 +174,6 @@ Actor BurningBarrel1 : BurningBarrel replaces BurningBarrel
 +NOBLOOD
 +GHOST
 +NOTARGET
-+FRIENDLY
 height 25
 Health 30
 DamageFactor "kick", 5.0
