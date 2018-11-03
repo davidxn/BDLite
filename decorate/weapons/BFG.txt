@@ -59,7 +59,7 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
 	+MTHRUSPECIES
   States
   {
-  DM:
+	DMSpawn:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
 		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
@@ -67,7 +67,7 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
 	
 	Spawn:
 		TNT1 A 0
-
+		TNT1 A 0 ACS_NamedExecute("adjustForDeathmatch", 0, 0, 0, 0)
 	Spawn1:
     TNT1 A 0 A_SpawnItemEx("BFGFOG", 0, 0)
     BFS1 A 1 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)

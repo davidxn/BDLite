@@ -4,13 +4,26 @@
 #include "zcommon.acs"
 #library "paineffect"
 
+script "ScreenPainClear" (void)
+{
+	SetHudSize(320,200,1);
+	//We do this twice a short delay apart to make sure animations of up to 10 frames are cleared
+	delay(1);
+	setfont("PAIN1");
+	hudmessage(s:""; HUDMSG_PLAIN, 1048575, CR_UNTRANSLATED, 150.0, 100.0, 0.1);
+	hudmessage(s:""; HUDMSG_PLAIN, 1048576, CR_UNTRANSLATED, 150.0, 100.0, 0.1);
+	delay(11);
+	hudmessage(s:""; HUDMSG_PLAIN, 1048575, CR_UNTRANSLATED, 150.0, 100.0, 0.1);
+	hudmessage(s:""; HUDMSG_PLAIN, 1048576, CR_UNTRANSLATED, 150.0, 100.0, 0.1);
+}
+
 script "ScreenPainBloodSpots" (void)
 {
 SetHudSize(320,200,1);
 
 	delay(1);
 	setfont("PAIN1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 150.0, 100.0, 0.5);
 	delay(4);
 }
 
@@ -22,10 +35,10 @@ SetHudSize(320,200,1);
 
 	delay(1);
 	setfont("BREAK1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.6);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 150.0, 100.0, 0.6);
 	delay(8);
 	setfont("BREAK2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 150.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 150.0, 100.0, 0.5);
 	delay(3);
 }
 
@@ -37,13 +50,13 @@ SetHudSize(160,100,1);
 	delay(1);
 	PlaySound(0, "player/glassbreak");
 	setfont("SOBROKE3");
-	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 80.0, 50.0, 5619); //5619 is a 3-tic duration
+	hudmessage(s:"A"; HUDMSG_PLAIN, 1048575, CR_UNTRANSLATED, 80.0, 50.0, 5619); //5619 is a 3-tic duration
 	delay(3);
 	setfont("SOBROKE2");
-	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 80.0, 50.0, 5619);
+	hudmessage(s:"A"; HUDMSG_PLAIN, 1048575, CR_UNTRANSLATED, 80.0, 50.0, 5619);
 	delay(3);
 	setfont("SOBROKE1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 80.0, 50.0, 8.0, 8.0);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048575, CR_UNTRANSLATED, 80.0, 50.0, 8.0, 8.0);
 	delay(3);
 }
 
@@ -55,13 +68,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULA1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULA2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULA3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -73,13 +86,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULB1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULB2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULB3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -91,13 +104,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULC1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULC2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULC3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -108,13 +121,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULD1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULD2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULD3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -125,13 +138,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULE1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULE2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULE3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -143,13 +156,13 @@ SetHudSize(480,300,1);
 
 	delay(1);
 	setfont("PBULF1");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULF2");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 	setfont("PBULF3");
-	hudmessage(s:"A"; HUDMSG_FADEOUT, 0, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
+	hudmessage(s:"A"; HUDMSG_FADEOUT, 1048576, CR_UNTRANSLATED, 200.0, 100.0, 0.5);
 	delay(8);
 }
 
@@ -162,6 +175,6 @@ SetHudSize(400,250,1);
 
 	delay(4);
 	setfont("SCRATCH");
-	hudmessage(s:"A"; HUDMSG_PLAIN, 0, CR_UNTRANSLATED, 113.1, 11.1, 0.2);
+	hudmessage(s:"A"; HUDMSG_PLAIN, 1048576, CR_UNTRANSLATED, 113.1, 11.1, 0.2);
 	delay(4);
 }

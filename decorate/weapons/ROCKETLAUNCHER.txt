@@ -16,12 +16,12 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
 		Stop
 	Ready:
         TNT1 A 8 A_PlaySound("weapons/rocket/draw")
-        MISS ABCDEFG 1		
+        MISR EDCB 2
 	ReadyLoop:
 		MISG A 1 A_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWZOOM)
         Goto ReadyLoop
 	Deselect:
-        MISS GFEDCBA 1
+        MISR BCDE 2
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
 		Wait
@@ -58,10 +58,8 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
         TNT1 A 0 A_SetPitch(-2 + pitch)
 		MISR HHIIJJKLM 1
 		TNT1 A 0 A_SetAngle(+1 + angle)
-        MISR MMMNOP 1
 		TNT1 A 0 A_SetAngle(-1 + angle)
-		MISR Q 3
-		MISR PR 1
+		MISR OOOPQ 1
 		MISG DEF 2
 		MISG A 6
 	ReloadAmmo:
@@ -101,6 +99,7 @@ ACTOR BdRocket Replaces Rocket
 	Scale 0.7
     Decal "Scorch"
     -BLOODSPLATTER
+	-RANDOMIZE
     +EXTREMEDEATH
     +BLOODSPLATTER 
 	+THRUSPECIES
@@ -111,13 +110,15 @@ ACTOR BdRocket Replaces Rocket
 	Species "Marines"
 	States
 	{
-	DM:
+	DMSpawn:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFLag("THRUSPECIES", 0)
 		TNT1 A 0 A_ChangeFLag("MTHRUSPECIES", 0)
-		Goto Spawn
-	
+		Goto SpawnLoop	
 	Spawn:
+		TNT1 A 1
+		TNT1 A 0 ACS_NamedExecute("adjustForDeathmatch", 0, 0, 0, 0)
+	SpawnLoop:
 	    MISL A 1 Bright 
 		TNT1 A 0 A_PlaySound("weapons/rocket/fly")
 		TNT1 A 0 A_SpawnItem("RocketFlare",-20,0)
