@@ -818,7 +818,7 @@ ACTOR SmallBloodPool2 Replaces SmallBloodPool
 	}
 }
 	   
-actor CrushedRemains: DeadMarineLegs
+actor CrushedRemains: DeadMarineLegs Replaces WolfensteinSS //Reduce all nazis to small melted splats
 {
 -SHOOTABLE
 +CLIENTSIDEONLY

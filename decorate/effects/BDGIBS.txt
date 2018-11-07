@@ -67,6 +67,7 @@
 
 */
 
+/** These represent individual flying body parts. All gibs are objects that spin through the air (using the actor roll property with the +ROLLSPRITE flag) and land on the ground, where they check if the Janitor CVAR is on and then either enter an infinite state or hang around for a while before disappearing. The vast bulk of all of this is handled in the BdGib base class, which sets a random rotation speed and then leaves the subclass to handle its own display and flight before it lands. */
 ACTOR BdGib : BdBlood
 {
 	var int user_rotationspeed;
@@ -821,6 +822,7 @@ ACTOR BdGibMastermindJunk2 : BdGib
 }
 
 
+/** Subset of gibs that are blackened and give off plasma evaporation */
 ACTOR BdGibPlasmaBurned : BdGib
 {
 	Speed 2

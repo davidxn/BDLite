@@ -1,18 +1,22 @@
+/** Flag used to indicate the player is punching, used to animate the player */
 Actor Punching : Inventory
 {
 inventory.maxamount 1
 }
 
+/** Flag given to the player to make them recoil when a kick has connected. */
 Actor KickHasHit : Inventory
 {
 inventory.maxamount 1
 }
 
+/** Used to get the player to animate different melee attacks in a combo formation */
 Actor PSeq1 : Inventory
 {
 inventory.maxamount 2
 }
 
+/** Used to get the player to animate different melee attacks in a combo formation */
 Actor PSeq2 : Inventory
 {
 inventory.maxamount 1

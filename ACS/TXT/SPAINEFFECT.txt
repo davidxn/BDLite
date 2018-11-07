@@ -60,7 +60,6 @@ SetHudSize(160,100,1);
 	delay(3);
 }
 
-
 script "ScreenPainBullet1" (void)
 {
 
@@ -166,9 +165,6 @@ SetHudSize(480,300,1);
 	delay(8);
 }
 
-
-
-
 script "ScreenPainScratch" (void)
 {
 SetHudSize(400,250,1);
@@ -176,5 +172,16 @@ SetHudSize(400,250,1);
 	delay(4);
 	setfont("SCRATCH");
 	hudmessage(s:"A"; HUDMSG_PLAIN, 1048576, CR_UNTRANSLATED, 113.1, 11.1, 0.2);
+	delay(4);
+}
+
+script "ScreenPainBite" (void)
+{
+
+SetHudSize(480,300,1);
+
+	delay(4);
+	setfont("BITE");
+	hudmessage(s:"A"; HUDMSG_PLAIN, 1048576, CR_UNTRANSLATED, 0.1, 0.1, 0.2);
 	delay(4);
 }

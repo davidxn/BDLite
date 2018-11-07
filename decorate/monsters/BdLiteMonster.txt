@@ -23,6 +23,7 @@ A BdLiteMonster needs:
 */
 
 ACTOR BdLiteMonster {
+	//$Category Monsters
 	Monster
 	+FLOORCLIP
 	+SLIDESONWALLS

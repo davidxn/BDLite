@@ -136,8 +136,10 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
 	}
 }
 
+/** Ammunition for plasma weapons */
 Actor PlasmaAmmo : Ammo replaces Cell 
 {
+	//$Category Ammunition
 	Inventory.PickupMessage "$GOTCELL"
 	Inventory.Amount 20
 	Inventory.MaxAmount 300
@@ -152,6 +154,7 @@ Actor PlasmaAmmo : Ammo replaces Cell
 	}
 }
 
+/** Large ammunition for plasma weapons */
 Actor PlasmaAmmoPack : PlasmaAmmo replaces CellPack
 {
 	Inventory.PickupMessage "$GOTCELLBOX"

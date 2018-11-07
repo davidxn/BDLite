@@ -1,3 +1,4 @@
+/** Acts as a counter for Lost Souls - continuously given when they're charging, and they'll give up to catch their breath once they reach a limit. */
 Actor MaxLostSoulRange : Inventory
 {
 inventory.maxamount 50

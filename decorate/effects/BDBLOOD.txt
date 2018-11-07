@@ -43,7 +43,7 @@ BdBlood - Base for most blood things, makes these items non-randomized missiles 
 	BdGib and subclasses - See BDGIBS.TXT
 */
 
-// Base properties for blood, most blood actors should inherit from here
+/** Base properties for blood, most blood actors should inherit from here */
 actor BdBlood
 {
 	game Doom
@@ -58,7 +58,7 @@ actor BdBlood
 	+THRUACTORS
 }
 
-//For bleeding actors
+/** BdBleed contains the actors spawned when monsters are hurt, replacing Doom's original Blood object - these are invisible classes that spawn a variety of the effects below. They're defined in the BloodType of a monster, which has three variations - Blood, BloodSplatter and AxeBlood. Those last two are used mostly by Heretic/Hexen when a weapon uses the BLOODSPLATTER or AXEBLOOD flag - BDLite just uses the same blood type for the first two, but uses BleedSaw for the AxeBlood replacement when using the chainsaw to produce a stronger blood effect. */
 actor BdBleed Replaces Blood
 {
  Decal BrutalBloodSplat
@@ -81,6 +81,7 @@ actor BdBleed Replaces Blood
     }
 }
 
+/** Larger blood effect for when an enemy has been hit with the chainsaw */
 actor BdBleedSaw : BdBleed {
  states
  {
@@ -95,6 +96,7 @@ actor BdBleedSaw : BdBleed {
  }
 }
 
+/** A class spawned by BdBleed, a splash of blood to show impact */
 ACTOR BdBloodHitEffect
 {
  game Doom
@@ -134,7 +136,7 @@ ACTOR BdBloodHitEffectBlue : BdBloodHitEffect
 	translation "168:191=192:207","16:47=240:247"
 }
 
-
+/** BdBleed for blue-blooded monsters */
 actor BdBleedBlue : BdBleed
 {
 	translation "168:191=192:207","16:47=240:247"
@@ -149,6 +151,7 @@ actor BdBleedBlue : BdBleed
 	}
 }
 
+/** BdBleedSaw for blue-blooded monsters */
 actor BdBleedSawBlue : BdBleed {
  states
  {
@@ -163,6 +166,7 @@ actor BdBleedSawBlue : BdBleed {
  }
 }
 
+/** BdBloodSpot and its children are the actors that use models to simulate decals on the floor. There are just four variations - blue, red and whether the spot is small or a spreading pool. */
 ACTOR BdBloodSpot
 {
  game Doom
@@ -411,6 +415,7 @@ ACTOR BdBloodLumpBone : BdBloodLump
     }
 }
 
+/** A drop of flying blood to be sprayed out from an enemy using A_FireProjectile. They leave blood spots behind when they land. */
 ACTOR BdFlyingBlood : BdBlood
 {
 	scale 1.2
@@ -486,6 +491,7 @@ ACTOR BdFlyingBloodSmall : BdFlyingBlood
 	scale 0.8
 }
 
+/** These are small actors that hang in the air behind flying blood and body parts, giving more 'weight' to their appearance. They can also be used as projectiles if you want small splashes. */
 actor BdFlyingBloodTrail : BdBlood
 {
 

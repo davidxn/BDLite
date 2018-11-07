@@ -1,3 +1,4 @@
+/** Counter for demons that have lost their arm - they'll keep receiving these and declare themselves dead after enough of them have accumulated */
 Actor DemonBleedingOut : Inventory
 {
 inventory.maxamount 50
@@ -32,7 +33,6 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 		SARG YZ 10 A_Look
 		Loop
 	Forget:	
-		TNT1 A 0 A_Log("Searching for player")
 		TNT1 A 0 A_ClearTarget
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 50)
 	SearchPlayer:
@@ -74,7 +74,6 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 		Loop
 		
 	SeeLostSight:
-		TNT1 A 0 A_Log("Lost sight of player")
 		SARG AA 2 A_Chase
 		SARG BB 2 A_Chase
 		SARG CC 2 A_Chase
@@ -359,6 +358,7 @@ ACTOR DemonAttack: BaronBall
 	}
 }
 
+/** This is intended to make demons forget about the player and start wandering instead of chasing indefinitely, but I'm not convinced it actually works */
 Actor EnemyMemory : Inventory
 {
 	inventory.maxamount 60

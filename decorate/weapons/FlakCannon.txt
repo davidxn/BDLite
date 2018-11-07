@@ -157,9 +157,10 @@ ACTOR FlakResidue {
 	}
 }
 
+/** Ammunition for flak cannon */
 ACTOR FlakAmmo : Ammo
 {
-	Game Doom
+    Game Doom
     Radius 20
 	Inventory.PickupMessage "Picked up some flak cartridges."
    Inventory.Amount 2
@@ -175,6 +176,7 @@ ACTOR FlakAmmo : Ammo
 	}
 }
 
+/** Large ammunition for flak cannon */
 ACTOR FlakBox : FlakAmmo
 {
 	Inventory.PickupMessage "Picked up a box of flak cartridges."

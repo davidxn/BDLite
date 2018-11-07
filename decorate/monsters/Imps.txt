@@ -348,6 +348,7 @@ ACTOR FireBall_ Replaces DoomImpBall
 	}
 }
 
+/** Flag to indicate that an imp is jumping - if it is, it might go into a special death state */
 Actor IsJumping : Inventory
 {
 inventory.maxamount 1

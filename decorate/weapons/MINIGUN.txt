@@ -93,8 +93,3 @@ States
 		goto ReadyLoop
 	}
 }
-
-Actor RandomHeadExploder: Inventory
-{
-inventory.maxamount 1
-}

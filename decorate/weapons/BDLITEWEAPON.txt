@@ -25,6 +25,7 @@ NoNeedToReload:
 
 */
 
+/** BdLiteWeapons are extensions to the standard Doom weapon that allow for reloading and other special features (the global kick and grenade attacks). See the text of the BdLiteWeapon base class for more */
 ACTOR BdLiteWeapon : DoomWeapon
 {
 	Game Doom

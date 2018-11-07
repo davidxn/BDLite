@@ -442,7 +442,7 @@ pulselight SOULSPHERE
     offset 0 16 0
 }
 
-object LifeSphere
+object BdSoulSphere
 {
     frame SOUL { light SOULSPHERE }
 }
@@ -852,6 +852,11 @@ object ArmorShard
 }
 
 object GrenadeAmmo
+{
+	frame PGRN { light GREENITEM }
+}
+
+object GrenadeBox
 {
 	frame PGRN { light GREENITEM }
 }

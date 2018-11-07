@@ -1,6 +1,6 @@
 // Invulnerability Sphere ---------------------------------------------------
 
-ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
+ACTOR BdInvulnerabilitySphere  : PowerupGiver Replaces InvulnerabilitySphere
 {
 	Game Doom
 	SpawnID 133
@@ -22,7 +22,7 @@ ACTOR InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere
 
 // Soulsphere --------------------------------------------------------------
 
-ACTOR LifeSphere : CustomInventory Replaces SoulSphere
+ACTOR BdSoulSphere : CustomInventory Replaces SoulSphere
 {
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
@@ -46,7 +46,7 @@ ACTOR SoulSphereHealth : Health
 	+INVENTORY.ALWAYSPICKUP
 }
 
-ACTOR EnergySphere : CustomInventory Replaces Megasphere
+ACTOR BdMegaSphere : CustomInventory Replaces Megasphere
 {
 	+COUNTITEM
 	+INVENTORY.ALWAYSPICKUP
@@ -67,7 +67,7 @@ ACTOR EnergySphere : CustomInventory Replaces Megasphere
 
 // infrared -----------------------------------------------------------------
 
-ACTOR NightVision : CustomInventory Replaces InfraRed
+ACTOR BdNightVision : CustomInventory Replaces InfraRed
 {
 	Game Doom
 	SpawnID 138
@@ -147,7 +147,7 @@ ACTOR BdBerserk : CustomInventory Replaces Berserk
 
 // Backpack ---------------------------------------------------------------
 
-ACTOR AmmoSupply : BackpackItem Replaces Backpack
+ACTOR BdBackpack : BackpackItem Replaces Backpack
 {
 	Game Doom
 	SpawnID 144

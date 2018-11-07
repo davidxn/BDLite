@@ -1,3 +1,4 @@
+/** Ammunition for bullet weapons */
 ACTOR RifleAmmo : Ammo Replaces Clip
 {
 	Game Doom
@@ -16,7 +17,7 @@ ACTOR RifleAmmo : Ammo Replaces Clip
 	}
 }
 
-
+/** Large ammunition for bullet weapons */
 ACTOR RifleAmmoBox : RifleAmmo Replaces Clipbox
 {
 	Game Doom
@@ -66,9 +67,9 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 		"----" D 1 A_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWZOOM)
 		Goto ReadyLoop
 	Deselect:
-		"----" B 1 Offset(-2, 34)
-		"----" B 1 Offset(-5, 38)
-		"----" B 1 Offset(-10, 46)
+		RIF4 B 1 Offset(-2, 34)
+		RIF4 B 1 Offset(-5, 38)
+		RIF4 B 1 Offset(-10, 46)
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
 		TNT1 A 1
 		Wait
@@ -119,6 +120,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 	}
 }
 
+/** Represents ammo loaded into the BdRifle */
 ACTOR RifleAmmoLoaded : Ammo
 {
    Inventory.Amount 0

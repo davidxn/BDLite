@@ -270,6 +270,6 @@ ACTOR ShoqueAzul
 ACTOR CacodemonBite: ImpAttack
 {
     +THRUGHOST
-	DamageType HKFT
+	DamageType Eat
     Damage 5
 }

@@ -1,9 +1,3 @@
-//This is used as a flag to track if we need to pump after reloading from empty
-Actor ShotgunWasEmpty : Inventory
-{
-inventory.maxamount 1
-}
-
 ACTOR BdShotgun : BDLiteWeapon Replaces Shotgun
 {
 	Game Doom
@@ -94,6 +88,7 @@ ACTOR BdShotgun : BDLiteWeapon Replaces Shotgun
 	}
 }
 
+/** Represents ammo loaded into the BdShotgun */
 ACTOR ShotgunAmmoLoaded : Ammo
 {
    Inventory.Amount 0
@@ -101,4 +96,10 @@ ACTOR ShotgunAmmoLoaded : Ammo
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 8
    Inventory.Icon "SHTCA0"
+}
+
+/** This is used as a flag to track if we need to pump the shotgun after reloading from empty */
+Actor ShotgunWasEmpty : Inventory
+{
+inventory.maxamount 1
 }

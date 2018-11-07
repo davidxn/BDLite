@@ -1,10 +1,12 @@
 //Grenades aren't really a weapon, but they're added on to all weapons by default
 
+/** Inventory class used to count up the time until a grenade explodes */
 Actor GrenadeTime : Inventory
 {
 inventory.maxamount 6
 }
 
+/** Grenades aren't really implemented as weapons, but they can be used with the Zoom function on weapons. They're projectiles that bounce and are affected by gravity. */
 ACTOR BdGrenade
 {
 	Radius 4
@@ -81,12 +83,11 @@ States
         Stop
 	}
 }
-		
-		
-		
 
+/** Small ammo for grenades */
 ACTOR GrenadeAmmo : Ammo
 {
+	//$Category Ammunition
 	Game Doom
 	SpawnID 11
 	Inventory.PickupMessage "You got a grenade!"
@@ -96,27 +97,27 @@ ACTOR GrenadeAmmo : Ammo
 	Ammo.BackpackAmount 5
 	Ammo.BackpackMaxAmount 20
 	Inventory.Icon "GRNDA"
-	Scale 0.4
+	Scale 0.8
 	States
 	{
 	Spawn:
-		PGRN AD 10
+		PGRN AB 10
 		Loop
 	}
 }
 
-
+/** Large ammo for grenades */
 ACTOR GrenadeBox : GrenadeAmmo
 {
 	Game Doom
 	SpawnID 139
 	Inventory.PickupMessage "Picked up a box of grenades."
 	Inventory.PickupSound "weapons/rifle/clip"
-	Inventory.Amount 4
+	Inventory.Amount 3
 	States
 	{
 	Spawn:
-		PGRN AD 10
+		PGRN CD 10
 		Loop
 	}
 }
