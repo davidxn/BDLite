@@ -1,0 +1,1 @@
+unusedspritefinder ..\bdlite\pk3\decorate,..\vulkan\pk3\decorate ..\bdlite\pk3\sprites,..\vulkan\pk3\sprites > detected.txt

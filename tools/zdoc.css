@@ -1,0 +1,167 @@
+body {
+	background-color: #222222;
+	margin: 0 auto;
+	padding: 0;
+	font-family: Exo, sans-serif;
+	color: #DDDDDD;
+}
+
+a { text-decoration: none; }
+
+div#maincontainer {
+	margin-left: 50px;
+}
+
+div.indenter {
+	display: inline-block;
+	width: 50px;
+	height: 1px;
+}
+
+.strike {
+	text-decoration: line-through;
+}
+
+
+div.zdoomclass {
+	display: inline-block;
+	border: 1px solid #886666;
+	border-radius: 8px;
+	padding: 8px;
+	margin: 8px;
+	background-color: #664444;
+	z-index: 999;
+	position: relative;
+}
+
+.expandable {
+	cursor: pointer;
+}
+
+div.class_notinproject {
+	border: 1px solid #444499;
+	background-color: #222277;
+}
+
+div.class_monster {
+	border: 1px solid #BB4444;
+	background-color: #994444;
+}
+
+div.class_weapon {
+	border: 1px solid #404040;
+	background-color: #333333;
+}
+
+div.errorbox {
+	border: 1px solid #666666;
+	background-color: #444444;
+	border-radius: 8px;
+	margin: 8px;
+	font-size: 10pt;
+}
+
+div.zdoomclasscontent {
+    display:none;
+    max-height: 0;
+    overflow: auto;
+	border: 1px solid #666666;
+	border-radius: 8px;
+	padding: 12px 8px 8px 8px;
+	margin: 8px 8px 8px 24px;
+	background-color: #444444;
+	position: relative;
+	top: -24px;
+	z-index: 1;
+	font-size: 10pt;
+    -webkit-transition: max-height 200ms;
+    -moz-transition: max-height 200ms;
+    -o-transition: max-height 200ms;
+    transition: max-height 200ms;
+}
+
+table.classtable > tbody > tr > td {
+	vertical-align: top;
+	padding: 8px;
+}
+
+div.zdoomclassspritewrapper {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #886666;
+    border-radius: 4px;
+    text-align: center;
+    vertical-align: middle;
+	background-color: #333333;
+    overflow: hidden;
+    display: inline-block;
+	margin-right: 8px;
+	background-repeat: no-repeat;
+    background-position: center;
+}
+
+div.zdoomclassinfowrapper {
+	display: inline-block;
+}
+
+div.zdoomclassextends {
+	font-style: italic;
+	display: inline-block;
+}
+
+div.zdoomclassname {
+	font-weight: bold;
+	display: inline-block;
+}
+
+div.zdoomclassreplaces {
+	display: inline-block;
+	margin: 0 5px;
+}
+
+div.zdoomclasscomment {
+	font-size: 8pt;
+}
+
+.new1 {
+	font-weight: bold;
+	color: #00EE00;
+}
+
+.new0 {
+	font-weight: bold;
+	color: #EE0000;
+}
+
+.redundant1 {
+	color: #00DD00;	
+}
+
+.redundant0 {
+	color: #DD0000;
+}
+
+ul {
+	list-style-type: none;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 16pt;
+	color: #FFFFFF;
+	display: block;
+	text-align: center;
+}
+h3 {
+	font-size: 11pt;
+	font-weight: bold;
+}
+
+.detailshower {
+    display: none;
+}
+
+.detailshower:checked + .zdoomclasscontent {
+    display:block;
+    max-height: 800px;
+}
