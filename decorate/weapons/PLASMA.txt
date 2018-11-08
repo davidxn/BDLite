@@ -167,6 +167,7 @@ Actor PlasmaAmmoPack : PlasmaAmmo replaces CellPack
 	}
 }
 
+/** A single-cell pickup, used for monster drops where the normal cell drop amount would be far too many */
 Actor PlasmaAmmoSingle : PlasmaAmmo
 {
 	Inventory.PickupMessage "Picked up a single cell"
@@ -179,6 +180,7 @@ Actor PlasmaAmmoSingle : PlasmaAmmo
 	}
 }
 
+/** Represents ammo loaded into the plasma gun */
 ACTOR PlasmaAmmoLoaded : Ammo
 {
    Inventory.Amount 0
