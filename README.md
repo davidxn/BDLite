@@ -1,6 +1,8 @@
 # BDLite
 BDLite is a mod for ZDoom with its roots in the popular "Brutal Doom" mod by Sergeant Mark IV. It aims to strip down and reorganize Brutal Doom's maze of classes and features, providing a better base for other level and mod authors to build on top of it.
 
+See the BDLite home page at http://teamouse.net/games/doom/bdlite/
+
 ## Anti-features
 * No fatalities!
 * No "last stand" states for monsters
