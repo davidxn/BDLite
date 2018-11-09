@@ -105,8 +105,7 @@ actor VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra
 	Game Doom
 }
 
-
-
+/** DeadMarineLegs and its subclasses are part of the frankly excessive number of dead players that can be spawned in place of Doom's gibs/dead player actor. Frankly I think these could do with some tidying up now that I look at them. */
 actor DeadMarineLegs
 {   Radius 10
     Height 6

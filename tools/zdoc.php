@@ -16,6 +16,7 @@ class ZDocumenter {
 	var $errors = [];
 	var $decorate_folder = '';
 	var $sprite_search_folder = '';
+	var $show_icons = false;
 	var $class_sprites_to_get = [];
 	var $target_folder = '.';
 	var $html = '';
@@ -42,6 +43,7 @@ class ZDocumenter {
 		$this->decorate_folder = isset($options['decorate']) ? $options['decorate'] : null;
 		$this->zscript_folder = isset($options['zscript']) ? $options['zscript'] : null;
 		$this->sprite_search_folder = isset($options['sprites']) ? $options['sprites'] : null;
+		$this->show_icons = (isset($options['sprites']) || isset($options['showicons'])) ? true : false;
 		$this->fragment = isset($options['fragment']); //Is set, not set to true. Bloody stupid PHP
 		$this->target_folder = isset($options['target']) ? $options['target'] : '.';
 	}
@@ -490,7 +492,7 @@ class ZDocumenter {
 		$html .= ('<div class="zdoomclasswrapper" style="margin-left:' . $depth*50 . 'px">');
 		$html .= ('<label for="zdoomclass-' . $classname . '">');
 		$html .= ('<div class="zdoomclass ' . $expandableclass . ' class_' . $data['category'] . '">');
-		if (!empty($this->sprite_search_folder) && isset($data['data']['sprite'])) {
+		if ($this->show_icons && isset($data['data']['sprite'])) {
 			$html .= ('<div class="zdoomclassspritewrapper" style="background-image: url(' . self::SPRITE_FOLDER_NAME . '/' . $data['data']['sprite'] . '.png);"></div>');
 		}
 		$html .= ('<div class="zdoomclassinfowrapper">');
@@ -641,6 +643,7 @@ $options = [
 	"zscript:",
 	"sprites:",
 	"fragment",
+	"showicons",
 	"target:"
 ];
 
@@ -651,6 +654,7 @@ if (empty($myoptions)) {
 	echo ('--zscript=./pk3/zscript/   Path to ZSCRIPT folder to parse classes' . PHP_EOL);
 	echo ('--sprites=./pk3/sprites/   Path to folder in which to search for PNG sprites' . PHP_EOL);
 	echo ('--fragment                 Include this to only output a single HTML file, no JS/CSS/sprites' . PHP_EOL);
+	echo ('--showicons                Show class icons if available. Automatically done if --sprites= is set.' . PHP_EOL);
 	echo ('--target=./output/         If "--fragment", name of the file to output.' . PHP_EOL);
 	echo ('                           Otherwise, name of the folder in which to generate the ZDoc files.' . PHP_EOL);
 	echo (PHP_EOL);

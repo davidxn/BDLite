@@ -1,3 +1,4 @@
+/** These actors represent the spent ammunition flying out of weapons, or cartridges that are left behind during a reload. They look for the bd_janitor_ammo CVAR/console variable to determine if they should stay indefinitely or gradually fade out after a while. */
 ACTOR BulletCasing
 {
    Height 2

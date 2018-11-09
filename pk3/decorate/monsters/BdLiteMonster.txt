@@ -1,27 +1,22 @@
-/*
-
-BdLiteMonster class!
+/**BdLiteMonster class!
 
 A BdLiteMonster needs:
 
 	The normal Doom monster stuff: Spawn, See, Missile/Melee, etc.
 	On death, monster jumps to Death.[damage type]
 	Each of these should have no animation, just set the flags needed to declare the monster dead, then jump to one of a random set of appropriate Die states
-	The Die state should spawn any blood/gib actors, play the death animation and hold the monster in a -1 state (or remove it if it's particularly serious).
+	The Die state should spawn any blood/gib actors, play the death animation and hold the monster in a -1 state (or remove it if the death is particularly serious).
 	
-	The damage types are!
+	The damage types from the player are:
 	
 	* Kick (covers all close range damage)
 	* SuperKick (berserk damage)
-	* Bullet
-	* Shotgun
-	* RapidFire
-	* Explosive
-	* Plasma
-	* Flak
-
-*/
-
+	* Bullet (Slow firing bullets)
+	* Shotgun (Scatter weapons like shotgun)
+	* RapidFire (Rapid fire tearing weapons)
+	* Explosive (Rockets, grenades)
+	* Plasma (Plasma and laser weapons)
+	* Flak (Big scatter weapons like the SSG) */
 ACTOR BdLiteMonster {
 	//$Category Monsters
 	Monster

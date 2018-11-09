@@ -15,14 +15,15 @@ BdBloodSpot - Pools of blood that use models to get a flat sprite on the ground
 	BdBloodPool
 		BdBloodPoolBlue
 BdBlood - Base for most blood things, makes these items non-randomized missiles that go through actors, etc
-	BdBloodSpawnerTiny
-	BdBloodSpawnerSmall - Play xdeath4, spawn some blood effects
-	BdBloodSpawnerMed - As above, just more effects
-	BdBloodSpawnerLarge - As above, even more
-	BdBloodSpawnerBlue
-	BdBloodSpawnerMelting - Lots of blood nearby, not so much flying, as if melting (used for plasma)
-	BdPlasmaGibSpawner - Spawns burned gibs for plasmafication
-	BdLostSoulFragmentSpawner
+	BdBloodSpawnerAbstract
+		BdBloodSpawnerTiny
+		BdBloodSpawnerSmall - Play xdeath4, spawn some blood effects
+		BdBloodSpawnerMed - As above, just more effects
+		BdBloodSpawnerLarge - As above, even more
+		BdBloodSpawnerBlue
+		BdBloodSpawnerMelting - Lots of blood nearby, not so much flying, as if melting (used for plasma)
+		BdPlasmaGibSpawner - Spawns burned gibs for plasmafication
+		BdLostSoulFragmentSpawner
 	BdFlyingBlood - Blood splatter to travel through the air, leaving a BdFlyingBloodTrail behind
 		BdFlyingBloodSmall - As above but scaled smaller
 		BdFlyingBloodSlow - Slower variant, so that it will splash nearer the origin
@@ -242,10 +243,13 @@ actor BdBloodPoolBlue: BdBloodPool
 translation "168:191=192:207","16:47=240:247"
 }
 
-
-actor BdBloodSpawnerTiny : BdBlood
-{
+/** BdBloodSpawners are shortcuts - they're spawned by dying enemies and will in turn spawn a selection of effects depending on the variant that's used. They also play an XDeath4 sound when spawned, so the enemy doesn't have to do this in its death sequence. All the abstract version of this class does is to add the BLOODSPLATTER flag, which will cause splatter actors to appear if this actor hits another enemy. */
+actor BdBloodSpawnerAbstract : BdBlood {
 	+BLOODSPLATTER
+}
+
+actor BdBloodSpawnerTiny : BdBloodSpawnerAbstract
+{
 	states
 	{
 	Spawn:
@@ -257,9 +261,8 @@ actor BdBloodSpawnerTiny : BdBlood
 	}
 }
 
-actor BdBloodSpawnerSmall : BdBlood
+actor BdBloodSpawnerSmall : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -271,9 +274,8 @@ actor BdBloodSpawnerSmall : BdBlood
 	}
 }
 
-actor BdBloodSpawnerMed : BdBlood
+actor BdBloodSpawnerMed : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -285,9 +287,8 @@ actor BdBloodSpawnerMed : BdBlood
 	}
 }
 
-actor BdBloodSpawnerBlue : BdBlood
+actor BdBloodSpawnerBlue : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -299,9 +300,8 @@ actor BdBloodSpawnerBlue : BdBlood
 	}
 }
 
-actor BdBloodSpawnerLarge : BdBlood
+actor BdBloodSpawnerLarge : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -314,9 +314,8 @@ actor BdBloodSpawnerLarge : BdBlood
 	}
 }
 
-actor BdBloodSpawnerMelting : BdBlood
+actor BdBloodSpawnerMelting : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -329,9 +328,8 @@ actor BdBloodSpawnerMelting : BdBlood
 	}
 }
 
-ACTOR BdPlasmaGibSpawner : BdBlood
+ACTOR BdPlasmaGibSpawner : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	states
 	{
 	Spawn:
@@ -345,9 +343,8 @@ ACTOR BdPlasmaGibSpawner : BdBlood
 	}
 }
 
-ACTOR BdLostSoulFragmentSpawner : BdBlood
+ACTOR BdLostSoulFragmentSpawner : BdBloodSpawnerAbstract
 {
-	+BLOODSPLATTER
 	States
 	{
 	Spawn:
@@ -356,7 +353,7 @@ ACTOR BdLostSoulFragmentSpawner : BdBlood
 	}
 }
 
-
+/** A mini-gib which splats to the ground and leaves a mark - works a lot like BdGib, except not tied to the apperance of a particular monster. */
 ACTOR BdBloodLump : BdBlood
 {
     Radius 8
@@ -390,6 +387,7 @@ ACTOR BdBloodLump : BdBlood
     }
 }
 
+/** Another mini-gib-bone thing */
 ACTOR BdBloodLumpBone : BdBloodLump
 {
     Speed 10
@@ -455,6 +453,7 @@ ACTOR BdFlyingBlood : BdBlood
     }
 }
 
+/** This class is a much blacker version of BdFlyingBlood, used for monster bits or mechanical parts that don't bleed. */
 ACTOR BdFlyingAsh : BdFlyingBlood
 {
 	Alpha 1
@@ -547,6 +546,7 @@ actor BdFlyingAshTrailStrong : BdFlyingBloodTrail
 	}
 }
 
+/** Slower blood that's used for an oozing effect close to the spawning monster. */
 ACTOR BdBloodDrop : BdBlood
 {
  speed 3
@@ -567,6 +567,7 @@ ACTOR BdBloodDrop : BdBlood
     }
 }
 
+/** Trails for BdBlood. */
 ACTOR BdBloodDropTrail: BdBlood
 {
  scale 0.4

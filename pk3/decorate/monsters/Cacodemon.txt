@@ -1,4 +1,4 @@
-ACTOR BdCacodemon : Cacodemon replaces Cacodemon
+ACTOR BdCacodemon : BdLiteMonster replaces Cacodemon
 {
     bloodtype "BdBleedBlue", "BdBleedBlue", "BdBleedSawBlue"
     +NOBLOODDECALS

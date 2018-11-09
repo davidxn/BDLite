@@ -1,5 +1,3 @@
-//Special effects
-
 /*
 
 BdFx - Base class
@@ -9,6 +7,7 @@ BdFx - Base class
 
 */
 
+/** Base class for special effects that the server shouldn't care about - basically BdBlood-like things that aren't blood. There should be more under here, but I honestly got tired */
 actor BdFx
 {
 	game Doom

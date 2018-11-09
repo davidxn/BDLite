@@ -1,5 +1,8 @@
 //Tracing projectiles goes here
 
+/** Tracers are a bit weird and inconsistent. The base class "Tracer" fired by the player is just decorative, so that hitscan weapons are actually hitscan and don't have a delay in crossing the map - however, enemy tracers actually do the damage directly and are used in place of firing hitscan bullets. I speculate that this is done so that the player doesn't get caught out by a hitscan attack that happens before the enemy fire reaches them visually.
+
+They're defined as models in modeldef.bdlite. */
 Actor Tracer: FastProjectile
 {
 	Projectile
@@ -28,14 +31,14 @@ Stop
 	}
 }
 
+/** Non-damaging tracer fired by the player's minigun */
 Actor MinigunTracer: Tracer
 {
 -DONTSPLASH
 damagetype RapidFire
 }
 
-
-
+/** Damaging tracer fired by BdShotgunGuy */
 Actor MonsterTracer: Tracer
 {
 +BLOODSPLATTER 
@@ -64,12 +67,13 @@ Death:
 }
 }
 
+/** Slightly less damaging tracer fired by BdZombieMan */
 Actor ZombieManTracer: MonsterTracer
 {
 damage (random(2,3))
 }
 
-
+/** Damaging tracer fired by BdCommando */
 Actor MonsterMinigunTracer: MonsterTracer
 {
 +BLOODSPLATTER 
@@ -89,6 +93,7 @@ Death:
 }
 }
 
+/** Devastating damaging tracer fired by the Spider Mastermind */
 Actor MastermindTracer: Tracer
 {
 +BLOODSPLATTER 
@@ -146,6 +151,7 @@ States
 }
 }
 
+/** These are effects that are spawned when the Mastermind fires. */
 actor MastermindTracerTrail
 {
     Scale 0.13
