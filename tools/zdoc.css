@@ -27,8 +27,8 @@ div.zdoomclass {
 	display: inline-block;
 	border: 1px solid #886666;
 	border-radius: 8px;
-	padding: 8px;
-	margin: 8px;
+	padding: 4px 8px;
+	margin: 4px;
 	background-color: #664444;
 	z-index: 999;
 	position: relative;
@@ -67,8 +67,8 @@ div.zdoomclasscontent {
     overflow: auto;
 	border: 1px solid #666666;
 	border-radius: 8px;
-	padding: 12px 8px 8px 8px;
-	margin: 8px 8px 8px 24px;
+	padding: 4px 8px 8px 8px;
+    margin: 8px 8px -16px 24px;
 	background-color: #444444;
 	position: relative;
 	top: -24px;
@@ -80,14 +80,18 @@ div.zdoomclasscontent {
     transition: max-height 200ms;
 }
 
+table.classtable, table.classtable table {
+	font-size: 10pt;
+}
+
 table.classtable > tbody > tr > td {
 	vertical-align: top;
 	padding: 8px;
 }
 
 div.zdoomclassspritewrapper {
-    height: 48px;
-    width: 48px;
+    height: 32px;
+    width: 32px;
     border: 1px solid #886666;
     border-radius: 4px;
     text-align: center;
@@ -101,6 +105,11 @@ div.zdoomclassspritewrapper {
 }
 
 div.zdoomclassinfowrapper {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+div.zdoomclassnamewrapper {
 	display: inline-block;
 }
 

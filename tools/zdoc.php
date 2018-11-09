@@ -2,14 +2,14 @@
 
 class ZDocumenter {
 	
-	const ZDOC_VERSION = 'BETA 0.2';
+	const ZDOC_VERSION = 'BETA 0.5';
 	
 	const REGEX_ACTOR_DEFINITION = '/^\h*actor\h+[A-Za-z0-9_]+?.*?\{/sim';
 	const REGEX_ZSCRIPT_ACTOR_DEFINITION = '/^\h*class\h+[A-Za-z0-9_]+?.*?\{/sim';
 	const REGEX_ACTOR_DOC = '/\/\*\*\h*(.*?)\h*\*\/.*?actor\h*([A-Za-z0-9_]+)/si';
 	const REGEX_STATE = '/^\h*[A-Za-z0-9]{4}\h+[a-zA-\]"]*\h+[-]?[0-9rR]+/m';
 
-	const PICTURE_BOX_SIZE = 48;
+	const PICTURE_BOX_SIZE = 32;
 
 	var $class_names_to_data = [];
 	var $classes_done = [];
@@ -17,6 +17,7 @@ class ZDocumenter {
 	var $decorate_folder = '';
 	var $sprite_search_folder = '';
 	var $show_icons = false;
+	var $resize_sprites = false;
 	var $class_sprites_to_get = [];
 	var $target_folder = '.';
 	var $html = '';
@@ -44,8 +45,9 @@ class ZDocumenter {
 		$this->zscript_folder = isset($options['zscript']) ? $options['zscript'] : null;
 		$this->sprite_search_folder = isset($options['sprites']) ? $options['sprites'] : null;
 		$this->show_icons = (isset($options['sprites']) || isset($options['showicons'])) ? true : false;
+		$this->resize_sprites = isset($options['resizesprites']);
 		$this->fragment = isset($options['fragment']); //Is set, not set to true. Bloody stupid PHP
-		$this->target_folder = isset($options['target']) ? $options['target'] : '.';
+		$this->target_folder = isset($options['targetdir']) ? $options['targetdir'] : '.';
 	}
 	
 	public function run() {
@@ -110,7 +112,15 @@ class ZDocumenter {
 	}
 	
 	public function resize_and_gather_image($source_file, $target_filename) {
-		try {			
+		
+		$target_path = $this->target_folder . '/' . self::SPRITE_FOLDER_NAME . '/' . $target_filename;
+		
+		if (!$this->resize_sprites) {
+			$this->log('Copying sprite image to ' . $target_path);
+			copy($source_file, $target_path);
+			return;
+		}
+		try {
 			@$img = imagecreatefrompng($source_file);
 			if ($img === false) {
 				return;
@@ -136,11 +146,10 @@ class ZDocumenter {
 			$transparency = imagecolorallocatealpha($target_img, 255, 255, 255, 127);
 			imagefilledrectangle($target_img, 0, 0, $target_width, $target_height, $transparency);
 			imagecopyresampled($target_img, $img, 0, 0, 0, 0, $target_width, $target_height, $source_width, $source_height);
-			$target_path = $this->target_folder . '/' . self::SPRITE_FOLDER_NAME . '/' . $target_filename;
-			$this->log('Writing image ' . $target_path);
+			$this->log('Writing icon image ' . $target_path);
 			imagepng($target_img, $target_path);
 		} catch (Exception $ex) {
-			$this->log('Could not create image from ' . $source_file, 1);			
+			$this->log('Could not create icon image from ' . $source_file, 1);			
 		}
 	}
 
@@ -489,7 +498,7 @@ class ZDocumenter {
 			$expandableclass = 'expandable';
 		}
 		
-		$html .= ('<div class="zdoomclasswrapper" style="margin-left:' . $depth*50 . 'px">');
+		$html .= ('<div class="zdoomclasswrapper" id="' . $classname .  '" style="margin-left:' . $depth*50 . 'px">');
 		$html .= ('<label for="zdoomclass-' . $classname . '">');
 		$html .= ('<div class="zdoomclass ' . $expandableclass . ' class_' . $data['category'] . '">');
 		if ($this->show_icons && isset($data['data']['sprite'])) {
@@ -500,7 +509,7 @@ class ZDocumenter {
 		if (isset($data['replacedby'])) {
 			$strikestyle = 'strike';
 		}
-		$html .= ('<div class="zdoomclassname ' . $strikestyle . '">' . $data['name'] . '</div>');
+		$html .= ('<div class="zdoomclassnamewrapper"><div class="zdoomclassname ' . $strikestyle . '">' . $data['name'] . '</div>');
 		if (isset($data['parent'])) {
 			$html .= ('<div class="zdoomclassextends ' . $strikestyle . '"> : ' . $data['parent'] . '</div>');
 		}
@@ -510,8 +519,9 @@ class ZDocumenter {
 		if (isset($data['replacedby'])) {
 			$html .= ('<div class="zdoomclasscomment">Replaced by ' . $this->class_names_to_data[$data['replacedby']]['name'] . '</div>');
 		}
-		$html .= ('<div class="zdoomclasscomment">' . (isset($data['comment']) ? nl2br($data['comment']) : '') . '</div>');
+		$html .= ('</div>'); //Class name wrapper
 		$html .= ('</div>'); //Class info wrapper
+		$html .= ('<div class="zdoomclasscomment">' . (isset($data['comment']) ? nl2br($data['comment']) : '') . '</div>');
 		$html .= ('</label></div>'); //Class
 
 		if ($data['category'] != 'notinproject') {
@@ -572,7 +582,7 @@ class ZDocumenter {
 	}
 	
 	public function get_flags_to_output($current_flags, $new_flags) {
-		//If this flag is new, or is mentioned and is the opposite of the parent, highlight it.
+		//If this flag is new, or is mentioned and is different from the parent, highlight it.
 		//If it's mentioned and is the same as the parent, highlight it as redundant.
 		$flags_to_output = [];
 		foreach ($new_flags as $new_flag) {
@@ -615,7 +625,6 @@ class ZDocumenter {
 <meta name="robots" content="index,follow" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo">	
 <link rel="stylesheet" type="text/css" href="./css/zdoc.css"/>
-<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
 </head>
 <body>
 	<div id="maincontainer">
@@ -644,29 +653,30 @@ $options = [
 	"sprites:",
 	"fragment",
 	"showicons",
-	"target:"
+	"resizesprites",
+	"targetdir:"
 ];
 
 $myoptions = getopt('', $options);
 if (empty($myoptions)) {
-	echo ('Usage: zdoc --decorate=? --zscript=? --sprites=? --fragment --target=?' . PHP_EOL);
+	echo ('Usage: zdoc --decorate=? --zscript=? --sprites=? --fragment --showicons --resizesprites --targetdir=?' . PHP_EOL);
 	echo ('--decorate=./pk3/decorate/ Path to DECORATE folder to parse classes' . PHP_EOL);
 	echo ('--zscript=./pk3/zscript/   Path to ZSCRIPT folder to parse classes' . PHP_EOL);
 	echo ('--sprites=./pk3/sprites/   Path to folder in which to search for PNG sprites' . PHP_EOL);
-	echo ('--fragment                 Include this to only output a single HTML file, no JS/CSS/sprites' . PHP_EOL);
+	echo ('--resizesprites            Resize found sprites to 32x32 icons. Alternatively, crash the tool if on Windows' . PHP_EOL);
+	echo ('--fragment                 Include this to only output a single HTML file, no CSS or header/footer' . PHP_EOL);
 	echo ('--showicons                Show class icons if available. Automatically done if --sprites= is set.' . PHP_EOL);
-	echo ('--target=./output/         If "--fragment", name of the file to output.' . PHP_EOL);
-	echo ('                           Otherwise, name of the folder in which to generate the ZDoc files.' . PHP_EOL);
+	echo ('--targetdir=./output/      Name of the folder in which to generate the ZDoc files.' . PHP_EOL);
 	echo (PHP_EOL);
 	echo ('Multiple Decorate and/or ZScript folders can be provided with comma separation (no space).' . PHP_EOL);
-	echo ('e.g. zdoc --zscript=doom2/zscript,mypk3/zscript --target=./myoutputfolder/' . PHP_EOL);
+	echo ('e.g. zdoc --zscript=doom2/zscript,mypk3/zscript --targetdir=./myoutputfolder/' . PHP_EOL);
 	die();
 }
 if (!isset($myoptions['decorate']) && !isset($myoptions['zscript'])) {
 	die("Please provide a DECORATE or ZSCRIPT folder to parse with --decorate= or --zscript=");
 }
-if (!isset($myoptions['target'])) {
-	die("Please provide a target folder with --target=, or use --fragment with --target=file.html to just generate an HTML fragment.");
+if (!isset($myoptions['targetdir'])) {
+	die("Please provide a target folder with --targetdir=");
 }
 
 $h = new ZDocumenter($myoptions);
