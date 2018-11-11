@@ -1,8 +1,4 @@
-/*
-
-BdLiteWeapon class!
-
-Weapons for BdLite should provide the following labels:
+/** BdLiteWeapons are extensions to the standard Doom weapon that allow for reloading and other special features (the global kick and grenade attacks). Weapons for BdLite should provide the following labels:
 
 Spawn: Sprite sitting in the game world
 Ready: Perform any animation/setup for unholstering the weapon, then fall through to ReadyLoop.
@@ -22,10 +18,7 @@ ReloadAmmo:
 	Loop, transferring ammo count from reserve to weapon, until the reserve is exhausted or the weapon is at capacity (use checkCapacity).
 NoNeedToReload:
 	Just transfers back to ReadyLoop, honestly, I'm not sure why this is here and might delete it
-
 */
-
-/** BdLiteWeapons are extensions to the standard Doom weapon that allow for reloading and other special features (the global kick and grenade attacks). See the text of the BdLiteWeapon base class for more */
 ACTOR BdLiteWeapon : DoomWeapon
 {
 	Game Doom
