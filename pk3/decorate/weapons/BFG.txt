@@ -30,11 +30,13 @@ ACTOR BdBFG : BdLiteWeapon Replaces BFG9000
 		Goto ReadyLoop
 	FireOK:
         TNT1 A 0 A_PlaySound("weapons/bfg/charge")
+        TNT1 A 0 A_AlertMonsters
 		BFGC ABABABABABABABAB 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         BFGF A 2 BRIGHT A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_PlaySound("weapons/bfg/fire")
 		TNT1 AAA 0 A_FireCustomMissile("GreenFlareSpawn",0,0,0,0)
         TNT1 A 0 A_Recoil(8)
+        TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("SuperBFGBall", 0, 0)
 		TNT1 A 0 A_TakeInventory("PlasmaAmmo", 40)
 		BFGF B 2 BRIGHT

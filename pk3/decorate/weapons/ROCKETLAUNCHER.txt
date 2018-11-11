@@ -31,6 +31,7 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
 
 		TNT1 A 0 A_FireCustomMissile("RedFlareSpawn",-5,0,0,0)
         TNT1 A 0 A_PlaySound ("weapons/rocket/fire")
+        TNT1 A 0 A_AlertMonsters
 		MISF A 1 BRIGHT A_FireCustomMissile("BdRocket", 0, 1, 0, -10)
 		TNT1 A 0 A_Takeinventory("RocketAmmoLoaded",1)
 		MISF BCD 1 BRIGHT

@@ -32,6 +32,7 @@ ACTOR BdPlasmaGun : BdLiteWeapon Replaces PlasmaRifle
         Goto Reload
 
         TNT1 A 0 A_PlaySound("weapons/plasma/fire", CHAN_WEAPON)
+        TNT1 A 0 A_AlertMonsters
 		TNT1 A 0 A_FireCustomMissile("PlasmaFlareSpawn", 0, 0, 0, 0)
 		PLSF A 1 BRIGHT A_FireCustomMissile("PlasmaBall", 0, 1, 0, 0)
 		TNT1 A 0 A_Takeinventory("PlasmaAmmoLoaded", 1)

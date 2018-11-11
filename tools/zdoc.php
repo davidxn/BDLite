@@ -2,7 +2,7 @@
 
 class ZDocumenter {
 	
-	const ZDOC_VERSION = 'BETA 0.5';
+	const ZDOC_VERSION = 'BETA 0.6';
 	
 	const REGEX_ACTOR_DEFINITION = '/^\h*actor\h+[A-Za-z0-9_]+?.*?\{/sim';
 	const REGEX_ZSCRIPT_ACTOR_DEFINITION = '/^\h*class\h+[A-Za-z0-9_]+?.*?\{/sim';
@@ -64,11 +64,12 @@ class ZDocumenter {
 			@mkdir($this->target_folder);
 			@mkdir($this->target_folder . '/css/');
 			copy('./zdoc.css', $this->target_folder . '/css/zdoc.css');
-			//If we have a sprites folder to search, gather any sprites that we need to find, and copy them to our sprite images folder
-			if (!empty($this->sprite_search_folder)) {
-				@mkdir($this->target_folder . '/' . self::SPRITE_FOLDER_NAME);
-				$this->gather_images($this->sprite_search_folder);
-			}
+		}
+		
+		//If we have a sprites folder to search, gather any sprites that we need to find, and copy them to our sprite images folder
+		if (!empty($this->sprite_search_folder)) {
+			@mkdir($this->target_folder . '/' . self::SPRITE_FOLDER_NAME);
+			$this->gather_images($this->sprite_search_folder);
 		}
 		
 		//Look at replaced classes. If anything is mentioned in another class's 'replaces' field, it's been replaced.
@@ -107,7 +108,7 @@ class ZDocumenter {
 		if (!$this->fragment) {
 			file_put_contents($this->target_folder . '/index.html', $this->html_header() . $this->html . $this->html_footer());
 		} else {
-			file_put_contents($this->target_folder, $this->html);
+			file_put_contents($this->target_folder . '/hierarchy.html', $this->html);
 		}
 	}
 	
@@ -646,7 +647,7 @@ EOL;
 }
 
 //
-
+echo ('ZDoc version ' . ZDocumenter::ZDOC_VERSION . PHP_EOL . PHP_EOL);
 $options = [
 	"decorate:",
 	"zscript:",
@@ -659,6 +660,8 @@ $options = [
 
 $myoptions = getopt('', $options);
 if (empty($myoptions)) {
+    echo ('A tool to parse Decorate/ZScript and generate a class hierarchy.' . ZDocumenter::ZDOC_VERSION . PHP_EOL . PHP_EOL);
+
 	echo ('Usage: zdoc --decorate=? --zscript=? --sprites=? --fragment --showicons --resizesprites --targetdir=?' . PHP_EOL);
 	echo ('--decorate=./pk3/decorate/ Path to DECORATE folder to parse classes' . PHP_EOL);
 	echo ('--zscript=./pk3/zscript/   Path to ZSCRIPT folder to parse classes' . PHP_EOL);
@@ -667,6 +670,7 @@ if (empty($myoptions)) {
 	echo ('--fragment                 Include this to only output a single HTML file, no CSS or header/footer' . PHP_EOL);
 	echo ('--showicons                Show class icons if available. Automatically done if --sprites= is set.' . PHP_EOL);
 	echo ('--targetdir=./output/      Name of the folder in which to generate the ZDoc files.' . PHP_EOL);
+	echo ('                           The root file will be called index.html without --fragment, hierarchy.html with --fragment.' . PHP_EOL);
 	echo (PHP_EOL);
 	echo ('Multiple Decorate and/or ZScript folders can be provided with comma separation (no space).' . PHP_EOL);
 	echo ('e.g. zdoc --zscript=doom2/zscript,mypk3/zscript --targetdir=./myoutputfolder/' . PHP_EOL);
