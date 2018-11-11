@@ -17,6 +17,7 @@ ACTOR BdArchVile: BdLiteMonster Replaces Archvile
 	ActiveSound "vile/active"
 	MeleeSound "vile/stop"
 	Obituary "%o was exploded by an Arch-Vile."
+	Species Archvile
 	States
 	{
     Spawn:

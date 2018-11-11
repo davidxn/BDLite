@@ -17,6 +17,7 @@ ACTOR BdZombieMan : BdLiteMonster Replaces ZombieMan
 	DropItem "RifleAmmo"
 	Obituary "%o was gunned down by a Zombie Soldier."
 	damagefactor "Flak", 20.0
+	Species Zombieman
 
 	States
 	{

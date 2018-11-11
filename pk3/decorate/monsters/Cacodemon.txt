@@ -22,6 +22,7 @@ ACTOR BdCacodemon : BdLiteMonster replaces Cacodemon
 	ActiveSound "caco/active"
 	Obituary "$OB_CACO"
 	HitObituary "$OB_CACOHIT"
+	Species Cacodemon
 	States
 	{	
     Spawn:

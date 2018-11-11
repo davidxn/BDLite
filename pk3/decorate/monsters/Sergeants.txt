@@ -16,6 +16,7 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
     damagefactor "Flak", 20.0
     MaxStepHeight 24
     MaxDropOffHeight 32
+	Species Sergeant
     States
     {
     Spawn:

@@ -1,4 +1,4 @@
-ACTOR FlakCannon : BdLiteWeapon 
+ACTOR FlakCannon : BdLiteWeapon
 {
 	Game Doom
     Radius 20
@@ -9,6 +9,7 @@ ACTOR FlakCannon : BdLiteWeapon
 	Weapon.AmmoUse 1
 	Weapon.KickBack 5
 	Weapon.SlotNumber 7
+	Weapon.SlotPriority 1
 	Inventory.PickupMessage "You found a flak cannon!"
 	Obituary "%k caught %o in a flak attack"
     Inventory.PickupSound "CLIPINSS"
@@ -20,7 +21,7 @@ ACTOR FlakCannon : BdLiteWeapon
 		Stop
 	Ready:
 		FKGN LMN 2
-        TNT1 A 0 A_PlaySound("weapons/ssg/fire")
+        TNT1 A 0 A_PlaySound("weapons/sshotc")
         FKGN AA 1
 		FKGN AA 1
 		TNT1 A 0 A_PlaySound("weapons/ssg/clip")
@@ -69,11 +70,11 @@ ACTOR FlakCannon : BdLiteWeapon
 		Goto ReadyLoop
 
 		FKGN DEFFFFF 2 
-		FKGN G 2 A_PlaySound("FlakCannon/Snap")
+		FKGN G 2 A_PlaySound("weapons/flakcannon/snap")
 		FKGN HHOOII 2        
 		FKGN I 4
 		FKGN JK 2
-        TNT1 A 0 A_playsound("FKRELOAD")
+        TNT1 A 0 A_playsound("weapons/flakcannon/reload")
 		FKGN L 6
 		FKGN MNAA 2
 		TNT1 A 0 A_ReFire

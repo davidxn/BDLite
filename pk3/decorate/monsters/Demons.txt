@@ -27,6 +27,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 	DamageType Eat
 	MaxStepHeight 32
 	MaxDropOffHeight 32
+	Species Demon
 	States
 	{
     Spawn:

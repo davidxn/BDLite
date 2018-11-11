@@ -20,6 +20,7 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
 	MaxDropOffHeight 32
 	+DONTHURTSPECIES
     Speed 6
+	Species Noble
 	States
 	{
     Spawn:

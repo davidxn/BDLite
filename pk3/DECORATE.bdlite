@@ -1,4 +1,5 @@
 // IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS - Sgt Mark
+// GO AHEAD AND BUILD ON THIS - DavidN
 
 //Weapons
 #include decorate/weapons/BDLITEWEAPON.txt
@@ -13,8 +14,8 @@
 #include decorate/weapons/PLASMA.txt
 #include decorate/weapons/BFG.txt
 
-//A couple of example new weapons!
-//#include decorate/weapons/FlakCannon.txt
+//A couple of example new weapons! PlasmaPistol is turned off due to being pretty useless
+#include decorate/weapons/FlakCannon.txt
 //#include decorate/weapons/PlasmaPistol.txt
 
 //Enemies

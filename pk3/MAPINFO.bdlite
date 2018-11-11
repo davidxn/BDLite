@@ -5,6 +5,9 @@ gameinfo {
 DoomEdNums
 {
   //New objects
+  2050 = FlakAmmo
+  2051 = FlakBox
+  2052 = FlakCannon
   2054 = PlasmaAmmoSingle
   3007 = BdMancubusFlamethrower
   5010 = BdRifle

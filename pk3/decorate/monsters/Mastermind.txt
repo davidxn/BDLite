@@ -41,6 +41,7 @@ ACTOR BdSpiderMastermind : BdLiteMonster Replaces SpiderMastermind
     damagefactor "Blood", 0.0
 	MaxStepHeight 24
 	MaxDropOffHeight 32
+	Species SpiderMastermind
 	States
 	{
     Spawn:

@@ -23,6 +23,7 @@ ACTOR BdMancubus : BdLiteMonster Replaces Fatso
     +DONTHURTSPECIES
 	+THRUGHOST
 	-FASTER
+	Species Mancubus
 
 	States
     {

@@ -19,6 +19,7 @@ ACTOR BdRevenant : BdLiteMonster Replaces Revenant
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	+DONTHURTSPECIES
+	Species Revenant
 	States
 	{
     Spawn:

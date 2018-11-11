@@ -25,6 +25,7 @@ ACTOR BdCyberdemon: BdLiteMonster Replaces Cyberdemon
 	DeathSound "cyber/death"
 	ActiveSound "cyber/active"
 	Obituary "$OB_CYBORG"
+	Species Cyberdemon
 	States
 	{
 	

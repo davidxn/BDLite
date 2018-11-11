@@ -1100,3 +1100,19 @@ pointlight Flashlight3
     size 64
     offset 0 0 0
 }
+
+Flickerlight2 FLAKHI
+{
+ Color 1.0 1.0 0.0
+ Size 50
+ SecondarySize 10
+ Interval 0.01
+}
+
+Flickerlight2 FLAKLO
+{
+ Color 1.0 1.0 0.0
+ Size 30
+ SecondarySize 5
+ Interval 0.01
+}

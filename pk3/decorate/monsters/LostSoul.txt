@@ -4,11 +4,6 @@ Actor MaxLostSoulRange : Inventory
 inventory.maxamount 50
 }
 
-//===========================================================================
-//
-// Lost Soul
-//
-//===========================================================================
 ACTOR BdLostSoul: BdLiteMonster Replaces LostSoul
 {
 	//$Sprite LSOLA1
@@ -37,6 +32,7 @@ ACTOR BdLostSoul: BdLiteMonster Replaces LostSoul
 	Obituary "$OB_SKULL"
 	BloodType "LostSoulBlood"
     Alpha 1
+	Species LostSoul
 	States
 	{
 	Spawn:

@@ -19,6 +19,7 @@ ACTOR BdPainElemental : BdLiteMonster Replaces PainElemental
 	ActiveSound "pain/active"
 	PainChance "Kick", 255
     damagetype Flames
+	Species PainElemental
 	States
 	{
 	Spawn:

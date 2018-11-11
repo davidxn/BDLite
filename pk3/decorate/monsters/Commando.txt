@@ -25,6 +25,7 @@ ACTOR BdCommando: BdLiteMonster Replaces ChaingunGuy
 	ActiveSound "grunt/active"
 	DropItem "BdMinigun"
 	Obituary "%o was mowed down by a Zombie Commando."
+	Species Commando
 	States
 	{
     Spawn:

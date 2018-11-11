@@ -107,6 +107,9 @@ weapons/bfg/charge			"sounds/weapons/bfg/bfg-charge"
 weapons/bfg/fire			"sounds/weapons/bfg/bfg-fire"
 $rolloff weapons/bfg/explode 2000 1500
 
+weapons/flakcannon/snap 	"sounds/weapons/flakcannon/flak-open"
+weapons/flakcannon/reload 	"sounds/weapons/flakcannon/flak-reload.ogg"
+
 weapons/grenade/pin     	"sounds/weapons/grenade/grenade-pin"
 weapons/grenade/bounce  	"sounds/weapons/grenade/grenade-bounce"
 weapons/grenade/toss    	"sounds/weapons/grenade/grenade-toss"
