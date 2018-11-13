@@ -4,6 +4,8 @@ class ZDocumenter {
 	
 	const ZDOC_VERSION = 'BETA 0.6';
 	
+	const ZDOOM_ACTOR_FLAG_URL = 'https://zdoom.org/wiki/Actor_flags#';
+	
 	const REGEX_ACTOR_DEFINITION = '/^\h*actor\h+[A-Za-z0-9_]+?.*?\{/sim';
 	const REGEX_ZSCRIPT_ACTOR_DEFINITION = '/^\h*class\h+[A-Za-z0-9_]+?.*?\{/sim';
 	const REGEX_ACTOR_DOC = '/\/\*\*\h*(.*?)\h*\*\/.*?actor\h*([A-Za-z0-9_]+)/si';
@@ -562,7 +564,8 @@ class ZDocumenter {
 		
 		$html = '<h3>Flags</h3><ul>';
 		foreach($flags_to_output as $flag) {
-			$html .= '<li class="' . $flag['status'] . $flag['value'] . '">' . ($flag['value'] == 1 ? '+' : '-') . $flag['name'] . '</li>';
+			$html .= '<li class="' . $flag['status'] . $flag['value'] . '">' . ($flag['value'] == 1 ? '+' : '-');
+			$html .= '<a href="' . self::ZDOOM_ACTOR_FLAG_URL . $flag['name'] . '">' . $flag['name'] . '</a></li>';
 		}
 		$html .= '</ul>';
 		return $html;

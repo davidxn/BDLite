@@ -963,8 +963,6 @@ Glow
 	{
 	    BLOOD1
 		BLOOD2
-		//BLOOD3
-		
 		FLAT17
 		FLAT2
 		FLAT22
@@ -1005,14 +1003,56 @@ Glow
 		
 		SLIME03
 		SLIME02
-		SLIME01
+		SLIME01	
+	}
+	Walls
+	{
+	    BLOOD1
+		BLOOD2
+		FLAT17
+		FLAT2
+		FLAT22
+		FLOOR1_7
+		RROCK01
+		RROCK02
 		
-		}
+		
+		RROCK05
+		RROCK06
+		RROCK07
+		RROCK08
+
+		
+		tlite6_1
+		tlite6_4
+		grnlite1
+		ceil3_4
+		floor1_7
+		gate4
+		gate1
+		gate3
+		TLITE6_6
+		
+		NUKAGE1
+		NUKAGE2
+		NUKAGE3
+		LAVA1
+		LAVA2
+		LAVA3
+		LAVA4
+		DOORBLU
+		DOORBLU2
+		DOORRED
+		DOORRED2
+		DOORYEL
+		DOORYEL2
+		
+		SLIME03
+		SLIME02
+		SLIME01	
+	}
+
 }
-
-
-
-
 
 pointlight SpecialLightz
 {
