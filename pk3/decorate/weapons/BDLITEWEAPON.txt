@@ -16,11 +16,10 @@ ReloadAnimate:
 	Perform animation for reload then fall through to ReloadAmmo.
 ReloadAmmo:
 	Loop, transferring ammo count from reserve to weapon, until the reserve is exhausted or the weapon is at capacity (use checkCapacity).
-NoNeedToReload:
-	Just transfers back to ReadyLoop, honestly, I'm not sure why this is here and might delete it
 */
 ACTOR BdLiteWeapon : DoomWeapon
 {
+    //$Category Weapons
 	Game Doom
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
@@ -33,7 +32,6 @@ ACTOR BdLiteWeapon : DoomWeapon
 	{
 	Ready:
 	ReadyLoop:
-	NoNeedToReload:
 	Deselect:
 	Fire:
 	Flash:

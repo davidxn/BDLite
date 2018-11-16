@@ -6,7 +6,18 @@ body {
 	color: #DDDDDD;
 }
 
-a { text-decoration: none; }
+a {
+	color: #9999CC;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+ul.flags a {
+	color: inherit;
+}
 
 div#maincontainer {
 	margin-left: 50px;
@@ -32,6 +43,42 @@ div.zdoomclass {
 	background-color: #664444;
 	z-index: 999;
 	position: relative;
+}
+
+div.zdoomclasspageheader {
+	display: block;
+	border: 1px solid #886666;
+	border-radius: 8px;
+	padding: 4px 8px;
+	margin: 4px;
+	background-color: #664444;
+	position: relative;
+	height: 64px;
+}
+
+div.zdoomclasspageheaderwrapper {
+	margin: 32px 0;
+    position: absolute;
+    width: 90%;
+}
+
+img.zdoomclasspageheaderimage {
+	float: left;
+    height: 128px;
+    image-rendering: pixelated;
+    position: relative;
+    top: -32px;
+}
+
+div.zdoomclasspagetitle {
+	float: left;
+	font-size: 24pt;
+	line-height: 64px;
+	padding-left: 32px;
+}
+
+div.zdoomclasspageheaderspacer {
+	height: 160px;
 }
 
 .expandable {
@@ -173,4 +220,27 @@ h3 {
 .detailshower:checked + .zdoomclasscontent {
     display:block;
     max-height: 800px;
+}
+
+div.zdoccode {
+    font-family: 'Roboto Mono', monospace;
+    white-space: pre-wrap;
+    font-size: 9pt;
+    background-color: #EEEEEE;
+    color: #111111;
+    padding: 4px 8px;
+	margin-right: 50px;
+}
+
+div.zdoomclasspagecomment {
+	font-size: 10pt;
+	margin-left: 40px;
+}
+
+a.mainpagelink {
+	font-weight: bold;
+    position: absolute;
+    top: 8px;
+    font-size: 12pt;
+    left: 4px;
 }
