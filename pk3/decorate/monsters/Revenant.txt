@@ -273,7 +273,7 @@ ACTOR RevenantAttack: BaronBall
 {
 	Radius 24
 	Height 16
-	DamageType RVFT
+	DamageType Kick
 	Projectile 
 	+RANDOMIZE
 	+FORCEXYBILLBOARD

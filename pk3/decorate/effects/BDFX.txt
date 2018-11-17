@@ -30,7 +30,6 @@ ACTOR BdAshes: BdFx
     DeathSound "none"
 	SeeSound "none"
 	BounceFactor 0.01
-	Decal none
     Scale 1.0
     States
     {

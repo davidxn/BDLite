@@ -90,7 +90,7 @@ ACTOR ShotgunParticles
      Spawn:
 	  TNT1 A 2
        SPRK SSS 1 Bright A_FadeOut(0.02)
-	   TNT1 A 0 A_ChangeFlag(BdBleed, 0)
+	   TNT1 A 0 A_ChangeFlag("BLOODSPLATTER", 0)
 	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.03)
         stop
      Death:

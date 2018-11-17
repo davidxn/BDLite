@@ -167,7 +167,6 @@ ACTOR KickAttack: FastProjectile
     Speed 30
 	SeeSound "none"
 	DeathSound "none"
-	Decal "none"
 	States
 	{
 	Spawn:
