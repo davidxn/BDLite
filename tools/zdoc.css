@@ -20,7 +20,7 @@ ul.flags a {
 }
 
 div#maincontainer {
-	margin-left: 50px;
+	margin: 0 50px;
 }
 
 div.indenter {
@@ -62,23 +62,26 @@ div.zdoomclasspageheaderwrapper {
     width: 90%;
 }
 
-img.zdoomclasspageheaderimage {
+div.zdoomclasspageheaderimage {
 	float: left;
     height: 128px;
+	width: 128px;
     image-rendering: pixelated;
     position: relative;
     top: -32px;
+	background-size: 64px;
+	background-repeat: no-repeat;
+    background-position: center;
 }
 
 div.zdoomclasspagetitle {
 	float: left;
-	font-size: 24pt;
+	font-size: 20pt;
 	line-height: 64px;
-	padding-left: 32px;
 }
 
 div.zdoomclasspageheaderspacer {
-	height: 160px;
+	height: 130px;
 }
 
 .expandable {
@@ -235,12 +238,23 @@ div.zdoccode {
 div.zdoomclasspagecomment {
 	font-size: 10pt;
 	margin-left: 40px;
+	margin-right: 60px;
 }
 
 a.mainpagelink {
-	font-weight: bold;
+    display: inline-block;
+    background-color: #555555;
+    border: 1px solid #777777;
+    border-radius: 7px;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px;
+    color: #EEEEEE;
+    top: 54px;
+    left: 10px;
     position: absolute;
-    top: 8px;
-    font-size: 12pt;
-    left: 4px;
+}
+
+a.mainpagelink:hover {
+	text-decoration: none;
 }

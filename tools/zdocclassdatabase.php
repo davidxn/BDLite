@@ -44,6 +44,43 @@ class ZDocClassDatabase {
 			return ($class->definition_filename == $file);
 		});
 	}
+	
+	public function get_surrounding_tree($name) {
+		$name = strtolower($name);
+		$class = $this->get_zclass($name);
+		$subclasses = array_values($this->get_subclasses($name));
+		$tree_subclasses = [];
+		foreach ($subclasses as $subclass) {
+			$tree_subclasses[] = ['class' => $subclass, 'subclasses' => []];
+		}
+		$tree = ['class' => $class, 'subclasses' => $tree_subclasses];
+		while (true) {
+			$class = $this->get_zclass($class->parent_class_name);
+			if (!$class) {
+				break;
+			}
+			$tree = ['class' => $class, 'subclasses' => [$tree]];
+		}
+		return $tree;
+	}
+	
+	//Stupid name of function, I can't think of a better word for "flags, properties, etc"
+	public function get_parent_facts($name) {
+		$tree = $this->get_surrounding_tree($name);
+		
+		$flags = [];
+		$properties = [];
+		//Having got the tree, iterate down gathering all flags until we hit our class
+		while (strtolower($tree['class']->name) != $name) {
+			$flags = array_merge($flags, $tree['class']->flags);
+			$properties = array_merge($properties, $tree['class']->properties);
+			if (count($tree['subclasses']) == 0) {
+				break;
+			}
+			$tree = $tree['subclasses'][0];
+		}
+		return ['flags' => $flags, 'properties' => $properties];
+	}
 
 	public function get_reader_errors() {
 		return $this->zdoc_class_reader->errors;

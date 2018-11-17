@@ -4,13 +4,11 @@ namespace dxn\zdoc;
 require_once('./zdocclassdatabase.php');
 require_once('./zdocclass.php');
 
-//TODO Show class hierarchy instead of just direct subclasses on pages
-//TODO Show inherited versus active flags and properties
 //TODO Show vars and constants
 
 class ZDocumenter {
 	
-	const ZDOC_VERSION = 'BETA 0.7';
+	const ZDOC_VERSION = 'BETA 0.8';
 	
 	const ZDOOM_ACTOR_FLAG_URL = 'https://zdoom.org/wiki/Actor_flags#';
 
@@ -281,10 +279,10 @@ class ZDocumenter {
 		if (isset($data->replaced_by_class_name)) {
 			$strikestyle = 'strike';
 		}
-		$html .= '<a class="mainpagelink" href="./index.html#' . $classname . '">&lt; Class list</a>';
+		$html .= '<a class="mainpagelink" href="./index.html#' . $classname . '">&lt;</a>';
 		$html .= '<div class="zdoomclasspageheaderwrapper">';
 		$html .= '<div class="zdoomclasspageheader">';
-		$html .= '<img class="zdoomclasspageheaderimage" src="./sprites/' . $data->sprite_name . '.png" alt=""/>';
+		$html .= '<div class="zdoomclasspageheaderimage" style="background-image: url(\'./sprites/' . $data->sprite_name . '.png\')">&nbsp;</div>';
 		$html .= '<div class="zdoomclasspagetitle">' . $data->name;
 		if (isset($data->parent_class_name)) {
 			$html .= ('<div class="zdoomclassextends ' . $strikestyle . '"> : ' . $this->html_class_link($data->parent_class_name) . '</div>');
@@ -305,8 +303,11 @@ class ZDocumenter {
 		
 		$html .= '<div class="content">';
 		$html .= '<h3>File</h3><ul><li>Defined in ' . $data->definition_filename . '</li></ul>';
-		$html .= $this->html_flags([], $data->flags);
-		$html .= $this->html_properties([], $data->properties);
+		
+		$parent_facts = $this->zdoc_class_database->get_parent_facts($classname);
+		
+		$html .= $this->html_flags($parent_facts['flags'], $data->flags);
+		$html .= $this->html_properties($parent_facts['properties'], $data->properties);
 
 		$html .= '<h3>States</h3>';
 		if (empty(trim($data->states))) {
@@ -315,11 +316,9 @@ class ZDocumenter {
 			$html .= '<div class="zdoccode">' . str_replace("\t", "    ", $data->states) . '</div>';
 		}
 		
-		$html .= '<h3>Subclasses</h3><ul>';
-		foreach ($this->zdoc_class_database->get_subclasses($classname) as $subclass) {
-			$html .= '<li>' . $this->html_class_link($subclass->name) . '</li>';
-		}
-		$html .= '</ul>';
+		$html .= '<h3>Class Hierarchy</h3>';
+		$tree = $this->zdoc_class_database->get_surrounding_tree($classname);
+		$html .= $this->html_class_tree($tree, [$classname]);
 
 		$html .= '<h3>Classes defined in ' . $data->definition_filename . '</h3><ul>';
 		foreach ($this->zdoc_class_database->get_neighbours($classname) as $neighbour) {
@@ -332,6 +331,19 @@ class ZDocumenter {
 		$header = str_replace("ZDoc Hierarchy", $data->name, $this->html_header());
 		
 		file_put_contents($this->target_folder . '/' . strtolower($classname) . '.html', $header . $html . $this->html_footer());
+	}
+	
+	public function html_class_tree($tree, $highlight = []) {
+		$classlink = $this->html_class_link($tree['class']->name);
+		if (in_array(strtolower($tree['class']->name), $highlight)) {
+			$classlink = '<b>' . $classlink . '</b>';
+		}
+		$html = '<ul><li>' . $classlink . '</li>';
+		foreach ($tree['subclasses'] as $subclass) {
+			$html .= $this->html_class_tree($subclass, $highlight);
+		}
+		$html .= '</ul>';
+		return $html;
 	}
 	
 	public function html_class_link($classname) {

@@ -65,7 +65,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
 		
 	See:
 		TNT1 A 0
-		TNT1 A 0 A_CheckSight("LostSight")
+		TNT1 A 0 A_CheckSight("SeeLostSight")
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 50)
 		SARG AA 2 A_Chase
 		TNT1 A 0 A_Recoil(-1)
