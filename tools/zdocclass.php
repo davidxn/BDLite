@@ -21,4 +21,6 @@ class ZDocClass {
 	var $comment = '';
 	var $category = '';
 	var $states = '';
+	
+	var $doomed_number = null;
 }

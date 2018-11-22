@@ -32,16 +32,16 @@ class ZDocClassDatabase {
 	
 	public function get_subclasses($name) {
 		$name = strtolower($name);
-		return array_filter($this->names_to_class_data, function($class) use ($name) {
-			return (strtolower($class->parent_class_name) == $name);
+		return array_filter($this->names_to_class_data, function($zclass) use ($name) {
+			return (strtolower($zclass->parent_class_name) == $name);
 		});
 	}
 	
 	public function get_neighbours($name) {
 		$name = strtolower($name);
 		$file = $this->get_zclass($name)->definition_filename;
-		return array_filter($this->names_to_class_data, function($class) use ($file) {
-			return ($class->definition_filename == $file);
+		return array_filter($this->names_to_class_data, function($zclass) use ($file) {
+			return ($zclass->definition_filename == $file);
 		});
 	}
 	
@@ -84,5 +84,9 @@ class ZDocClassDatabase {
 
 	public function get_reader_errors() {
 		return $this->zdoc_class_reader->errors;
+	}
+	
+	public function get_doomed_numbers() {
+		return $this->zdoc_class_reader->get_doomed_numbers();
 	}
 }

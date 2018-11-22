@@ -5,6 +5,7 @@ require_once('./zdocclassdatabase.php');
 require_once('./zdocclass.php');
 
 //TODO Show vars and constants
+//TODO If ZScript (has a Default {} section), only get flags/props from there.
 
 class ZDocumenter {
 	
@@ -230,6 +231,9 @@ class ZDocumenter {
 		if (!empty($data->replaces_class_name)) {
 			$html .= '<div class="zdoomclassreplaces ' . $strikestyle . '"> replaces ' . $data->replaces_class_name . '</div>';
 		}
+		if (!empty($data->doomed_number)) {
+			$html .= ' (' . $data->doomed_number . ')';
+		}
 		if (!empty($data->replaced_by_class_name)) {
 			$this->log("Attempting to get " . $data->replaced_by_class_name);
 			$replacer_class = $this->zdoc_class_database->get_zclass($data->replaced_by_class_name);
@@ -290,6 +294,9 @@ class ZDocumenter {
 		if (isset($data->replaces_class_name)) {
 			$html .= ('<div class="zdoomclassreplaces ' . $strikestyle . '"> replaces ' . $this->html_class_link($data->replaces_class_name) . '</div>');
 		}
+		if (!empty($data->doomed_number)) {
+			$html .= ' (' . $data->doomed_number . ')';
+		}		
 		if (isset($data->replaced_by_class_name)) {
 			$html .= ('<div class="zdoomclasscomment">Replaced by ' . $this->html_class_link($this->zdoc_class_database->get_zclass($data->replaced_by_class_name)->name) . '</div>');
 		}
@@ -458,7 +465,8 @@ $options = [
 	"fragment",
 	"showicons",
 	"resizesprites",
-	"targetdir:"
+	"targetdir:",
+	"mapinfo:"
 ];
 
 $myoptions = getopt('', $options);
@@ -469,6 +477,7 @@ if (empty($myoptions)) {
 	echo ('--decorate=./pk3/decorate/ Path to DECORATE folder to parse classes' . PHP_EOL);
 	echo ('--zscript=./pk3/zscript/   Path to ZSCRIPT folder to parse classes' . PHP_EOL);
 	echo ('--sprites=./pk3/sprites/   Path to folder in which to search for PNG sprites' . PHP_EOL);
+	echo ('--mapinfo=./pk3/mapinfo    Location of MAPINFO file(s) from which to get DoomEd numbers' . PHP_EOL);
 	echo ('--resizesprites            Resize found sprites to 32x32 icons. Alternatively, crash the tool if on Windows' . PHP_EOL);
 	echo ('--fragment                 Include this to only output a single HTML file, no CSS or header/footer' . PHP_EOL);
 	echo ('--showicons                Show class icons if available. Automatically done if --sprites= is set.' . PHP_EOL);

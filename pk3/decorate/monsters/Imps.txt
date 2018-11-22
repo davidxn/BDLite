@@ -32,12 +32,6 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 		TROS B 10 A_Look
 		Loop
 	See:
-		TNT1 A 0
-		TROT A 4 A_FaceTarget
-		TROT B 4
-		TROT C 10
-		Goto SeeContinue	
-	SeeContinue:
 		TROO AA 2 A_Chase
 		TROO AA 2 A_Chase
 		TROO BB 2 A_Chase
@@ -51,7 +45,7 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
 	Melee:
 		TROO E 1 A_FaceTarget
 		TNT1 A 0 A_JumpIfCloser(50, "Scratch")
-		TROT CD 4
+		TROT ABCD 2
         TNT1 A 0 ThrustThingZ(0,25,0,1)
         TNT1 A 0 A_FaceTarget		
         TNT1 A 0 A_Recoil (-10)
