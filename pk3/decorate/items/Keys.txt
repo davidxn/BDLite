@@ -4,11 +4,11 @@ ACTOR SmoothRedCard : redcard replaces redcard
   States
   {
   Spawn:
-	RKEY abc 3 bright
-	RKEY def 3
-	RKEY ghi 3 bright
-	RKEY jkl 3
-	loop
+    RKEY abc 3 bright
+    RKEY def 3
+    RKEY ghi 3 bright
+    RKEY jkl 3
+    loop
   }
 }
 
@@ -18,11 +18,11 @@ ACTOR SmoothBlueCard : bluecard replaces bluecard
   States
   {
   Spawn:
-	bKEY abc 3 bright
-	bKEY def 3
-	bKEY ghi 3 bright
-	bKEY jkl 3
-	loop
+    bKEY abc 3 bright
+    bKEY def 3
+    bKEY ghi 3 bright
+    bKEY jkl 3
+    loop
   }
 }
 
@@ -32,11 +32,11 @@ ACTOR SmoothYellowCard : yellowcard replaces yellowcard
   States
   {
   Spawn:
-	yKEY abc 3 bright
-	yKEY def 3
-	yKEY ghi 3 bright
-	yKEY jkl 3
-	loop
+    yKEY abc 3 bright
+    yKEY def 3
+    yKEY ghi 3 bright
+    yKEY jkl 3
+    loop
   }
 }
 
@@ -46,9 +46,9 @@ ACTOR SmoothSkullRed : redskull replaces redskull
   States
   {
   Spawn:
-	RSKU abcd 3 bright
-	RSKU efgh 3
-	loop
+    RSKU abcd 3 bright
+    RSKU efgh 3
+    loop
   }
 }
 
@@ -58,9 +58,9 @@ ACTOR SmoothSkullBlu : blueskull replaces blueskull
   States
   {
   Spawn:
-	BSKU abcd 3 bright
-	BSKU efgh 3
-	loop
+    BSKU abcd 3 bright
+    BSKU efgh 3
+    loop
   }
 }
 
@@ -70,8 +70,8 @@ ACTOR SmoothSkullYel : yellowskull replaces yellowskull
   States
   {
   Spawn:
-	YSKU abcd 3 bright
-	YSKU efgh 3
-	loop
+    YSKU abcd 3 bright
+    YSKU efgh 3
+    loop
   }
 }

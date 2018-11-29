@@ -1,5 +1,5 @@
 gameinfo {
-	playerclasses = "Doomer"
+    playerclasses = "Doomer"
 }
 
 DoomEdNums

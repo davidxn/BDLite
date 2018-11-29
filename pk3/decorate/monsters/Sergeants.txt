@@ -12,11 +12,11 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
     PainSound "grunt/pain"
     DeathSound "grunt/death"
     ActiveSound "grunt/active"
-    Obituary "%o got his face splattered on the wall by a Zombie Shotgunner."
+    Obituary "%o was splattered by a Sergeant."
     damagefactor "Flak", 20.0
     MaxStepHeight 24
     MaxDropOffHeight 32
-	Species Sergeant
+    Species Sergeant
     States
     {
     Spawn:
@@ -242,8 +242,8 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 A 0 A_SpawnItem ("BdBloodSpot")
         TNT1 A 1 //1-tic delay required after XDeath
         Stop
-	Raise:
-		SPOS LKJIH 6
-		Goto See
+    Raise:
+        SPOS LKJIH 6
+        Goto See
     }
 }

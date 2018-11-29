@@ -1,111 +1,111 @@
 ACTOR HealthPlus : Health Replaces HealthBonus
 {
-	Game Doom
-	SpawnID 152
-	+COUNTITEM
-	+INVENTORY.ALWAYSPICKUP
-	Inventory.Amount 2
-	Inventory.MaxAmount 9999
-	Inventory.PickupMessage "$GOTHTHBONUS"
-	States
-	{
-	Spawn:
-		BON1 ABCDCB 2
-		Loop
-	}
+    Game Doom
+    SpawnID 152
+    +COUNTITEM
+    +INVENTORY.ALWAYSPICKUP
+    Inventory.Amount 2
+    Inventory.MaxAmount 9999
+    Inventory.PickupMessage "$GOTHTHBONUS"
+    States
+    {
+    Spawn:
+        BON1 ABCDCB 2
+        Loop
+    }
 }
 
 Actor ArmorShard : BasicArmorBonus Replaces ArmorBonus
 {
-	Game Doom
-	SpawnID 22
-	Radius 20
-	Height 16
-	Inventory.Pickupmessage "$GOTARMBONUS"
-	Inventory.Icon "BON2A0"
-	Armor.Savepercent 33.335
-	Armor.Saveamount 2
-	Armor.Maxsaveamount 9999
-	+COUNTITEM
-	+INVENTORY.ALWAYSPICKUP
-	States
-	{
-	Spawn:
-		BON2 AAABCDB 2
-		Loop
-	Spawn2:
-		BON2 A 2
-		Goto Spawn
-	}
+    Game Doom
+    SpawnID 22
+    Radius 20
+    Height 16
+    Inventory.Pickupmessage "$GOTARMBONUS"
+    Inventory.Icon "BON2A0"
+    Armor.Savepercent 33.335
+    Armor.Saveamount 2
+    Armor.Maxsaveamount 9999
+    +COUNTITEM
+    +INVENTORY.ALWAYSPICKUP
+    States
+    {
+    Spawn:
+        BON2 AAABCDB 2
+        Loop
+    Spawn2:
+        BON2 A 2
+        Goto Spawn
+    }
 }
 
 ACTOR BdStimpack : Health Replaces Stimpack
 {
-	Game Doom
-	SpawnID 23
-	Inventory.Amount 10
-	Inventory.PickupMessage "$GOTSTIM"
-	States
-	{
-	Spawn:
-		STIM AABC 8
-		Loop
-	}
+    Game Doom
+    SpawnID 23
+    Inventory.Amount 10
+    Inventory.PickupMessage "$GOTSTIM"
+    States
+    {
+    Spawn:
+        STIM AABC 8
+        Loop
+    }
 }
 
 ACTOR BdMedikit : Health Replaces Medikit
 {
-	Game Doom
-	SpawnID 24
-	Inventory.Amount 25
-	Inventory.PickupMessage "$GOTMEDIKIT"
-	Health.LowMessage 25, "$GOTMEDINEED"
-	States
-	{
-	Spawn:
+    Game Doom
+    SpawnID 24
+    Inventory.Amount 25
+    Inventory.PickupMessage "$GOTMEDIKIT"
+    Health.LowMessage 25, "$GOTMEDINEED"
+    States
+    {
+    Spawn:
         MEDI ABCD 8
-		Loop
-	}
+        Loop
+    }
 }
 
 Actor LightArmor : BasicArmorPickup Replaces GreenArmor
 {
-	Game Doom
-	Scale 1.3
-	SpawnID 68
-	Radius 20
-	Height 16
-	Inventory.Pickupmessage "Picked up the Light Armor"
-	Inventory.Icon "ARM1A0"
-	Armor.SavePercent 40
-	Armor.SaveAmount 100
+    Game Doom
+    Scale 1.3
+    SpawnID 68
+    Radius 20
+    Height 16
+    Inventory.Pickupmessage "Picked up the Light Armor"
+    Inventory.Icon "ARM1A0"
+    Armor.SavePercent 40
+    Armor.SaveAmount 100
     Inventory.PickupSound "pickups/armor"
-	States
-	{
-	Spawn:
-		ARM1 A 10
-		ARM1 BBBBBB 2 bright A_SpawnItem("GreenFlareMedium",0,10)
-		loop
-	}
+    States
+    {
+    Spawn:
+        ARM1 A 10
+        ARM1 BBBBBB 2 bright A_SpawnItem("GreenFlareMedium",0,10)
+        loop
+    }
 }
 
 Actor HeavyArmor : BasicArmorPickup Replaces BlueArmor
 {
-	Game Doom
-	SpawnID 69
-	Scale 1.3
-	Radius 20
-	Height 16
-	Inventory.Pickupmessage "Picked up the Heavy Armor"
-	Inventory.Icon "ARM2A0"
-	Armor.Savepercent 70
-	Armor.Saveamount 200
+    Game Doom
+    SpawnID 69
+    Scale 1.3
+    Radius 20
+    Height 16
+    Inventory.Pickupmessage "Picked up the Heavy Armor"
+    Inventory.Icon "ARM2A0"
+    Armor.Savepercent 70
+    Armor.Saveamount 200
     Inventory.PickupSound "pickups/armor"
-	States
-	{
-	Spawn:
-		ARM2 A 10
-		ARM2 BBBBB 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
-		loop
-	}
+    States
+    {
+    Spawn:
+        ARM2 A 10
+        ARM2 BBBBB 2 bright A_SpawnItem("BlueFlareMedium3",0,10)
+        loop
+    }
 }

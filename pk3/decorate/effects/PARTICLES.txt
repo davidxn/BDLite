@@ -17,7 +17,7 @@ ACTOR ExplosionParticleHeavy
   +CLIENTSIDEONLY
   +DOOMBOUNCE
     +DONTSPLASH
-	 +THRUACTORS
+     +THRUACTORS
   +THRUGHOST
    +GHOST
    Damage 0
@@ -26,7 +26,7 @@ ACTOR ExplosionParticleHeavy
     {
      Spawn:
        SPRK SSSSS 1 BRIGHT
-	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
+       SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
         stop
      Death:
        Stop
@@ -57,7 +57,7 @@ ACTOR ShrapnelParticle: ExplosionParticleHeavy
        SPKO AAAAAAAAAAAAAAAAA 1 Bright A_FadeOut(0.05)
         stop
      Death:
-	 TNT1 A 0
+     TNT1 A 0
        Stop
     }
 }
@@ -88,10 +88,10 @@ ACTOR ShotgunParticles
     States
     {
      Spawn:
-	  TNT1 A 2
+      TNT1 A 2
        SPRK SSS 1 Bright A_FadeOut(0.02)
-	   TNT1 A 0 A_ChangeFlag("BLOODSPLATTER", 0)
-	   SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.03)
+       TNT1 A 0 A_ChangeFlag("BLOODSPLATTER", 0)
+       SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.03)
         stop
      Death:
        Stop
@@ -210,12 +210,12 @@ ACTOR BarrelParticle
     Radius 8
     Height 8
     Scale 0.6
-	Speed 7
-	Mass 1
+    Speed 7
+    Mass 1
     gravity 0.5
-	BounceFactor 0.6
-	+DOOMBOUNCE
-	+MISSILE
+    BounceFactor 0.6
+    +DOOMBOUNCE
+    +MISSILE
     +MOVEWITHSECTOR
     +CLIENTSIDEONLY
     +NOBLOCKMAP
@@ -223,11 +223,11 @@ ACTOR BarrelParticle
     States
     {
     Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-		BPRT ABCDEFGH 4
+        TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+        BPRT ABCDEFGH 4
         Loop
 
-	Death:
+    Death:
         BPRT GGGGGGGGGGGGG 20
         Stop
     }
@@ -243,15 +243,15 @@ alpha 0.4
 scale 0.2
 translation "0:255=4:4"
 states
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 Thing_ChangeTID(0,390)
-		BPRT ABCDEFGH 2
-		loop
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 Thing_ChangeTID(0,390)
+        BPRT ABCDEFGH 2
+        loop
    Death:
-   	TNT1 A 0
-   	TNT1 A 0 A_jump(255,"death1","death2","death3","death4","death5","death6")
+       TNT1 A 0
+       TNT1 A 0 A_jump(255,"death1","death2","death3","death4","death5","death6")
 Death1:
       BPRT A 1 A_Fadeout(0.001)
       loop
@@ -281,15 +281,15 @@ bouncefactor 0.5
 speed 8
 seesound ""
 states
-	{
-	Spawn:
-		TNT1 A 0
-		WOOD ABCD 2
-		loop
+    {
+    Spawn:
+        TNT1 A 0
+        WOOD ABCD 2
+        loop
    Death:
-   	TNT1 A 0
+       TNT1 A 0
       WOOD B 300
-	  WOOD BBBBB 1 A_FadeOut(0.2)
+      WOOD BBBBB 1 A_FadeOut(0.2)
       Stop
    }
 }
@@ -311,11 +311,11 @@ Actor WoodParticleTIny: WoodParticle
 Scale 0.6
 speed 5
 states
-	{
+    {
    Death:
-   	TNT1 A 0
+       TNT1 A 0
       WOOD B 100
-	  WOOD BBBBB 1 A_FadeOut(0.2)
+      WOOD BBBBB 1 A_FadeOut(0.2)
       Stop
    }
 }
@@ -337,55 +337,55 @@ ACTOR SparkX: ExplosionParticleHeavy
     {
      Spawn:
        SPKO AAA 1 BRIGHT
-	   SPKO AAAAAAA 1 Bright A_FadeOut(0.20)
+       SPKO AAAAAAA 1 Bright A_FadeOut(0.20)
         stop
      Death:
-	 TNT1 A 0
+     TNT1 A 0
        Stop
     }
 }
 
 ACTOR MudDust
 {
-	Scale 1.0
-	+noteleport
-	+missile
-	+forcexybillboard
+    Scale 1.0
+    +noteleport
+    +missile
+    +forcexybillboard
     +CLIENTSIDEONLY
-	+DOOMBOUNCE
-	BounceFactor 0.01
+    +DOOMBOUNCE
+    BounceFactor 0.01
     Speed 8
     Gravity 0.4
-	height 1
-	radius 1
-	States
-	{
-	Spawn:
-		DIRP A 1
-		Loop
-	Death:
-	    DIRP B 300
-		Stop
-	}
+    height 1
+    radius 1
+    States
+    {
+    Spawn:
+        DIRP A 1
+        Loop
+    Death:
+        DIRP B 300
+        Stop
+    }
 }
 
 
 ACTOR BrownCloud: MudDust
 {
-	+BLOODSPLATTER
-	+WINDTHRUST
-	+THRUACTORS
+    +BLOODSPLATTER
+    +WINDTHRUST
+    +THRUACTORS
     Speed 2
-	Renderstyle Translucent
-	Alpha 0.3
-	States
-	{
-	Spawn:
-		DIRP C 40
-		DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01)
-		Stop
-		
-	}
+    Renderstyle Translucent
+    Alpha 0.3
+    States
+    {
+    Spawn:
+        DIRP C 40
+        DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01)
+        Stop
+        
+    }
 }
 
 Actor BrownCloudSmall: BrownCloud
@@ -396,85 +396,85 @@ Speed 2
 -BLOODSPLATTER
 +THRUACTORS
 Gravity 0.1
-	States
-	{
-	Spawn:
-		DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01)
-		Stop
-		
-	}
+    States
+    {
+    Spawn:
+        DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01)
+        Stop
+        
+    }
 }
 
 
 ACTOR WallChunk
 {
-	Scale 0.16
-	+noteleport
-	+missile
-	+bounceonactors
-	+doombounce
-	+forcexybillboard
+    Scale 0.16
+    +noteleport
+    +missile
+    +bounceonactors
+    +doombounce
+    +forcexybillboard
     +CLIENTSIDEONLY
     Speed 6
     Gravity 0.7
-	bouncefactor 0.2
-	height 1
-	radius 1
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		TNT1 A 0 A_GiveInventory ("Timer", random(1,4))
-	See:
-		TNT1 A 0 A_JumpIfInventory("Timer",4,"See4")
-		TNT1 A 0 A_JumpIfInventory("Timer",3,"See3")
-		TNT1 A 0 A_JumpIfInventory("Timer",2,"See2")
-	See1:
-		DUST A 1
-		loop
-	See2:
-		DUST B 1
-		loop
-	See3:
-		DUST C 1
-		loop
-	See4:
-		DUST D 1
-		loop
-	Death:
-		TNT1 A 0 A_ChangeFlag ("missile",0)
-		TNT1 A 0 A_ChangeFlag ("doombounce",0)
-		TNT1 A 0 A_JumpIfInventory("Timer",4,"Death4")
-		TNT1 A 0 A_JumpIfInventory("Timer",3,"Death3")
-		TNT1 A 0 A_JumpIfInventory("Timer",2,"Death2")
-	Death1:
-		DUST A 100
-		Stop
-	Death2:
-		DUST B 100
-		Stop
-	Death3:
-		DUST C 100
-		Stop
-	Death4:
-		DUST D 100
-		Stop
-	}
+    bouncefactor 0.2
+    height 1
+    radius 1
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 A_GiveInventory ("Timer", random(1,4))
+    See:
+        TNT1 A 0 A_JumpIfInventory("Timer",4,"See4")
+        TNT1 A 0 A_JumpIfInventory("Timer",3,"See3")
+        TNT1 A 0 A_JumpIfInventory("Timer",2,"See2")
+    See1:
+        DUST A 1
+        loop
+    See2:
+        DUST B 1
+        loop
+    See3:
+        DUST C 1
+        loop
+    See4:
+        DUST D 1
+        loop
+    Death:
+        TNT1 A 0 A_ChangeFlag ("missile",0)
+        TNT1 A 0 A_ChangeFlag ("doombounce",0)
+        TNT1 A 0 A_JumpIfInventory("Timer",4,"Death4")
+        TNT1 A 0 A_JumpIfInventory("Timer",3,"Death3")
+        TNT1 A 0 A_JumpIfInventory("Timer",2,"Death2")
+    Death1:
+        DUST A 100
+        Stop
+    Death2:
+        DUST B 100
+        Stop
+    Death3:
+        DUST C 100
+        Stop
+    Death4:
+        DUST D 100
+        Stop
+    }
 }
 
 ACTOR DirtChunk1 : WallChunk
 {
-	Scale 0.6
-	Speed 16
-	BounceFactor 0.5
-	Translation "128:151=74:79", "96:111=71:79"
+    Scale 0.6
+    Speed 16
+    BounceFactor 0.5
+    Translation "128:151=74:79", "96:111=71:79"
 }
 
 
 ACTOR DirtChunk2 : WallChunk
 {
-	Scale 0.4
-	Speed 12
-	BounceFactor 0.3
-	Translation "128:151=74:79", "96:111=71:79"
+    Scale 0.4
+    Speed 12
+    BounceFactor 0.3
+    Translation "128:151=74:79", "96:111=71:79"
 }

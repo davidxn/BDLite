@@ -5,8 +5,8 @@
 They're defined as models in modeldef.bdlite. */
 Actor Tracer: FastProjectile
 {
-	Projectile
-	+RANDOMIZE
+    Projectile
+    +RANDOMIZE
 +FORCEXYBILLBOARD
 +DONTSPLASH
    // +BLOODSPLATTER 
@@ -19,16 +19,16 @@ renderstyle ADD
 alpha 0.9
 scale .15
 states
-	{
-	Spawn:
-		TRAC A 1 BRIGHT
-		Loop
+    {
+    Spawn:
+        TRAC A 1 BRIGHT
+        Loop
 Death:
     Stop
 XDeath:
 TNT1 A 0
 Stop
-	}
+    }
 }
 
 /** Non-damaging tracer fired by the player's minigun */
@@ -51,16 +51,16 @@ Decal "BulletDecalNew1"
 DamageType Bullet
 States
 {
-	Spawn:
-		TRAC A 1 BRIGHT
-		TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
-		TRAC A 1 BRIGHT
-		Goto Spawn2
-		
-	Spawn2:
-		TRAC A 1 BRIGHT
-		Loop	
-		
+    Spawn:
+        TRAC A 1 BRIGHT
+        TNT1 A 0 ThrustThingZ(0,random(-8, 8),0,1)
+        TRAC A 1 BRIGHT
+        Goto Spawn2
+        
+    Spawn2:
+        TRAC A 1 BRIGHT
+        Loop    
+        
 Death:
     TNT1 A 1 A_SpawnItem("HitPuff")
     Stop
@@ -111,8 +111,8 @@ Obituary "$OB_SPIDER"
 States
 {
 
-	Spawn:
-		TNT1 A 1 BRIGHT A_SpawnItemEx("MastermindTracerTrail", 0,               0,              2)
+    Spawn:
+        TNT1 A 1 BRIGHT A_SpawnItemEx("MastermindTracerTrail", 0,               0,              2)
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail2", (2 *momx)/-35.0, -(2 *momy)/-35.0, 2+(2 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail3", (4 *momx)/-35.0, -(4 *momy)/-35.0, 2+(4 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail4", (6 *momx)/-35.0, -(6 *momy)/-35.0, 2+(6 *momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
@@ -133,20 +133,20 @@ States
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail18", (36*momx)/-35.0, -(36*momy)/-35.0, 2+(36*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail18", (38*momx)/-35.0, -(38*momy)/-35.0, 2+(38*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
         TNT1 A 0 A_SpawnItemEx("MastermindTracerTrail18", (40*momx)/-35.0, -(40*momy)/-35.0, 2+(40*momz)/-35.0, 0,0,0, 0, SXF_ABSOLUTEANGLE)
-		Loop
-	Death:
-	Xdeath:
-		TNT1 A 0 A_Explode (2, 120, 0)
-		TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        Loop
+    Death:
+    Xdeath:
+        TNT1 A 0 A_Explode (2, 120, 0)
+        TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
         TNT1 AAAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 180), 2, random (0, 180))
         TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-		
-		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
-		
-		        TNT1 A 0 A_PlaySound("explosions/far")
-				TNT1 AAAAAAAA 4 A_CustomMissile ("MiniSmoke", 2, 0, random (0, 360), 2, random (0, 360))
+        
+        TNT1 AAA 0 A_CustomMissile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAA 0 A_CustomMissile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 40))
+        
+                TNT1 A 0 A_PlaySound("explosions/far")
+                TNT1 AAAAAAAA 4 A_CustomMissile ("MiniSmoke", 2, 0, random (0, 360), 2, random (0, 360))
     Stop
 }
 }

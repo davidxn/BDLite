@@ -14,17 +14,17 @@ object SuperBFGBall
 
     frame BFGBA { light BFGEXPLO }
     frame BFGBB { light BFGEXPLO }
-	frame BFGBC { light BFGEXPLO }
-	frame BFGBD { light BFGEXPLO }
-	frame BFGBE { light BFGEXPLO }
+    frame BFGBC { light BFGEXPLO }
+    frame BFGBD { light BFGEXPLO }
+    frame BFGBE { light BFGEXPLO }
 }
 
 flickerlight BFGEXPLO
 {
     color 0.1 1.0 0.0
     size 200
-	secondarySize 240
-	chance 0.99
+    secondarySize 240
+    chance 0.99
 }
 
 
@@ -116,10 +116,10 @@ flickerlight ROCKET_X3
 // Plasma
 pulselight CELLGLOW
 {
-	color 0.6 0.6 0.9
-	size 8
-	secondarySize 4
-	interval 1
+    color 0.6 0.6 0.9
+    size 8
+    secondarySize 4
+    interval 1
 }
 
 pointlight PLASMABALL
@@ -309,7 +309,7 @@ object ShortTorch_Red
 object SmallFire
 {
     frame FLME { light SMALLREDTORCH }
-	frame F1RE { light SMALLREDTORCH }
+    frame F1RE { light SMALLREDTORCH }
 }
 
 // Small green torch
@@ -477,7 +477,7 @@ pulselight ARMORBONUS
     size 14
     secondarySize 16
     interval 1.0
-	//dontlightself 1
+    //dontlightself 1
 }
 
 // Yellow Keys
@@ -641,7 +641,7 @@ object CacodemonBall_
 
     frame BAL2C { light CACOBALL_X1 }
     frame BAL2D { light CACOBALL_X2 }
-	frame BAL2E { light CACOBALL_X2 }
+    frame BAL2E { light CACOBALL_X2 }
     frame BAL2F { light CACOBALL_X3 }
 }
 
@@ -745,14 +745,14 @@ object BigFireBall
 {
     frame MANFA { light IMPBALL   }
     frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
-	
-	
-	
-	
+    frame FLME { light IMPBALL   }
+    frame F1RE { light IMPBALL   }
+    frame F2RE { light IMPBALL   }
+    frame FRFX { light ROCKETLIGHT }
+    
+    
+    
+    
 
     frame MISLB { light ROCKET_X1 }
     frame MISLC { light ROCKET_X2 }
@@ -831,14 +831,14 @@ flickerlight TRACER_X3
 
 object BdCommando
 {
-	frame CPOSF { light ZOMBIEATK }
-	frame CPDRB { light ZOMBIEATK }
-	frame CPDRD { light ZOMBIEATK }
-	frame CPDRF { light ZOMBIEATK }
-	frame CPDRH { light ZOMBIEATK }
-	frame CPDRJ { light ZOMBIEATK }
-	frame CPDRL { light ZOMBIEATK }
-	frame CPDRN { light ZOMBIEATK }
+    frame CPOSF { light ZOMBIEATK }
+    frame CPDRB { light ZOMBIEATK }
+    frame CPDRD { light ZOMBIEATK }
+    frame CPDRF { light ZOMBIEATK }
+    frame CPDRH { light ZOMBIEATK }
+    frame CPDRJ { light ZOMBIEATK }
+    frame CPDRL { light ZOMBIEATK }
+    frame CPDRN { light ZOMBIEATK }
 }
 
 object HealthPlus
@@ -853,44 +853,44 @@ object ArmorShard
 
 object GrenadeAmmo
 {
-	frame PGRN { light GREENITEM }
+    frame PGRN { light GREENITEM }
 }
 
 object GrenadeBox
 {
-	frame PGRN { light GREENITEM }
+    frame PGRN { light GREENITEM }
 }
 
 object PlasmaAmmo
 {
-	frame CELL { light CELLGLOW }
+    frame CELL { light CELLGLOW }
 }
 
 object Big_Tree
 {
-	frame TRE2N { light FIREBARREL }
+    frame TRE2N { light FIREBARREL }
 }
 
 object Big_Tree2
 {
-	frame TRE2N { light FIREBARREL }
+    frame TRE2N { light FIREBARREL }
 
 }
 
 object Big_Tree3
 {
-	frame TRE2N { light FIREBARREL }
+    frame TRE2N { light FIREBARREL }
 
 }
 
 object Big_Tree4
 {
-	frame TRE2N { light FIREBARREL }
+    frame TRE2N { light FIREBARREL }
 }
 
 object PlasmaAmmoPack
 {
-	frame CELP { light CELLGLOW }
+    frame CELP { light CELLGLOW }
 }
 
 
@@ -944,113 +944,113 @@ object RevenantBalls
 
 object PlasmaAmmoSingle
 {
-	frame CEL1 { light CELLGLOW }
+    frame CEL1 { light CELLGLOW }
 }
 
 object PlasmaAmmo
 {
-	frame CELL { light CELLGLOW }
+    frame CELL { light CELLGLOW }
 }
 
 object PlasmaAmmoPack
 {
-	frame CELP { light CELLGLOW }
+    frame CELP { light CELLGLOW }
 }
 
 Glow
 {
-	Flats
-	{
-	    BLOOD1
-		BLOOD2
-		FLAT17
-		FLAT2
-		FLAT22
-		FLOOR1_7
-		RROCK01
-		RROCK02
-		
-		
-		RROCK05
-		RROCK06
-		RROCK07
-		RROCK08
+    Flats
+    {
+        BLOOD1
+        BLOOD2
+        FLAT17
+        FLAT2
+        FLAT22
+        FLOOR1_7
+        RROCK01
+        RROCK02
+        
+        
+        RROCK05
+        RROCK06
+        RROCK07
+        RROCK08
 
-		
-		tlite6_1
-		tlite6_4
-		grnlite1
-		ceil3_4
-		floor1_7
-		gate4
-		gate1
-		gate3
-		TLITE6_6
-		
-		NUKAGE1
-		NUKAGE2
-		NUKAGE3
-		LAVA1
-		LAVA2
-		LAVA3
-		LAVA4
-		DOORBLU
-		DOORBLU2
-		DOORRED
-		DOORRED2
-		DOORYEL
-		DOORYEL2
-		
-		SLIME03
-		SLIME02
-		SLIME01	
-	}
-	Walls
-	{
-	    BLOOD1
-		BLOOD2
-		FLAT17
-		FLAT2
-		FLAT22
-		FLOOR1_7
-		RROCK01
-		RROCK02
-		
-		
-		RROCK05
-		RROCK06
-		RROCK07
-		RROCK08
+        
+        tlite6_1
+        tlite6_4
+        grnlite1
+        ceil3_4
+        floor1_7
+        gate4
+        gate1
+        gate3
+        TLITE6_6
+        
+        NUKAGE1
+        NUKAGE2
+        NUKAGE3
+        LAVA1
+        LAVA2
+        LAVA3
+        LAVA4
+        DOORBLU
+        DOORBLU2
+        DOORRED
+        DOORRED2
+        DOORYEL
+        DOORYEL2
+        
+        SLIME03
+        SLIME02
+        SLIME01    
+    }
+    Walls
+    {
+        BLOOD1
+        BLOOD2
+        FLAT17
+        FLAT2
+        FLAT22
+        FLOOR1_7
+        RROCK01
+        RROCK02
+        
+        
+        RROCK05
+        RROCK06
+        RROCK07
+        RROCK08
 
-		
-		tlite6_1
-		tlite6_4
-		grnlite1
-		ceil3_4
-		floor1_7
-		gate4
-		gate1
-		gate3
-		TLITE6_6
-		
-		NUKAGE1
-		NUKAGE2
-		NUKAGE3
-		LAVA1
-		LAVA2
-		LAVA3
-		LAVA4
-		DOORBLU
-		DOORBLU2
-		DOORRED
-		DOORRED2
-		DOORYEL
-		DOORYEL2
-		
-		SLIME03
-		SLIME02
-		SLIME01	
-	}
+        
+        tlite6_1
+        tlite6_4
+        grnlite1
+        ceil3_4
+        floor1_7
+        gate4
+        gate1
+        gate3
+        TLITE6_6
+        
+        NUKAGE1
+        NUKAGE2
+        NUKAGE3
+        LAVA1
+        LAVA2
+        LAVA3
+        LAVA4
+        DOORBLU
+        DOORBLU2
+        DOORRED
+        DOORRED2
+        DOORYEL
+        DOORYEL2
+        
+        SLIME03
+        SLIME02
+        SLIME01    
+    }
 
 }
 
@@ -1058,8 +1058,8 @@ pointlight SpecialLightz
 {
     color 0.6 0.6 0.6
     size 24
-	offset 0 32 0
-	dontlightself 1
+    offset 0 32 0
+    dontlightself 1
 }
 
 //object Doomer
@@ -1077,7 +1077,7 @@ pulselight GREENGOOZ
     secondarySize 34
     interval 0.1
     offset 0 40 0
-	dontlightself 1
+    dontlightself 1
 }
 
 
@@ -1104,8 +1104,8 @@ pulselight BLUEITEM
 object FlamethrowerMissile
 {
     frame FIR3 { light BIGREDTORCH128 }
-	frame TNT1 { light BIGREDTORCH }
-	frame EXPL { light BIGREDTORCH }
+    frame TNT1 { light BIGREDTORCH }
+    frame EXPL { light BIGREDTORCH }
 }
 
 object PentagramParticleSpawner

@@ -32,36 +32,36 @@ ACTOR BulletCasing
        TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
     Rest1:
       CAS3 I 1
-	  Goto Lying
+      Goto Lying
     Rest2:
       CAS3 J 1
-	  Goto Lying
+      Goto Lying
     Rest3:
       CAS3 K 1
-	  Goto Lying
+      Goto Lying
     Rest4:
       CAS3 L 1
-	  Goto Lying
+      Goto Lying
     Rest5:
       CAS3 M 1
-	  Goto Lying
+      Goto Lying
     Rest6:
       CAS3 I 1
-	  Goto Lying
+      Goto Lying
     Rest7:
       CAS3 J 1
-	  Goto Lying
+      Goto Lying
     Rest8:
       CAS3 K 1
-	  Goto Lying
-	Lying:
-		"----" A 1 A_JumpIf(GetCVar("bd_janitor_ammo") == 1, "Expiring") //If the janitor cvar is on, skip the infinite frame and go away after a random time instead
-		"----" A -1
-	Expiring:
-		"----" A random(600, 1200)
-	Fading:
-		"----" A 1 A_FadeOut(0.05)
-		Loop
+      Goto Lying
+    Lying:
+        "----" A 1 A_JumpIf(GetCVar("bd_janitor_ammo") == 1, "Expiring") //If the janitor cvar is on, skip the infinite frame and go away after a random time instead
+        "----" A -1
+    Expiring:
+        "----" A random(600, 1200)
+    Fading:
+        "----" A 1 A_FadeOut(0.05)
+        Loop
    }
 }
 
@@ -80,40 +80,40 @@ ACTOR ShotgunCasing : BulletCasing
       CAS2 ABCDEFGHABCDEFGHABCDEFGHABCDEFGH 3
       Stop
    Death:
-	  TNT1 A 0
+      TNT1 A 0
       TNT1 A 0 A_Jump(256,"Rest1","Rest2","Rest3","Rest4","Rest5","Rest6","Rest7","Rest8")
     Rest1:
       CAS2 I 1
-	  Goto Lying
+      Goto Lying
     Rest2:
       CAS2 J 1
-	  Goto Lying
+      Goto Lying
     Rest3:
       CAS2 K 1
-	  Goto Lying
+      Goto Lying
     Rest4:
       CAS2 L 1
-	  Goto Lying
+      Goto Lying
     Rest5:
       CAS2 M 1
-	  Goto Lying
+      Goto Lying
     Rest6:
       CAS2 I 1
-	  Goto Lying
+      Goto Lying
     Rest7:
       CAS2 J 1
-	  Goto Lying
+      Goto Lying
     Rest8:
       CAS2 K 1
-	  Goto Lying
+      Goto Lying
    }
 }
 
 ACTOR BigShotgunCasing: ShotgunCasing
 {
-	Gravity 1.2
-	Speed 12
-	Scale 0.5
+    Gravity 1.2
+    Speed 12
+    Scale 0.5
 }
 
 ACTOR EmptyClip : BulletCasing
@@ -132,7 +132,7 @@ ACTOR EmptyClip : BulletCasing
       Stop
    Death:
       ECLI G 1
-	  Goto Lying
+      Goto Lying
    }
 }
 
@@ -152,7 +152,7 @@ ACTOR EmptyRocketChamber : BulletCasing
       Stop
    Death:
       RCSE G 1
-	  Goto Lying
+      Goto Lying
    }
 }
 
@@ -172,6 +172,6 @@ ACTOR EmptyCell : BulletCasing
       Stop
    Death:
       ECEL A 1
-	  Goto Lying
+      Goto Lying
    }
 }

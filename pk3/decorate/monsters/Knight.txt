@@ -1,341 +1,340 @@
 ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
 {
-	Translation "176:191=112:127"
+    Translation "176:191=112:127"
     Scale 1.0
     Speed 8
     Health 500
-	Mass 1000
-	PainChance "Explosive", 255
-	PainChance 25
-	PainSound "monsters/noble/pain"
-	Height 74
+    Mass 1000
+    PainChance "Explosive", 255
+    PainChance 25
+    PainSound "monsters/noble/pain"
+    Height 74
     GibHealth 30
-	-BOSSDEATH
-	-FASTER
-	MaxStepHeight 24
-	MaxDropOffHeight 32
-	SeeSound "knight/sight"
-	ActiveSound "knight/active"
-	PainSound "knight/pain"
-	DeathSound "knight/death"
-	Obituary "%o was slain by a Hell Knight."
-	DamageType Plasma
-	+DONTHURTSPECIES
+    -BOSSDEATH
+    -FASTER
+    MaxStepHeight 24
+    MaxDropOffHeight 32
+    SeeSound "knight/sight"
+    ActiveSound "knight/active"
+    PainSound "knight/pain"
+    DeathSound "knight/death"
+    Obituary "%o was knocked out by a Knight."
+    DamageType Plasma
+    +DONTHURTSPECIES
     MeleeDamage 5
-	Species Noble
-	States
-	{
-	Melee:
+    Species Noble
+    States
+    {
+    Melee:
         BOS2 E 6 A_FaceTarget
         TNT1 A 0 A_PlaySound("weapons/melee/swing")
-		BOS2 F 6 A_FaceTarget
-		BOS2 G 6 A_CustomMissile("KnightAttack",10,0,0,0)
-		Goto See2
-		
+        BOS2 F 6 A_FaceTarget
+        BOS2 G 6 A_CustomMissile("KnightAttack",10,0,0,0)
+        Goto See2
+        
     Spawn:
-		TNT1 A 0
-		BOS2 B 1 A_Look
-		Loop
-	See:
-		TNT1 A 0
-		Goto Rage	
-	See2:
-		BOS2 AA 2 A_Chase
-		BOS2 AA 2 A_Chase
-		BOS2 BB 2 A_Chase
-		BOS2 BB 2 A_Chase
-		BOS2 CC 2 A_Chase
-		BOS2 CC 2 A_Chase
-		BOS2 DD 2 A_Chase
-		BOS2 DD 2 A_Chase
-		Loop
+        TNT1 A 0
+        BOS2 B 1 A_Look
+        Loop
+    See:
+        TNT1 A 0
+        Goto Rage    
+    See2:
+        BOS2 AA 2 A_Chase
+        BOS2 AA 2 A_Chase
+        BOS2 BB 2 A_Chase
+        BOS2 BB 2 A_Chase
+        BOS2 CC 2 A_Chase
+        BOS2 CC 2 A_Chase
+        BOS2 DD 2 A_Chase
+        BOS2 DD 2 A_Chase
+        Loop
    Rage:
         TNT1 A 0
-		TNT1 A 0 A_CheckSight("See2")
+        TNT1 A 0 A_CheckSight("See2")
         BTS2 ABC 2
-		BTS2 DEDF 3
-		BTS2 DEDF 3
-		BTS2 CBA 2 A_FaceTarget
-		TNT1 A 0 HealThing(200)
-		TNT1 A 0 A_Jump(96, "MissileInRage")
-		Goto See2
+        BTS2 DEDF 3
+        BTS2 DEDF 3
+        BTS2 CBA 2 A_FaceTarget
+        TNT1 A 0 HealThing(200)
+        TNT1 A 0 A_Jump(96, "MissileInRage")
+        Goto See2
     Missile:
-		BOS2 FE 2 A_FaceTarget		
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2 A_FaceTarget
-		TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
-		TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
-		BOS2 E 2
-		BOS2 F 8 A_FaceTarget
-		BOS2 G 8 A_CustomMissile("BaronBall", 36, 0, 0, 1) 
-		Goto See2
-		
-	MissileInRage:
-		BOS2 EF 6 A_FaceTarget
-		BOS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
-		BAS2 EF 6 A_FaceTarget
-		BAS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
-		BAS2 EF 6 A_FaceTarget
-		BAS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
-		Goto See2
-	Pain:
-		BOS2 H 3
-		BOS2 H 3 A_Pain
-		Goto See2
-	Pain.Explosive:
-		TNT1 A 0 ThrustThingZ(0,10,0,1)
-		Goto Pain
+        BOS2 FE 2 A_FaceTarget        
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2 A_FaceTarget
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2 A_FaceTarget
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2 A_FaceTarget
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2 A_FaceTarget
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2 A_FaceTarget
+        TNT1 A 0 bright A_CustomMissile ("SmallGreenFlameTrails", 64, 30, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_CustomMissile ("FlameBallGreen", 64, 30, random (0, 140), 2, random (0, 160))
+        BOS2 E 2
+        BOS2 F 8 A_FaceTarget
+        BOS2 G 8 A_CustomMissile("BaronBall", 36, 0, 0, 1) 
+        Goto See2
+        
+    MissileInRage:
+        BOS2 EF 6 A_FaceTarget
+        BOS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
+        BAS2 EF 6 A_FaceTarget
+        BAS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
+        BAS2 EF 6 A_FaceTarget
+        BAS2 G 6 A_CustomMissile("BaronBall", 36, 0, 0, 1)
+        Goto See2
+    Pain:
+        BOS2 H 3
+        BOS2 H 3 A_Pain
+        Goto See2
+    Pain.Explosive:
+        TNT1 A 0 ThrustThingZ(0,10,0,1)
+        Goto Pain
 
-	Pain.SuperKick:
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
-		TNT1 A 0 ThrustThingZ(0,10,0,1)
-		TNT1 A 0 A_Recoil(8)
-		BOS2 H 3
-		BOS2 H 3 A_Pain
-		TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
-		Goto See2
+    Pain.SuperKick:
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_ChangeFLag("NOPAIN", 1)
+        TNT1 A 0 ThrustThingZ(0,10,0,1)
+        TNT1 A 0 A_Recoil(8)
+        BOS2 H 3
+        BOS2 H 3 A_Pain
+        TNT1 A 0 A_ChangeFLag("NOPAIN", 0)
+        Goto See2
 
-	Death:
-	Death.Bullet:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieNormal", "DieNormal2")
-	Death.Kick:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieNormal", "DieNormal2")
-	Death.SuperKick:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieJustLegs", "DieArmOff", "DieBlownBack")
-	Death.Shotgun:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieBlownBack", "DieArmOff", "DieNormal")
-	Death.RapidFire:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieArmOff", "DieHeadOff")
-	Death.Explosive:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_JumpIf(health > -10, "DieNormal")
-		TNT1 A 0 A_Jump(256, "XDeath", "DieBothOff")
-	Death.Plasma:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DiePlasma", "DiePlasma2")
-	Death.Flak:
-		TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
-		TNT1 A 0 A_Scream
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_Jump(256, "DieJustLegs", "XDeath", "DieBothOff")
+    Death:
+    Death.Bullet:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieNormal", "DieNormal2")
+    Death.Kick:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieNormal", "DieNormal2")
+    Death.SuperKick:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieJustLegs", "DieArmOff", "DieBlownBack")
+    Death.Shotgun:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieBlownBack", "DieArmOff", "DieNormal")
+    Death.RapidFire:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieArmOff", "DieHeadOff")
+    Death.Explosive:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_JumpIf(health > -10, "DieNormal")
+        TNT1 A 0 A_Jump(256, "XDeath", "DieBothOff")
+    Death.Plasma:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DiePlasma", "DiePlasma2")
+    Death.Flak:
+        TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_Jump(256, "DieJustLegs", "XDeath", "DieBothOff")
 
-	DieNormal:
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		KAD1 ABCDEF 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		KAD1 F -1
-	DieNormal2:
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		HKDD ABCD 6 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		HKDD D -1
-	DieBlownBack:
-		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 A 0 A_FaceTarget
-		TNT1 A 0 A_Recoil(13)
-		TNT1 A 0 ThrustThingZ(0,20,0,1)
-		TNT1 A 0 A_Jump(128, "DieBlownBack2")
-		BAH3 ABCD 5 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
-		BAH3 D -1
-	DieBlownBack2:
-		BAH3 EFGH 5 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
-		BAH3 H -1
-	DieArmOff:
-		TNT1 A 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
-		BTN3 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		BTN3 D -1
-	DieHeadOff:
-		TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
-		BOH2 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		BOH2 D -1
-	DieBothOff:
-		TNT1 A 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
-		KSA1 IJKL 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		KSA1 L -1
-	DieJustLegs:
-		TNT1 A 0 A_CustomMissile ("BdGibKnightTopHalf", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 AAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 AAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
-		BBO1 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
-		BBO1 D -1
-	DiePlasma:
-		BOSB A 2
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 {
-			A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180));
-			A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
-		}
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
-		BOSB AAAAA 2 {
-			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 48);
-			A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
-		}
-		BOSB BCD 6 {
-			A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
-			A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
-		}
-		TNT1 A 0 A_SpawnItem ("BdBloodPool")
-		BOSB DDDDDDDDDDDDDDDDDDDDD 8 {
-			A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
-			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
-		}
-		BOSB D -1
-	DiePlasma2:
-		BOSC A 2
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 {
-			A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180));
-			A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
-		}
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
-		BOSC AAAAA 2 {
-			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 48);
-			A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
-		}
-		BOSC BCDE 6 {
-			A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
-			A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
-		}
-		TNT1 A 0 A_SpawnItem ("BdBloodPool")
-		BOSB DDDDDDDDDDDDDDDDDDDDD 8 {
-			A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
-			A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
-		}
-		BOSB D -1
-	XDeath:
-		TNT1 AA 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_CustomMissile ("BdGibKnightLeg", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
-		TNT1 AAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 AAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
-		TNT1 A 1
-		Stop
-	Raise:
-		KAD1 FEDCBA 6
-		Goto See
-	}
+    DieNormal:
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        KAD1 ABCDEF 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        KAD1 F -1
+    DieNormal2:
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        HKDD ABCD 6 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        HKDD D -1
+    DieBlownBack:
+        TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_Recoil(13)
+        TNT1 A 0 ThrustThingZ(0,20,0,1)
+        TNT1 A 0 A_Jump(128, "DieBlownBack2")
+        BAH3 ABCD 5 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
+        BAH3 D -1
+    DieBlownBack2:
+        BAH3 EFGH 5 A_CustomMissile ("BdBloodSpawnerTiny", 15, 0, random (0, 360), 2, random (0, 40))
+        BAH3 H -1
+    DieArmOff:
+        TNT1 A 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
+        BTN3 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        BTN3 D -1
+    DieHeadOff:
+        TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
+        BOH2 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        BOH2 D -1
+    DieBothOff:
+        TNT1 A 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 AA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 AA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
+        KSA1 IJKL 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        KSA1 L -1
+    DieJustLegs:
+        TNT1 A 0 A_CustomMissile ("BdGibKnightTopHalf", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 AAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 AAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
+        BBO1 ABCD 5 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
+        BBO1 D -1
+    DiePlasma:
+        BOSB A 2
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 {
+            A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180));
+            A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
+        }
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
+        BOSB AAAAA 2 {
+            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 48);
+            A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
+        }
+        BOSB BCD 6 {
+            A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
+            A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
+        }
+        TNT1 A 0 A_SpawnItem ("BdBloodPool")
+        BOSB DDDDDDDDDDDDDDDDDDDDD 8 {
+            A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
+            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
+        }
+        BOSB D -1
+    DiePlasma2:
+        BOSC A 2
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0 {
+            A_CustomMissile ("BdAshes", 32, 0, random (0, 360), 2, random (0, 180));
+            A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
+        }
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
+        BOSC AAAAA 2 {
+            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 48);
+            A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
+        }
+        BOSC BCDE 6 {
+            A_CustomMissile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
+            A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40));
+        }
+        TNT1 A 0 A_SpawnItem ("BdBloodPool")
+        BOSB DDDDDDDDDDDDDDDDDDDDD 8 {
+            A_CustomMissile ("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160));
+            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
+        }
+        BOSB D -1
+    XDeath:
+        TNT1 AA 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AA 0 A_CustomMissile ("BdGibKnightLeg", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
+        TNT1 AAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 AAAA 0 A_CustomMissile ("BdGibGut", 42, 0, random (0, 360), 2, random (10, 160))
+        TNT1 A 1
+        Stop
+    Raise:
+        KAD1 FEDCBA 6
+        Goto See
+    }
 }  
 
 ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 {
-	Radius 10
-	Height 16
-	Speed 16
-	FastSpeed 20
-	DamageType GreenFire
-	Projectile 
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
+    Radius 10
+    Height 16
+    Speed 16
+    FastSpeed 20
+    DamageType GreenFire
+    Projectile 
+    +RANDOMIZE
+    +FORCEXYBILLBOARD
     +THRUGHOST
     Damage (random(25,35))
-	RenderStyle Add
-	Alpha 1
-	Scale 1.2
-	SeeSound "baron/attack"
-	DeathSound "baron/shotx"
-	Decal "Scorch"
+    RenderStyle Add
+    Alpha 1
+    Scale 1.2
+    SeeSound "baron/attack"
+    DeathSound "baron/shotx"
+    Decal "Scorch"
 
-	States
-	{
-	Spawn:
-	    TNT1 A 0
-		//Check Effects
-	
-	Spawn1:
-	   TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
-		FRPG J 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-		TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
-		FRPG K 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
-		Loop
+    States
+    {
+    Spawn:
+        TNT1 A 0
+        //Check Effects
+    
+    Spawn1:
+       TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+        FRPG J 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
+        TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+        FRPG K 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
+        Loop
 
-	Death:
+    Death:
     TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-	    TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		FRPG ABCDEFGH 2 BRIGHT  A_SpawnItem("GreenFlare",0,0)
-		TNT1 AAAAA 19 A_CustomMissile ("MiniSmoke", 1, 0, random (0, 360), 2, random (0, 160))
-		Stop
-	XDeath:
-		TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-		FRPG ABCDEFGH 2  A_SpawnItem("GreenFlare",0,0)
-		Stop
-	}
+        TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+    TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        FRPG ABCDEFGH 2 BRIGHT  A_SpawnItem("GreenFlare",0,0)
+        TNT1 AAAAA 19 A_CustomMissile ("MiniSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        Stop
+    XDeath:
+        TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+        FRPG ABCDEFGH 2  A_SpawnItem("GreenFlare",0,0)
+        Stop
+    }
 }
 
 ACTOR KnightAttack: BaronBall
 {
-	Radius 24
-	Height 16
-	DamageType HKFT
-	Projectile 
-	+RANDOMIZE
-	+FORCEXYBILLBOARD
+    Radius 24
+    Height 16
+    DamageType HKFT
+    Projectile 
+    +RANDOMIZE
+    +FORCEXYBILLBOARD
     +THRUGHOST
-	RenderStyle Add
-	Alpha 0.6
+    RenderStyle Add
+    Alpha 0.6
     Damage 10
     Speed 42
-	//HitObituary "$OB_IMPHIT"
-	SeeSound "none"
-	DeathSound "none"
-	Decal "none"
-	States
-	{
-	Spawn:
-		TNT1 A 2 BRIGHT
+    SeeSound "none"
+    DeathSound "none"
+    Decal "none"
+    States
+    {
+    Spawn:
+        TNT1 A 2 BRIGHT
         TNT1 A 2
-		Goto Death
-	Death:
-		TNT1 A 0 BRIGHT
-		Stop
-	}
+        Goto Death
+    Death:
+        TNT1 A 0 BRIGHT
+        Stop
+    }
 }

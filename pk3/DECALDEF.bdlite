@@ -10,26 +10,26 @@ stretcher BrutalBloodSmearer
 
 decal BrutalBloodSmear1
 {
-	pic BSPLNEW4
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	animator BrutalBloodSmearer
+    pic BSPLNEW4
+    x-scale 0.6
+    y-scale 0.6
+    randomflipx
+    animator BrutalBloodSmearer
 }
 
 decal BrutalBloodSmear2
 {
-	pic BSPLNEW5
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	animator BrutalBloodSmearer
+    pic BSPLNEW5
+    x-scale 0.6
+    y-scale 0.6
+    randomflipx
+    animator BrutalBloodSmearer
 }
 
 decalgroup BrutalBloodSmear
 {
-	BrutalBloodSmear1	1
-	BrutalBloodSmear2	1
+    BrutalBloodSmear1    1
+    BrutalBloodSmear2    1
 }
 
 
@@ -139,26 +139,26 @@ BrutalBloodSuper02 6
 
 decal BlueBrutalBloodSmear1
 {
-	pic BBPLNEW4
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	animator BrutalBloodSmearer
+    pic BBPLNEW4
+    x-scale 0.6
+    y-scale 0.6
+    randomflipx
+    animator BrutalBloodSmearer
 }
 
 decal BlueBrutalBloodSmear2
 {
-	pic BBPLNEW5
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	animator BrutalBloodSmearer
+    pic BBPLNEW5
+    x-scale 0.6
+    y-scale 0.6
+    randomflipx
+    animator BrutalBloodSmearer
 }
 
 decalgroup BlueBrutalBloodSmear
 {
-	BlueBrutalBloodSmear1	1
-	BlueBrutalBloodSmear2	1
+    BlueBrutalBloodSmear1    1
+    BlueBrutalBloodSmear2    1
 }
 
 
@@ -228,34 +228,34 @@ BlueBrutalBloodSuper02 6
 
 decal Crack1
 {
-	pic BFGLITE1
-	shade "00 00 00"
-	randomflipy
-	randomflipx
+    pic BFGLITE1
+    shade "00 00 00"
+    randomflipy
+    randomflipx
 }
 
 decal Crack2
 {
-	pic BFGLITE2
-	shade "00 00 00"
-	randomflipy
-	randomflipx
+    pic BFGLITE2
+    shade "00 00 00"
+    randomflipy
+    randomflipx
 }
 
 decalgroup Crack
 {
-	Crack1	1
-	Crack2	1
+    Crack1    1
+    Crack2    1
 }
 
 decal GiantScorch
 {
-	pic SCORCH1
-	shade "00 00 00"
-	x-scale 5.75
-	y-scale 5.75
-	randomflipx
-	randomflipy
+    pic SCORCH1
+    shade "00 00 00"
+    x-scale 5.75
+    y-scale 5.75
+    randomflipx
+    randomflipy
 }
 
 decal SkullScorch1 
@@ -340,40 +340,40 @@ BStretch2
 
 decal BigScorch
 {
-	pic SCORCH1
-	shade "00 00 00"
-	x-scale 1.5
-	y-scale 1.5
-	randomflipx
-	randomflipy
+    pic SCORCH1
+    shade "00 00 00"
+    x-scale 1.5
+    y-scale 1.5
+    randomflipx
+    randomflipy
 }
 
 decal BiggerScorch
 {
-	pic SCORCH1
-	shade "00 00 00"
-	x-scale 2.5
-	y-scale 2.5
-	randomflipx
-	randomflipy
+    pic SCORCH1
+    shade "00 00 00"
+    x-scale 2.5
+    y-scale 2.5
+    randomflipx
+    randomflipy
 }
 
 decal FireworxScorch
 {
-	pic SCORCH1
-	shade "00 00 00"
-	x-scale 1.1
-	y-scale 1.1
-	randomflipx
-	randomflipy
+    pic SCORCH1
+    shade "00 00 00"
+    x-scale 1.1
+    y-scale 1.1
+    randomflipx
+    randomflipy
 }
 
 decal SmallerScorch
 {
-	pic SCORCH1
-	shade "00 00 00"
-	x-scale 0.6
-	y-scale 0.6
-	randomflipx
-	randomflipy
+    pic SCORCH1
+    shade "00 00 00"
+    x-scale 0.6
+    y-scale 0.6
+    randomflipx
+    randomflipy
 }

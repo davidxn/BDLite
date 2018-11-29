@@ -19,17 +19,17 @@ actor WaterSplashBase2
   {
   Spawn:
     TNT1 A 0 A_Explode(2, 6)
-	SPSH HI 6
-	TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
-	SPSH HI 6
-	TNT1 A 0 A_NoBlocking
+    SPSH HI 6
+    TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+    SPSH HI 6
+    TNT1 A 0 A_NoBlocking
     Stop
   Death.CauseWaterSplash:
-	TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
-	TNT1 A 0 A_PlaySound("world/watersplashbig")
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 30
-	Stop
+    TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
+    TNT1 A 0 A_PlaySound("world/watersplashbig")
+    TNT1 A 0 A_NoBlocking
+    TNT1 A 30
+    Stop
   }
 }
 
@@ -52,15 +52,15 @@ actor WaterSplashBaseSmall
   {
   Spawn:
     SPSH HI 6
-	TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
-	SPSH HI 6
-	TNT1 A 0 A_NoBlocking
+    TNT1 A 0 A_ChangeFLag("SHOOTABLE", 0)
+    SPSH HI 6
+    TNT1 A 0 A_NoBlocking
     Stop
   Death.CauseWaterSplash:
-	TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
-	TNT1 A 0 A_PlaySound("world/watersplashbig")
-	TNT1 A 0 A_NoBlocking
-	TNT1 A 30
-	Stop
+    TNT1 A 0 A_SpawnItem("GiantWaterRicochet")
+    TNT1 A 0 A_PlaySound("world/watersplashbig")
+    TNT1 A 0 A_NoBlocking
+    TNT1 A 30
+    Stop
   }
 }

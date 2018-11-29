@@ -40,7 +40,7 @@ Actor BloodParticleX
  TNT1 A 1
  TNT1 A 0
  Stop
-	
+    
   }
 }
 
@@ -64,8 +64,8 @@ actor BloodSplashBase3
   States
   {
   Spawn:
-	TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
-	TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    TNT1 FFFFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
     BSPH HIHI 6
     Stop
   }
@@ -77,9 +77,9 @@ actor BloodSplashBaseSmall : BloodSplashBase3
   States
   {
   Spawn:
-	BSPH E 6
-	TNT1 FFFF 0 A_CustomMissile ("BloodParticleX", 2, 0, random (0, 360), 2, random (50, 140))
-	TNT1 FFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+    BSPH E 6
+    TNT1 FFFF 0 A_CustomMissile ("BloodParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+    TNT1 FFFF 0 A_CustomMissile ("BloodParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
     BSPH HIHI 6
     Stop
   }
@@ -123,7 +123,7 @@ Actor nukageParticleX
  TNT1 A 1
  TNT1 A 0
  Stop
-	
+    
   }
 }
 
@@ -146,9 +146,9 @@ actor nukageSplashBase
   States
   {
   Spawn:
-	TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
-	TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
-	SLDG HIHI 6
+    TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    TNT1 FFFFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    SLDG HIHI 6
     Stop
   }
 }
@@ -159,9 +159,9 @@ actor NukageSplashBaseSmall : nukageSplashBase
   States
   {
   Spawn:
-	SLDG E 6
-	TNT1 FFFF 0 A_CustomMissile ("nukageParticleX", 2, 0, random (0, 360), 2, random (50, 140))
-	TNT1 FFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+    SLDG E 6
+    TNT1 FFFF 0 A_CustomMissile ("nukageParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+    TNT1 FFFF 0 A_CustomMissile ("nukageParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
     SLDG HIHI 6
     Stop
   }
@@ -211,7 +211,7 @@ Actor slimeParticleX
  TNT1 A 1
  TNT1 A 0
  Stop
-	
+    
   }
 }
 
@@ -234,8 +234,8 @@ actor slimeSplashBase
   States
   {
   Spawn:
-	TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
-	TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140))
+    TNT1 FFFFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140))
     SLIM HIHI 6
     Stop
   }
@@ -247,8 +247,8 @@ actor slimeSplashBaseSmall : slimeSplashBase
   States
   {
   Spawn:
-	TNT1 FFFF 0 A_CustomMissile ("slimeParticleX", 2, 0, random (0, 360), 2, random (50, 140))
-	TNT1 FFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
+    TNT1 FFFF 0 A_CustomMissile ("slimeParticleX", 2, 0, random (0, 360), 2, random (50, 140))
+    TNT1 FFFF 0 A_CustomMissile ("slimeParticleXFaster", 2, 0, random (0, 360), 2, random (50, 140))
     SLIM HIHI 6
     Stop
   }

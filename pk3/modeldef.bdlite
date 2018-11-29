@@ -267,7 +267,7 @@ Model WaterSplashBase2
    Model 1 "Splash.md2"
    Skin 1 "splash0.png"
 
-   FrameIndex SPSH E 0 0	   FrameIndex SPSH E 1 999
+   FrameIndex SPSH E 0 0       FrameIndex SPSH E 1 999
 }
 Model WaterSplashBase2
 {
@@ -277,7 +277,7 @@ Model WaterSplashBase2
    Model 1 "Splash.md2"
    Skin 1 "splash1.png"
 
-   FrameIndex SPSH F 0 1	   FrameIndex SPSH F 1 0
+   FrameIndex SPSH F 0 1       FrameIndex SPSH F 1 0
 }
 
 Model WaterSplashBase2
@@ -288,7 +288,7 @@ Model WaterSplashBase2
    Model 1 "Splash.md2"
    Skin 1 "splash2.png"
 
-   FrameIndex SPSH G 0 2	   FrameIndex SPSH G 1 1
+   FrameIndex SPSH G 0 2       FrameIndex SPSH G 1 1
 }
 
 Model WaterSplashBase2
@@ -300,7 +300,7 @@ Model WaterSplashBase2
    Skin 1 "splash3.png"
    Scale 4.0 4.0 3.0
 
-   FrameIndex SPSH H 0 3	   FrameIndex SPSH H 1 2
+   FrameIndex SPSH H 0 3       FrameIndex SPSH H 1 2
 }
 
 Model WaterSplashBase2
@@ -311,7 +311,7 @@ Model WaterSplashBase2
    Model 1 "Splash.md2"
    Skin 1 "splash4.png"
 
-   FrameIndex SPSH I 0 4	   FrameIndex SPSH I 1 3
+   FrameIndex SPSH I 0 4       FrameIndex SPSH I 1 3
 }
 
 Model WaterSplashBase2
@@ -322,8 +322,8 @@ Model WaterSplashBase2
    Model 1 "Splash.md2"
    Skin 1 "splash5.png"
 
-   FrameIndex SPSH J 0 5	   FrameIndex SPSH J 1 4
-   FrameIndex SPSH K 0 999	   FrameIndex SPSH K 1 999
+   FrameIndex SPSH J 0 5       FrameIndex SPSH J 1 4
+   FrameIndex SPSH K 0 999       FrameIndex SPSH K 1 999
 }
 Model bloodSplashbase
 {
@@ -333,7 +333,7 @@ Model bloodSplashbase
    Model 1 "Splash.md2"
    Skin 1 "bsplash0.png"
 
-   FrameIndex BSPH  E 0 0	   FrameIndex BSPH  E 1 999
+   FrameIndex BSPH  E 0 0       FrameIndex BSPH  E 1 999
 }
 Model bloodSplashbase
 {
@@ -343,7 +343,7 @@ Model bloodSplashbase
    Model 1 "Splash.md2"
    Skin 1 "bsplash1.png"
 
-   FrameIndex BSPH  F 0 1	   FrameIndex BSPH  F 1 0
+   FrameIndex BSPH  F 0 1       FrameIndex BSPH  F 1 0
 }
 
 Model bloodSplashbase
@@ -354,7 +354,7 @@ Model bloodSplashbase
    Model 1 "Splash.md2"
    Skin 1 "bsplash2.png"
 
-   FrameIndex BSPH  G 0 2	   FrameIndex BSPH  G 1 1
+   FrameIndex BSPH  G 0 2       FrameIndex BSPH  G 1 1
 }
 
 Model bloodSplashbase
@@ -366,7 +366,7 @@ Model bloodSplashbase
    Skin 1 "bsplash3.png"
    Scale 4.0 4.0 3.0
 
-   FrameIndex BSPH  H 0 3	   FrameIndex BSPH  H 1 2
+   FrameIndex BSPH  H 0 3       FrameIndex BSPH  H 1 2
 }
 
 Model bloodSplashbase
@@ -377,7 +377,7 @@ Model bloodSplashbase
    Model 1 "Splash.md2"
    Skin 1 "bsplash4.png"
 
-   FrameIndex BSPH  I 0 4	   FrameIndex BSPH  I 1 3
+   FrameIndex BSPH  I 0 4       FrameIndex BSPH  I 1 3
 }
 
 Model bloodSplashbase
@@ -388,8 +388,8 @@ Model bloodSplashbase
    Model 1 "Splash.md2"
    Skin 1 "bsplash5.png"
 
-   FrameIndex BSPH  J 0 5	   FrameIndex BSPH  J 1 4
-   FrameIndex BSPH  K 0 999	   FrameIndex BSPH  K 1 999
+   FrameIndex BSPH  J 0 5       FrameIndex BSPH  J 1 4
+   FrameIndex BSPH  K 0 999       FrameIndex BSPH  K 1 999
 }
 
 
@@ -401,7 +401,7 @@ Model nukageSplashbase
    Model 1 "Splash.md2"
    Skin 1 "ssplash0.png"
 
-   FrameIndex SLDG  E 0 0	   FrameIndex SLDG  E 1 999
+   FrameIndex SLDG  E 0 0       FrameIndex SLDG  E 1 999
 }
 Model nukageSplashbase
 {
@@ -411,7 +411,7 @@ Model nukageSplashbase
    Model 1 "Splash.md2"
    Skin 1 "ssplash1.png"
 
-   FrameIndex SLDG  F 0 1	   FrameIndex SLDG  F 1 0
+   FrameIndex SLDG  F 0 1       FrameIndex SLDG  F 1 0
 }
 
 Model nukageSplashbase
@@ -422,7 +422,7 @@ Model nukageSplashbase
    Model 1 "Splash.md2"
    Skin 1 "ssplash2.png"
 
-   FrameIndex SLDG  G 0 2	   FrameIndex SLDG  G 1 1
+   FrameIndex SLDG  G 0 2       FrameIndex SLDG  G 1 1
 }
 
 Model nukageSplashbase
@@ -434,7 +434,7 @@ Model nukageSplashbase
    Skin 1 "ssplash3.png"
    Scale 4.0 4.0 3.0
 
-   FrameIndex SLDG  H 0 3	   FrameIndex SLDG  H 1 2
+   FrameIndex SLDG  H 0 3       FrameIndex SLDG  H 1 2
 }
 
 Model nukageSplashbase
@@ -445,7 +445,7 @@ Model nukageSplashbase
    Model 1 "Splash.md2"
    Skin 1 "ssplash4.png"
 
-   FrameIndex SLDG  I 0 4	   FrameIndex SLDG  I 1 3
+   FrameIndex SLDG  I 0 4       FrameIndex SLDG  I 1 3
 }
 
 Model nukageSplashbase
@@ -456,8 +456,8 @@ Model nukageSplashbase
    Model 1 "Splash.md2"
    Skin 1 "ssplash5.png"
 
-   FrameIndex SLDG  J 0 5	   FrameIndex SLDG  J 1 4
-   FrameIndex SLDG  K 0 999	   FrameIndex SLDG  K 1 999
+   FrameIndex SLDG  J 0 5       FrameIndex SLDG  J 1 4
+   FrameIndex SLDG  K 0 999       FrameIndex SLDG  K 1 999
 }
 
 Model slimeSplashbase
@@ -468,7 +468,7 @@ Model slimeSplashbase
    Model 1 "Splash.md2"
    Skin 1 "msplash0.png"
 
-   FrameIndex SLIM  E 0 0	   FrameIndex SLIM  E 1 999
+   FrameIndex SLIM  E 0 0       FrameIndex SLIM  E 1 999
 }
 Model slimeSplashbase
 {
@@ -478,7 +478,7 @@ Model slimeSplashbase
    Model 1 "Splash.md2"
    Skin 1 "msplash1.png"
 
-   FrameIndex SLIM  F 0 1	   FrameIndex SLIM  F 1 0
+   FrameIndex SLIM  F 0 1       FrameIndex SLIM  F 1 0
 }
 
 Model slimeSplashbase
@@ -489,7 +489,7 @@ Model slimeSplashbase
    Model 1 "Splash.md2"
    Skin 1 "msplash2.png"
 
-   FrameIndex SLIM  G 0 2	   FrameIndex SLIM  G 1 1
+   FrameIndex SLIM  G 0 2       FrameIndex SLIM  G 1 1
 }
 
 Model slimeSplashbase
@@ -501,7 +501,7 @@ Model slimeSplashbase
    Skin 1 "msplash3.png"
    Scale 4.0 4.0 3.0
 
-   FrameIndex SLIM  H 0 3	   FrameIndex SLIM  H 1 2
+   FrameIndex SLIM  H 0 3       FrameIndex SLIM  H 1 2
 }
 
 Model slimeSplashbase
@@ -512,7 +512,7 @@ Model slimeSplashbase
    Model 1 "Splash.md2"
    Skin 1 "msplash4.png"
 
-   FrameIndex SLIM  I 0 4	   FrameIndex SLIM  I 1 3
+   FrameIndex SLIM  I 0 4       FrameIndex SLIM  I 1 3
 }
 
 Model slimeSplashbase
@@ -523,6 +523,6 @@ Model slimeSplashbase
    Model 1 "Splash.md2"
    Skin 1 "msplash5.png"
 
-   FrameIndex SLIM  J 0 5	   FrameIndex SLIM  J 1 4
-   FrameIndex SLIM  K 0 999	   FrameIndex SLIM  K 1 999
+   FrameIndex SLIM  J 0 5       FrameIndex SLIM  J 1 4
+   FrameIndex SLIM  K 0 999       FrameIndex SLIM  K 1 999
 }

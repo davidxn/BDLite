@@ -1,9 +1,14 @@
-BDLite chopped up and reassembled by DavidN from Sgt Mark IV's Brutal Doom v20
-See https://trello.com/b/fmJhYIlv/bdlite for a list of additions
-ZDoom topic: https://forum.zdoom.org/viewtopic.php?f=43&t=62203
-
-Credits for other work still present in the PK3 are preserved below.
-
+.--------------------------------------------------------------------------------.
+| BDLite chopped up and reassembled by DavidN from Sgt Mark IV's Brutal Doom v20 |
+|                                   VERSION 1.0                                  |
+|                     http://teamouse.net/games/doom/bdlite/                     |
+|                                                                                |
+|        See https://trello.com/b/fmJhYIlv/bdlite for a list of additions        |
+|         ZDoom topic: https://forum.zdoom.org/viewtopic.php?f=43&t=62203        |
+|                                                                                |
+|      Credits for other work still present in the PK3 are preserved below.      |
+|                                                                                |
+^--------------------------------------------------------------------------------^
 -------
 SPRITES
 -------
@@ -14,7 +19,7 @@ John Romero
 MARN * and MARJ *
 Sergeant_Mark_IV
 
-Player deaths (XPL1*, XPL2*, XPL3*, XPL4*, XPL5*, XPL6*, XPL8*, PLAY I - N, MHEA*, HPLA*, PBUR*, PMET*, PLDHA0)
+Player deaths (XPL*, PLAY I - N, MHEA*, HPLA*, PBUR*, PMET*, PLDHA0)
 Sergeant_Mark_IV
 
 Generic Burning Man (BUR2*)

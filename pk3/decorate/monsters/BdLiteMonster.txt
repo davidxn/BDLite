@@ -2,36 +2,36 @@
 
 A BdLiteMonster needs:
 
-	The normal Doom monster stuff: Spawn, See, Missile/Melee, etc.
-	On death, monster jumps to Death.[damage type]
-	Each of these should have no animation, just set the flags needed to declare the monster dead, then jump to one of a random set of appropriate Die states
-	The Die state should spawn any blood/gib actors, play the death animation and hold the monster in a -1 state (or remove it if the death is particularly serious).
-	
-	The damage types from the player are:
-	
-	* Kick (covers all close range damage)
-	* SuperKick (berserk damage)
-	* Bullet (Slow firing bullets)
-	* Shotgun (Scatter weapons like shotgun)
-	* RapidFire (Rapid fire tearing weapons)
-	* Explosive (Rockets, grenades)
-	* Plasma (Plasma and laser weapons)
-	* Flak (Big scatter weapons like the SSG) */
+    The normal Doom monster stuff: Spawn, See, Missile/Melee, etc.
+    On death, monster jumps to Death.[damage type]
+    Each of these should have no animation, just set the flags needed to declare the monster dead, then jump to one of a random set of appropriate Die states
+    The Die state should spawn any blood/gib actors, play the death animation and hold the monster in a -1 state (or remove it if the death is particularly serious).
+    
+    The damage types from the player are:
+    
+    * Kick (covers all close range damage)
+    * SuperKick (berserk damage)
+    * Bullet (Slow firing bullets)
+    * Shotgun (Scatter weapons like shotgun)
+    * RapidFire (Rapid fire tearing weapons)
+    * Explosive (Rockets, grenades)
+    * Plasma (Plasma and laser weapons)
+    * Flak (Big scatter weapons like the SSG) */
 ACTOR BdLiteMonster {
-	//$Category Monsters
-	Monster
-	+FLOORCLIP
-	+SLIDESONWALLS
-	MaxStepHeight 24
-	MaxDropOffHeight 32
-	Game Doom
-	damagefactor "Crush", 10.0
-	damagefactor "Blood", 0.0
-	damagefactor "BlueBlood", 0.0
-	damagefactor "GreenBlood", 0.0
-	damagefactor "Avoid", 0.0
-	DamageFactor "CauseObjectsToSplash", 0.0
-	damagefactor "Flak", 2.5
-	BloodType "BdBleed", "BdBleed", "BdBleedSaw"
-	PainChance "Kick", 255
+    //$Category Monsters
+    Monster
+    +FLOORCLIP
+    +SLIDESONWALLS
+    MaxStepHeight 24
+    MaxDropOffHeight 32
+    Game Doom
+    damagefactor "Crush", 10.0
+    damagefactor "Blood", 0.0
+    damagefactor "BlueBlood", 0.0
+    damagefactor "GreenBlood", 0.0
+    damagefactor "Avoid", 0.0
+    DamageFactor "CauseObjectsToSplash", 0.0
+    damagefactor "Flak", 2.5
+    BloodType "BdBleed", "BdBleed", "BdBleedSaw"
+    PainChance "Kick", 255
 }

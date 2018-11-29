@@ -1,58 +1,58 @@
 /*
 
 BdFx - Base class
-	BdAshes
-		BdAshesHeavy
-	BdPlasmaEvaporate
+    BdAshes
+        BdAshesHeavy
+    BdPlasmaEvaporate
 
 */
 
 /** Base class for special effects that the server shouldn't care about - basically BdBlood-like things that aren't blood. There should be more under here, but I honestly got tired */
 actor BdFx
 {
-	game Doom
-	Mass 1
-	+NOBLOCKMAP
-	+NOTELEPORT
+    game Doom
+    Mass 1
+    +NOBLOCKMAP
+    +NOTELEPORT
     +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-	+CLIENTSIDEONLY
-	-BLOODSPLATTER
-	-RANDOMIZE
-	+THRUACTORS
+    +MISSILE
+    +FORCEXYBILLBOARD
+    +CLIENTSIDEONLY
+    -BLOODSPLATTER
+    -RANDOMIZE
+    +THRUACTORS
 }
 
 ACTOR BdAshes: BdFx
 {
     Speed 5
-	Gravity 0.009
+    Gravity 0.009
     DeathSound "none"
-	SeeSound "none"
-	BounceFactor 0.01
+    SeeSound "none"
+    BounceFactor 0.01
     Scale 1.0
     States
     {
     Spawn:
-		TNT1 A 0 A_Jump(128, "AltSpawn")
-	    ASHZ ABCB 3
+        TNT1 A 0 A_Jump(128, "AltSpawn")
+        ASHZ ABCB 3
         Loop
-	AltSpawn:
-		ASHY ABCB 2
-		Loop
+    AltSpawn:
+        ASHY ABCB 2
+        Loop
     Death:
-		TNT1 A 0 A_Jump(128, "AltDeath")
+        TNT1 A 0 A_Jump(128, "AltDeath")
         ASHZ B random(350, 700)
-		Stop
-	AltDeath:
-		ASHY B random(350, 700)
-		Stop
-	}
+        Stop
+    AltDeath:
+        ASHY B random(350, 700)
+        Stop
+    }
 }
 
 ACTOR BdAshesHeavy: BdAshes
 {
-	Gravity 0.5
+    Gravity 0.5
 }
 
 Actor BdPlasmaEvaporate : BdFx
@@ -73,9 +73,9 @@ Actor BdPlasmaEvaporate : BdFx
   Spawn:
   Death:
     FIR5 ABCDEFGHIJKLMNOP 2 Bright {
-		A_FadeOut(0.04);
-		ThrustThingZ (0,1,0,0);
-	}
+        A_FadeOut(0.04);
+        ThrustThingZ (0,1,0,0);
+    }
     Stop
   }
 }

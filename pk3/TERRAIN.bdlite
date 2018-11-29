@@ -1,121 +1,121 @@
 //********** Splashes **********
-splash 	nukage
+splash     nukage
 {
- smallclass 	nukageSplashBase
- smallclip		6
- //smallsound	world/lavasizzlesmall
+ smallclass     nukageSplashBase
+ smallclip        6
+ //smallsound    world/lavasizzlesmall
 
- baseclass		nukageSplashBase
- chunkclass	    sludgechunk
- chunkxvelshift	8
- chunkyvelshift	8
- chunkzvelshift	6
- chunkbasezvel	2
- sound		world/lavasizzle
+ baseclass        nukageSplashBase
+ chunkclass        sludgechunk
+ chunkxvelshift    8
+ chunkyvelshift    8
+ chunkzvelshift    6
+ chunkbasezvel    2
+ sound        world/lavasizzle
  NoAlert
 }
 
 splash Slime
 {
-	smallclass		SlimeSplashBaseSmall
-	smallclip		16
-	smallsound		world/sludgegloopsmall
-	
+    smallclass        SlimeSplashBaseSmall
+    smallclip        16
+    smallsound        world/sludgegloopsmall
+    
 
-	baseclass		SlimeSplashBase
-	chunkclass		SlimeChunk
-	chunkxvelshift	8
-	chunkyvelshift	8
-	chunkzvelshift	8
-	chunkbasezvel	2
-	sound			world/sludgegloop
-	NoAlert
+    baseclass        SlimeSplashBase
+    chunkclass        SlimeChunk
+    chunkxvelshift    8
+    chunkyvelshift    8
+    chunkzvelshift    8
+    chunkbasezvel    2
+    sound            world/sludgegloop
+    NoAlert
 }
 
-splash 	water
+splash     water
 {
- smallclass 	watersplashbasesmall
- smallclip		16
- //smallsound	dssplash
+ smallclass     watersplashbasesmall
+ smallclip        16
+ //smallsound    dssplash
 
- baseclass		watersplashbase2
- chunkclass	watersplash
- chunkxvelshift	8
- chunkyvelshift	8
- chunkzvelshift	8
- chunkbasezvel	2
- sound		water
+ baseclass        watersplashbase2
+ chunkclass    watersplash
+ chunkxvelshift    8
+ chunkyvelshift    8
+ chunkzvelshift    8
+ chunkbasezvel    2
+ sound        water
  NoAlert
 }
 
-splash 	blood
+splash     blood
 {
- smallclass 	bloodsplashbasesmall
- smallclip		16
- //smallsound	world/sludgegloopsmall
+ smallclass     bloodsplashbasesmall
+ smallclip        16
+ //smallsound    world/sludgegloopsmall
 
 
- baseclass		bloodsplashbase3
- chunkclass	bloodsplash
- chunkxvelshift	8
- chunkyvelshift	8
- chunkzvelshift	8
- chunkbasezvel	2
- sound		world/sludgegloop
+ baseclass        bloodsplashbase3
+ chunkclass    bloodsplash
+ chunkxvelshift    8
+ chunkyvelshift    8
+ chunkzvelshift    8
+ chunkbasezvel    2
+ sound        world/sludgegloop
  NoAlert
 }
 
-splash 	lava
+splash     lava
 {
- smallclass 	lavasplash
- smallclip		10
- //smallsound	world/lavasizzlesmall
+ smallclass     lavasplash
+ smallclip        10
+ //smallsound    world/lavasizzlesmall
 
- baseclass		lavasplash
- //chunkclass	    lavasmoke2
- chunkxvelshift	-1
- chunkyvelshift	-1
- chunkzvelshift	2
- chunkbasezvel	1
- sound		world/lavasizzle
+ baseclass        lavasplash
+ //chunkclass        lavasmoke2
+ chunkxvelshift    -1
+ chunkyvelshift    -1
+ chunkzvelshift    2
+ chunkbasezvel    1
+ sound        world/lavasizzle
  NoAlert
  
  
 }
 //********** Terrain **********
 
-terrain	 nukage
+terrain     nukage
 {
- splash 	nukage
- footclip	 6
+ splash     nukage
+ footclip     6
  liquid
 }
 
-terrain	water
+terrain    water
 {
- splash 	water
- footclip	 6
+ splash     water
+ footclip     6
  liquid
 }
 
-terrain	lava
+terrain    lava
 {
- splash 	lava
- footclip	 6
+ splash     lava
+ footclip     6
  liquid
- damagetype		"Fire"
+ damagetype        "Fire"
 }
 
-terrain	blood
+terrain    blood
 {
- footclip	 6
+ footclip     6
  liquid
- splash 	blood
+ splash     blood
 }
 
 terrain Slime
 {
- footclip	 6
+ footclip     6
  liquid
  splash Slime
 }
@@ -128,196 +128,196 @@ terrain Slime
 
 splash carpet
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/carpet
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/carpet
+    NoAlert
 }
 
 splash dirt
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/dirt
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/dirt
+    NoAlert
 }
 
 splash gravel
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/gravel
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/gravel
+    NoAlert
 }
 
 splash metal
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/metal
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/metal
+    NoAlert
 }
 
 splash metal2
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/met2
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/met2
+    NoAlert
 }
 
 splash rock
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/rock
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/rock
+    NoAlert
 }
 
 
 splash slimy
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/slimy
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/slimy
+    NoAlert
 }
 
 
 splash snow
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/snow
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/snow
+    NoAlert
 }
 
 splash hard
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/hard
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/hard
+    NoAlert
 }
 
 splash tile
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/tile
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/tile
+    NoAlert
 }
 
 splash tile2
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/tile2
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/tile2
+    NoAlert
 }
 
 splash wood
 {
-	smallclass		None
-	smallclip		0
-	smallsound		njmt
+    smallclass        None
+    smallclip        0
+    smallsound        njmt
 
-	baseclass		None
-	chunkclass		None
-	chunkxvelshift	0
-	chunkyvelshift	0
-	chunkzvelshift	0
-	chunkbasezvel	0
-	sound			floor/wood
-	NoAlert
+    baseclass        None
+    chunkclass        None
+    chunkxvelshift    0
+    chunkyvelshift    0
+    chunkzvelshift    0
+    chunkbasezvel    0
+    sound            floor/wood
+    NoAlert
 }
 
 
@@ -325,87 +325,87 @@ splash wood
 
 terrain carpet
 {
-	splash			carpet
-	footclip		0
-	//liquid//
+    splash            carpet
+    footclip        0
+    //liquid//
 }
 
 terrain dirt
 {
-	splash			dirt
-	footclip		0
-	//liquid//
+    splash            dirt
+    footclip        0
+    //liquid//
 }
 
 terrain gravel
 {
-	splash			gravel
-	footclip		0
-	//liquid//
+    splash            gravel
+    footclip        0
+    //liquid//
 }
 
 terrain metal
 {
-	splash			metal
-	footclip		0
-	//liquid//
+    splash            metal
+    footclip        0
+    //liquid//
 }
 
 terrain metal2
 {
-	splash			metal2
-	footclip		0
-	//liquid//
+    splash            metal2
+    footclip        0
+    //liquid//
 }
 
 terrain rock
 {
-	splash			rock
-	footclip		0
-	//liquid//
+    splash            rock
+    footclip        0
+    //liquid//
 }
 
 terrain snow
 {
-	splash			snow
-	footclip		0
-	//liquid//
+    splash            snow
+    footclip        0
+    //liquid//
 }
 
 terrain slimy
 {
-	splash			slimy
-	footclip		0
-	//liquid//
+    splash            slimy
+    footclip        0
+    //liquid//
 }
 
 terrain hard
 {
-	splash			hard
-	footclip		0
-	//liquid//
+    splash            hard
+    footclip        0
+    //liquid//
 }
 
 terrain tile
 {
-	splash			tile
-	footclip		0
-	//liquid//
+    splash            tile
+    footclip        0
+    //liquid//
 }
 
 terrain tile2
 {
-	splash			tile2
-	footclip		0
-	//liquid//
+    splash            tile2
+    footclip        0
+    //liquid//
 }
 
 terrain wood
 {
-	splash			wood
-	footclip		0
-	//liquid//
-	
+    splash            wood
+    footclip        0
+    //liquid//
+    
 }
 
 
