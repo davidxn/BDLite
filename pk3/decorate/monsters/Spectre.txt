@@ -3,13 +3,6 @@ ACTOR BdSpectre : BdDemon Replaces Spectre
     Scale 1.1
     -FASTER
     PainChance "Kick", 255
-    damagefactor "Flak", 5.0
-    SeeSound "demon/sight"
-    AttackSound "demon/melee"
-    PainSound "demon/pain"
-    DeathSound "demon/death"
-    ActiveSound "demon/active"
-    DamageType Eat
     MaxStepHeight 48
     MaxDropOffHeight 48
     RenderStyle Add

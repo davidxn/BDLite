@@ -8,7 +8,7 @@
 ::::::::::::::
 SET ziptool=c:\Program Files\7-Zip\7z.exe
 SET finalpk3=c:\doomwork\bdlite\bdlite-plus.pk3
-SET bdlitepk3=c:\doomwork\bdlite\bdlite-snapshot.pk3
+SET bdlitepk3=c:\doomwork\bdlite\bdlite.pk3
 SET projectfolder=.\extension-example-pk3
 
 ::::::::::::::

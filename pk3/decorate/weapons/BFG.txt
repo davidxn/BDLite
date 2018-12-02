@@ -22,7 +22,7 @@ ACTOR BdBFG : BdLiteWeapon Replaces BFG9000
         BFGG A 1 A_Lower
         Loop
     Select:
-        BFGG A 1 A_Raise(10)
+        BFGG A 1 A_Raise(20)
         Loop
     Fire:
         TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 40, "FireOK")

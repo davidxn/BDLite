@@ -12,7 +12,7 @@ ACTOR FlakCannon : BdLiteWeapon
     Weapon.SlotPriority 1
     Inventory.PickupMessage "You found a flak cannon!"
     Obituary "%k caught %o in a flak attack"
-    Inventory.PickupSound "CLIPINSS"
+    Inventory.PickupSound "weapons/ssg/clip"
     DamageType Flak
     States
     {

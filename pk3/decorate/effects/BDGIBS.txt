@@ -1034,7 +1034,6 @@ ACTOR BdGibLostSoulCrashing : BdGib
     States
     {
     Spawn:
-        TNT1 A 0 A_Log("Falling")
         LSOL JJJKKKLLL 2 {
             A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360));
             A_CustomMissile("MiniSmoke", 32, 0, random (0, 360), 2, random (0, 360));

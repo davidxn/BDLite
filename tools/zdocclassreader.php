@@ -202,8 +202,6 @@ class ZDocClassReader {
 		for ($i = 0; $i < count($results[1]); $i++) {
 			$comment = trim($results[1][$i]);
 			$class_name = trim($results[2][$i]);
-			print_r(':' . $comment . ':' . PHP_EOL);
-			print_r(':' . $class_name . ':' . PHP_EOL);
 			$class_name = strtolower($class_name);
 			if (isset($class_names_to_data[$class_name])) {
 				$class_names_to_data[$class_name]->comment = $comment;
