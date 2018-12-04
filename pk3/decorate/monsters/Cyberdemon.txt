@@ -30,6 +30,10 @@ ACTOR BdCyberdemon: BdLiteMonster Replaces Cyberdemon
     
     Spawn:
         TNT1 A 0
+        TNT1 A 0 A_JumpIf(ceilingz-floorz >= height, "HeightOK")
+        TNT1 A 0 A_SetScale(1)
+        TNT1 A 0 A_SetSize(-1, 110)
+    HeightOK:
         CYBR D 10 A_Look
         Loop
 

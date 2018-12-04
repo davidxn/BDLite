@@ -34,7 +34,11 @@ ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
         
     Spawn:
         TNT1 A 0
-        BOS2 B 1 A_Look
+        TNT1 A 0 A_JumpIf(ceilingz-floorz >= height, "HeightOK")
+        TNT1 A 0 A_SetScale(1)
+        TNT1 A 0 A_SetSize(-1, 64)
+    HeightOK:
+        BOSS B 10 A_Look
         Loop
     See:
         TNT1 A 0

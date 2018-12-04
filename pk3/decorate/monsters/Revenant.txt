@@ -3,7 +3,7 @@ ACTOR BdRevenant : BdLiteMonster Replaces Revenant
     GibHealth 45
     Health 300
     Radius 20
-    Height 76
+    Height 72
     MeleeThreshold 196
     Speed 10
     +FLOORCLIP
