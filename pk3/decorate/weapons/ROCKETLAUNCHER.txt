@@ -45,7 +45,7 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
     Reload:
         MISG A 1 A_WeaponReady
         MISG A 6
-        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 3),"NoNeedToReload")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 3),"ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("RocketAmmo",1, "ReloadAnimate")
         Goto ReadyLoop
     ReloadAnimate:
