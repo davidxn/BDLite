@@ -5,6 +5,8 @@ ACTOR BdRevenant : BdLiteMonster Replaces Revenant
     Radius 20
     Height 72
     MeleeThreshold 196
+    Mass 500
+    PainChance 50
     Speed 10
     +FLOORCLIP
     PainChance "Kick", 255
