@@ -175,6 +175,8 @@ ACTOR BdRevenant : BdLiteMonster Replaces Revenant
         }
         RVDP G -1
     XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_CustomMissile ("BdGibRevenantTopHalf", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAAAAAAAAAA 0 A_CustomMissile ("BdGibRevenantBone", random(15, 40), 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("BdGibRevenantArm", 35, 0, random (0, 360), 2, random (0, 160))

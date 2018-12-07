@@ -254,6 +254,8 @@ ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
         }
         BOSB D -1
     XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
         TNT1 AA 0 A_CustomMissile ("BdGibKnightArm", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("BdGibKnightLeg", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_CustomMissile ("BdGibKnightHead", 35, 0, random (0, 360), 2, random (0, 160))

@@ -148,6 +148,8 @@ ACTOR BdCacodemon : BdLiteMonster replaces Cacodemon
         CCD3 AB 8
         CCD3 B -1
     XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_CustomMissile ("BdGibCacoTop", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("BdGibCacoPiece1", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AA 0 A_CustomMissile ("BdGibCacoPiece2", 35, 0, random (0, 360), 2, random (0, 160))

@@ -250,7 +250,7 @@ ACTOR BdCommando: BdLiteMonster Replaces ChaingunGuy
         CPSC ABCDEFGH 6 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
         CPSC H -1
     XDeath:
-          TNT1 A 0 A_XScream
+        TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_FaceTarget
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
