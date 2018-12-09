@@ -15,7 +15,7 @@ class ZDocClassReader {
 	const REGEX_ZSCRIPT_DEFAULT_DEFINITION = '/default\h*?{(.*?)}/is';
 	const REGEX_ACTOR_DOC = '/\/\*\*\h*(.*?)\h*\*\/.*?actor\h*([A-Za-z0-9_]+)/si';
 	const REGEX_STATE = '/^\h*[A-Za-z0-9]{4}\h+[a-zA-\]"]*\h+[-]?[0-9rR]+/m';
-	const REGEX_STATE_DEFINITION = '/states.*?{(.*?)}/is';
+	const REGEX_STATE_DEFINITION = '/states.*?{.*?}/is';
 	const REGEX_MAPINFO_DOOMED_NUMBERS = '/doomednums.*?{(.*?)}/si';
 
 	var $multi_token_properties = [
@@ -220,28 +220,16 @@ class ZDocClassReader {
 		$bracket_depth = 0;
 		$started_class = false;
 		$starting_index = 0;
-		for($i = 0; $i < strlen($class_string); $i++) {
-			$char = $class_string[$i];
-			if ($char == '{') {
-				$bracket_depth++;
-				if ($started_class == false) {
-					$starting_index = $i+1;
-					$started_class = true;
-				}
-			}
-			if ($char == '}') {
-				$bracket_depth--;
-			}
-			if ($bracket_depth == 0 && $started_class) {
-				$class_string = substr($class_string, $starting_index, $i-$starting_index);
-				break;
-			}
-		}
+		$class_string = $this->get_text_between_brackets($class_string);
 		
 		//For states, get everything between the states{ and } tokens
 		$state_results = [];
-		preg_match_all(self::REGEX_STATE_DEFINITION, $class_string, $state_results);
-		$states = isset($state_results[1][0]) ? $state_results[1][0] : '';
+		$states = '';
+		preg_match_all(self::REGEX_STATE_DEFINITION, $class_string, $state_results, PREG_OFFSET_CAPTURE);
+		if (!empty($state_results[0])) {
+			//print_r($state_results);
+			$states = $this->get_text_between_brackets(substr($class_string, $state_results[0][0][1]));
+		}
 		
 		//If this class has a //$Sprite definition, add that as our sprite.	
 		$sprite = null;
@@ -410,6 +398,32 @@ class ZDocClassReader {
 			$properties['damagefactor'] = ['name' => 'damagefactor', 'value' => $damage_factors];
 		}
 		return ['flags' => $flags, 'properties' => $properties, 'sprite' => $sprite, 'vars' => $vars, 'consts' => $consts, 'states' => $states];
+	}
+	
+	public function get_text_between_brackets($string) {
+		$starting_index = 0;
+		$started_class = false;
+		$bracket_depth = 0;
+		
+		for($i = 0; $i < strlen($string); $i++) {
+			$char = $string[$i];
+			if ($char == '{') {
+				$bracket_depth++;
+				if ($started_class == false) {
+					$starting_index = $i+1;
+					$started_class = true;
+				}
+			}
+			if ($char == '}') {
+				$bracket_depth--;
+			}
+			if ($bracket_depth == 0 && $started_class) {
+				$string = substr($string, $starting_index, $i-$starting_index);
+				break;
+			}
+		}
+		
+		return $string;
 	}
 	
 	public function get_first_sprite($class_string) {

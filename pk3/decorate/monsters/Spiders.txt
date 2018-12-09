@@ -72,13 +72,19 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_BossDeath
-        TNT1 A 0 A_Jump(256, "XDeath", "DieLegsOff")
+        TNT1 A 0 A_Jump(256, "DieX", "DieLegsOff")
     Death.Plasma:
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_BossDeath
         TNT1 A 0 A_Jump(256, "DiePlasma")
+    XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_BossDeath
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_Jump(256, "DieX")
         
     DieNormal:
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
@@ -110,9 +116,7 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
             A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
         }
         CARB K -1
-    XDeath:
-        TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
+    DieX:
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))

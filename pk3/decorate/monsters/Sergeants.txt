@@ -127,7 +127,7 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_JumpIf(health > -10, "DieNormal")
-        TNT1 A 0 A_Jump(256, "DieGibs", "XDeath")
+        TNT1 A 0 A_Jump(256, "DieGibs", "DieX")
 
     Death.Plasma:
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
@@ -139,8 +139,14 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_Jump(256, "DieJustLegs", "DieInHalf", "DieGibs")
-        
+        TNT1 A 0 A_Jump(256, "DieJustLegs", "DieInHalf", "DieGibs", "DieX")
+       
+    XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_Jump(256, "DieX")
+
     DieNormal:
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerSmall", 35, 0, random (0, 360), 2, random (0, 160))
         SPOS HIJKL 6 A_CustomMissile ("BdBloodDrop", 15, 0, random (0, 360), 2, random (0, 40))
@@ -228,10 +234,7 @@ ACTOR BdShotgunGuy: BdLiteMonster Replaces ShotgunGuy
         TNT1 AAAAAAA 0 A_CustomMissile ("BdGibGut", 35, 0, random (0, 360), 2, random(25, 45))
         POSS STUVW 6
         POSS X -1
-    XDeath:
-        TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_FaceTarget
+    DieX:
         TNT1 AA 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLump", 42, 0, random (0, 360), 2, random (10, 160))
         TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))

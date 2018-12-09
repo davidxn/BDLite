@@ -116,7 +116,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_Jump(256, "DieJustLegs", "XDeath", "DieAlmostAllOff", "DieHeadOff", "DieSplit")
+        TNT1 A 0 A_Jump(256, "DieJustLegs", "DieX", "DieAlmostAllOff", "DieHeadOff", "DieSplit")
     Death.Shotgun:
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         TNT1 A 0 A_Scream
@@ -133,7 +133,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_JumpIf(health > -10, "DieArmOff")
-        TNT1 A 0 A_Jump(256, "XDeath")
+        TNT1 A 0 A_Jump(256, "DieX")
 
     Death.Plasma:
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
@@ -145,7 +145,12 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
         TNT1 A 0 A_ChangeFLag("NODROPOFF", 0)
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_Jump(256, "DieSplit", "DieHeadOff", "DieAlmostAllOff", "DieJustLegs", "XDeath")
+        TNT1 A 0 A_Jump(256, "DieSplit", "DieHeadOff", "DieAlmostAllOff", "DieJustLegs", "DieX")
+    XDeath:
+        TNT1 A 0 A_XScream
+        TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_FaceTarget
+        TNT1 A 0 A_Jump(256, "DieX")
 
     DieNormal:
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerMed", 35, 0, random (0, 360), 2, random (0, 160))
@@ -220,10 +225,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
             A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
         }
         SPRG F -1
-    XDeath:
-        TNT1 A 0 A_XScream
-        TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_FaceTarget
+    DieX:
         TNT1 A 0 A_CustomMissile ("BdBloodSpawnerLarge", 35, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAAAA 0 A_CustomMissile ("BdBloodLump", 35, 0, random (0, 360), 2, random(45, 80))
         TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLumpBone", 42, 0, random (0, 360), 2, random (10, 160))
