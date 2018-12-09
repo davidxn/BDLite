@@ -39,6 +39,7 @@ ACTOR BdLiteWeapon : DoomWeapon
         TNT1 A 0 A_Print("??? Weapon reached unimplemented state ???")
         Stop
     Select:
+		TNT1 A 0 A_WeaponOffset(0.0, 32.0)
         TNT1 A 0 A_Raise(60)
         Wait
     AltFire: //Actually kick

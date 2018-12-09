@@ -18,13 +18,17 @@ ACTOR BdShotgun : BDLiteWeapon Replaces Shotgun
         SHTC A -1
         Stop
     Ready:
-        TNT1 A 4 A_PlaySound("weapons/shotgun/pump")
-        SHTG CBA 0
+        TNT1 A 0 A_PlaySound("weapons/shotgun/pump")
+        SHTG A 1 Offset(-50, 80)
+		SHTG A 1 Offset(-30, 65)
+		SHTG A 1 Offset(-15, 50)
     ReadyLoop:
         SHTG A 1 A_WeaponReady(WRF_ALLOWRELOAD | WRF_ALLOWZOOM)
         Goto ReadyLoop
     Deselect:
-        SHSS DCBA 1
+		SHTG A 1 Offset(-15, 50)
+		SHTG A 1 Offset(-30, 65)
+        SHTG A 1 Offset(-50, 80)
         TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower
         Wait
     Fire:
