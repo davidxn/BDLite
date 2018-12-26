@@ -1,6 +1,13 @@
-AddOptionMenu "VideoOptions"
+AddOptionMenu "OptionsMenu"
 {
   StaticText " "
+  Submenu "BdLite Options", "BdLiteMenu"
+}
+
+OptionMenu "BdLiteMenu"
+{
+  Title "BdLite Options"
+
   Option "Pain Effects", "bd_pain_effects", "YesNo"
   Option "Gibs Fade", "bd_janitor", "YesNo"
   Option "Spent Ammo Fades", "bd_janitor_ammo", "YesNo"

@@ -23,7 +23,7 @@ ACTOR BdCommando: BdLiteMonster Replaces ChaingunGuy
     PainSound "grunt/pain"
     DeathSound "grunt/death"
     ActiveSound "grunt/active"
-    DropItem "BdMinigun"
+    DropItem "Chaingun"
     Obituary "%o was chaingunned by a Commando."
     Species Commando
     States

@@ -164,21 +164,21 @@ ACTOR FlakResidue {
 /** Ammunition for flak cannon */
 ACTOR FlakAmmo : Ammo
 {
-    //$Category Ammunition
-    Game Doom
-    Radius 20
-    Inventory.PickupMessage "Picked up some flak cartridges."
+   //$Category Ammunition
+   Game Doom
+   Radius 20
+   Inventory.PickupMessage "Picked up some flak cartridges."
    Inventory.Amount 2
    Inventory.MaxAmount 20
    Ammo.BackpackAmount 0
    Ammo.BackpackMaxAmount 40
    Inventory.Icon "FKBXA0"
-    States
-    {
-    Spawn:
-        FKBX A -1
-        Stop
-    }
+   States
+   {
+   Spawn:
+       FKBX A -1
+       Stop
+   }
 }
 
 /** Large ammunition for flak cannon */

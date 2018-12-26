@@ -18,6 +18,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
     Player.ColorRange 112, 127
     Player.StartItem "BdRifle"
     Player.StartItem "BdMeleeAttacks"
+	Player.StartItem "BdGrenades"
     Player.StartItem "RifleAmmo", 60
     Player.StartItem "RifleAmmoLoaded", 31
     Player.StartItem "ShotgunAmmoLoaded", 8

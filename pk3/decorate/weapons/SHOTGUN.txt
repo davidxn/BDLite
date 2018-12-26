@@ -48,14 +48,14 @@ ACTOR BdShotgun : BDLiteWeapon Replaces Shotgun
         SHTG A 1 A_SetPitch(+3.0 + pitch)
         SHTG AA 1 A_SetPitch(+1.0 + pitch)
     Pump:
-        SHTG B 1
+        SHTG BD 1
     PumpFromVertical:
         SHTG H 1 A_PlaySound("weapons/shotgun/pump", 3)
         SHTG IJ 1
         SHTG KL 1
         TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, 1) //Okay, I'll keep this bit of detail - don't spawn the case if the shotgun was empty
         TNT1 A 0 A_SpawnItemEx("ShotgunCasing", 14, -2, 40, 0, random(2,4), random(2,4)) //forward, right, up, v-forward, v-right, v-up
-        SHTG KJIH 1
+        SHTG KJH 1
         TNT1 A 0 A_Takeinventory("ShotgunWasEmpty",1)
         SHTG GFEDC 1 A_WeaponReady(WRF_NOFIRE | WRF_ALLOWZOOM)
         SHTG A 1 Offset(10,36)

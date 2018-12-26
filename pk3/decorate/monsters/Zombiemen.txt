@@ -14,7 +14,7 @@ ACTOR BdZombieMan : BdLiteMonster Replaces ZombieMan
     PainSound "grunt/pain"
     DeathSound "grunt/death"
     ActiveSound "grunt/active"
-    DropItem "RifleAmmo"
+    DropItem "Clip"
     Obituary "%o was shot by a Soldier."
     damagefactor "Flak", 20.0
     Species Zombieman

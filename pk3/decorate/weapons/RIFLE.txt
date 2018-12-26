@@ -50,8 +50,6 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
     Spawn:
         RIFL A -1
         Stop
-    PickUp:
-        Stop
     Ready:
         TNT1 A 0 A_PlaySound("weapons/rifle/clip")
         RIF4 D 1 Offset(-10, 46)
