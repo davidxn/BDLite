@@ -151,7 +151,7 @@ ACTOR BdMeleeAttacks : BdLiteWeapon Replaces Fist
 
 ACTOR KickAttack: FastProjectile
 {
-    Radius 20
+    Radius 10
     Height 6
     DamageType Kick
     Projectile 

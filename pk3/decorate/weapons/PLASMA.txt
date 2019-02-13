@@ -48,7 +48,7 @@ ACTOR BdPlasmaGun : BdLiteWeapon Replaces PlasmaRifle
         Goto ReadyLoop
     Reload:
         TNT1 A 0 A_ClearReFire
-        TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded", ACS_NamedExecuteWithResult("checkCapacity", 4), "ReadyLoop")
+        TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded", 0, "ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("PlasmaAmmo", 1, "ReloadAnimate")
         //No more ammo to reload
         TNT1 A 0 A_PlaySound("weapons/plasma/beep")
@@ -64,7 +64,7 @@ ACTOR BdPlasmaGun : BdLiteWeapon Replaces PlasmaRifle
         PLSR CDEEEEEEEEEEEEEEEF 1
         PLSR GHHIIIJJJJJJJJIKLBAAAAA 1
     ReloadAmmo:
-        TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 4), "ReadyLoop")
+        TNT1 A 0 A_JumpIfInventory("PlasmaAmmoLoaded", 0, "ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",1,1)
         Goto ReadyLoop
         TNT1 A 0 A_Giveinventory("PlasmaAmmoLoaded",1)
@@ -89,7 +89,6 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
     +NOBLOOD
     +NORADIUSDMG
     Health 5
-    Scale 1.0
     renderstyle ADD
     alpha 0.90
     Scale 0.10

@@ -45,7 +45,7 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
     Reload:
         MISG A 1 A_WeaponReady
         MISG A 6
-        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 3),"ReadyLoop")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded", 0,"ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("RocketAmmo",1, "ReloadAnimate")
         Goto ReadyLoop
     ReloadAnimate:
@@ -65,7 +65,7 @@ ACTOR BdRocketLauncher : BdLiteWeapon Replaces RocketLauncher
         MISG A 6
     ReloadAmmo:
         //This continuously subtracts from stock and adds to the amount in the weapon until we either run out of stock or fill the weapon.
-        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 3),"ReadyLoop")
+        TNT1 A 0 A_JumpIfInventory("RocketAmmoLoaded", 0,"ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("RocketAmmo",1, 1)
         Goto ReadyLoop
         TNT1 A 0 A_Giveinventory("RocketAmmoLoaded", 1)

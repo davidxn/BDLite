@@ -9,13 +9,13 @@ Fire:
     Perform animation and firing, take the relevant ammunition manually.
     Return to ReadyLoop.
 Reload:
-    Check the weapon's loaded ammo using checkCapacity. If it's already full, return to ReadyLoop
+    Check the weapon's loaded ammo using 0 (which means to check against the maximum capacity of that item). If it's already full, return to ReadyLoop
     If the player has at least one ammo in reserve, jump to ReloadAnimate.
     Otherwise, perform actions for no more ammo to reload.
 ReloadAnimate:
     Perform animation for reload then fall through to ReloadAmmo.
 ReloadAmmo:
-    Loop, transferring ammo count from reserve to weapon, until the reserve is exhausted or the weapon is at capacity (use checkCapacity).
+    Loop, transferring ammo count from reserve to weapon, until the reserve is exhausted or the weapon is at capacity (use a check against 0, max capacity)
 */
 ACTOR BdLiteWeapon : DoomWeapon
 {

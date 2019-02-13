@@ -93,7 +93,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
         "####" A 0 A_Refire
         Goto ReadyLoop
     Reload:
-        "####" A 0 A_JumpIfInventory("RifleAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 1), "ReadyLoop")
+        "####" A 0 A_JumpIfInventory("RifleAmmoLoaded", 0, "ReadyLoop")
         "####" A 0 A_JumpIfInventory("RifleAmmo",1,"ReloadAnimate")
         "####" D 8 A_PlaySound("weapons/empty")
         Goto ReadyLoop
@@ -109,7 +109,7 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
 
     ReloadAmmo:
         TNT1 AAAA 0
-        TNT1 A 0 A_JumpIfInventory("RifleAmmoLoaded",ACS_NamedExecuteWithResult("checkCapacity", 1), "ReadyLoop")
+        TNT1 A 0 A_JumpIfInventory("RifleAmmoLoaded", 0, "ReadyLoop")
         TNT1 A 0 A_JumpIfInventory("RifleAmmo", 1, 1)
         Goto ReadyLoop 
         TNT1 A 0 A_Giveinventory("RifleAmmoLoaded",1)
