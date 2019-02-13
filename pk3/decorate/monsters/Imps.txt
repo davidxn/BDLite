@@ -53,6 +53,7 @@ ACTOR BdImp: BdLiteMonster Replaces DoomImp
         TNT1 A 0 A_CustomMissile("ImpAttack2",10,0,0,0)
         TNT1 A 0 A_TakeInventory("IsJumping")
         TROT G 1
+        TNT1 A 0 A_PlaySound("world/enemylanding")
         TROT GG 2 A_CustomMissile("ImpAttack2",10,0,0,0)
         TROT G 1
         Goto See
