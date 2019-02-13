@@ -1,6 +1,6 @@
 .--------------------------------------------------------------------------------.
 | BDLite chopped up and reassembled by DavidN from Sgt Mark IV's Brutal Doom v20 |
-|                                   VERSION 1.0                                  |
+|                                   VERSION 1.1                                  |
 |                     http://teamouse.net/games/doom/bdlite/                     |
 |                                                                                |
 |        See https://trello.com/b/fmJhYIlv/bdlite for a list of additions        |

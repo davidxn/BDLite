@@ -101,11 +101,12 @@ weapons/plasma/ready        "sounds/weapons/plasmagun/plasma-reload.ogg"
 weapons/plasma/beep            "sounds/weapons/plasmagun/plasma-beep.ogg"
 weapons/plasma/beepbeep     "sounds/weapons/plasmagun/plasma-beepbeep.ogg"
 
-weapons/bfg/draw            "sounds/weapons/bfg/bfg-draw"
-weapons/bfg/explode            "sounds/weapons/bfg/bfg-explode"
-weapons/bfg/charge            "sounds/weapons/bfg/bfg-charge"
-weapons/bfg/fire            "sounds/weapons/bfg/bfg-fire"
+weapons/bfg/draw            "sounds/weapons/bfg/bfg-draw.ogg"
+weapons/bfg/explode            "sounds/weapons/bfg/bfg-explode.ogg"
+weapons/bfg/charge            "sounds/weapons/bfg/bfg-charge.ogg"
+weapons/bfg/fire            "sounds/weapons/bfg/bfg-fire.ogg"
 $rolloff weapons/bfg/explode 2000 1500
+$volume weapons/bfg/charge 0.8
 
 weapons/flakcannon/snap     "sounds/weapons/flakcannon/flak-open"
 weapons/flakcannon/reload     "sounds/weapons/flakcannon/flak-reload.ogg"
@@ -233,7 +234,9 @@ $limit explosions/far 4
 
 world/landing1                 "sounds/impacts/landing-1.ogg"
 world/landing2                 "sounds/impacts/landing-2.ogg"
-$random world/landing { world/landing1 world/landing2 }
+$random world/enemylanding { world/landing1 world/landing2 }
+$limit world/enemylanding 2
+$rolloff world/enemylanding 64 512
 
 world/sludgegloop            "sounds/world/water-splash.ogg"
 world/lavasizzle            "sounds/world/lava-sizzle.ogg"

@@ -1,24 +1,6 @@
 #include "zcommon.acs"
 #library "WEAPONSCRIPTS"
 
-script "checkCapacity" (int ammoType) {
-    int cap = 0;
-    if (ammoType == 1) {
-        cap = GetAmmoCapacity("RifleAmmoLoaded");
-    }
-    if (ammoType == 2) {
-        cap = GetAmmoCapacity("ShotgunAmmoLoaded");
-    }
-    if (ammoType == 3) {
-        cap = GetAmmoCapacity("RocketAmmoLoaded");
-    }
-    if (ammoType == 4) {
-        cap = GetAmmoCapacity("PlasmaAmmoLoaded");
-    }
-    SetResultValue(cap);
-    terminate;
-}
-
 Script "adjustForDeathmatch" (void)
 {
 if    (GameType() == GAME_NET_DEATHMATCH) 
