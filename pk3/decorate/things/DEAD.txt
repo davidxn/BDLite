@@ -129,7 +129,7 @@ actor DeadMarineLegs
         Loop
     Raise:
         POSS LKJIH 6
-        TNT1 A 0 A_SpawnItem("BdZombieMan")
+        TNT1 A 0 A_SpawnItem("ZombieMan")
     }
 }
 

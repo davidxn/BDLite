@@ -280,13 +280,11 @@ object TallTorch_Blue
 
 object Plasma_Ball
 {
-    frame TNT1 { light PLASMABALL }
     frame PBAL { light PLASMABALLSMALL }
 }
 
 object SpiderPlasmaBall
 {
-    frame TNT1 { light PLASMABALL }
     frame PBAL { light PLASMABALLSMALL }
 }
 
@@ -356,11 +354,6 @@ object BurningBarrel1
 {
     frame BURB { light FIREBARREL }
 }
-
-//object BigTreeInFlames
-//{
-//    frame TRE2 { light FIREBARREL }
-//}
 
 object TorchTreeInFlames
 {
@@ -1062,14 +1055,6 @@ pointlight SpecialLightz
     dontlightself 1
 }
 
-//object Doomer
-//{
- //   frame MARN { light SpecialLightz }
-//}
-
-
-
-
 pulselight GREENGOOZ
 {
     color 0.3 1.0 0.0
@@ -1080,8 +1065,6 @@ pulselight GREENGOOZ
     dontlightself 1
 }
 
-
-
 pulselight GREENITEM
 {
     color 0.3 1.0 0.0
@@ -1090,7 +1073,6 @@ pulselight GREENITEM
     interval 0.1
     offset 0 5 0
 }
-
 
 pulselight BLUEITEM
 {
@@ -1125,14 +1107,12 @@ pointlight Flashlight1
     offset 0 0 0
 }
 
-
 pointlight Flashlight2
 {
     color 0.6 0.6 0.6
     size 16
     offset 0 0 0
 }
-
 
 pointlight Flashlight3
 {

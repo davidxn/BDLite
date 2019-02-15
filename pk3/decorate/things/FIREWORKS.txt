@@ -173,6 +173,23 @@ Actor BdExplosionBig : SpawnedExplosion {
     }
 }
 
+actor RocketExplosionDamage
+{
++NOBLOCKMAP
++MISSILE
++NOTELEPORT
+Radius 2
+Height 2
+Damagetype Explosive
+States
+{
+    Spawn:
+        TNT1 A 0
+        TNT1 A 0 A_Explode(100,120)
+        Stop
+    }
+}
+
 actor BarrelExplosionDamage : RocketExplosionDamage
 {
 +FORCERADIUSDMG

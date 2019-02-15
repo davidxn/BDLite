@@ -243,30 +243,3 @@ ACTOR BdHellBaron : BdLiteMonster Replaces BaronofHell
         Goto See
     }
 } 
-
-ACTOR BaronAttack: BaronBall
-{
-    Radius 24
-    Height 16
-    Projectile 
-    +RANDOMIZE
-    +FORCEXYBILLBOARD
-    +THRUGHOST
-    RenderStyle Add
-    Alpha 0.6
-    Damage 16
-    Speed 28
-    SeeSound "none"
-    DeathSound "none"
-    Decal "none"
-    States
-    {
-    Spawn:
-        TNT1 A 2 BRIGHT
-        TNT1 A 2
-        Goto Death
-    Death:
-        TNT1 A 0 BRIGHT
-        Stop
-    }
-}

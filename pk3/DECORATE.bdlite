@@ -1,6 +1,24 @@
 // IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS - Sgt Mark
 // GO AHEAD AND BUILD ON THIS - DavidN
 
+// Base effects for weapons and monsters
+#include decorate/weapons/PlayerProjectiles.txt
+#include decorate/monsters/MonsterProjectiles.txt
+
+//Blood and other effects
+#include decorate/effects/BDBLOOD.txt
+#include decorate/effects/BDGIBS.txt
+#include decorate/effects/BDFX.txt
+#include decorate/effects/PARTICLES.txt
+#include decorate/effects/BDSMOKE.txt
+#include decorate/effects/BDCASING.txt
+#include decorate/effects/FIRE.txt
+#include decorate/effects/SPARKS.txt
+#include decorate/effects/FLARES.txt
+#include decorate/effects/PUFF.txt
+#include decorate/effects/TRACERS.txt
+#include decorate/effects/WATER.txt
+
 //Weapons
 #include decorate/weapons/BDLITEWEAPON.txt
 #include decorate/weapons/Grenades.txt
@@ -13,10 +31,8 @@
 #include decorate/weapons/ROCKETLAUNCHER.txt
 #include decorate/weapons/PLASMA.txt
 #include decorate/weapons/BFG.txt
-
-//A couple of example new weapons! PlasmaPistol is turned off due to being pretty useless
+//Bonus weapon :)
 #include decorate/weapons/FlakCannon.txt
-//#include decorate/weapons/PlasmaPistol.txt
 
 //Enemies
 #include decorate/monsters/BdLiteMonster.txt
@@ -37,20 +53,6 @@
 #include decorate/monsters/ARCHVILE.txt
 #include decorate/monsters/CYBERDEMON.txt
 #include decorate/monsters/MASTERMIND.txt
-
-//Blood and effects
-#include decorate/effects/BDBLOOD.txt
-#include decorate/effects/BDGIBS.txt
-#include decorate/effects/BDFX.txt
-#include decorate/effects/PARTICLES.txt
-#include decorate/effects/BDSMOKE.txt
-#include decorate/effects/BDCASING.txt
-#include decorate/effects/FIRE.txt
-#include decorate/effects/SPARKS.txt
-#include decorate/effects/FLARES.txt
-#include decorate/effects/PUFF.txt
-#include decorate/effects/TRACERS.txt
-#include decorate/effects/WATER.txt
 
 //DECORATIONS
 #include decorate/things/FURNITURE.txt

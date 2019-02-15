@@ -130,13 +130,3 @@ ACTOR BdArachnotron: BdLiteMonster replaces Arachnotron
         Goto See
     }
 }
-
-Actor SpiderPlasmaBall : Plasma_Ball Replaces PlasmaBall2
-{
-    Damage (random(10,15))
-    DamageType Plasma
-    Speed 26
-    +DONTHURTSPECIES
-    SeeSound "weapons/plasma/fire"
-    Species "Spider"
-}
