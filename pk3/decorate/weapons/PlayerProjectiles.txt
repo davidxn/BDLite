@@ -152,7 +152,7 @@ Actor SuperBFGBall : BFGBall replaces BFGBall
     TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_CustomMissile ("BFGSuperParticle", 0, 0, random (0, 360), 2, random (0, 360))
     BFGB AABBCCDDEE 1 Bright A_SpawnItem("GreenFlare",0,0)
     TNT1 A 0 A_Explode(80,300,0)
-    BFGB F 1 Bright A_BFGSpray("SuperBFGExtra", 60, 20, 120)
+    BFGB F 1 Bright A_BFGSpray("SuperBFGExtra", 60, 20)
     TNT1 A 0 A_SPawnItem("SuperBFGExtraGiant")
     BFGB GGHHIIJJKK 1 Bright A_SpawnItem("GreenFlare",0,0)
     Stop
@@ -280,7 +280,7 @@ ACTOR GreenShockWave
       SHOK A 1 BRIGHT
       Goto Death 
    Death: 
-      SHOK BCDEFFGGHHIIIJJJKKKLLMMNNOPQR 1 BRIGHT A_FadeOut(0.03)
+      SHOK BCDEFFGGHHIIIJJJKKKLLMMNNPQR 1 BRIGHT A_FadeOut(0.03)
       Stop 
    } 
 } 

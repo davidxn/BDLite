@@ -632,7 +632,6 @@ ACTOR RevenantBalls Replaces RevenantTracer
     States
     {
     Spawn:
-        TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
         FATB AB 1 BRIGHT A_SpawnItem("RedFlareSmall",0,0)
         TNT1 A 0 A_SeekerMissile (4,8)
         TNT1 A 0 A_SpawnItemEx("RevenantProjectileTrails", 0, 0, 0, 0, 0, 0, 0, 128) 
