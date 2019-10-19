@@ -128,3 +128,18 @@ ACTOR BlackSmoke : ExplosionSmoke
     Stop
     }
 }
+
+actor MeleeSmoke: ExplosionSmoke
+{
+    Speed 1
+    Alpha 0.15
+    Scale 0.2
+
+    States
+    {
+    Spawn:
+        SMK3 B 4
+        SMK3 CDEFGHIJKLM 2
+        stop
+    }
+}

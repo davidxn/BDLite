@@ -1,5 +1,6 @@
 ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
 {
+    //$Sprite BOS2A1
     Translation "176:191=112:127"
     Scale 1.0
     Speed 8
@@ -33,10 +34,10 @@ ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
         Goto See2
         
     Spawn:
-        TNT1 A 0
-        TNT1 A 0 A_JumpIf(ceilingz-floorz >= height, "HeightOK")
-        TNT1 A 0 A_SetScale(1)
-        TNT1 A 0 A_SetSize(-1, 64)
+        BOS2 A 0
+        BOS2 A 0 A_JumpIf(ceilingz-floorz >= height, "HeightOK")
+        BOS2 A 0 A_SetScale(1)
+        BOS2 A 0 A_SetSize(-1, 64)
     HeightOK:
         BOS2 B 10 A_Look
         Loop

@@ -235,33 +235,33 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
     Health 200
     Radius 16
     Height 64
-    +SOLID
-    +SHOOTABLE
-    +DONTTHRUST
     DropItem "HealthPlus" 55
     DropItem "HealthPlus" 55
     DropItem "ArmorShard" 55
     DropItem "ArmorShard" 55
     DropItem "Stimpack" 55
-    DropItem "Clips" 55
-    DropItem "Shells" 55
+    DropItem "RifleAmmo" 55
+    DropItem "Shell" 55
     bloodtype "DeadBlood"
     damagefactor "Fire", 0.0
     GibHealth 10
+
+    +SOLID
+    +SHOOTABLE
+    +DONTTHRUST
+    
     States
     {
-        Spawn:
-            TNT1 A 0
+    Spawn:
+        TNT1 A 0
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0)
         Goto Stand
     Stand:
         POL1 A 60
-        
         Loop
     Death:
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_Scream
-        
         CAPT N -1
         Stop
     }
@@ -275,22 +275,24 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
     Radius 16
     Height 64
     GibHealth 10
-    +SOLID
-    +DONTTHRUST
-    +SHOOTABLE
     DropItem "HealthPlus" 55
     DropItem "HealthPlus" 55
     DropItem "ArmorShard" 55
     DropItem "ArmorShard" 55
     DropItem "Stimpack" 55
-    DropItem "Clips" 55
-    DropItem "Shells" 55
+    DropItem "RifleAmmo" 55
+    DropItem "Shell" 55
     damagefactor "Fire", 0.0
     bloodtype "DeadBlood"
+
+    +SOLID
+    +DONTTHRUST
+    +SHOOTABLE
+    
     States
     {
     Spawn:
-            TNT1 A 0
+        TNT1 A 0
         TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0)
         Goto Stand
     Stand:
@@ -306,7 +308,6 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
     Death:
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_Scream
-        
         CAPT N -1
         Stop
     }

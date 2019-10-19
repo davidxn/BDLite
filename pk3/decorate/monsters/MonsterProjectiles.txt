@@ -626,7 +626,7 @@ ACTOR RevenantBalls Replaces RevenantTracer
     +THRUGHOST
     +SEEKERMISSILE
     Scale 1.0
-    damagetype "bLAST"
+    damagetype "Blast"
     SeeSound "skeleton/attack"
     DeathSound "skeleton/tracex"
     States
@@ -643,7 +643,7 @@ ACTOR RevenantBalls Replaces RevenantTracer
         TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 Bright A_Explode(7, 120, 1)
+        TNT1 A 0 A_Explode(7, 120, 1)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
         TNT1 A 0
@@ -681,11 +681,10 @@ ACTOR RevenantMissile
     Death:
         TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 Radius_Quake (2, 54, 0, 15, 0)
-        TNT1 A 0 Bright A_Explode(7, 120, 1)
+        TNT1 A 0 A_Explode(7, 120, 1)
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
         TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0
+        TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
@@ -694,32 +693,26 @@ ACTOR RevenantMissile
     }
 }
     
-ACTOR RevenantAttack: BaronBall
+ACTOR RevenantAttack
 {
-    Radius 24
+    Radius 8
     Height 16
-    DamageType Kick
+    DamageType "Kick"
+    Damage (15)
+    Speed 28
     Projectile 
     +RANDOMIZE
-    +FORCEXYBILLBOARD
     +THRUGHOST
-    RenderStyle Add
-    Alpha 0.6
-    Damage 10
-    Speed 28
-    //HitObituary "$OB_IMPHIT"
-    SeeSound "none"
-    DeathSound "none"
-    Decal "none"
     States
     {
     Spawn:
-        TNT1 A 1 BRIGHT
-        TNT1 A 1
-        Goto Death
-    Death:
-        TNT1 A 0 BRIGHT
+        TNT1 A -1
         Stop
+    Death:
+        TNT1 A 0 A_PlaySound("skeleton/melee", CHAN_6)
+        TNT1 AAA 0 A_CustomMissile("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 6 A_Quake(8, 6, 0, 128, "")
+        stop
     }
 }
 
@@ -732,4 +725,3 @@ Actor SpiderPlasmaBall : Plasma_Ball Replaces PlasmaBall2
     SeeSound "weapons/plasma/fire"
     Species "Spider"
 }
-
