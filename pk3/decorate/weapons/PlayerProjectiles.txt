@@ -545,7 +545,7 @@ actor KickAttack: FastProjectile
     States
     {
     Spawn:
-        TNT1 A -1
+        TNT1 A 2 // Live for 2 ticks
         stop
         
     Death:
@@ -573,7 +573,7 @@ actor MeleeStrike1: KickAttack
     States
     {
     Spawn:
-        TNT1 A -1
+        TNT1 A 1 // Live for a single tick
         stop
 
     Death:

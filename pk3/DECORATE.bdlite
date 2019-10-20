@@ -18,6 +18,8 @@
 #include decorate/effects/PUFF.txt
 #include decorate/effects/TRACERS.txt
 #include decorate/effects/WATER.txt
+#include decorate/effects/FlatDecals.txt
+#include decorate/effects/TerrainSplashes.txt
 
 //Weapons
 #include decorate/weapons/BDLITEWEAPON.txt

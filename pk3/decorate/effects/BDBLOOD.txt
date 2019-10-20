@@ -82,8 +82,7 @@ actor BdBleed replaces Blood
         TNT1 A 0 NoDelay A_SpawnProjectile("BdFlyingBlood", 7, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -40))
         TNT1 AAAA 0 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180))
         TNT1 A 0 A_SpawnProjectile("BdBloodHitEffect", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -90))
-        TNT1 A 0 A_Stop
-        TNT1 A -1
+        TNT1 A 1 A_Stop
         stop
     }
 }
@@ -98,8 +97,7 @@ actor BdBleedSaw : BdBleed
         TNT1 AAAAA 0 A_SpawnProjectile("BdBloodLump", 7, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -40))
         TNT1 AAAA 0 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180))
         TNT1 A 0 A_SpawnProjectile("BdBloodHitEffect", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -90))
-        TNT1 A 0 A_Stop
-        TNT1 A -1
+        TNT1 A 1 A_Stop
         stop
    }
 }
@@ -172,8 +170,7 @@ actor BdBleedSawBlue : BdBleed
         TNT1 AAA 0 A_SpawnProjectile("BdBloodLumpBlue", 7, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -40))
         TNT1 AAAA 0 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180))
         TNT1 AA 0 A_SpawnProjectile("BdBloodHitEffectBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -90))
-        TNT1 A 0 A_Stop
-        TNT1 A -1
+        TNT1 A 1 A_Stop
         Stop
     }
 }
@@ -481,8 +478,7 @@ actor BdFlyingBlood : BdBlood
         
     Death:
         TNT1 A 0 A_PlaySound("misc/blooddrop2")
-        TNT1 A 0 A_SpawnItem("BdBloodSpot")
-        TNT1 A -1
+        TNT1 A 1 A_SpawnItem("BdBloodSpot")
         stop
     }
 }
@@ -499,7 +495,7 @@ actor BdFlyingAsh : BdFlyingBlood
     Spawn:
         ATRL AAAAAAABBBBBBCCCCCCDDDDDD random(1, 2)
     Death:
-        TNT1 A -1
+        TNT1 A 1
         stop
     }
 }
@@ -543,7 +539,7 @@ actor BdFlyingBloodTrail : BdBlood
         stop
         
     Death:
-        TNT1 A -1
+        TNT1 A 0
         stop
     }
 }
@@ -712,8 +708,7 @@ actor BdFlyingBloodBlue : BdBloodBlue
         
     Death:
         TNT1 A 0 A_PlaySound("misc/blooddrop2")
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue")
-        TNT1 A -1
+        TNT1 A 1 A_SpawnItem("BdBloodSpotBlue")
         stop
     }
 }
