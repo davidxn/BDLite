@@ -80,7 +80,14 @@ ACTOR BdRifle : BDLiteWeapon Replaces Pistol
     FireAnimate:
         "####" A 0 A_JumpIfInventory("RifleAmmoLoaded", 1, 1)
         Goto Reload
-        "####" A 0 A_PlaySound("weapons/rifle/fire")
+        "####" A 0 
+        {
+            A_PlaySound("weapons/rifle/fire");
+            if (CountInv("RifleAmmoLoaded") < 12) //mxd
+            {
+                A_PlaySound("weapons/rifle/dryfire", CHAN_AUTO);
+            }
+        }
         "####" A 1 BRIGHT A_AlertMonsters
         "####" A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30)
         "####" B 1 Offset(0, 34) BRIGHT A_FireBullets (0, 0, 1, 9, "HitPuff")

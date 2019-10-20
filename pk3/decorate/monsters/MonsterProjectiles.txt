@@ -619,16 +619,17 @@ ACTOR RevenantBalls Replaces RevenantTracer
     SpawnID 53
     Radius 10
     Height 4
-    Speed 6
-    FastSpeed 8
+    Speed 10
+    FastSpeed 12
     Damage (random(15,20))
     PROJECTILE
     +THRUGHOST
     +SEEKERMISSILE
     Scale 1.0
-    damagetype "Blast"
+    DamageType "Blast"
     SeeSound "skeleton/attack"
     DeathSound "skeleton/tracex"
+
     States
     {
     Spawn:
@@ -638,6 +639,7 @@ ACTOR RevenantBalls Replaces RevenantTracer
         TNT1 A 0 A_SpawnItem ("SmokeTrail")
         TNT1 A 0 A_CustomMissile ("SmokeTrail", 2, 0, random (160, 210), 2, random (-30, 30))
         Loop
+
     Death:
         TNT1 A 0 Radius_Quake (2, 54, 0, 15, 0)
         TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
@@ -646,7 +648,6 @@ ACTOR RevenantBalls Replaces RevenantTracer
         TNT1 A 0 A_Explode(7, 120, 1)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-        TNT1 A 0
         TNT1 AAAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
         TNT1 A 10
@@ -660,16 +661,17 @@ ACTOR RevenantMissile
     SpawnID 53
     Radius 4
     Height 4
-    Speed 8
+    Speed 10
     FastSpeed 12
     Damage (random(15,25))
     PROJECTILE
     +THRUGHOST
     +SEEKERMISSILE
     Scale 1.0
-    damagetype "Blast"
+    DamageType "Blast"
     SeeSound "skeleton/attack"
     DeathSound "skeleton/tracex"
+
     States
     {
     Spawn:
@@ -678,6 +680,7 @@ ACTOR RevenantMissile
         TNT1 A 0 A_SpawnItem ("SmokeTrail")
         TNT1 A 0 A_CustomMissile ("SmokeTrail", 2, 0, random (160, 210), 2, random (-30, 30))
         Loop
+
     Death:
         TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 Radius_Quake (2, 54, 0, 15, 0)
@@ -700,14 +703,17 @@ ACTOR RevenantAttack
     DamageType "Kick"
     Damage (15)
     Speed 28
-    Projectile 
+
+    Projectile
     +RANDOMIZE
     +THRUGHOST
+
     States
     {
     Spawn:
         TNT1 A -1
-        Stop
+        stop
+
     Death:
         TNT1 A 0 A_PlaySound("skeleton/melee", CHAN_6)
         TNT1 AAA 0 A_CustomMissile("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))

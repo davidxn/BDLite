@@ -43,6 +43,7 @@ Base by Mike12, edited by Sergeant_Mark_IV
 
 Assault Rifle
 Mike12
+SOUNDS\Weapons\Rifle\rifle-dryfire.wav: made from https://freesound.org/people/fastson/sounds/399116/
 
 Shotgun Pumping (SHTG*)
 DoomNukem

@@ -62,6 +62,22 @@ Actor MiniSmoke: ExplosionSmoke
     }
 }
 
+//mxd. From BD21
+actor MeleeSmoke: ExplosionSmoke
+{
+    Speed 1
+    Alpha 0.15
+    Scale 0.2
+
+    States
+    {
+    Spawn:
+        SMK3 B 4
+        SMK3 CDEFGHIJKLM 2
+        stop
+    }
+}
+
 Actor SmokeTrail: ExplosionSmoke
 {
     Alpha 0.6
@@ -126,20 +142,5 @@ ACTOR BlackSmoke : ExplosionSmoke
     SMK1 K 50
     SMK1 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK 2 A_FadeOut(0.01)
     Stop
-    }
-}
-
-actor MeleeSmoke: ExplosionSmoke
-{
-    Speed 1
-    Alpha 0.15
-    Scale 0.2
-
-    States
-    {
-    Spawn:
-        SMK3 B 4
-        SMK3 CDEFGHIJKLM 2
-        stop
     }
 }

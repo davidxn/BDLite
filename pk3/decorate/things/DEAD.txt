@@ -261,7 +261,6 @@ ACTOR DeadDeadStick: DeadStick Replaces DeadStick
         Loop
     Death:
         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_Scream
         CAPT N -1
         Stop
     }
@@ -307,7 +306,6 @@ ACTOR DeadLiveStick: LiveStick Replaces LiveStick
         Loop
     Death:
         TNT1 A 0 A_NoBlocking
-        TNT1 A 0 A_Scream
         CAPT N -1
         Stop
     }
