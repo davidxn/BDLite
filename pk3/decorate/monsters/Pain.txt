@@ -67,19 +67,19 @@ actor BdPainElemental : BdLiteMonster replaces PainElemental
         PAIN H 8 BRIGHT
         PAIN I 8 BRIGHT A_Scream
         TNT1 A 0 A_Explode(220, 220)
-        TNT1 AA 0 BRIGHT A_CustomMissile("BdBloodSpawnerLarge", 5, 0, random(0, 360), 2, random(30, 180))
-        TNT1 AAAAAAAA 0 A_SpawnProjectile("BdBloodLump", 32, 0, random(0, 360), 2, random(0, 160))
+        TNT1 AA 0 BRIGHT A_SpawnProjectile("BdBloodSpawnerLarge", 5, 0, random(0, 360), CMF_AIMDIRECTION, random(-30, -180))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("BdBloodLump", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-        TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile("FireBallExplosion", 6, 0, random(0, 360), 2, random(0, 360))
+        TNT1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("FireBallExplosion", 6, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 BRIGHT A_PainDie
         TNT1 AAAAAA 0
         {
-            A_SpawnProjectile("BdGibPainPiece1", 32, 0, random(0, 360), 2, random(0, 160));
-            A_SpawnProjectile("BdGibPainPiece2", 32, 0, random(0, 360), 2, random(0, 160));
+            A_SpawnProjectile("BdGibPainPiece1", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160));
+            A_SpawnProjectile("BdGibPainPiece2", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160));
         }
     ExplosionLoop:
-        TNT1 A 0 A_SpawnProjectile("ExplosionSmoke", 1, 0, random(0, 360), 2, random(70, 110))
-        TNT1 AAA 4 A_SpawnProjectile("RealFlameTrailsSmallLong", 1, 0, random(0, 360), 2, random(70, 110))
+        TNT1 A 0 A_SpawnProjectile("ExplosionSmoke", 1, 0, random(0, 360), CMF_AIMDIRECTION, random(-70, -110))
+        TNT1 AAA 4 A_SpawnProjectile("RealFlameTrailsSmallLong", 1, 0, random(0, 360), CMF_AIMDIRECTION, random(-70, -110))
         TNT1 A 0 A_SetUserVar("user_loop_index", user_loop_index + 1)
         TNT1 A 0 A_JumpIf(user_loop_index <= 20, "ExplosionLoop")
         stop

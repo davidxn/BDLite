@@ -1,8 +1,0 @@
-#include "zcommon.acs"
-#library "WEAPONSCRIPTS"
-
-Script "adjustForDeathmatch" (void)
-{
-if    (GameType() == GAME_NET_DEATHMATCH) 
-    SetActorState(0, "DMSpawn"); 
-}

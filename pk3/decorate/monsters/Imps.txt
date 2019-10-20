@@ -66,8 +66,8 @@ actor BdImp: BdLiteMonster replaces DoomImp
         TNT1 A 0 A_Playsound("monsters/imp/charge")
         TROO EEEEEF 2
         {
-            A_SpawnProjectile("SmallFlameTrails", 35, 26, random(0, 40), 2, random(0, 160));
-            A_SpawnProjectile("FlameBall", 35, 26, random(0, 140), 2, random(0, 160));
+            A_SpawnProjectile("SmallFlameTrails", 35, 26, random(0, 40), CMF_AIMDIRECTION, random(0, -160));
+            A_SpawnProjectile("FlameBall", 35, 26, random(0, 140), CMF_AIMDIRECTION, random(0, -160));
             A_FaceTarget;
         }
         TROO G 6 A_SpawnProjectile("FireBall_", 34) 
@@ -140,109 +140,109 @@ actor BdImp: BdLiteMonster replaces DoomImp
         TNT1 A 0 A_Jump(256, "DieX")
 
     DieNormal:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerSmall", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TROO JKLM 5 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerSmall", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TROO JKLM 5 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TROO M -1
         stop
     DieNormal2:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerSmall", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TROH KLMN 5 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerSmall", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TROH KLMN 5 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TROH O -1
         stop
     DieRollBack:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
         TNT1 A 0 A_FaceTarget
         TNT1 A 0 A_Recoil(13)
         TNT1 A 0 ThrustThingZ(0, 20, 0, 1)
         TNT1 A 0 A_Jump(128, "DieRollback2")
-        TR06 ABCDE 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), 2, random(0, 40))
+        TR06 ABCDE 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TR06 FGHIJK 4
         TR06 K -1
         stop
     DieRollBackHigh:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
         TNT1 A 0 A_FaceTarget
         TNT1 A 0 A_Recoil(20)
         TNT1 A 0 ThrustThingZ(0, 30, 0, 0) //Set, don't add
         TNT1 A 0 A_Jump(128, "DieRollback2")
-        TR06 ABCDE 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), 2, random(0, 40))
+        TR06 ABCDE 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TR06 FGHIJK 4
         TR06 K -1
         stop
     DieRollBack2:
-        TR06 LMNOP 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), 2, random(0, 40))
+        TR06 LMNOP 4 A_SpawnProjectile("BdBloodSpawnerTiny", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TR06 QRSTUV 4
         TR06 V -1
         stop
     DieArmOff:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpSide", 48, 0, random(0, 360), 2, random(0, 160))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpSide", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_Jump(128, "DieArmOff2")
-        TRO3 ABCDE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TRO3 ABCDE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TRO3 E -1
         stop
     DieArmOff2:
-        TRO4 ABCDE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TRO4 ABCDE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TRO4 E -1
         stop
     DiePlasma:
         PBR1 A 2
         TNT1 AAAAAAAAAAAAAAAAAAAAAAA 0
         {
-            A_SpawnProjectile("BdAshes", 32, 0, random(0, 360), 2, random(0, 180));
-            A_SpawnProjectile("BdAshesHeavy", 32, 0, random(0, 360), 2, random(0, 180));
+            A_SpawnProjectile("BdAshes", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180));
+            A_SpawnProjectile("BdAshesHeavy", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180));
         }
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerLarge", 35, 0, random(0, 360), 2, random(0, 160))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerLarge", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         PBR1 BBBBBB 2
         {
-            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 48);
-            A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40));
+            A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 48);
+            A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40));
         }
         PBR1 CDEFGH 6
         {
-            A_SpawnProjectile("Blood", 10, 0, random(0, 360), 2, random(0, 160));
-            A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40));
+            A_SpawnProjectile("Blood", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160));
+            A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40));
         }
         TNT1 A 0 A_SpawnItem ("BdBloodPool")
         PBR1 HHHHHHHHHHHHHHHHHHHHHH 8
         {
-            A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), 2, random(0, 160));
-            A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8);
+            A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160));
+            A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8);
         }
         PBR1 H -1
         stop
     DieJustLegs:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), 2, random(10, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpSide", 48, 0, random(0, 360), 2, random(0, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), 2, random(0, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), 2, random(0, 160))
-        TROG ABCDEEEE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpSide", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TROG ABCDEEEE 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         TROG E -1
         stop
     DieTornUp:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), 2, random(10, 160))
-        TNT1 AA 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), 2, random(0, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), 2, random(0, 160))
-        IZD1 BCDEFGH 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), 2, random(0, 40))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TNT1 AAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -160))
+        TNT1 AA 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        IZD1 BCDEFGH 6 A_SpawnProjectile("BdBloodDrop", 15, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -40))
         IZD1 H -1
         stop
     DieX:
-        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AAAAAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), 2, random(45, 80))
-        TNT1 AAAAAAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), 2, random(10, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibZombieRibcage", 42, 0, random(0, 360), 2, random(10, 160))
-        TNT1 AA 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), 2, random(0, 160))
-        TNT1 AA 0 A_SpawnProjectile("BdGibImpLeg", 48, 0, random(0, 360), 2, random(0, 160))
-        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), 2, random(0, 160))
+        TNT1 A 0 A_SpawnProjectile("BdBloodSpawnerMed", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AAAAAAA 0 A_SpawnProjectile("BdBloodLump", 35, 0, random(0, 360), CMF_AIMDIRECTION, random(-45, -80))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("BdBloodLumpBone", 42, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibZombieRibcage", 42, 0, random(0, 360), CMF_AIMDIRECTION, random(-10, -160))
+        TNT1 AA 0 A_SpawnProjectile("BdGibImpArm", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 AA 0 A_SpawnProjectile("BdGibImpLeg", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A 0 A_SpawnProjectile("BdGibImpHead", 48, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 1 //1-tic delay required after XDeath
         stop
     Raise:

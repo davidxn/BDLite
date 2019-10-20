@@ -68,1091 +68,1156 @@
 */
 
 /** These represent individual flying body parts. All gibs are objects that spin through the air (using the actor roll property with the +ROLLSPRITE flag) and land on the ground, where they check if the Janitor CVAR is on and then either enter an infinite state or hang around for a while before disappearing. The vast bulk of all of this is handled in the BdGib base class, which sets a random rotation speed and then leaves the subclass to handle its own display and flight before it lands. */
-ACTOR BdGib : BdBlood
+actor BdGib : BdBlood
 {
     var int user_rotationspeed;
 
     Radius 8
     Height 8
-    
     Speed 10
     Gravity 0.6
     Mass 4
     Decal BrutalBloodSplat
     BounceFactor 0.01
+	
     +DOOMBOUNCE
     +MOVEWITHSECTOR
     +ROLLSPRITE
     +ROLLCENTER
     -RANDOMIZE
+	
     States
     {
     Spawn:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 NoDelay A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetUserVar("user_rotationspeed", random(30, 50))
-        TNT1 A 0 A_SetUserVar("user_rotationspeed", user_rotationspeed * ((random(0,1)*2)-1)) //Randomly -1 or 1!
+        TNT1 A 0 A_SetUserVar("user_rotationspeed", user_rotationspeed * randompick(-1, 1))
         TNT1 A 0 A_Jump(256, "Fly")
+		
     Lying:
         "----" A 1 A_JumpIf(GetCVar("bd_janitor") == 1, "Expiring") //If the janitor cvar is on, skip the infinite frame and go away after a random time instead
         "----" A -1
     Expiring:
         "----" A random(60, 600)
         TNT1 A 0 A_SpawnItemEx("CoolAndNewFlameTrailsLong", 0, 0, 0, 0, 0, 0)
-        Stop        
+        stop        
     }
 }
 
-ACTOR BdGibZombieArm : BdGib
+actor BdGibZombieArm : BdGib
 {
     States
     {
     Fly:
-        POSX G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        POSX G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         POSX O 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibShotgunGuyArm : BdGib
+actor BdGibShotgunGuyArm : BdGib
 {
     States
     {
     Fly:
-        SPSX G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        SPSX G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         SPSX O 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCommandoArm : BdGib
+actor BdGibCommandoArm : BdGib
 {
     States
     {
     Fly:
-        HND3 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HND3 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         HND3 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibImpArm : BdGib
+actor BdGibImpArm : BdGib
 {
     States
     {
     Fly:
-        HND4 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HND4 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         HND4 A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibDemonArm : BdGib
+actor BdGibDemonArm : BdGib
 {
     States
     {
     Fly:
-        HND8 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HND8 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         HND8 I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibZombieTopHalf : BdGib
+actor BdGibZombieTopHalf : BdGib
 {
     States
     {
     Fly:
-        PP2X F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        PP2X F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, 360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         PP2X G 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibShotgunGuyTopHalf : BdGib
+actor BdGibShotgunGuyTopHalf : BdGib
 {
     States
     {
     Fly:
-        SP2X F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        SP2X F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         SP2X G 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibDemonTopHalf : BdGib
+actor BdGibDemonTopHalf : BdGib
 {
     States
     {
     Fly:
-        SARC E 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        SARC E 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         SARC F 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibImpSide : BdGib
+actor BdGibImpSide : BdGib
 {
     States
     {
     Fly:
-        HND4 L 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HND4 L 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         HND4 Q 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibGut : BdGib
+actor BdGibGut : BdGib
 {
     States
     {
     Fly:
-        TNT1 A 0 A_Jump(255, "Gut1", "Gut2", "Gut3")
+        TNT1 A 0 A_Jump(256, "Gut1", "Gut2", "Gut3")
+		
     Gut1:
-        GUTS A 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GUTS A 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Gut2:
-        GUTS C 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GUTS C 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Gut3:
-        GUTS I 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GUTS I 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         TNT1 A 0 A_Jump(128, "AltDeath")
         GUTS E 1
-        Goto Lying
+        goto Lying
+		
     AltDeath:
         GUTS F 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibZombieHead : BdGib
+actor BdGibZombieHead : BdGib
 {
     States
     {
     Fly:
-        HED1 G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HED1 G 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         HED1 G 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibImpHead : BdGib
+actor BdGibImpHead : BdGib
 {
     States
     {
     Fly:
-        XHE4 F 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        XHE4 F 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         XHE4 F 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCommandoHead : BdGib
+actor BdGibCommandoHead : BdGib
 {
     States
     {
     Fly:
-        CHHE A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CHHE A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         CHHE A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibDemonHead1 : BdGib
+actor BdGibDemonHead1 : BdGib
 {
     States
     {
     Fly:
-        D2MH E 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        D2MH E 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         D2MH I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibDemonHead2 : BdGib
+actor BdGibDemonHead2 : BdGib
 {
     States
     {
     Fly:
-        DEMH A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        DEMH A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         TNT1 A 0 A_Jump(128, "AltDeath")
         DEMH J 1
-        Goto Lying
+        goto Lying
+		
     AltDeath:
         DEMH I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibZombieLeg : BdGib
+actor BdGibZombieLeg : BdGib
 {
     States
     {
     Fly:
-        LEG1 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LEG1 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         LEG1 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibShotgunGuyLeg : BdGib
+actor BdGibShotgunGuyLeg : BdGib
 {
     States
     {
     Fly:
-        LEG2 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LEG2 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         LEG2 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCommandoLeg : BdGib
+actor BdGibCommandoLeg : BdGib
 {
     States
     {
     Fly:
-        LEG3 I 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LEG3 I 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         LEG3 I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibImpLeg : BdGib
+actor BdGibImpLeg : BdGib
 {
     States
     {
     Fly:
-        LEG4 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LEG4 E 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         LEG4 I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibDemonLeg : BdGib
+actor BdGibDemonLeg : BdGib
 {
     States
     {
     Fly:
-        LEG8 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LEG8 A 4 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 AAA 0 A_CustomMissile ("BdFlyingBloodSmall", 0, 0, random (0, 360), CMF_AIMDIRECTION, random (0, 160))
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBloodSmall", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SetRoll(0)
         TNT1 A 0 A_Jump(128, "DeathAlt")
         LEG8 I 1
-        Goto Lying
+        goto Lying
+		
     DeathAlt:
         LEG8 J 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibRevenantElbow : BdGib
+actor BdGibRevenantElbow : BdGib
 {
     States
     {
     Fly:
-        BNP3 A 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        BNP3 A 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         BNP3 A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibRevenantArm : BdGib
+actor BdGibRevenantArm : BdGib
 {
     States
     {
     Fly:
-        BNP2 E 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        BNP2 E 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         BNP2 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibRevenantBone : BdGib
+actor BdGibRevenantBone : BdGib
 {
     States
     {
     Fly:
-        BNP1 E 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        BNP1 E 4 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         BNP1 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
 
-ACTOR BdGibZombieRibcage : BdGib
+actor BdGibZombieRibcage : BdGib
 {
     States
     {
     Fly:
-        XME5 ABCD 3 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        XME5 ABCD 3 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         XME5 E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibPainPiece1 : BdGib
+actor BdGibPainPiece1 : BdGib
 {
     States
     {
     Fly:
-        CAGI F 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        CAGI F 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         CAGI Q 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibPainPiece2 : BdGib
+actor BdGibPainPiece2 : BdGib
 {
     States
     {
     Fly:
-        CAGI O 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        CAGI O 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         CAGI R 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibKnightTopHalf : BdGib
+actor BdGibKnightTopHalf : BdGib
 {
     States
     {
     Fly:
-        BTO1 A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        BTO1 A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        BTO1 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
+        BTO1 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         BTO1 D 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBaronTopHalf : BdGib
+actor BdGibBaronTopHalf : BdGib
 {
     States
     {
     Fly:
-        BTO2 A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        BTO2 A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        BTO2 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
+        BTO2 BCD 3 A_SpawnProjectile("BdFlyingBlood", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         BTO2 D 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBaronLimb : BdGib
+actor BdGibBaronLimb : BdGib
 {
     States
     {
     Fly:
-        GORD E 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GORD E 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         GORD E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibRevenantTopHalf : BdGib
+actor BdGibRevenantTopHalf : BdGib
 {
     States
     {
     Fly:
-        SKEX F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        SKEX F 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        SKEX FFF 1 A_SpawnProjectile("BdFlyingBlood", 0, 0, random (0, 360), 2, random (0, 360))
+        SKEX FFF 1 A_SpawnProjectile("BdFlyingBlood", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         SKEX F 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibKnightLeg : BdGib
+actor BdGibKnightLeg : BdGib
 {
     States
     {
     Fly:
-        GORA A 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GORA A 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         GORA A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibKnightArm : BdGib
+actor BdGibKnightArm : BdGib
 {
     States
     {
     Fly:
-        GORB D 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
+        GORB D 2 A_SpawnProjectile("BdFlyingBloodTrail", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         GORB E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibKnightHead : BdGib
+actor BdGibKnightHead : BdGib
 {
     States
     {
     Fly:
-        HKHE A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        HKHE A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         HKHE A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibVileTopHalf : BdGib
+actor BdGibVileTopHalf : BdGib
 {
     States
     {
     Fly:
-        VILP A 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        VILP A 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         VILP B 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibVilePiece : BdGib
+actor BdGibVilePiece : BdGib
 {
     States
     {
     Fly:
-        VILP C 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_SetRoll(roll + user_rotationspeed*2)
-        Loop
+        VILP C 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SetRoll(roll + user_rotationspeed * 2)
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         VILP C 1
-        Goto Lying
+        goto Lying
     }
 }
 
 
-ACTOR BdGibSpiderLeg : BdGib
+actor BdGibSpiderLeg : BdGib
 {
     States
     {
     Fly:
-        XDSL B 2 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_SetRoll(roll + user_rotationspeed*2)
-        Loop
+        XDSL B 2 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SetRoll(roll + user_rotationspeed * 2)
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        TNT1 AAA 0 A_CustomMissile("BdFlyingAsh", 12, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingAsh", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_Jump(128, "AltDeath")
         XDSL I 1
-        Goto Lying
+        goto Lying
+		
     AltDeath:
         XDSL J 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibSpiderHead : BdGib
+actor BdGibSpiderHead : BdGib
 {
     States
     {
     Fly:
-        NAHA A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        NAHA A 2 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        TNT1 AAA 0 A_CustomMissile("BdFlyingBlood", 12, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBlood", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         NAHC H 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibMastermindLeg : BdGib
+actor BdGibMastermindLeg : BdGib
 {
     Speed 13
+	
     States
     {
     Fly:
-        SPP4 H 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        SPP4 H 1 A_SpawnProjectile("BdFlyingBloodTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
-        TNT1 AAA 0 A_CustomMissile("BdFlyingBlood", 12, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 0 A_CustomMissile("FireBallExplosion", 12, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 1
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingBlood", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A 0 A_SpawnProjectile("FireBallExplosion", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A -1
         Stop
     }
 }
 
-ACTOR BdGibMastermindJunk1 : BdGib
+actor BdGibMastermindJunk1 : BdGib
 {
     Speed 10
     Scale 0.6
+	
     States
     {
     Fly:
-        TRP1 A 1 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_SetRoll(roll + user_rotationspeed*2)
-        Loop
+        TRP1 A 1 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SetRoll(roll + user_rotationspeed * 2)
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
-        TNT1 A 0 A_CustomMissile("FireBallExplosion", 12, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("FireBallExplosion", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 1
         Stop
     }
 }
 
-ACTOR BdGibMastermindJunk2 : BdGib
+actor BdGibMastermindJunk2 : BdGib
 {
     Speed 14
     Scale 0.5
+	
     States
     {
     Fly:
-        TRP5 A 1 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_SetRoll(roll + user_rotationspeed*2)
-        Loop
+        TRP5 A 1 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SetRoll(roll + user_rotationspeed * 2)
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
-        TNT1 A 0 A_SetRoll(0)
-        TNT1 A 1
-        TRP5 A 1
-        Goto Lying
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
+        TRP5 A 1 A_SetRoll(0)
+        goto Lying
     }
 }
 
-
-/** Subset of gibs that are blackened and give off plasma evaporation */
-ACTOR BdGibPlasmaBurned : BdGib
+// Subset of gibs that are blackened and give off plasma evaporation
+actor BdGibPlasmaBurned : BdGib
 {
     Speed 2
+	
     States
     {
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpot",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpot", 0, 0, 0, 1)
         TNT1 AAA 0 A_SpawnItem("Blood", 0, 5)
         TNT1 A 0 A_SetRoll(0)
         TNT1 A 0 A_Jump(256, "Idle")
     }
 }
 
-ACTOR BdGibBurnedRibcage : BdGibPlasmaBurned
+actor BdGibBurnedRibcage : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CARB A 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CARB A 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CARB A 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CARB A random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB A random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB A random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB A random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB A random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        CARB A 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CARB A random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB A random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB A random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB A random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB A random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         CARB A 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedGib : BdGibPlasmaBurned
+actor BdGibBurnedGib : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CARB C 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CARB C 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CARB C 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CARB C random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB C random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB C random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB C random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB C random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        CARB C 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CARB C random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB C random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB C random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB C random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB C random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         CARB C 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedArm : BdGibPlasmaBurned
+actor BdGibBurnedArm : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CARB D 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CARB D 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CARB D 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CARB D random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB D random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB D random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB D random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB D random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        CARB D 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CARB D random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB D random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB D random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB D random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB D random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         CARB D 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedLeg : BdGibPlasmaBurned
+actor BdGibBurnedLeg : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CARB E 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CARB E 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CARB E 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CARB E random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB E random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB E random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB E random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB E random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        CARB E 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CARB E random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB E random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB E random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB E random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB E random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         CARB E 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedGut : BdGibPlasmaBurned
+actor BdGibBurnedGut : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        GUTS K 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        GUTS K 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        GUTS G 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        GUTS G random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        GUTS G random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        GUTS G random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        GUTS G 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        GUTS G random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        GUTS G random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        GUTS G random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         GUTS G 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedImpArm : BdGibPlasmaBurned
+actor BdGibBurnedImpArm : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CARB G 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CARB G 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CARB G 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CARB G random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB G random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB G random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB G random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
-        CARB G random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 8)
+        CARB G 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CARB G random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB G random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB G random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB G random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
+        CARB G random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 8)
         CARB G 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibBurnedCacoTop : BdGibPlasmaBurned
+actor BdGibBurnedCacoTop : BdGibPlasmaBurned
 {
     States
     {
     Fly:
-        CACX J 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        CACX J 3 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Idle:
-        CACX J 1 A_CustomMissile("MiniSmoke", 10, 0, random (0, 360), 2, random (0, 160))
-        CACX J random(5,10) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
-        CACX J random(10,15) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
-        CACX J random(15,20) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
-        CACX J random(20,25) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
-        CACX J random(25,30) A_SpawnItemEx("BdPlasmaEvaporate", random(0 - radius/2, radius/2), random(0 - radius/2, radius/2), 16)
+        CACX J 1 A_SpawnProjectile("MiniSmoke", 10, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        CACX J random(5, 10)  A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 16)
+        CACX J random(10, 15) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 16)
+        CACX J random(15, 20) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 16)
+        CACX J random(20, 25) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 16)
+        CACX J random(25, 30) A_SpawnItemEx("BdPlasmaEvaporate", random(-radius/2, radius/2), random(-radius/2, radius/2), 16)
         CACX J 1
-        Goto Lying
+        goto Lying
     }
 }
 
-
-ACTOR BdGibLostSoulExplosion : BdGib
+actor BdGibLostSoulExplosion : BdGib
 {
     +BLOODSPLATTER
+	
     States
     {
     Spawn:
-        TNT1 AAA 0 A_CustomMissile ("CoolAndNewFlameTrailsLong", 12, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAA 0 A_SpawnProjectile("CoolAndNewFlameTrailsLong", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 AA 0 A_SpawnItem("ExplosionParticleSpawner")
-        TNT1 A 0 A_SpawnItemEx("ExplosionFlare",0,0,32,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAA 0 A_CustomMissile("FireBallExplosion", 32, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAA 0 A_CustomMissile("MiniSmoke", 32, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 1
-        Stop
+        TNT1 A 0 A_SpawnItemEx("ExplosionFlare", 0, 0, 32, 0, 0, 0, 0, SXF_NOCHECKPOSITION)
+        TNT1 AAAAA 0 A_SpawnProjectile("FireBallExplosion", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 AAAA 0 A_SpawnProjectile("MiniSmoke", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A -1
+        stop
     }
 }
 
-ACTOR BdGibLostSoulExplosionSmall : BdGib
+actor BdGibLostSoulExplosionSmall : BdGib
 {
     +BLOODSPLATTER
+	
     States
     {
     Spawn:
-        TNT1 A 0 A_CustomMissile ("CoolAndNewFlameTrailsLong", 12, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_SpawnProjectile("CoolAndNewFlameTrailsLong", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
         TNT1 A 0 A_SpawnItem("ExplosionParticleSpawner")
-        TNT1 A 0 A_CustomMissile("FireBallExplosion", 32, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_CustomMissile("MiniSmoke", 32, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 1
-        Stop
+        TNT1 A 0 A_SpawnProjectile("FireBallExplosion", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A 0 A_SpawnProjectile("MiniSmoke", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
+        TNT1 A -1
+        stop
     }
 }
 
-ACTOR BdGibLostSoulFalling : BdGib
+actor BdGibLostSoulFalling : BdGib
 {
     States
     {
     Spawn:
-        LSOL JJJKKKLLL 2 {
-            A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360));
-            A_CustomMissile("MiniSmoke", 32, 0, random (0, 360), 2, random (0, 360));
+        LSOL JJJKKKLLL 2
+		{
+            A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360));
+            A_SpawnProjectile("MiniSmoke", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360));
         }
         LSOL L 70
         TNT1 A 0 A_SpawnItem("BdGibLostSoulExplosionSmall")
         TNT1 A 1 A_SpawnItem("BdLostSoulFragmentSpawner")
-        Stop
+        stop
+		
     Death:
-        TNT1 AAAAAAAAAA 0 {
-            A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
-        }
+        TNT1 AAAAAAAAAA 0 A_SpawnProjectile("BdAshesHeavy", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180))
         TNT1 A 0 A_SpawnItem("BdGibLostSoulExplosionSmall")
         TNT1 A 1 A_SpawnItem("BdLostSoulFragmentSpawner")
-        Stop
+        stop
     }
 }
 
-ACTOR BdGibLostSoulCrashing : BdGib
+actor BdGibLostSoulCrashing : BdGib
 {
     States
     {
     Spawn:
-        LSOL JJJKKKLLL 2 {
-            A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360));
-            A_CustomMissile("MiniSmoke", 32, 0, random (0, 360), 2, random (0, 360));
-            A_SetRoll(roll + user_rotationspeed*2);
+        LSOL JJJKKKLLL 2
+		{
+            A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360));
+            A_SpawnProjectile("MiniSmoke", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360));
+            A_SetRoll(roll + user_rotationspeed * 2);
         }
         LSOL L 70
         TNT1 A 0 A_SpawnItem("BdGibLostSoulExplosionSmall")
         TNT1 A 1 A_SpawnItem("BdLostSoulFragmentSpawner")
-        Stop
+        stop
+		
     Death:
-        TNT1 AAAAAAAAAA 0 {
-            A_CustomMissile ("BdAshesHeavy", 32, 0, random (0, 360), 2, random (0, 180));
-        }
+        TNT1 AAAAAAAAAA 0 A_SpawnProjectile("BdAshesHeavy", 32, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -180))
         TNT1 A 0 A_SpawnItem("BdGibLostSoulExplosionSmall")
         TNT1 A 1 A_SpawnItem("BdLostSoulFragmentSpawner")
-        Stop
+        stop
     }
 }
 
-ACTOR BdGibLostSoulFragment : BdGib
+actor BdGibLostSoulFragment : BdGib
 {
     States
     {
     Fly:
-        LGI2 A 2 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random (0, 360), 2, random (0, 360))
+        LGI2 A 2 A_SpawnProjectile("BdFlyingAshTrailStrong", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 AAA 0 A_CustomMissile("BdFlyingAsh", 12, 0, random (0, 360), 2, random (0, 160))
-        TNT1 A 1
-        Stop
+        TNT1 AAA 0 A_SpawnProjectile("BdFlyingAsh", 12, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -160))
+        TNT1 A -1
+        stop
     }
 }
 
-ACTOR BdGibCacoHorn : BdGib
+actor BdGibCacoHorn : BdGib
 {
     States
     {
     Fly:
-        CCP2 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        CCP2 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
         CCP2 B 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCacoPiece1 : BdGib
+actor BdGibCacoPiece1 : BdGib
 {
     States
     {
     Fly:
-        CCP1 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        CCP1 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
         TNT1 A 0 A_Jump(128, "AltDeath")
         CCP1 B 1
-        Goto Lying
+        goto Lying
+		
     AltDeath:
         CCP1 C 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCacoPiece2 : BdGib
+actor BdGibCacoPiece2 : BdGib
 {
     States
     {
     Fly:
-        CCP4 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        CCP4 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
         CCP4 H 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCacoTop : BdGib
+actor BdGibCacoTop : BdGib
 {
     States
     {
     Fly:
-        CACX A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        CACX A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
         CACX I 1
-        Goto Lying
+        goto Lying
     }
 }
 
-ACTOR BdGibCacoTooth : BdGib
+actor BdGibCacoTooth : BdGib
 {
     States
     {
     Fly:
-        CCP3 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random (0, 360), 2, random (0, 360))
+        CCP3 A 2 A_SpawnProjectile("BdFlyingBloodTrailBlue", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
         TNT1 A 0 A_SetRoll(roll + user_rotationspeed)
-        Loop
+        loop
+		
     Death:
-        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue",0,0,0,1)
+        TNT1 A 0 A_SpawnItem("BdBloodSpotBlue", 0, 0, 0, 1)
         TNT1 A 0 A_SetRoll(0)
         TNT1 AAA 0 A_SpawnItem("BdBleedBlue", 0, 5)
         CCP3 B 1
-        Goto Lying
+        goto Lying
     }
 }
