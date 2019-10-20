@@ -1,4 +1,4 @@
-ACTOR BdPainElemental : BdLiteMonster Replaces PainElemental
+actor BdPainElemental : BdLiteMonster replaces PainElemental
 {
     var int user_loop_index;
     
@@ -9,10 +9,6 @@ ACTOR BdPainElemental : BdLiteMonster Replaces PainElemental
     Scale 1.2
     Speed 9
     PainChance 128
-    +FLOAT
-    +BLOODSPLATTER
-    +NOGRAVITY
-    -FLOORCLIP
     SeeSound "pain/sight"
     PainSound "pain/pain"
     DeathSound "pain/death"
@@ -20,63 +16,72 @@ ACTOR BdPainElemental : BdLiteMonster Replaces PainElemental
     PainChance "Kick", 255
     damagetype Flames
     Species PainElemental
+
+    +FLOAT
+    +BLOODSPLATTER
+    +NOGRAVITY
+    -FLOORCLIP
+
     States
     {
     Spawn:
         PAIN A 10 A_Look
-        Loop
+        loop
         
     See:
         PAIN AABBCC 3 A_Chase
         TNT1 A 0 A_JumpIfCloser(200, "Retreat")
-        Loop
+        loop
     
     Retreat:
         TNT1 A 0 A_FaceTarget
-        PAIN AABBCC 3 {
+        PAIN AABBCC 3
+        {
             A_Recoil(5);
             A_SetAngle(angle + random(-10, 10));
         }
-        Goto See
+        goto See
 
     Missile:
         TNT1 A 0 A_JumpIfCloser(200, "Retreat")
-        PAIN D 7 A_FaceTarget
-        PAIN E 7 A_FaceTarget
+        PAIN DE 7 A_FaceTarget
         PAIN F 5 BRIGHT A_FaceTarget
         PAIN F 2 BRIGHT A_PainAttack
         PAIN ED 7
-        Goto See
+        goto See
         
     Pain:
         PAIN G 6
         PAIN G 6 A_Pain
-        Goto See
+        goto See
+
     Pain.Kick:
     Pain.SuperKick:
         TNT1 A 0 A_FaceTarget
-        TNT1 A 0 A_Recoil (10)
+        TNT1 A 0 A_Recoil(10)
         PAIN G 12
         PAIN G 12 A_Pain
-        Goto See
+        goto See
 
     Death:
         PAIN H 8 BRIGHT
         PAIN I 8 BRIGHT A_Scream
-        TNT1 A 0 A_Explode (220,220)
-        TNT1 AA 0 bright A_CustomMissile ("BdBloodSpawnerLarge", 5, 0, random (0, 360), 2, random (30, 180))
-        TNT1 AAAAAAAA 0 A_CustomMissile ("BdBloodLump", 32, 0, random (0, 360), 2, random (0, 160))
+        TNT1 A 0 A_Explode(220, 220)
+        TNT1 AA 0 BRIGHT A_CustomMissile("BdBloodSpawnerLarge", 5, 0, random(0, 360), 2, random(30, 180))
+        TNT1 AAAAAAAA 0 A_SpawnProjectile("BdBloodLump", 32, 0, random(0, 360), 2, random(0, 160))
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-        TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile ("FireBallExplosion", 6, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAA 0 A_CustomMissile("FireBallExplosion", 6, 0, random(0, 360), 2, random(0, 360))
         TNT1 A 0 BRIGHT A_PainDie
-        
-        TNT1 AAAAAA 0 A_CustomMissile ("BdGibPainPiece1", 32, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAAAA 0 A_CustomMissile ("BdGibPainPiece2", 32, 0, random (0, 360), 2, random (0, 160))
+        TNT1 AAAAAA 0
+        {
+            A_SpawnProjectile("BdGibPainPiece1", 32, 0, random(0, 360), 2, random(0, 160));
+            A_SpawnProjectile("BdGibPainPiece2", 32, 0, random(0, 360), 2, random(0, 160));
+        }
     ExplosionLoop:
-        TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 1, 0, random (0, 360), 2, random (70, 110))
-        TNT1 AAA 4 A_CustomMissile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110))
-        TNT1 A 0 A_SetUserVar("user_loop_index", user_loop_index+1)
+        TNT1 A 0 A_SpawnProjectile("ExplosionSmoke", 1, 0, random(0, 360), 2, random(70, 110))
+        TNT1 AAA 4 A_SpawnProjectile("RealFlameTrailsSmallLong", 1, 0, random(0, 360), 2, random(70, 110))
+        TNT1 A 0 A_SetUserVar("user_loop_index", user_loop_index + 1)
         TNT1 A 0 A_JumpIf(user_loop_index <= 20, "ExplosionLoop")
-        Stop    
+        stop
     }
 }
