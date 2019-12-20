@@ -1,6 +1,6 @@
 Actor BdChainsaw : BdLiteWeapon replaces Chainsaw
 {
-    weapon.selectionorder 220
+    weapon.selectionorder 9000
     Weapon.SlotNumber 1
     Weapon.SlotPriority 1
     inventory.pickupsound "weapons/chainsaw/draw"
