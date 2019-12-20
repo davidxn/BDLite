@@ -1,8 +1,3 @@
-//===========================================================================
-//
-// Spider boss
-//
-//===========================================================================
 ACTOR BdSpiderMastermind : BdLiteMonster Replaces SpiderMastermind
 {
     var int user_loop_index;

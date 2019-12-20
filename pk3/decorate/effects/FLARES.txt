@@ -286,7 +286,6 @@ ACTOR YellowFlareSpawn
     {
     Spawn:
         TNT1 AA 1 A_CustomMissile("YellowFlareSmallB",-5,0,-85,0,random(-10,10))
-        //TNT1 AA 0 A_CustomMissile("OrangeLensFlareAlt",2,0,0,0,0)
         Stop
     }
 }

@@ -148,8 +148,8 @@ pointlight PLASMABALLMED
 
 object BdExplosiveBarrel
 {
-    frame BAR1  { light GREENGOOZ    }
-    frame BARB  { light GREENGOOZ    }
+    frame BAR1  { light GREENGOOZ }
+    frame BARB  { light GREENGOOZ }
 
 
     frame BEXPC { light ROCKET_X1 }
@@ -579,18 +579,18 @@ flickerlight IMPBALL_X3
     chance 0.25
 }
 
-object FireBall_
+object ImpFireBall
 {
-    frame FR7X { light IMPBALL    }
-    frame FRFXA { light IMPBALL    }
-    frame FRFXB { light IMPBALL    }
-    frame FRFXC { light IMPBALL    }
-    frame FRFXD { light IMPBALL    }
-    frame FRFXE { light IMPBALL_X2    }
-    frame FRFXF { light IMPBALL_X2    }
-    frame FRFXG { light IMPBALL_X2    }
-    frame FRFXH { light IMPBALL_X3    }
-    frame FRFXI { light IMPBALL_X3    }
+    frame FR7X { light IMPBALL }
+    frame FRFXA { light IMPBALL }
+    frame FRFXB { light IMPBALL }
+    frame FRFXC { light IMPBALL }
+    frame FRFXD { light IMPBALL }
+    frame FRFXE { light IMPBALL_X2 }
+    frame FRFXF { light IMPBALL_X2 }
+    frame FRFXG { light IMPBALL_X2 }
+    frame FRFXH { light IMPBALL_X3 }
+    frame FRFXI { light IMPBALL_X3 }
 
 }
 
@@ -627,7 +627,7 @@ flickerlight CACOBALL_X3
     chance 0.25
 }
 
-object CacodemonBall_
+object CacodemonFireball
 {
     frame BAL2A { light CACOBALL }
     frame BAL2B { light CACOBALL }
@@ -671,8 +671,8 @@ flickerlight BARONBALL_X3
 
 object GreenPlasmaBall
 {
-    frame FRPGJ { light BARONBALL    }
-    frame FRPGK { light BARONBALL    }
+    frame FRPGJ { light BARONBALL }
+    frame FRPGK { light BARONBALL }
 
     frame FRPGC { light BARONBALL_X1 }
     frame FRPGD { light BARONBALL_X1 }
@@ -736,11 +736,11 @@ object BdLostSoul
 // Mancubus Fireball
 object BigFireBall
 {
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-    frame FLME { light IMPBALL   }
-    frame F1RE { light IMPBALL   }
-    frame F2RE { light IMPBALL   }
+    frame MANFA { light IMPBALL}
+    frame MANFB { light IMPBALL}
+    frame FLME { light IMPBALL}
+    frame F1RE { light IMPBALL}
+    frame F2RE { light IMPBALL}
     frame FRFX { light ROCKETLIGHT }
     
     

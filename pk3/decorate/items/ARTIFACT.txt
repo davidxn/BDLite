@@ -1,5 +1,3 @@
-// Invulnerability Sphere ---------------------------------------------------
-
 ACTOR BdInvulnerabilitySphere  : PowerupGiver Replaces InvulnerabilitySphere
 {
     Game Doom
@@ -10,7 +8,7 @@ ACTOR BdInvulnerabilitySphere  : PowerupGiver Replaces InvulnerabilitySphere
     +INVENTORY.BIGPOWERUP
     Inventory.MaxAmount 0
     Powerup.Type Invulnerable
-    Powerup.Color White //InverseMap
+    Powerup.Color White
     Inventory.PickupMessage "$GOTINVUL"
     States
     {
@@ -19,8 +17,6 @@ ACTOR BdInvulnerabilitySphere  : PowerupGiver Replaces InvulnerabilitySphere
         Loop
     }
 }
-
-// Soulsphere --------------------------------------------------------------
 
 ACTOR BdSoulSphere : CustomInventory Replaces SoulSphere
 {
@@ -65,8 +61,6 @@ ACTOR BdMegaSphere : CustomInventory Replaces Megasphere
 }    
 
 
-// infrared -----------------------------------------------------------------
-
 ACTOR BdNightVision : CustomInventory Replaces InfraRed
 {
     Game Doom
@@ -91,7 +85,6 @@ ACTOR BdNightVision : CustomInventory Replaces InfraRed
         
     }
 }
-
 
 ACTOR NightVisionGiver : PowerupGiver
 {
@@ -119,8 +112,6 @@ ACTOR NightVisionGiver : PowerupGiver
     }
 }
 
-// Berserk ------------------------------------------------------------------
-
 ACTOR BdBerserk : CustomInventory Replaces Berserk
 {
     Game Doom
@@ -144,8 +135,6 @@ ACTOR BdBerserk : CustomInventory Replaces Berserk
         Stop
     }
 }
-
-// Backpack ---------------------------------------------------------------
 
 ACTOR BdBackpack : BackpackItem Replaces Backpack
 {

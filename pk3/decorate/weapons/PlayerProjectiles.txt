@@ -70,7 +70,7 @@ actor BdRocket replaces Rocket
     Spawn:
         TNT1 A 0 NoDelay
         {
-            if (GameType() == 2) // GameType 2 is GAME_NET_DEATHMATCH
+            if (GameType() == 2) //Deathmatch
             {
                 A_ChangeFlag("THRUSPECIES", 0);
                 A_ChangeFlag("MTHRUSPECIES", 0);
@@ -123,7 +123,7 @@ actor SuperBFGBall : BFGBall replaces BFGBall
     Spawn:
         TNT1 A 0 NoDelay
         {
-            if (GameType() == 2) // GameType 2 is GAME_NET_DEATHMATCH
+            if (GameType() == 2) //Deathmatch
             {
                 A_ChangeFlag("THRUSPECIES", 0);
                 A_ChangeFlag("MTHRUSPECIES", 0);
@@ -139,7 +139,7 @@ actor SuperBFGBall : BFGBall replaces BFGBall
         loop
 
     Death:
-        TNT1 A 0 Bright A_SpawnItem("GreenShockWave")
+        TNT1 A 0 A_SpawnItem("GreenShockWave")
         TNT1 A 0 A_SpawnItemEx("BFGDeathParticleSpawner")
         TNT1 A 0 A_SpawnItemEx("BFGSuperParticleSpawner")
         TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("BFGBIGFOG", 0, 0, random(0, 360), CMF_AIMDIRECTION, random(0, -360))
@@ -521,25 +521,25 @@ actor FragGrenadeExplosion
     }
 }
 
-// Flag used to indicate the player is punching, used to animate the player
+/** Flag used to indicate the player is punching, used to animate the player */
 actor Punching : Inventory
 {
     Inventory.MaxAmount 1
 }
 
-// Flag given to the player to make them recoil when a kick has connected.
+/** Flag given to the player to make them recoil when a kick has connected. */
 actor KickHasHit : Inventory
 {
     Inventory.MaxAmount 1
 }
 
-// Used to get the player to animate different melee attacks in a combo formation
+/** Used to get the player to animate different melee attacks in a combo formation */
 actor PSeq1 : Inventory
 {
     Inventory.MaxAmount 2
 }
 
-// Used to get the player to animate different melee attacks in a combo formation
+/** Used to get the player to animate different melee attacks in a combo formation */
 actor PSeq2 : Inventory
 {
     Inventory.MaxAmount 1
@@ -559,7 +559,7 @@ actor KickAttack: FastProjectile
     States
     {
     Spawn:
-        TNT1 A 2 // Live for 2 ticks
+        TNT1 A 2
         stop
         
     Death:
@@ -587,7 +587,7 @@ actor MeleeStrike1: KickAttack
     States
     {
     Spawn:
-        TNT1 A 1 // Live for a single tick
+        TNT1 A 1
         stop
 
     Death:

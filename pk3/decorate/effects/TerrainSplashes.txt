@@ -195,7 +195,6 @@ Actor slimeParticleX
   RenderStyle Add
   Scale 1.0
   Alpha 0.8
-  //Speed 2
   Speed 2
   States
   {

@@ -39,7 +39,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
         {
             SetPlayerProperty(0, 0, PROP_FROZEN);
             A_Changeflag("NOPAIN", 0);
-            if (GameType() == 2) // GameType 2 is GAME_NET_DEATHMATCH
+            if (GameType() == 2) //Deathmatch
             {
                 A_ChangeFlag("THRUSPECIES", 0);
                 A_ChangeFlag("MTHRUSPECIES", 0);

@@ -83,7 +83,7 @@ ACTOR Ricochet
     TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
     TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360))
-    TNT1 A 0 bright A_PlaySound("impacts/ricochet")
+    TNT1 A 0 A_PlaySound("impacts/ricochet")
     TNT1 AAA 0 A_CustomMissile ("SmokeTrail", 2, 0, random (0, 360), 2, random (0, 360))
 
     TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4")
@@ -110,7 +110,7 @@ ACTOR Ricochet
     TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,5,0,0,0,0,SXF_NOCHECKPOSITION,0)
     TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,-5,0,0,0,SXF_NOCHECKPOSITION,0)
     TNT1 AAAAAAAAAA 0 A_CustomMissile ("SparkX", 2, 0, random (0, 360), 2, random (30, 160))
-    TNT1 A 0 bright A_PlaySound("impacts/ricochet")
+    TNT1 A 0 A_PlaySound("impacts/ricochet")
     IPF2 GGHH 1 bright A_SpawnItem ("YellowFlareSmall", 0)
     TNT1 AAA 0 A_CustomMissile ("SmokeTrail", 2, 0, random (0, 360), 2, random (30, 160))
     stop

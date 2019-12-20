@@ -869,7 +869,7 @@ actor BdGibMastermindJunk2 : BdGib
     }
 }
 
-// Subset of gibs that are blackened and give off plasma evaporation
+/** Subset of gibs that are blackened and give off plasma evaporation */
 actor BdGibPlasmaBurned : BdGib
 {
     Speed 2

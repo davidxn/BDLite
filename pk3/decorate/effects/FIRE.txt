@@ -103,7 +103,7 @@ Speed 3
     {
     Spawn:
         EXPL AA 2 BRIGHT A_SpawnItem("RedFlare",0,0)
-        EXPL BCDF 1 BRIGHT //A_SpawnItem("YellowFlare",0,0)
+        EXPL BCDF 1 BRIGHT
         
         EXPL GHII 1 BRIGHT
 
@@ -120,7 +120,7 @@ Speed 4
     Spawn:
         EXPL AA 2 BRIGHT A_SpawnItem("RedFlare",0,0)
         TNT1 A 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL BCDF 1 BRIGHT //A_SpawnItem("YellowFlare",0,0)
+        EXPL BCDF 1 BRIGHT
         EXPL GHII 1 BRIGHT
 
         Stop
@@ -269,7 +269,6 @@ ACTOR CoolandNewFlameTrailsLong: FlameTrails
     States
     {
     Spawn:
-        //TNT1 A 2
         FIR3 BCDEFGHIJKLMNOP 1 BRIGHT
         Stop
     }

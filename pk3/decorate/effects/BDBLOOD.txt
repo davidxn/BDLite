@@ -1,4 +1,4 @@
-/*
+/**
 
 Much better blood library by DavidN
 
@@ -44,7 +44,7 @@ BdBlood - Base for most blood things, makes these items non-randomized missiles 
     BdGib and subclasses - See BDGIBS.TXT
 */
 
-// Base properties for blood, most blood actors should inherit from here
+/** Base properties for blood, most blood actors should inherit from here */
 actor BdBlood
 {
     Game Doom
@@ -60,10 +60,10 @@ actor BdBlood
     +THRUACTORS
 }
 
-// BdBleed contains the actors spawned when monsters are hurt, replacing Doom's original Blood object - these are invisible classes that spawn a variety of the effects below.
-// They're defined in the BloodType of a monster, which has three variations - Blood, BloodSplatter and AxeBlood.
-// Those last two are used mostly by Heretic/Hexen when a weapon uses the BLOODSPLATTER or AXEBLOOD flag - BDLite just uses the same blood type for the first two, 
-// but uses BleedSaw for the AxeBlood replacement when using the chainsaw to produce a stronger blood effect.
+/**
+BdBleed contains the actors spawned when monsters are hurt, replacing Doom's original Blood object - these are invisible classes that spawn a variety of the effects below. They're defined in the BloodType of a monster, which has three variations - Blood, BloodSplatter and AxeBlood.
+Those last two are used mostly by Heretic/Hexen when a weapon uses the BLOODSPLATTER or AXEBLOOD flag - BDLite just uses the same blood type for the first two, but uses BleedSaw for the AxeBlood replacement when using the chainsaw to produce a stronger blood effect.
+*/
 actor BdBleed replaces Blood
 {
     Game Doom
@@ -87,7 +87,7 @@ actor BdBleed replaces Blood
     }
 }
 
-// Larger blood effect for when an enemy has been hit with the chainsaw
+/** Larger blood effect for when an enemy has been hit with the chainsaw */
 actor BdBleedSaw : BdBleed
 {
     States
@@ -102,7 +102,7 @@ actor BdBleedSaw : BdBleed
    }
 }
 
-// A class spawned by BdBleed, a splash of blood to show impact
+/** A class spawned by BdBleed, a splash of blood to show impact */
 actor BdBloodHitEffect
 {
     Game Doom
@@ -113,7 +113,6 @@ actor BdBloodHitEffect
     Height 1
     Gravity 0.3
     Mass 1
-    //Damage 0
     RenderStyle Translucent
     Alpha 0.95
     DamageType Blood
@@ -144,7 +143,7 @@ actor BdBloodHitEffectBlue : BdBloodHitEffect
     Translation "168:191=192:207", "16:47=240:247"
 }
 
-// BdBleed for blue-blooded monsters
+/** BdBleed for blue-blooded monsters */
 actor BdBleedBlue : BdBleed
 {
     Translation "168:191=192:207", "16:47=240:247"
@@ -160,7 +159,7 @@ actor BdBleedBlue : BdBleed
     }
 }
 
-// BdBleedSaw for blue-blooded monsters
+/** BdBleedSaw for blue-blooded monsters */
 actor BdBleedSawBlue : BdBleed
 {
     States
@@ -175,7 +174,7 @@ actor BdBleedSawBlue : BdBleed
     }
 }
 
-// BdBloodSpot and its children are the actors that use models to simulate decals on the floor. There are just four variations - blue, red and whether the spot is small or a spreading pool.
+/** BdBloodSpot and its children are the actors that use models to simulate decals on the floor. There are just four variations - blue, red and whether the spot is small or a spreading pool. */
 actor BdBloodSpot
 {
     Game Doom
@@ -260,9 +259,10 @@ actor BdBloodPoolBlue: BdBloodPool
     Translation "168:191=192:207", "16:47=240:247"
 }
 
-// BdBloodSpawners are shortcuts - they're spawned by dying enemies and will in turn spawn a selection of effects depending on the variant that's used.
-// They also play an XDeath4 sound when spawned, so the enemy doesn't have to do this in its death sequence. 
-// All the abstract version of this class does is to add the BLOODSPLATTER flag, which will cause splatter actors to appear if this actor hits another enemy.
+/** BdBloodSpawners are shortcuts - they're spawned by dying enemies and will in turn spawn a selection of effects depending on the variant that's used. They also play an XDeath4 sound when spawned, so the enemy doesn't have to do this in its death sequence.
+
+All the abstract version of this class does is to add the BLOODSPLATTER flag, which will cause splatter actors to appear if this actor hits another enemy. */
+
 actor BdBloodSpawnerAbstract : BdBlood
 {
     +BLOODSPLATTER
@@ -373,7 +373,7 @@ actor BdLostSoulFragmentSpawner : BdBloodSpawnerAbstract
     }
 }
 
-// A mini-gib which splats to the ground and leaves a mark - works a lot like BdGib, except not tied to the apperance of a particular monster.
+/** A mini-gib which splats to the ground and leaves a mark - works a lot like BdGib, except not tied to the apperance of a particular monster. */
 actor BdBloodLump : BdBlood
 {
     Radius 8
@@ -411,7 +411,7 @@ actor BdBloodLump : BdBlood
     }
 }
 
-// Another mini-gib-bone thing
+/** Another mini-gib-bone thing */
 actor BdBloodLumpBone : BdBloodLump
 {
     Speed 10
@@ -441,7 +441,7 @@ actor BdBloodLumpBone : BdBloodLump
     }
 }
 
-// A drop of flying blood to be sprayed out from an enemy using A_FireProjectile. They leave blood spots behind when they land.
+/** A drop of flying blood to be sprayed out from an enemy using A_FireProjectile. They leave blood spots behind when they land. */
 actor BdFlyingBlood : BdBlood
 {
     Scale 1.2
@@ -483,7 +483,7 @@ actor BdFlyingBlood : BdBlood
     }
 }
 
-// This class is a much blacker version of BdFlyingBlood, used for monster bits or mechanical parts that don't bleed.
+/** This class is a much blacker version of BdFlyingBlood, used for monster bits or mechanical parts that don't bleed. */
 actor BdFlyingAsh : BdFlyingBlood
 {
     Alpha 1
@@ -521,8 +521,8 @@ actor BdFlyingBloodSmall : BdFlyingBlood
     Scale 0.8
 }
 
-// These are small actors that hang in the air behind flying blood and body parts, giving more 'weight' to their appearance.
-// They can also be used as projectiles if you want small splashes.
+/** These are small actors that hang in the air behind flying blood and body parts, giving more 'weight' to their appearance.
+They can also be used as projectiles if you want small splashes. */
 actor BdFlyingBloodTrail : BdBlood
 {
     Scale 0.7
@@ -530,7 +530,6 @@ actor BdFlyingBloodTrail : BdBlood
     Alpha 0.8
     Decal BrutalBloodSplat
     Gravity 0.001
-    //Speed 0
     
     States
     {
@@ -574,7 +573,7 @@ actor BdFlyingAshTrailStrong : BdFlyingBloodTrail
     }
 }
 
-// Slower blood that's used for an oozing effect close to the spawning monster.
+/** Slower blood that's used for an oozing effect close to the spawning monster. */
 actor BdBloodDrop : BdBlood
 {
     Speed 3
@@ -596,7 +595,7 @@ actor BdBloodDrop : BdBlood
     }
 }
 
-// Trails for BdBlood.
+/** Trails for BdBlood. */
 actor BdBloodDropTrail: BdBlood
 {
     Scale 0.4
@@ -626,7 +625,6 @@ actor BdFlyingBloodTrailBlue : BdBloodBlue
     Alpha 0.8
     Decal BlueBloodSplat
     Gravity 0.001
-    //Speed 0
     
     States
     {
@@ -680,7 +678,6 @@ actor BdFlyingBloodBlue : BdBloodBlue
     Radius 8
     Height 1
     Gravity 0.9
-    //Damage 0
     Renderstyle Translucent
     Alpha 0.95
     DamageType Blood

@@ -62,7 +62,6 @@ Actor MiniSmoke: ExplosionSmoke
     }
 }
 
-//mxd. From BD21
 actor MeleeSmoke: ExplosionSmoke
 {
     Speed 1
