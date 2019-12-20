@@ -1,64 +1,116 @@
-ACTOR ImpAttack: BaronBall
-{
-    Radius 10
-    Height 18
-    DamageType Rip
-    Projectile 
-    +RANDOMIZE
-    Damage 2
-    +FORCEXYBILLBOARD
-    +THRUGHOST
-    +BLOODSPLATTER 
-    RenderStyle Add
-    Alpha 0.6
-    HitObituary "%o was incinerated by an Imp."
-    Obituary "%o was incinerated by an Imp."
-    +DONTHURTSPECIES
+/** Base class for monster melee attacks. These are actually invisible projectiles with a very short lifetime. */
+ACTOR MonsterMeleeAttack {
 
-    SeeSound "None"
-    DeathSound "none"
-    Decal "none"
+    Radius 8
+    Height 8
     Speed 20
-    States
-    {
-    Spawn:
-        TNT1 A 4 BRIGHT
-        Stop
-    Death:
-        TNT1 A 0 A_PlaySound("monsters/imp/melee")
-        TNT1 A 0 BRIGHT
-        Stop
-    }
-}
-
-ACTOR BaronAttack: BaronBall
-{
-    Radius 24
-    Height 16
-    Projectile 
-    +RANDOMIZE
-    +FORCEXYBILLBOARD
-    +THRUGHOST
-    RenderStyle Add
-    Alpha 0.6
-    Damage 16
-    Speed 28
+    FastSpeed 20
+    Damage (random(8, 12))
+    DamageType Rip
     SeeSound "none"
     DeathSound "none"
     Decal "none"
+    Projectile 
+    -RANDOMIZE
+    +FORCEXYBILLBOARD
+    +THRUGHOST
+    +BLOODSPLATTER
+    +DONTHURTSPECIES
+}
+
+ACTOR ImpMeleeAttack : MonsterMeleeAttack
+{
+    Obituary "%o was turned inside-out by an Imp."
     States
     {
     Spawn:
-        TNT1 A 2 BRIGHT
-        TNT1 A 2
-        Goto Death
+        TNT1 A 4
+        Stop
     Death:
-        TNT1 A 0 BRIGHT
+        TNT1 A 0 A_PlaySound("monsters/imp/melee")
+        TNT1 A 0
         Stop
     }
 }
 
-ACTOR CacodemonBall_ Replaces CacodemonBall
+ACTOR BaronMeleeAttack : MonsterMeleeAttack
+{
+    Damage (random(20,40))
+    Speed 28
+    States
+    {
+    Spawn:
+        TNT1 A 2
+        Goto Death
+    Death:
+        TNT1 A 0
+        Stop
+    }
+}
+
+ACTOR KnightMeleeAttack: BaronBall
+{
+    Damage (random(20,35))
+    Speed 28
+    States
+    {
+    Spawn:
+        TNT1 A 2
+        Goto Death
+    Death:
+        TNT1 A 0
+        Stop
+    }
+}
+
+ACTOR CacodemonBite : ImpMeleeAttack
+{
+    DamageType Eat
+    Damage 5
+    Obituary "%o was chomped by a Cacodemon."
+}
+
+ACTOR DemonAttack: MonsterMeleeAttack
+{
+    DamageType Eat
+    Speed 15
+    Damage (random(2,3))
+    +RIPPER
+    States
+    {
+    Spawn:
+        TNT1 A 3 BRIGHT
+        Stop
+    Death:
+        TNT1 A 0 A_PlaySound ("misc/xdeath1")
+        TNT1 A 1
+        Stop
+    }
+}
+
+ACTOR RevenantMeleeAttack : MonsterMeleeAttack
+{
+    DamageType "Kick"
+    Damage (15)
+    Speed 28
+    Obituary "%o was wrecked by a Revenant."
+
+    States
+    {
+    Spawn:
+        TNT1 A 2
+        stop
+
+    Death:
+        TNT1 A 0 A_PlaySound("skeleton/melee", CHAN_6)
+        TNT1 AAA 0 A_CustomMissile("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 A 6 A_Quake(8, 6, 0, 128, "")
+        stop
+    }
+}
+
+
+ACTOR CacodemonFireball Replaces CacodemonBall
 {
     Game Doom
     SpawnID 126
@@ -83,40 +135,13 @@ ACTOR CacodemonBall_ Replaces CacodemonBall
         BAL2 BB 2 BRIGHT A_SpawnItem("BlueFlareMedium",0,0)
         Loop
     Death:
-        TNT1 AAAA 0 A_CustomMissile ("ShoqueAzul", 3, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAA 0 A_CustomMissile ("CacoZap", 3, 0, random (0, 360), 2, random (0, 360))
         BAL2 CDE 6 BRIGHT
         Stop
     }
 }
 
-ACTOR Shoque
-{
-    Game Doom
-    Radius 1
-    Height 1
-    Speed 2
-    Damage 0 
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-    +MISSILE
-    +FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-    RenderStyle Add
-    Scale 0.7
-    Gravity 0
-    Alpha 0.5
-    States
-    {
-    Spawn:
-        TNT1 A 1
-        SHOQ ABCDEFG 1 BRIGHT
-        Stop
-    }
-}
-
-
-ACTOR ShoqueAzul
+ACTOR CacoZap
 {
     Game Doom
     Radius 1
@@ -139,13 +164,6 @@ ACTOR ShoqueAzul
         SH1K ABCDEFG 2 BRIGHT
         Stop
     }
-}
-
-ACTOR CacodemonBite: ImpAttack
-{
-    +THRUGHOST
-    DamageType Eat
-    Damage 5
 }
 
 ACTOR CyberBalls
@@ -190,48 +208,7 @@ ACTOR CyberBalls
     }
 }
 
-ACTOR DemonAttack: BaronBall
-{
-    Radius 8
-    Height 8
-    DamageType Eat
-    Projectile 
-    Speed 15
-    +RANDOMIZE
-    Damage (random(2,3))
-    +RIPPER
-    +FORCEXYBILLBOARD
-    +THRUGHOST
-    RenderStyle Add
-    Alpha 0.6
-    SeeSound "none"
-    DeathSound "none"
-    Decal "none"
-    States
-    {
-    Spawn:
-        TNT1 A 4 BRIGHT
-        Goto Vanish
-    Vanish:
-    TNT1 A 0
-    Stop
-    
-    Death:
-        TNT1 A 0 BRIGHT
-        TNT1 A 0 A_PlaySound ("misc/xdeath1")
-        TNT1 A 10
-        Stop
-    }
-}
-
-ACTOR ImpAttack2: ImpAttack
-{
-    +THRUGHOST
-    DamageType Rip
-    Damage 2
-}
-
-ACTOR FireBall_ Replaces DoomImpBall
+ACTOR ImpFireball Replaces DoomImpBall
 {
     Game Doom
     DamageType Burn
@@ -304,11 +281,7 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
     States
     {
     Spawn:
-        TNT1 A 0
-        //Check Effects
-    
-    Spawn1:
-       TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
+        TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
         FRPG J 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
         TNT1 A 0 A_SpawnItemEx("SmallGreenFlameTrails", 0, 0, 0, 0, 0, 0, 0, 128)
         FRPG K 1 BRIGHT A_SpawnItem("GreenFlareSmall",0,0)
@@ -324,34 +297,6 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
     XDeath:
         TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
         FRPG ABCDEFGH 2  A_SpawnItem("GreenFlare",0,0)
-        Stop
-    }
-}
-
-ACTOR KnightAttack: BaronBall
-{
-    Radius 24
-    Height 16
-    DamageType HKFT
-    Projectile 
-    +RANDOMIZE
-    +FORCEXYBILLBOARD
-    +THRUGHOST
-    RenderStyle Add
-    Alpha 0.6
-    Damage 10
-    Speed 42
-    SeeSound "none"
-    DeathSound "none"
-    Decal "none"
-    States
-    {
-    Spawn:
-        TNT1 A 2 BRIGHT
-        TNT1 A 2
-        Goto Death
-    Death:
-        TNT1 A 0 BRIGHT
         Stop
     }
 }
@@ -613,7 +558,7 @@ ACTOR MastermindStep
     }
 }
 
-ACTOR RevenantBalls Replaces RevenantTracer
+ACTOR RevenantHomingMissile Replaces RevenantTracer
 {
     Game Doom
     SpawnID 53
@@ -634,18 +579,18 @@ ACTOR RevenantBalls Replaces RevenantTracer
     {
     Spawn:
         FATB AB 1 BRIGHT A_SpawnItem("RedFlareSmall",0,0)
-        TNT1 A 0 A_SeekerMissile (4,8)
+        TNT1 A 0 A_SeekerMissile(4,8)
         TNT1 A 0 A_SpawnItemEx("RevenantProjectileTrails", 0, 0, 0, 0, 0, 0, 0, 128) 
-        TNT1 A 0 A_SpawnItem ("SmokeTrail")
+        TNT1 A 0 A_SpawnItem("SmokeTrail")
         TNT1 A 0 A_CustomMissile ("SmokeTrail", 2, 0, random (160, 210), 2, random (-30, 30))
         Loop
 
     Death:
-        TNT1 A 0 Radius_Quake (2, 54, 0, 15, 0)
+        TNT1 A 0 Radius_Quake(2, 54, 0, 15, 0)
         TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_Explode(7, 120, 1)
+        TNT1 A 0 A_Explode(7, 32)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
         TNT1 AAAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
@@ -655,22 +600,10 @@ ACTOR RevenantBalls Replaces RevenantTracer
     }
 }
 
-ACTOR RevenantMissile
+ACTOR RevenantDumbfireMissile : RevenantHomingMissile
 {
-    Game Doom
-    SpawnID 53
-    Radius 4
-    Height 4
-    Speed 10
-    FastSpeed 12
+
     Damage (random(15,25))
-    PROJECTILE
-    +THRUGHOST
-    +SEEKERMISSILE
-    Scale 1.0
-    DamageType "Blast"
-    SeeSound "skeleton/attack"
-    DeathSound "skeleton/tracex"
 
     States
     {
@@ -681,44 +614,6 @@ ACTOR RevenantMissile
         TNT1 A 0 A_CustomMissile ("SmokeTrail", 2, 0, random (160, 210), 2, random (-30, 30))
         Loop
 
-    Death:
-        TNT1 AAA 0 A_CustomMissile ("ExplosionSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 Radius_Quake (2, 54, 0, 15, 0)
-        TNT1 A 0 A_Explode(7, 120, 1)
-        TNT1 A 0 A_SpawnItemEx("ExplosionParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAA 0 A_CustomMissile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-        TNT1 A 10
-        Stop
-    }
-}
-    
-ACTOR RevenantAttack
-{
-    Radius 8
-    Height 16
-    DamageType "Kick"
-    Damage (15)
-    Speed 28
-
-    Projectile
-    +RANDOMIZE
-    +THRUGHOST
-
-    States
-    {
-    Spawn:
-        TNT1 A -1
-        stop
-
-    Death:
-        TNT1 A 0 A_PlaySound("skeleton/melee", CHAN_6)
-        TNT1 AAA 0 A_CustomMissile("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 A 6 A_Quake(8, 6, 0, 128, "")
-        stop
     }
 }
 

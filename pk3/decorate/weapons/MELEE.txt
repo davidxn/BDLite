@@ -1,7 +1,7 @@
 ACTOR BdMeleeAttacks : BdLiteWeapon Replaces Fist
 {
     Game Doom
-    Weapon.SelectionOrder 100
+    Weapon.SelectionOrder 10000
     Weapon.Kickback 100
     Obituary "%o was Ripped and Teared by %k"
     Weapon.SlotNumber 1

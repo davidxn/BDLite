@@ -1,6 +1,6 @@
 .--------------------------------------------------------------------------------.
 | BDLite chopped up and reassembled by DavidN from Sgt Mark IV's Brutal Doom v20 |
-|                                   VERSION 1.1                                  |
+|                                   VERSION 1.2                                  |
 |                     http://teamouse.net/games/doom/bdlite/                     |
 |                                                                                |
 |        See https://trello.com/b/fmJhYIlv/bdlite for a list of additions        |
@@ -9,6 +9,13 @@
 |      Credits for other work still present in the PK3 are preserved below.      |
 |                                                                                |
 ^--------------------------------------------------------------------------------^
+
+------
+THANKS
+------
+
+mxd - For a huge amount of cleanup work, organizing sounds/textures/sprites and adjusting my ancient DECORATE :)
+
 -------
 SPRITES
 -------

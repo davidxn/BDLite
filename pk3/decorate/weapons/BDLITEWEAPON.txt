@@ -25,7 +25,6 @@ ACTOR BdLiteWeapon : DoomWeapon
     Weapon.AmmoUse2 0
     Weapon.AmmoGive1 0
     Weapon.AmmoGive2 0
-    +WEAPON.NOAUTOAIM
     +FORCEXYBILLBOARD
     +WEAPON.NOALERT
     States

@@ -1,0 +1,1 @@
+php zdoc.php --resizesprites --decorate=..\pk3\decorate --sprites=..\pk3\SPRITES --mapinfo=..\pk3\MAPINFO.bdlite --targetdir=..\zdoc\

@@ -7,8 +7,6 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
     PainChance 255
     Species "Marines"
     BloodType "BdBleedPlayer"
-    damagefactor "Kick", 3.0
-    damagefactor "SuperKick", 5.0
     DamageFactor "CauseObjectsToSplash", 0.0
     Player.ColorRange 112, 127
     Player.StartItem "BdRifle"
@@ -49,7 +47,7 @@ ACTOR Doomer : PlayerPawn Replaces DoomPlayer
             }
         }
     StandStill:
-        MARN DDDEEE 5 A_JumpIf(velz != 0, "IsJumpin")
+        MARN DDDEEEDDDEEEDDDEEE 5 A_JumpIf(velz != 0, "IsJumpin")
         TNT1 A 0
         {
             if (health < 25)

@@ -27,6 +27,7 @@ ACTOR BdDemon : BdLiteMonster Replaces Demon
     DamageType Eat
     MaxStepHeight 32
     MaxDropOffHeight 32
+    Obituary "%o was dispatched by a Demon."
     Species Demon
     States
     {

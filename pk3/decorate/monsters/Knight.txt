@@ -30,7 +30,7 @@ ACTOR BdHellKnight : BdLiteMonster Replaces HellKnight
         BOS2 E 6 A_FaceTarget
         TNT1 A 0 A_PlaySound("weapons/melee/swing")
         BOS2 F 6 A_FaceTarget
-        BOS2 G 6 A_CustomMissile("KnightAttack",10,0,0,0)
+        BOS2 G 6 A_CustomMissile("KnightMeleeAttack",10,0,0,0)
         Goto See2
         
     Spawn:

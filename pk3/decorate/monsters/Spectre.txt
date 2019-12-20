@@ -9,7 +9,7 @@ ACTOR BdSpectre : BdDemon Replaces Spectre
     Alpha 0.45
     speed 8
     fastspeed 6
-    Obituary "%o has been squelched by a Spectre."
+    Obituary "%o was squelched by a Spectre."
     States
     {
     Spawn:

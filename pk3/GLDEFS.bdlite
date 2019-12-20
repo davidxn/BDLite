@@ -930,7 +930,7 @@ object BdRocket
     frame MISL { light ROCKETLIGHT }
 }
 
-object RevenantBalls
+object RevenantHomingMissile
 {
     frame FATB { light ROCKETLIGHT }
 }
