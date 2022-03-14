@@ -22,7 +22,6 @@ ACTOR BdSpiderMastermind : BdLiteMonster Replaces SpiderMastermind
     +NORADIUSDMG
     +NOBLOOD
     +MISSILEMORE
-    -SOLID
     +MISSILEEVENMORE
     +SHOOTABLE
     SeeSound "spider/sight"
